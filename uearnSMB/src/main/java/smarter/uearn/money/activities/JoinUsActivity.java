@@ -256,17 +256,17 @@ public class JoinUsActivity extends AppCompatActivity implements View.OnClickLis
             startActivity(authenticationIntent);
             JoinUsActivity.this.finish();
         } else if (id == R.id.image_second) {
-            try {
-                if (youTubePlayer != null) {
-                    lyVideo.setVisibility(View.VISIBLE);
-                    lyThumbView.setVisibility(View.GONE);
+//             try {
+//                 if (youTubePlayer != null) {
+//                     lyVideo.setVisibility(View.VISIBLE);
+//                     lyThumbView.setVisibility(View.GONE);
 //                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
 //                     youTubePlayer.loadVideo(AppConstants.YOUTUBE_VIDEO_CODE);
 //                     youTubePlayer.play();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//                 }
+//             } catch (Exception e) {
+//                 e.printStackTrace();
+//             }
         }
     }
 
