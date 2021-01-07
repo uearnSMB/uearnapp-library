@@ -18,9 +18,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerFragment;
+// import com.google.android.youtube.player.YouTubeInitializationResult;
+// import com.google.android.youtube.player.YouTubePlayer;
+// import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONObject;
@@ -46,7 +46,7 @@ public class JoinUsActivity extends AppCompatActivity implements View.OnClickLis
     private Activity activity = null;
     private ImageView imageSecond;
     private View view1, view2, view3;
-    private YouTubePlayer youTubePlayer = null;
+    //private YouTubePlayer youTubePlayer = null;
     private FrameLayout lyVideo, lyThumbView;
     private NetworkBroadcastReceiver networkBroadcastReceiver;
 
@@ -125,23 +125,23 @@ public class JoinUsActivity extends AppCompatActivity implements View.OnClickLis
         changeStatusBarColor(this);
         getUearnTotalAgentsAndEarnings();
 
-        YouTubePlayerFragment youtubeFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
-        youtubeFragment.initialize(AppConstants.DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean restored) {
-                if (!restored) {
-                    youTubePlayer = player;
-                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
-                    player.setPlayerStateChangeListener(playerStateChangeListener);
-                    player.setPlaybackEventListener(playbackEventListener);
-                }
-            }
+//         YouTubePlayerFragment youtubeFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
+//         youtubeFragment.initialize(AppConstants.DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
+//             @Override
+//             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean restored) {
+//                 if (!restored) {
+//                     youTubePlayer = player;
+//                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
+//                     player.setPlayerStateChangeListener(playerStateChangeListener);
+//                     player.setPlaybackEventListener(playbackEventListener);
+//                 }
+//             }
 
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                youTubePlayer = null;
-            }
-        });
+//             @Override
+//             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+//                 youTubePlayer = null;
+//             }
+//         });
 
         try {
             if (mMessageReceiver != null) {
@@ -260,9 +260,9 @@ public class JoinUsActivity extends AppCompatActivity implements View.OnClickLis
                 if (youTubePlayer != null) {
                     lyVideo.setVisibility(View.VISIBLE);
                     lyThumbView.setVisibility(View.GONE);
-                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
-                    youTubePlayer.loadVideo(AppConstants.YOUTUBE_VIDEO_CODE);
-                    youTubePlayer.play();
+//                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
+//                     youTubePlayer.loadVideo(AppConstants.YOUTUBE_VIDEO_CODE);
+//                     youTubePlayer.play();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -270,63 +270,63 @@ public class JoinUsActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
+//     private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
 
-        @Override
-        public void onBuffering(boolean arg0) {
-        }
+//         @Override
+//         public void onBuffering(boolean arg0) {
+//         }
 
-        @Override
-        public void onPaused() {
-        }
+//         @Override
+//         public void onPaused() {
+//         }
 
-        @Override
-        public void onPlaying() {
-        }
+//         @Override
+//         public void onPlaying() {
+//         }
 
-        @Override
-        public void onSeekTo(int arg0) {
-        }
+//         @Override
+//         public void onSeekTo(int arg0) {
+//         }
 
-        @Override
-        public void onStopped() {
+//         @Override
+//         public void onStopped() {
 
-        }
+//         }
 
-    };
+//     };
 
-    private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
+//     private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
 
-        @Override
-        public void onAdStarted() {
+//         @Override
+//         public void onAdStarted() {
 
-        }
+//         }
 
-        @Override
-        public void onError(YouTubePlayer.ErrorReason arg0) {
-            lyVideo.setVisibility(View.GONE);
-            lyThumbView.setVisibility(View.VISIBLE);
-        }
+//         @Override
+//         public void onError(YouTubePlayer.ErrorReason arg0) {
+//             lyVideo.setVisibility(View.GONE);
+//             lyThumbView.setVisibility(View.VISIBLE);
+//         }
 
-        @Override
-        public void onLoaded(String arg0) {
-        }
+//         @Override
+//         public void onLoaded(String arg0) {
+//         }
 
-        @Override
-        public void onLoading() {
-        }
+//         @Override
+//         public void onLoading() {
+//         }
 
-        @Override
-        public void onVideoEnded() {
-            lyVideo.setVisibility(View.GONE);
-            lyThumbView.setVisibility(View.VISIBLE);
-        }
+//         @Override
+//         public void onVideoEnded() {
+//             lyVideo.setVisibility(View.GONE);
+//             lyThumbView.setVisibility(View.VISIBLE);
+//         }
 
-        @Override
-        public void onVideoStarted() {
+//         @Override
+//         public void onVideoStarted() {
 
-        }
-    };
+//         }
+//     };
 
     @Override
     protected void onStop() {
