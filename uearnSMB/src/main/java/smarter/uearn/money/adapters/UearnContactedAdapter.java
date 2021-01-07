@@ -133,7 +133,7 @@ public class UearnContactedAdapter extends BaseAdapter {
 
         latestSalesStage.setText(contacted.stage);
 
-        String substatus1 = contacted.substage1;
+        final String substatus1 = contacted.substage1;
         if(substatus1 != null && !substatus1.isEmpty() && !substatus1.equals("null")) {
             subSalesStage.setText(substatus1);
             subSalesStage.setVisibility(View.VISIBLE);

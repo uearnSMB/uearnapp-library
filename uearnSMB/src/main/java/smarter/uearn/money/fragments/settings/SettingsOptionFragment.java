@@ -188,8 +188,7 @@ public class SettingsOptionFragment extends Fragment implements View.OnClickList
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        switch (view.getId()) {
-//            case R.id.rl_calls:
+        int id = view.getId();//            case R.id.rl_calls:
 //                logAnalytics("Leads_Settings", "RelativeLayout");
 //                fragmentTransaction.replace(R.id.settings_container, new SettingsCallsFragment());
 //                break;
@@ -205,28 +204,21 @@ public class SettingsOptionFragment extends Fragment implements View.OnClickList
 //                logAnalytics("Sales_Settings", "RelativeLayout");
 //                fragmentTransaction.replace(R.id.settings_container, new SettingsSalesFragment());
 //                break;
-            case R.id.rl_team:
-                logAnalytics("Team_Settings", "RelativeLayout");
-                startActivity(new Intent(getActivity(), TeamSettingsActivity.class));
-                break;
-
-            case R.id.rl_change_password:
-                logAnalytics("Change_Password_Settings", "RelativeLayout");
-                new CustomChangePasswordDialog().buildChangePasswordDialog(getContext(), getActivity()).show();
-                break;
-//            case R.id.rl_digital_brochure:
+        if (id == R.id.rl_team) {
+            logAnalytics("Team_Settings", "RelativeLayout");
+            startActivity(new Intent(getActivity(), TeamSettingsActivity.class));
+        } else if (id == R.id.rl_change_password) {
+            logAnalytics("Change_Password_Settings", "RelativeLayout");
+            new CustomChangePasswordDialog().buildChangePasswordDialog(getContext(), getActivity()).show();
+            //            case R.id.rl_digital_brochure:
 //                logAnalytics("Digital_Brochure_Settings", "RelativeLayout");
 //                startActivity(new Intent(getActivity(), DigitalSettingsActivity.class));
 //                break;
-
-
-
-            case R.id.ivSyncData:
-                ServiceUserProfile.getUserSettings();
-                if (getActivity() != null) {
-                    getActivity().finish();
-                }
-                break;
+        } else if (id == R.id.ivSyncData) {
+            ServiceUserProfile.getUserSettings();
+            if (getActivity() != null) {
+                getActivity().finish();
+            }
         }
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -242,80 +234,72 @@ public class SettingsOptionFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        switch (compoundButton.getId()) {
-            case R.id.s_my_calls:
-                if (isChecked) {
+        int id = compoundButton.getId();
+        if (id == R.id.s_my_calls) {
+            if (isChecked) {
+                smartUser.setCallRecordStatus(true);
+                ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, true);
+            } else {
+                smartUser.setCallRecordStatus(false);
+                ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, false);
+            }
+        } else if (id == R.id.sCallRecording) {
+            saveData();
+            if (isChecked) {
+                if (scriptDailog == 1) {
+                    if (getActivity() != null) {
+                        CustomSingleButtonDialog.buildSingleButtonDialog("Voice Analytics", "Please Download offline speech recognition library. \n Setting > Language & Input > Google Voice typing > Offline Speech recognition > All > English(India)", getActivity(), true);
+                    }
+                }
+                if (administrator) {
+                    ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, true);
+                } else {
                     smartUser.setCallRecordStatus(true);
-                    ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, true);
+                }
+                scriptDailog = 1;
+            } else {
+                if (administrator) {
+                    ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, false);
                 } else {
                     smartUser.setCallRecordStatus(false);
-                    ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, false);
                 }
-                break;
-            case R.id.sCallRecording:
-                saveData();
-                if (isChecked) {
-                    if (scriptDailog == 1) {
-                        if (getActivity() != null) {
-                            CustomSingleButtonDialog.buildSingleButtonDialog("Voice Analytics", "Please Download offline speech recognition library. \n Setting > Language & Input > Google Voice typing > Offline Speech recognition > All > English(India)", getActivity(), true);
-                        }
-                    }
-                    if (administrator) {
-                        ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, true);
-                    } else {
-                        smartUser.setCallRecordStatus(true);
-                    }
-                    scriptDailog = 1;
-                } else {
-                    if (administrator) {
-                        ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, false);
-                    } else {
-                        smartUser.setCallRecordStatus(false);
-                    }
-                }
-                break;
-            case R.id.sGpsTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setGpsLocationSettings(true);
-                } else {
-                    smartUser.setGpsLocationSettings(false);
-                }
-                break;
-            case R.id.switchAutoFollowUps:
-                logAnalytics("Auto_Follow_Up_Switch_Settings", "CheckBox");
-                saveData();
-                if (isChecked) {
-                    smartUser.setAutoFollowUpSettings(true);
-                } else {
-                    smartUser.setAutoFollowUpSettings(false);
-                }
-                break;
-
-            case R.id.junkTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setJunkCallSetting(true);
-                } else {
-                    smartUser.setJunkCallSetting(false);
-                }
-                break;
-            case R.id.personalTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setPersonalcallSetting(true);
-                } else {
-                    smartUser.setPersonalcallSetting(false);
-                }
-                break;
-            case R.id.smsTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setSmsTrackingAll(true);
-                } else {
-                    smartUser.setSmsTrackingAll(false);
-                }
-                break;
+            }
+        } else if (id == R.id.sGpsTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setGpsLocationSettings(true);
+            } else {
+                smartUser.setGpsLocationSettings(false);
+            }
+        } else if (id == R.id.switchAutoFollowUps) {
+            logAnalytics("Auto_Follow_Up_Switch_Settings", "CheckBox");
+            saveData();
+            if (isChecked) {
+                smartUser.setAutoFollowUpSettings(true);
+            } else {
+                smartUser.setAutoFollowUpSettings(false);
+            }
+        } else if (id == R.id.junkTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setJunkCallSetting(true);
+            } else {
+                smartUser.setJunkCallSetting(false);
+            }
+        } else if (id == R.id.personalTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setPersonalcallSetting(true);
+            } else {
+                smartUser.setPersonalcallSetting(false);
+            }
+        } else if (id == R.id.smsTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setSmsTrackingAll(true);
+            } else {
+                smartUser.setSmsTrackingAll(false);
+            }
         }
     }
 

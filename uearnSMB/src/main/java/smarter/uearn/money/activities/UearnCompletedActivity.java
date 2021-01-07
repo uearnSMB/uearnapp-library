@@ -118,15 +118,13 @@ public class UearnCompletedActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
 
         int id = view.getId();
-        switch (id) {
-            case R.id.toolbar_head_view:
-                toolbar_activity_spinner.setEnabled(false);
-                toolbar_activity_spinner.performClick();
-                toolbar_activity_spinner.setClickable(false);
-                toolbar_activity_spinner.setFocusable(true);
-                toolbar_activity_spinner.setFocusableInTouchMode(true);
-                toolbar_activity_spinner.requestFocus();
-                break;
+        if (id == R.id.toolbar_head_view) {
+            toolbar_activity_spinner.setEnabled(false);
+            toolbar_activity_spinner.performClick();
+            toolbar_activity_spinner.setClickable(false);
+            toolbar_activity_spinner.setFocusable(true);
+            toolbar_activity_spinner.setFocusableInTouchMode(true);
+            toolbar_activity_spinner.requestFocus();
         }
     }
 

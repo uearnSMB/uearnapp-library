@@ -120,21 +120,19 @@ public class UearnFeedbackActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.submitBtn:
-                InputMethodManager imm = (InputMethodManager)SmarterSMBApplication.currentActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(SmarterSMBApplication.currentActivity.getWindow().getDecorView().getWindowToken(), 0);
-                if(!feedbackSubject.isEmpty() && !feedbackText.getText().toString().isEmpty()) {
-                    setUserFeedback();
+        if (id == R.id.submitBtn) {
+            InputMethodManager imm = (InputMethodManager) SmarterSMBApplication.currentActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(SmarterSMBApplication.currentActivity.getWindow().getDecorView().getWindowToken(), 0);
+            if (!feedbackSubject.isEmpty() && !feedbackText.getText().toString().isEmpty()) {
+                setUserFeedback();
+            } else {
+                if (feedbackSubject.isEmpty()) {
+                    Toast.makeText(this, "Please choose an option from the drop down", Toast.LENGTH_SHORT).show();
                 } else {
-                    if(feedbackSubject.isEmpty()) {
-                        Toast.makeText(this, "Please choose an option from the drop down", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this, "Please provide valid feedback.", Toast.LENGTH_SHORT).show();
-                    }
-
+                    Toast.makeText(this, "Please provide valid feedback.", Toast.LENGTH_SHORT).show();
                 }
-                break;
+
+            }
         }
     }
 

@@ -34,7 +34,7 @@ public class MultiSelectionSpinner extends android.support.v7.widget.AppCompatSp
 
     ArrayAdapter<String> simple_adapter;
 
-    public MultiSelectionSpinner(Context context) {
+    public MultiSelectionSpinner(final Context context) {
         super(context);
 
         simple_adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item) {
@@ -57,7 +57,7 @@ public class MultiSelectionSpinner extends android.support.v7.widget.AppCompatSp
         super.setAdapter(simple_adapter);
     }
 
-    public MultiSelectionSpinner(Context context, AttributeSet attrs) {
+    public MultiSelectionSpinner(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         simple_adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item) {

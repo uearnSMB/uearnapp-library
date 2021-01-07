@@ -102,10 +102,8 @@ public class AgentSlotsActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id) {
-            case R.id.img_back:
-                onBackPressed();
-                break;
+        if (id == R.id.img_back) {
+            onBackPressed();
         }
     }
 

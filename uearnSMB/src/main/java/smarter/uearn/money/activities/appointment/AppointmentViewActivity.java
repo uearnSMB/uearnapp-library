@@ -733,118 +733,110 @@ public class AppointmentViewActivity extends AppCompatActivity implements View.O
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch (id) {
-            case android.R.id.home:
-                this.finish();
-                break;
-
-            case R.id.edit:
-                Intent editCalendar = new Intent(this, AppointmentEditActivity.class);
+        if (id == android.R.id.home) {
+            this.finish();
+        } else if (id == R.id.edit) {
+            Intent editCalendar = new Intent(this, AppointmentEditActivity.class);
+            if (dbid == 0) {
+                editCalendar.putExtra("db_id", dbid1);
+            } else {
+                editCalendar.putExtra("db_id", dbid);
+            }
+            startActivity(editCalendar);
+            finish();
+        } else if (id == R.id.new_menu) {
+            if (completed == 1) {
+                Intent appointment = new Intent(this, AppointmentCreateActivity.class);
+                if (callerNumber1 != null && !(callerNumber1.isEmpty())) {
+                    appointment.putExtra("callerNumber", callerNumber1);
+                }
                 if (dbid == 0) {
-                    editCalendar.putExtra("db_id", dbid1);
+                    appointment.putExtra("database_id", dbid1);
                 } else {
-                    editCalendar.putExtra("db_id", dbid);
+                    appointment.putExtra("database_id", dbid);
                 }
-                startActivity(editCalendar);
-                finish();
-                break;
+                startActivity(appointment);
 
-            case R.id.new_menu:
-                if (completed == 1) {
-                    Intent appointment = new Intent(this, AppointmentCreateActivity.class);
-                    if (callerNumber1 != null && !(callerNumber1.isEmpty())) {
-                        appointment.putExtra("callerNumber", callerNumber1);
-                    }
-                    if (dbid == 0) {
-                        appointment.putExtra("database_id", dbid1);
-                    } else {
-                        appointment.putExtra("database_id", dbid);
-                    }
-                    startActivity(appointment);
+            }
+            finish();
+        } else if (id == R.id.action_dialer) {
+            if (completed != 1) {
+                boolean secondSim = false;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                    SubscriptionManager subscriptionManager = SubscriptionManager.from(getApplicationContext());
+                    @SuppressLint("MissingPermission") List<SubscriptionInfo> subsInfoList = subscriptionManager.getActiveSubscriptionInfoList();
 
-                }
-                finish();
-                break;
+                    //Log.d("Test", "Current list = " + subsInfoList);
+                    if (subsInfoList != null) {
+                        for (SubscriptionInfo subscriptionInfo : subsInfoList) {
 
-            case R.id.action_dialer:
-                if (completed != 1) {
-                    boolean secondSim = false;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
-                        SubscriptionManager subscriptionManager = SubscriptionManager.from(getApplicationContext());
-                        @SuppressLint("MissingPermission") List<SubscriptionInfo> subsInfoList = subscriptionManager.getActiveSubscriptionInfoList();
-
-                        //Log.d("Test", "Current list = " + subsInfoList);
-                        if (subsInfoList != null) {
-                            for (SubscriptionInfo subscriptionInfo : subsInfoList) {
-
-                                String number = subscriptionInfo.getNumber();
-                                int SimStotNumber = subscriptionInfo.getSimSlotIndex();
-                                if (SimStotNumber == 1) {
-                                    secondSim = true;
-                                }
-
-                                //Log.d("Test", " Number is  " + number);
+                            String number = subscriptionInfo.getNumber();
+                            int SimStotNumber = subscriptionInfo.getSimSlotIndex();
+                            if (SimStotNumber == 1) {
+                                secondSim = true;
                             }
-                        } else {
-                            Toast.makeText(this, "No SIM", Toast.LENGTH_SHORT).show();
+
+                            //Log.d("Test", " Number is  " + number);
                         }
                     } else {
-                        secondSim = true;
+                        Toast.makeText(this, "No SIM", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    secondSim = true;
+                }
 
                     /*boolean mobileOnSimData = false;
                     if (ApplicationSettings.containsPref(AppConstants.MOBILE_DATA_ON_SIM)) {
                         mobileOnSimData = ApplicationSettings.getPref(AppConstants.MOBILE_DATA_ON_SIM, false);
                     }
                     */
-                    if (ApplicationSettings.getPref(AppConstants.CLOUD_OUTGOING, false)) {
-                        /*if ((!secondSim && !(mobileOnSimData)) || (secondSim && mobileOnSimData)) {*/
-                        if (callerNumber.getText() != null) {
-                            String userNumber = ApplicationSettings.getPref(AppConstants.USERINFO_PHONE, "");
-                            if (userNumber != null && !(userNumber.isEmpty())) {
-                                final String customernumber = callerNumber.getText().toString();
-                                String sr_number = ApplicationSettings.getPref(AppConstants.SR_NUMBER, "");
-                                String caller_id = ApplicationSettings.getPref(AppConstants.CLOUD_OUTGOING1, "");
-                                if (caller_id != null && !(caller_id.isEmpty())) {
-                                    if (sr_number != null && !(sr_number.isEmpty())) {
-                                        if (CommonUtils.isC2cNetworkAvailable(this)) {
-                                            KnowlarityModel knowlarityModel = new KnowlarityModel(sr_number, userNumber, callerNumber.getText().toString());
-                                            knowlarityModel.setClient_id(caller_id);
-                                            String screen = ApplicationSettings.getPref(AppConstants.AFTERCALLACTIVITY_SCREEN, "");
-                                            if (screen != null && (screen.equalsIgnoreCase("Auto1AfterCallActivity") || screen.equalsIgnoreCase("Auto2AfterCallActivity"))) {
-                                                reCall(knowlarityModel, customernumber);
-                                            } else {
-                                                sbiCall(knowlarityModel, customernumber);
-                                            }
+                if (ApplicationSettings.getPref(AppConstants.CLOUD_OUTGOING, false)) {
+                    /*if ((!secondSim && !(mobileOnSimData)) || (secondSim && mobileOnSimData)) {*/
+                    if (callerNumber.getText() != null) {
+                        String userNumber = ApplicationSettings.getPref(AppConstants.USERINFO_PHONE, "");
+                        if (userNumber != null && !(userNumber.isEmpty())) {
+                            final String customernumber = callerNumber.getText().toString();
+                            String sr_number = ApplicationSettings.getPref(AppConstants.SR_NUMBER, "");
+                            String caller_id = ApplicationSettings.getPref(AppConstants.CLOUD_OUTGOING1, "");
+                            if (caller_id != null && !(caller_id.isEmpty())) {
+                                if (sr_number != null && !(sr_number.isEmpty())) {
+                                    if (CommonUtils.isC2cNetworkAvailable(this)) {
+                                        KnowlarityModel knowlarityModel = new KnowlarityModel(sr_number, userNumber, callerNumber.getText().toString());
+                                        knowlarityModel.setClient_id(caller_id);
+                                        String screen = ApplicationSettings.getPref(AppConstants.AFTERCALLACTIVITY_SCREEN, "");
+                                        if (screen != null && (screen.equalsIgnoreCase("Auto1AfterCallActivity") || screen.equalsIgnoreCase("Auto2AfterCallActivity"))) {
+                                            reCall(knowlarityModel, customernumber);
                                         } else {
-                                            Toast.makeText(AppointmentViewActivity.this, "You have no Internet connection.", Toast.LENGTH_SHORT).show();
+                                            sbiCall(knowlarityModel, customernumber);
                                         }
                                     } else {
-                                        Toast.makeText(this, "No SR Number", Toast.LENGTH_SHORT).show();
-                                        callToCustomer();
-                                        this.finish();
+                                        Toast.makeText(AppointmentViewActivity.this, "You have no Internet connection.", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(this, "No Client ID", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(this, "No SR Number", Toast.LENGTH_SHORT).show();
+                                    callToCustomer();
+                                    this.finish();
                                 }
                             } else {
-                                Toast.makeText(this, "Invalid User Number", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "No Client ID", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(this, "Invalid Customer Number", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Invalid User Number", Toast.LENGTH_SHORT).show();
                         }
+                    } else {
+                        Toast.makeText(this, "Invalid Customer Number", Toast.LENGTH_SHORT).show();
+                    }
                        /* } else {
                             callToCustomer();
                             this.finish();
                         }*/
-                    } else {
-                        callToCustomer();
-                        this.finish();
-                    }
                 } else {
-                    Toast.makeText(this, "Follow-up already done", Toast.LENGTH_SHORT).show();
+                    callToCustomer();
+                    this.finish();
                 }
-                break;
+            } else {
+                Toast.makeText(this, "Follow-up already done", Toast.LENGTH_SHORT).show();
+            }
         }
         return true;
     }

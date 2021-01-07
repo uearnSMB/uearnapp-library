@@ -71,31 +71,28 @@ public class UearnValueActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.home:
-                onBackPressed();
+        if (id == R.id.home) {
+            onBackPressed();
 
-            case R.id.today_card:
-                today_bar_view.setVisibility(View.VISIBLE);
-                this_month_bar_view.setVisibility(View.GONE);
-                lifetime_bar_view.setVisibility(View.GONE);
-                date_time.setText("05 Feb 2019");
-                break;
 
-            case R.id.this_month_card:
-                today_bar_view.setVisibility(View.GONE);
-                this_month_bar_view.setVisibility(View.VISIBLE);
-                lifetime_bar_view.setVisibility(View.GONE);
-                break;
-
-            case R.id.lifetime_card:
-                today_bar_view.setVisibility(View.GONE);
-                this_month_bar_view.setVisibility(View.GONE);
-                lifetime_bar_view.setVisibility(View.VISIBLE);
-                break;
-
-            case R.id.passbookLayout:
-                break;
+            today_bar_view.setVisibility(View.VISIBLE);
+            this_month_bar_view.setVisibility(View.GONE);
+            lifetime_bar_view.setVisibility(View.GONE);
+            date_time.setText("05 Feb 2019");
+        } else if (id == R.id.today_card) {
+            today_bar_view.setVisibility(View.VISIBLE);
+            this_month_bar_view.setVisibility(View.GONE);
+            lifetime_bar_view.setVisibility(View.GONE);
+            date_time.setText("05 Feb 2019");
+        } else if (id == R.id.this_month_card) {
+            today_bar_view.setVisibility(View.GONE);
+            this_month_bar_view.setVisibility(View.VISIBLE);
+            lifetime_bar_view.setVisibility(View.GONE);
+        } else if (id == R.id.lifetime_card) {
+            today_bar_view.setVisibility(View.GONE);
+            this_month_bar_view.setVisibility(View.GONE);
+            lifetime_bar_view.setVisibility(View.VISIBLE);
+        } else if (id == R.id.passbookLayout) {
         }
     }
 

@@ -162,19 +162,12 @@ public class AutoDillerFragment extends Fragment implements View.OnClickListener
                             viewName = viewName.replaceAll("[^A-Za-z0-9]","");
                             int resID = context.getResources().getIdentifier(viewName,"id", context.getPackageName());
 
-                            switch(resID)
-                            {
-                                case R.id.stage :
-                                    stage.setVisibility(View.GONE);
-                                    break;
-                                case R.id.substage1 :
-                                    stage1.setVisibility(View.GONE);
-                                    break;
-                                case R.id.substage2 :
-                                    stage2.setVisibility(View.GONE);
-                                    break;
-                                default :
-                                    break;
+                            if (resID == R.id.stage) {
+                                stage.setVisibility(View.GONE);
+                            } else if (resID == R.id.substage1) {
+                                stage1.setVisibility(View.GONE);
+                            } else if (resID == R.id.substage2) {
+                                stage2.setVisibility(View.GONE);
                             }
                         }
                     }

@@ -231,46 +231,42 @@ public class JoinUsActivity extends AppCompatActivity implements View.OnClickLis
         Intent authenticationIntent = new Intent(this, SmarterAuthActivity.class);
         String itemName = "";
 
-        switch (view.getId()) {
-            case R.id.btnSignUp:
-                authenticationIntent.putExtra("screenType", 1);
-                itemName = "Sign Up";
+        int id = view.getId();
+        if (id == R.id.btnSignUp) {
+            authenticationIntent.putExtra("screenType", 1);
+            itemName = "Sign Up";
 
-                Bundle AnalyticsBundle = new Bundle();
-                AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, AppConstants.FIREBASE_ID_1);
-                AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, itemName);
-                AnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Button");
-                mFirebaseAnalytics.logEvent(AppConstants.FIREBASE_ID_1, AnalyticsBundle);
-                startActivity(authenticationIntent);
-                JoinUsActivity.this.finish();
-                break;
+            Bundle AnalyticsBundle = new Bundle();
+            AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, AppConstants.FIREBASE_ID_1);
+            AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, itemName);
+            AnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Button");
+            mFirebaseAnalytics.logEvent(AppConstants.FIREBASE_ID_1, AnalyticsBundle);
+            startActivity(authenticationIntent);
+            JoinUsActivity.this.finish();
+        } else if (id == R.id.btnSignIn) {
+            Bundle AnalyticsBundle;
+            authenticationIntent.putExtra("screenType", 0);
+            itemName = "Sign In";
 
-            case R.id.btnSignIn:
-                authenticationIntent.putExtra("screenType", 0);
-                itemName = "Sign In";
-
-                AnalyticsBundle = new Bundle();
-                AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, AppConstants.FIREBASE_ID_1);
-                AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, itemName);
-                AnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Button");
-                mFirebaseAnalytics.logEvent(AppConstants.FIREBASE_ID_1, AnalyticsBundle);
-                startActivity(authenticationIntent);
-                JoinUsActivity.this.finish();
-                break;
-
-            case R.id.image_second:
-                try {
-                    if (youTubePlayer != null) {
-                        lyVideo.setVisibility(View.VISIBLE);
-                        lyThumbView.setVisibility(View.GONE);
-                        youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
-                        youTubePlayer.loadVideo(AppConstants.YOUTUBE_VIDEO_CODE);
-                        youTubePlayer.play();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+            AnalyticsBundle = new Bundle();
+            AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, AppConstants.FIREBASE_ID_1);
+            AnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, itemName);
+            AnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Button");
+            mFirebaseAnalytics.logEvent(AppConstants.FIREBASE_ID_1, AnalyticsBundle);
+            startActivity(authenticationIntent);
+            JoinUsActivity.this.finish();
+        } else if (id == R.id.image_second) {
+            try {
+                if (youTubePlayer != null) {
+                    lyVideo.setVisibility(View.VISIBLE);
+                    lyThumbView.setVisibility(View.GONE);
+                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
+                    youTubePlayer.loadVideo(AppConstants.YOUTUBE_VIDEO_CODE);
+                    youTubePlayer.play();
                 }
-                break;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

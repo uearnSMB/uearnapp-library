@@ -161,46 +161,45 @@ public class GrammarSkillTestResultActivity extends AppCompatActivity implements
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.btnDone:
-                ApplicationSettings.putPref(AppConstants.GRAMMAR_TEST_COMPLETED, true);
+        if (id == R.id.btnDone) {
+            ApplicationSettings.putPref(AppConstants.GRAMMAR_TEST_COMPLETED, true);
 
-                boolean deviceCheckCompleted = ApplicationSettings.getPref(AppConstants.DEVICE_CHECK_COMPLETED, false);
-                boolean voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
-                boolean emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
-                boolean chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
-                boolean callFromInterviewPanelCompleted = ApplicationSettings.getPref(AppConstants.CALL_FROM_INTERVIEW_PANEL_COMPLETED, false);
-                boolean onboardingProcessCompleted = ApplicationSettings.getPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, false);
+            boolean deviceCheckCompleted = ApplicationSettings.getPref(AppConstants.DEVICE_CHECK_COMPLETED, false);
+            boolean voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
+            boolean emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
+            boolean chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
+            boolean callFromInterviewPanelCompleted = ApplicationSettings.getPref(AppConstants.CALL_FROM_INTERVIEW_PANEL_COMPLETED, false);
+            boolean onboardingProcessCompleted = ApplicationSettings.getPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, false);
 
-                JSONObject processStatusObj = null;
-                try {
-                    processStatusObj = new JSONObject();
-                    processStatusObj.put("device_check_completed", deviceCheckCompleted);
-                    processStatusObj.put("voice_test_completed", voiceTestCompleted);
-                    processStatusObj.put("email_test_completed", emailTestCompleted);
-                    processStatusObj.put("chat_test_completed", chatTestCompleted);
-                    processStatusObj.put("call_from_interview_panel_completed", callFromInterviewPanelCompleted);
-                    processStatusObj.put("onboarding_process_completed", onboardingProcessCompleted);
-                } catch (Exception e){
+            JSONObject processStatusObj = null;
+            try {
+                processStatusObj = new JSONObject();
+                processStatusObj.put("device_check_completed", deviceCheckCompleted);
+                processStatusObj.put("voice_test_completed", voiceTestCompleted);
+                processStatusObj.put("email_test_completed", emailTestCompleted);
+                processStatusObj.put("chat_test_completed", chatTestCompleted);
+                processStatusObj.put("call_from_interview_panel_completed", callFromInterviewPanelCompleted);
+                processStatusObj.put("onboarding_process_completed", onboardingProcessCompleted);
+            } catch (Exception e) {
 
-                }
+            }
 
-                ApplicationSettings.putPref(AppConstants.PROCESS_STATUS, processStatusObj.toString());
-                postCurrentProcessStatus(processStatusObj.toString());
-                if (SmarterSMBApplication.callingFromProcessSelection) {
-                    String processSelected = ApplicationSettings.getPref(AppConstants.INTERVIEW_PROCESS, "");
-                    voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
-                    chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
-                    if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Voice") && !voiceTestCompleted) {
-                        navigateToUearnVoiceTestActivity();
-                    } else if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Chat") && !chatTestCompleted) {
-                        navigateToProcessSelectionChatActivity();
-                    } else {
-                        navigateToHomeActivity();
-                    }
+            ApplicationSettings.putPref(AppConstants.PROCESS_STATUS, processStatusObj.toString());
+            postCurrentProcessStatus(processStatusObj.toString());
+            if (SmarterSMBApplication.callingFromProcessSelection) {
+                String processSelected = ApplicationSettings.getPref(AppConstants.INTERVIEW_PROCESS, "");
+                voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
+                chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
+                if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Voice") && !voiceTestCompleted) {
+                    navigateToUearnVoiceTestActivity();
+                } else if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Chat") && !chatTestCompleted) {
+                    navigateToProcessSelectionChatActivity();
                 } else {
                     navigateToHomeActivity();
                 }
+            } else {
+                navigateToHomeActivity();
+            }
         }
     }
 

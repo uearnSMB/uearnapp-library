@@ -186,15 +186,9 @@ public class FlpCursorAdapter extends CursorAdapter {
                             viewName = viewName.replaceAll("[^A-Za-z0-9]", "");
                             int resID = context1.getResources().getIdentifier(viewName, "id", context1.getPackageName());
 
-                            switch (resID) {
-                                case R.id.latestSalesStage:
-                                    latestSalesStage.setVisibility(View.GONE);
-                                    break;
-                                case R.id.subSalesStage:
-                                    //subSalesStage.setVisibility(View.INVISIBLE);
-                                    break;
-                                default:
-                                    break;
+                            if (resID == R.id.latestSalesStage) {
+                                latestSalesStage.setVisibility(View.GONE);
+                            } else if (resID == R.id.subSalesStage) {//subSalesStage.setVisibility(View.INVISIBLE);
                             }
                         }
                     }

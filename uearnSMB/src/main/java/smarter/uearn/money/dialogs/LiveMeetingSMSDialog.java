@@ -84,18 +84,12 @@ public class LiveMeetingSMSDialog extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.dialogButtonOK:
+		int id = v.getId();
+		if (id == R.id.dialogButtonOK) {
 			sendMessage(phoneNumber, message);
-			break;
-
-		case R.id.dialogButtonCancel:
-			if(parentID!=null && !parentID.equalsIgnoreCase(""))
-			callDelete(parentID);
-			break;
-
-		default:
-			break;
+		} else if (id == R.id.dialogButtonCancel) {
+			if (parentID != null && !parentID.equalsIgnoreCase(""))
+				callDelete(parentID);
 		}
 	}
 	

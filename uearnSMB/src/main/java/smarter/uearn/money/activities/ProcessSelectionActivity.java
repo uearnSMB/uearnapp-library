@@ -239,83 +239,78 @@ public class ProcessSelectionActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.btnNext:
-                String selectedProcess = "";
-                if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked() && emailCheckbox.isEnabled() && emailCheckbox.isChecked() && chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
-                    selectedProcess = "Voice" + "," + "Email" + "," + "Chat";
-                } else if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked() && emailCheckbox.isEnabled() && emailCheckbox.isChecked()) {
-                    selectedProcess = "Voice" + "," + "Email";
-                } else if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked() && chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
-                    selectedProcess = "Voice" + "," + "Chat";
-                } else if (emailCheckbox.isEnabled() && emailCheckbox.isChecked() && chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
-                    selectedProcess = "Email" + "," + "Chat";
-                } else if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked()) {
-                    selectedProcess = "Voice";
-                } else if (emailCheckbox.isEnabled() && emailCheckbox.isChecked()) {
-                    selectedProcess = selectedProcess + "Email";
-                } else if (chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
-                    selectedProcess = selectedProcess + "Chat";
-                }
-                ApplicationSettings.putPref(AppConstants.INTERVIEW_PROCESS, selectedProcess);
+        if (id == R.id.btnNext) {
+            String selectedProcess = "";
+            if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked() && emailCheckbox.isEnabled() && emailCheckbox.isChecked() && chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
+                selectedProcess = "Voice" + "," + "Email" + "," + "Chat";
+            } else if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked() && emailCheckbox.isEnabled() && emailCheckbox.isChecked()) {
+                selectedProcess = "Voice" + "," + "Email";
+            } else if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked() && chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
+                selectedProcess = "Voice" + "," + "Chat";
+            } else if (emailCheckbox.isEnabled() && emailCheckbox.isChecked() && chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
+                selectedProcess = "Email" + "," + "Chat";
+            } else if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked()) {
+                selectedProcess = "Voice";
+            } else if (emailCheckbox.isEnabled() && emailCheckbox.isChecked()) {
+                selectedProcess = selectedProcess + "Email";
+            } else if (chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
+                selectedProcess = selectedProcess + "Chat";
+            }
+            ApplicationSettings.putPref(AppConstants.INTERVIEW_PROCESS, selectedProcess);
 
-                boolean deviceCheckCompleted = ApplicationSettings.getPref(AppConstants.DEVICE_CHECK_COMPLETED, false);
-                boolean voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
-                boolean emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
-                boolean chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
-                boolean callFromInterviewPanelCompleted = ApplicationSettings.getPref(AppConstants.CALL_FROM_INTERVIEW_PANEL_COMPLETED, false);
-                boolean onboardingProcessCompleted = ApplicationSettings.getPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, false);
+            boolean deviceCheckCompleted = ApplicationSettings.getPref(AppConstants.DEVICE_CHECK_COMPLETED, false);
+            boolean voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
+            boolean emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
+            boolean chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
+            boolean callFromInterviewPanelCompleted = ApplicationSettings.getPref(AppConstants.CALL_FROM_INTERVIEW_PANEL_COMPLETED, false);
+            boolean onboardingProcessCompleted = ApplicationSettings.getPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, false);
 
-                JSONObject processStatusObj = null;
-                try {
-                    processStatusObj = new JSONObject();
-                    processStatusObj.put("device_check_completed", deviceCheckCompleted);
-                    processStatusObj.put("voice_test_completed", voiceTestCompleted);
-                    processStatusObj.put("email_test_completed", emailTestCompleted);
-                    processStatusObj.put("chat_test_completed", chatTestCompleted);
-                    processStatusObj.put("call_from_interview_panel_completed", callFromInterviewPanelCompleted);
-                    processStatusObj.put("onboarding_process_completed", onboardingProcessCompleted);
-                } catch (Exception e){
+            JSONObject processStatusObj = null;
+            try {
+                processStatusObj = new JSONObject();
+                processStatusObj.put("device_check_completed", deviceCheckCompleted);
+                processStatusObj.put("voice_test_completed", voiceTestCompleted);
+                processStatusObj.put("email_test_completed", emailTestCompleted);
+                processStatusObj.put("chat_test_completed", chatTestCompleted);
+                processStatusObj.put("call_from_interview_panel_completed", callFromInterviewPanelCompleted);
+                processStatusObj.put("onboarding_process_completed", onboardingProcessCompleted);
+            } catch (Exception e) {
 
-                }
+            }
 
-                ApplicationSettings.putPref(AppConstants.PROCESS_STATUS, processStatusObj.toString());
-                postCurrentProcessStatus(processStatusObj.toString());
+            ApplicationSettings.putPref(AppConstants.PROCESS_STATUS, processStatusObj.toString());
+            postCurrentProcessStatus(processStatusObj.toString());
 
-                SmarterSMBApplication.callingFromProcessSelection = true;
-                if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked()) {
-                    navigateToDeviceCheckActivity();
-                } else if (emailCheckbox.isEnabled() && emailCheckbox.isChecked()) {
-                    if (ApplicationSettings.containsPref(AppConstants.VOICE_TEST_COMPLETED)) {
-                        voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
-                        if (voiceTestCompleted) {
-                            if (CommonUtils.isNetworkAvailable(this)) {
-                                navigateToGrammarSkillTestActivity();
-                            } else {
-                                Toast.makeText(this, "You have no internet connection.", Toast.LENGTH_SHORT).show();
-                            }
+            SmarterSMBApplication.callingFromProcessSelection = true;
+            if (voiceCheckbox.isEnabled() && voiceCheckbox.isChecked()) {
+                navigateToDeviceCheckActivity();
+            } else if (emailCheckbox.isEnabled() && emailCheckbox.isChecked()) {
+                if (ApplicationSettings.containsPref(AppConstants.VOICE_TEST_COMPLETED)) {
+                    voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
+                    if (voiceTestCompleted) {
+                        if (CommonUtils.isNetworkAvailable(this)) {
+                            navigateToGrammarSkillTestActivity();
                         } else {
-                            SmarterSMBApplication.currentSelectedProcess = "Email";
-                            navigateToDeviceCheckActivity();
+                            Toast.makeText(this, "You have no internet connection.", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         SmarterSMBApplication.currentSelectedProcess = "Email";
                         navigateToDeviceCheckActivity();
                     }
-                } else if (chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
-                    navigateToProcessSelectionChatActivity();
+                } else {
+                    SmarterSMBApplication.currentSelectedProcess = "Email";
+                    navigateToDeviceCheckActivity();
                 }
-                break;
-            case R.id.profile_image_back:
-                onBackPressed();
-                break;
-            case R.id.ll_notification:
-                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                settingsApi(userId);
-                break;
-            case R.id.skip:
-                navigateToHomeActivity();
-                break;
+            } else if (chatCheckbox.isEnabled() && chatCheckbox.isChecked()) {
+                navigateToProcessSelectionChatActivity();
+            }
+        } else if (id == R.id.profile_image_back) {
+            onBackPressed();
+        } else if (id == R.id.ll_notification) {
+            String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+            settingsApi(userId);
+        } else if (id == R.id.skip) {
+            navigateToHomeActivity();
         }
     }
 

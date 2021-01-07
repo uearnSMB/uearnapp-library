@@ -103,7 +103,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         }
     }
 
-    private void getUearnTotalAgentsAndEarnings(boolean logout) {
+    private void getUearnTotalAgentsAndEarnings(final boolean logout) {
         if (CommonUtils.isNetworkAvailable(this)) {
             if (activity != null && !activity.isFinishing()) {
                 new APIProvider.GetUearnTotalAgentsAndEarnings("", 0, null, "Please wait..", new API_Response_Listener<String>() {

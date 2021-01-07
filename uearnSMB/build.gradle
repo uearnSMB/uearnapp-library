@@ -4,29 +4,12 @@ apply plugin: 'com.android.library'
 // Dilip current
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'uearnsmb'
-            keyPassword 'uearnsmb'
-            storePassword 'uearnsmb'
-            storeFile file('D:\\keystore\\uearnsmb')
-        }
-
-        dev_config {
-            keyAlias 'devkey'
-            keyPassword 'android'
-            storePassword 'android'
-            storeFile file('D:\\keystore\\devkey.store')
-            //  storeFile file('E:\\SMarterBIz_Projectfiles\\keystore\\devkey.store')
-        }
-    }
     compileSdkVersion 29
     buildToolsVersion '29.0.3'
     defaultConfig {
         //Modified 16 to 17
         minSdkVersion 18
         targetSdkVersion 29
-        signingConfig signingConfigs.dev_config
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
@@ -39,23 +22,13 @@ android {
             minifyEnabled false
             proguardFiles 'proguard-project.txt'
             zipAlignEnabled true
-            signingConfig signingConfigs.config
 //            ndk {
 //                abiFilters "armabi-v7a", "armabi" // Should do the trick.
 //            }
         }
-        debug {
-            signingConfig signingConfigs.dev_config
-//            ndk {
-//                abiFilters "armabi-v7a", "armabi" // Should do the trick.
-//            }
-        }
+
     }
-    compileOptions {
-        encoding "UTF-8"
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
     dexOptions {
         javaMaxHeapSize "2g"
         preDexLibraries = false

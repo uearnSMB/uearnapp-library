@@ -183,28 +183,20 @@ public class UearnReferAndEarnActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.ivNavMenu:
-                onBackPressed();
-                break;
-            case R.id.tvWtsApp:
-                getWhatsup("");
-                break;
-            case R.id.tvFaceBook:
-                shareByFacebook("");
-                break;
-            case R.id.tvMessanger:
-                shareByMessanger("");
-                break;
-            case R.id.tvMore:
-                shareByMore("");
-                break;
-
-            case R.id.referralProgram:
-                Intent referIntent = new Intent (this, UearnReferralProgram.class);
-                startActivity(referIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                break;
+        if (id == R.id.ivNavMenu) {
+            onBackPressed();
+        } else if (id == R.id.tvWtsApp) {
+            getWhatsup("");
+        } else if (id == R.id.tvFaceBook) {
+            shareByFacebook("");
+        } else if (id == R.id.tvMessanger) {
+            shareByMessanger("");
+        } else if (id == R.id.tvMore) {
+            shareByMore("");
+        } else if (id == R.id.referralProgram) {
+            Intent referIntent = new Intent(this, UearnReferralProgram.class);
+            startActivity(referIntent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
     }

@@ -36,6 +36,9 @@ public class TrainingHelpChartAdapter extends RecyclerView.Adapter<TrainingHelpC
 //        arrayAns.add(null);
     }
 
+    public TrainingHelpChartAdapter(ChartHelpActivity mContext, ArrayList<Object> objects, ChartHelpActivity onClickAnswerButton) {
+    }
+
     @NonNull
     @Override
     public TrainingHelpChartAdapter.TrainingHelpChartAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -46,8 +49,8 @@ public class TrainingHelpChartAdapter extends RecyclerView.Adapter<TrainingHelpC
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TrainingHelpChartAdapter.TrainingHelpChartAdapterViewHolder trainingHelpTopicsAdapterViewHolder, int i) {
-        HelpDeskInfoData helpDeskInfoDataObject=stringArrayList.get(i);
+    public void onBindViewHolder(@NonNull final TrainingHelpChartAdapter.TrainingHelpChartAdapterViewHolder trainingHelpTopicsAdapterViewHolder, int i) {
+        final HelpDeskInfoData helpDeskInfoDataObject=stringArrayList.get(i);
         trainingHelpTopicsAdapterViewHolder.tv_txtchartbox.setText(helpDeskInfoDataObject.getQuestion());
 
         if(null != helpDeskInfoDataObject.getQuestionId()){

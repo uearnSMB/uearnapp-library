@@ -171,22 +171,12 @@ public class FeedBackActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
         int id = view.getId();
-        switch (id) {
-
-            case R.id.btnSubmit: {
-                validateFeedBack();
-            }
-            break;
-            case R.id.btnCancel: {
-                onBackPressed();
-            }
-            break;
-
-            case R.id.ivNavMenu: {
-                onBackPressed();
-            }
-            break;
-
+        if (id == R.id.btnSubmit) {
+            validateFeedBack();
+        } else if (id == R.id.btnCancel) {
+            onBackPressed();
+        } else if (id == R.id.ivNavMenu) {
+            onBackPressed();
         }
     }
 

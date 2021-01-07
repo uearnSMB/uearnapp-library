@@ -548,102 +548,75 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             return;
         }
         int id = view.getId();
-        switch (id) {
-
-            case R.id.ivNavMenu: {
-                onBackPressed();
-                break;
+        if (id == R.id.ivNavMenu) {
+            onBackPressed();
+        } else if (id == R.id.btnEditProfile) {
+            setEditVisible(true);
+        } else if (id == R.id.btnDone) {
+            setEditVisible(false);
+            if (isLocationChange || isLanguageChange || isBirthDateChange || isGenderSelected) {
+                updateUserDetails();
             }
-            case R.id.btnEditProfile: {
-                setEditVisible(true);
-                break;
-            }
-            case R.id.btnDone: {
-                setEditVisible(false);
-                if (isLocationChange || isLanguageChange || isBirthDateChange || isGenderSelected) {
-                    updateUserDetails();
-                }
-                break;
-            }
-
-            case R.id.imgEditPhoto: {
-                boolean isPermissionEnabled = CommonUtils.permissionsCheck(ProfileActivity.this);
-                if (isPermissionEnabled) {
-                    try{
-                        isProfile = true;
-                        isTheme = false;
-                        if (imgProfile.getDrawable().getConstantState()!=null){
-                            if (imgProfile.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.uearn_profile_pic).getConstantState() || imgProfile.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.man_profile_pic).getConstantState() || imgProfile.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.others_pic).getConstantState()) {
-                                startDialog("PROFILE PIC");
-                            } else {
-                                startDialogWithRemove("PROFILE PIC");
-                            }
-                        }else{
+        } else if (id == R.id.imgEditPhoto) {
+            boolean isPermissionEnabled = CommonUtils.permissionsCheck(ProfileActivity.this);
+            if (isPermissionEnabled) {
+                try {
+                    isProfile = true;
+                    isTheme = false;
+                    if (imgProfile.getDrawable().getConstantState() != null) {
+                        if (imgProfile.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.uearn_profile_pic).getConstantState() || imgProfile.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.man_profile_pic).getConstantState() || imgProfile.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.others_pic).getConstantState()) {
                             startDialog("PROFILE PIC");
+                        } else {
+                            startDialogWithRemove("PROFILE PIC");
                         }
+                    } else {
+                        startDialog("PROFILE PIC");
+                    }
 
-                    }catch (Exception e){
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        } else if (id == R.id.img_Text_DOB || id == R.id.img_Edit_DOB) {
+            getUserDateOfBirth(view.getId(), tvDOB.getText().toString().trim());
+        } else if (id == R.id.img_Text_Gender || id == R.id.img_Edit_Gender) {
+            getGender();
+        } else if (id == R.id.img_Text_Language || id == R.id.img_Edit_Language) {
+            showLanguageAlertDialog();
+        } else if (id == R.id.img_Text_Location || id == R.id.img_Edit_Location) {
+            String address = "";
+            userAddress = new Address();
+            if (ApplicationSettings.containsPref(AppConstants.AGENT_LOCATION)) {
+                address = ApplicationSettings.getPref(AppConstants.AGENT_LOCATION, "");
+                if (address != null && !Utils.isStringEmpty(address) && address.startsWith("{")) {
+                    try {
+                        JSONObject addressJsonObject = new JSONObject(address);
+                        if (addressJsonObject.has("address")) {
+                            String addressStr = addressJsonObject.getString("address");
+                            userAddress.setAddress(addressStr);
+                        }
+                        if (addressJsonObject.has("city")) {
+                            String addressStr = addressJsonObject.getString("city");
+                            userAddress.setCity(addressStr);
+                        }
+                        if (addressJsonObject.has("state")) {
+                            String addressStr = addressJsonObject.getString("state");
+                            userAddress.setState(addressStr);
+                        }
+                        if (addressJsonObject.has("country")) {
+                            String addressStr = addressJsonObject.getString("country");
+                            userAddress.setCountry(addressStr);
+                        }
+                        if (addressJsonObject.has("pincode")) {
+                            String addressStr = addressJsonObject.getString("pincode");
+                            userAddress.setPincode(addressStr);
+                        }
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 }
-                break;
-            }
-
-            case R.id.img_Text_DOB:
-            case R.id.img_Edit_DOB: {
-                getUserDateOfBirth(view.getId(), tvDOB.getText().toString().trim());
-                break;
-            }
-
-            case R.id.img_Text_Gender:
-            case R.id.img_Edit_Gender: {
-                getGender();
-                break;
-            }
-
-            case R.id.img_Text_Language:
-            case R.id.img_Edit_Language: {
-                showLanguageAlertDialog();
-                break;
-            }
-
-            case R.id.img_Text_Location:
-            case R.id.img_Edit_Location: {
-                String address = "";
-                userAddress = new Address();
-                if (ApplicationSettings.containsPref(AppConstants.AGENT_LOCATION)) {
-                    address = ApplicationSettings.getPref(AppConstants.AGENT_LOCATION, "");
-                    if (address != null && !Utils.isStringEmpty(address)&& address.startsWith("{")) {
-                        try {
-                            JSONObject addressJsonObject = new JSONObject(address);
-                            if (addressJsonObject.has("address")) {
-                                String addressStr = addressJsonObject.getString("address");
-                                userAddress.setAddress(addressStr);
-                            }
-                            if (addressJsonObject.has("city")) {
-                                String addressStr = addressJsonObject.getString("city");
-                                userAddress.setCity(addressStr);
-                            }
-                            if (addressJsonObject.has("state")) {
-                                String addressStr = addressJsonObject.getString("state");
-                                userAddress.setState(addressStr);
-                            }
-                            if (addressJsonObject.has("country")) {
-                                String addressStr = addressJsonObject.getString("country");
-                                userAddress.setCountry(addressStr);
-                            }
-                            if (addressJsonObject.has("pincode")) {
-                                String addressStr = addressJsonObject.getString("pincode");
-                                userAddress.setPincode(addressStr);
-                            }
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                    editLocationPopup(userAddress);
-                }
-                break;
+                editLocationPopup(userAddress);
             }
 
  /*
@@ -663,7 +636,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 editLocationPopup(userAddress);
                 break;
             }*/
-
         }
     }
 

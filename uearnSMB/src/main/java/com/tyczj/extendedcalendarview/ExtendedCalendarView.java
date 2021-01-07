@@ -36,6 +36,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import static smarter.uearn.money.R.id.prev_cal;
+
 public class ExtendedCalendarView extends RelativeLayout implements OnItemClickListener,
 		OnClickListener{
 
@@ -281,15 +283,11 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 
 	@Override
 	public void onClick(View v) {
-		switch(v.getId()){
-			case R.id.prev_cal:
-				previousMonth();
-				break;
-			case R.id.next_cal:
-				nextMonth();
-				break;
-			default:
-				break;
+		int id = v.getId();
+		if (id == R.id.prev_cal) {
+			previousMonth();
+		} else if (id == R.id.next_cal) {
+			nextMonth();
 		}
 	}
 

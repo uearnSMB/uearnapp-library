@@ -122,7 +122,7 @@ public class NumberBasedSearchCursorAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
         final int dbid = cursor.getInt(cursor.getColumnIndex("_id"));
         TextView time = (TextView) view.findViewById(R.id.time);
         final TextView toName = (TextView) view.findViewById(R.id.phoneNo);

@@ -511,223 +511,188 @@ public class OnboardingActivity extends AppCompatActivity implements View.OnClic
             return;
         }
         int id = view.getId();
-        switch (id) {
-
-            case R.id.btnNext1: {
-                lyOnBoardInfo.setVisibility(view.GONE);
-                lyIdForm.setVisibility(view.VISIBLE);
-                headerTitle.setText("Identity Proof");
-                break;
-            }
-
-            case R.id.btnNext2: {
-                successMessage.setText("");
-                succesProfileImgMeassage.setText("");
-                navigateToOnboardingServiceAgreementActivity();
-                break;
-            }
-
-            case R.id.browse_text_layout: {
-                if (documentsCount < 5) {
-                    startDialog();
-                } else {
-                    Toast.makeText(this, "Maximum of 5 documents can be uploaded", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            }
-
-            case R.id.imgAttach_PanCard: {
-                isAttachPANCardClicked = true;
-                successMessage.setText("");
-                String pancard = String.valueOf(etPanCard.getText());
-                if (Utils.isStringEmpty(pancard)) {
-                    error_Pancard.setText("Enter pancard number,eg: ABCDE1234F");
-                    etPanCard.requestFocus();
-                    error_Pancard.setVisibility(View.VISIBLE);
-                    return;
-                } else {
-                    etPanCard.setText(pancard.toUpperCase(Locale.ENGLISH));
-                    etPanCard.setSelection(etPanCard.getText().length());
-                }
-
-                if (!Utils.isStringEmpty(pancard) && isPanCardValid(pancard.toUpperCase(Locale.ENGLISH))) {
-
-                    docName = DOCUMENT_TYPE_PANCARD;
-                    startDialog();
-                } else if (!Utils.isStringEmpty(pancard) && isPanCardValid(pancard) && pancard.length() > 0) {
-                    error_Pancard.setText("Enter valid pancard number, eg: ABCDE1234F.");
-                    etPanCard.requestFocus();
-                    error_Pancard.setVisibility(View.VISIBLE);
-                } else {
-                    error_Pancard.setText("Enter pancard number,eg: ABCDE1234F");
-                    etPanCard.requestFocus();
-                    error_Pancard.setVisibility(View.VISIBLE);
-                }
-                break;
-            }
-
-            case R.id.imgAttach_AadharCard: {
-                isAttachAadharCardClicked = true;
-                successMessage.setText("");
-                String aadharCard = String.valueOf(etAdharCard.getText());
-
-                if (!Utils.isStringEmpty(aadharCard) && isValidAadharNumber(aadharCard)) {
-                    docName = DOCUMENT_TYPE_ADHARCARD;
-                    startDialog();
-                    error_AdharCard.setVisibility(View.GONE);
-                } else if (!Utils.isStringEmpty(aadharCard) && isValidAadharNumber(aadharCard) && aadharCard.length() > 0) {
-                    error_AdharCard.setText("Enter valid aadhar card number.");
-                    etAdharCard.requestFocus();
-                    error_AdharCard.setVisibility(View.VISIBLE);
-                } else {
-                    error_AdharCard.setText("Enter aadhar card number.");
-                    etAdharCard.requestFocus();
-                    error_AdharCard.setVisibility(View.VISIBLE);
-                }
-                break;
-            }
-
-            case R.id.imgAttach_BankPassbook: {
-                isAttachPassbookClicked = true;
-                successMessage.setText("");
-                String passbook = String.valueOf(etPassBook.getText());
-                if (!Utils.isStringEmpty(passbook) && passbook.length() > 3) {
-                    docName = DOCUMENT_TYPE_PASSBOOK;
-                    startDialog();
-                    error_Passbook.setVisibility(View.GONE);
-                } else if (!Utils.isStringEmpty(passbook) && passbook.length() < 3 && passbook.length() > 0) {
-                    error_Passbook.setText("Enter valid bank account number.");
-                    error_Passbook.setVisibility(View.VISIBLE);
-                } else {
-                    error_Passbook.setText("Enter bank account number.");
-                    error_Passbook.setVisibility(View.VISIBLE);
-                }
-                break;
-            }
-
-            case R.id.etAdharCard: {
-                successMessage.setText("");
-                error_AdharCard.setVisibility(View.GONE);
-            }
-            case R.id.etPanCard: {
-                successMessage.setText("");
-                error_Pancard.setVisibility(View.GONE);
-            }
-            case R.id.etPassBook: {
-                successMessage.setText("");
-                error_Passbook.setVisibility(View.GONE);
-                break;
-            }
-
-            case R.id.imgDelete_PanCard:
-                try {
-                    ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_PANCARD, null);
-                    dltPanCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
-                    dltPanCard.setColorFilter(getResources().getColor(R.color.delete_button_disable));
-                    statusPanCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
-                    progressBarPANCard.setProgress(0);
-                    attachmentPanCard.setEnabled(true);
-                    etPanCard.setText("");
-                    etPanCard.setEnabled(true);
-                    isPANUploaded = false;
-                    successMessage.setText("");
-                    nextButton.setEnabled(false);
-                    nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
-                    nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                break;
-
-            case R.id.imgDelete_AadharCard:
-                try {
-                    ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_ADHARCARD, null);
-                    dltAadharCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
-                    dltAadharCard.setColorFilter(getResources().getColor(R.color.delete_button_disable));
-                    statusAadharCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
-                    progressBarAadharCard.setProgress(0);
-                    attachmentAdhar.setEnabled(true);
-                    etAdharCard.setText("");
-                    isAaadharuploaded = false;
-                    etAdharCard.setEnabled(true);
-                    successMessage.setText("");
-                    nextButton.setEnabled(false);
-                    nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
-                    nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                break;
-
-            case R.id.imgDelete_BankPassbook:
-                try {
-                    ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_PASSBOOK, null);
-                    dltPassCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
-                    dltPassCard.setColorFilter(getResources().getColor(R.color.delete_button_disable));
-                    statusPassCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
-                    progressBarPassbook.setProgress(0);
-                    etPassBook.setText("");
-                    attachmentPassBook.setEnabled(true);
-                    etPassBook.setEnabled(true);
-                    isPassbookuploaded = false;
-                    successMessage.setText("");
-                    nextButton.setEnabled(false);
-                    nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
-                    nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-
-            case R.id.imgDelete_ProfilePhoto:
-                try {
-                    ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_PROFILE_PHOTO, null);
-                    dltProfilePhoto.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
-                    dltProfilePhoto.setColorFilter(getResources().getColor(R.color.delete_button_disable));
-                    statusProfilePhoto.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
-                    progressBarProfilePhoto.setProgress(0);
-                    attachmentProfilePhoto.setEnabled(true);
-                    succesProfileImgMeassage.setText("");
-                    nextButton2.setEnabled(false);
-                    isProfilePicuploaded = false;
-                    nextButton2.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
-                    nextButton2.setBackgroundResource(R.drawable.disable_rounded_corner);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                break;
-
-            case R.id.imgAttach_ProfilePhoto:
-                isAttachProfilePicClicked = true;
-                successMessage.setText("");
-                docName = DOCUMENT_TYPE_PROFILE_PHOTO;
+        if (id == R.id.btnNext1) {
+            lyOnBoardInfo.setVisibility(view.GONE);
+            lyIdForm.setVisibility(view.VISIBLE);
+            headerTitle.setText("Identity Proof");
+        } else if (id == R.id.btnNext2) {
+            successMessage.setText("");
+            succesProfileImgMeassage.setText("");
+            navigateToOnboardingServiceAgreementActivity();
+        } else if (id == R.id.browse_text_layout) {
+            if (documentsCount < 5) {
                 startDialog();
-                break;
+            } else {
+                Toast.makeText(this, "Maximum of 5 documents can be uploaded", Toast.LENGTH_SHORT).show();
+            }
+        } else if (id == R.id.imgAttach_PanCard) {
+            isAttachPANCardClicked = true;
+            successMessage.setText("");
+            String pancard = String.valueOf(etPanCard.getText());
+            if (Utils.isStringEmpty(pancard)) {
+                error_Pancard.setText("Enter pancard number,eg: ABCDE1234F");
+                etPanCard.requestFocus();
+                error_Pancard.setVisibility(View.VISIBLE);
+                return;
+            } else {
+                etPanCard.setText(pancard.toUpperCase(Locale.ENGLISH));
+                etPanCard.setSelection(etPanCard.getText().length());
+            }
 
-            case R.id.btnNext:
-                if (documentsCount > 2) {
-                    ApplicationSettings.putPref(AppConstants.KYC_DOC_UPLOADED, true);
-                    lyOnBoardInfo.setVisibility(view.GONE);
-                    lyIdForm.setVisibility(view.GONE);
-                    lyProfile.setVisibility(view.VISIBLE);
-                    headerTitle.setText("Profile Photo");
+            if (!Utils.isStringEmpty(pancard) && isPanCardValid(pancard.toUpperCase(Locale.ENGLISH))) {
 
-                    imageProgressOne.setImageDrawable(getResources().getDrawable(R.drawable.bg_circle_status_active));
-                    nextButton2.setEnabled(true);
-                    nextButton2.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
-                    nextButton2.setBackgroundResource(R.drawable.red_rounded_corner);
-                } else {
-                    Toast.makeText(this, "Kindly upload KYC documents", Toast.LENGTH_SHORT).show();
-                }
-                break;
+                docName = DOCUMENT_TYPE_PANCARD;
+                startDialog();
+            } else if (!Utils.isStringEmpty(pancard) && isPanCardValid(pancard) && pancard.length() > 0) {
+                error_Pancard.setText("Enter valid pancard number, eg: ABCDE1234F.");
+                etPanCard.requestFocus();
+                error_Pancard.setVisibility(View.VISIBLE);
+            } else {
+                error_Pancard.setText("Enter pancard number,eg: ABCDE1234F");
+                etPanCard.requestFocus();
+                error_Pancard.setVisibility(View.VISIBLE);
+            }
+        } else if (id == R.id.imgAttach_AadharCard) {
+            isAttachAadharCardClicked = true;
+            successMessage.setText("");
+            String aadharCard = String.valueOf(etAdharCard.getText());
 
-            case R.id.profile_image_back:
-                onBackPressed();
-                break;
+            if (!Utils.isStringEmpty(aadharCard) && isValidAadharNumber(aadharCard)) {
+                docName = DOCUMENT_TYPE_ADHARCARD;
+                startDialog();
+                error_AdharCard.setVisibility(View.GONE);
+            } else if (!Utils.isStringEmpty(aadharCard) && isValidAadharNumber(aadharCard) && aadharCard.length() > 0) {
+                error_AdharCard.setText("Enter valid aadhar card number.");
+                etAdharCard.requestFocus();
+                error_AdharCard.setVisibility(View.VISIBLE);
+            } else {
+                error_AdharCard.setText("Enter aadhar card number.");
+                etAdharCard.requestFocus();
+                error_AdharCard.setVisibility(View.VISIBLE);
+            }
+        } else if (id == R.id.imgAttach_BankPassbook) {
+            isAttachPassbookClicked = true;
+            successMessage.setText("");
+            String passbook = String.valueOf(etPassBook.getText());
+            if (!Utils.isStringEmpty(passbook) && passbook.length() > 3) {
+                docName = DOCUMENT_TYPE_PASSBOOK;
+                startDialog();
+                error_Passbook.setVisibility(View.GONE);
+            } else if (!Utils.isStringEmpty(passbook) && passbook.length() < 3 && passbook.length() > 0) {
+                error_Passbook.setText("Enter valid bank account number.");
+                error_Passbook.setVisibility(View.VISIBLE);
+            } else {
+                error_Passbook.setText("Enter bank account number.");
+                error_Passbook.setVisibility(View.VISIBLE);
+            }
+        } else if (id == R.id.etAdharCard) {
+            successMessage.setText("");
+            error_AdharCard.setVisibility(View.GONE);
+            successMessage.setText("");
+            error_Pancard.setVisibility(View.GONE);
+            successMessage.setText("");
+            error_Passbook.setVisibility(View.GONE);
+        } else if (id == R.id.etPanCard) {
+            successMessage.setText("");
+            error_Pancard.setVisibility(View.GONE);
+            successMessage.setText("");
+            error_Passbook.setVisibility(View.GONE);
+        } else if (id == R.id.etPassBook) {
+            successMessage.setText("");
+            error_Passbook.setVisibility(View.GONE);
+        } else if (id == R.id.imgDelete_PanCard) {
+            try {
+                ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_PANCARD, null);
+                dltPanCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
+                dltPanCard.setColorFilter(getResources().getColor(R.color.delete_button_disable));
+                statusPanCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
+                progressBarPANCard.setProgress(0);
+                attachmentPanCard.setEnabled(true);
+                etPanCard.setText("");
+                etPanCard.setEnabled(true);
+                isPANUploaded = false;
+                successMessage.setText("");
+                nextButton.setEnabled(false);
+                nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+                nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.imgDelete_AadharCard) {
+            try {
+                ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_ADHARCARD, null);
+                dltAadharCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
+                dltAadharCard.setColorFilter(getResources().getColor(R.color.delete_button_disable));
+                statusAadharCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
+                progressBarAadharCard.setProgress(0);
+                attachmentAdhar.setEnabled(true);
+                etAdharCard.setText("");
+                isAaadharuploaded = false;
+                etAdharCard.setEnabled(true);
+                successMessage.setText("");
+                nextButton.setEnabled(false);
+                nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+                nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.imgDelete_BankPassbook) {
+            try {
+                ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_PASSBOOK, null);
+                dltPassCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
+                dltPassCard.setColorFilter(getResources().getColor(R.color.delete_button_disable));
+                statusPassCard.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
+                progressBarPassbook.setProgress(0);
+                etPassBook.setText("");
+                attachmentPassBook.setEnabled(true);
+                etPassBook.setEnabled(true);
+                isPassbookuploaded = false;
+                successMessage.setText("");
+                nextButton.setEnabled(false);
+                nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+                nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.imgDelete_ProfilePhoto) {
+            try {
+                ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_PROFILE_PHOTO, null);
+                dltProfilePhoto.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
+                dltProfilePhoto.setColorFilter(getResources().getColor(R.color.delete_button_disable));
+                statusProfilePhoto.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
+                progressBarProfilePhoto.setProgress(0);
+                attachmentProfilePhoto.setEnabled(true);
+                succesProfileImgMeassage.setText("");
+                nextButton2.setEnabled(false);
+                isProfilePicuploaded = false;
+                nextButton2.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+                nextButton2.setBackgroundResource(R.drawable.disable_rounded_corner);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.imgAttach_ProfilePhoto) {
+            isAttachProfilePicClicked = true;
+            successMessage.setText("");
+            docName = DOCUMENT_TYPE_PROFILE_PHOTO;
+            startDialog();
+        } else if (id == R.id.btnNext) {
+            if (documentsCount > 2) {
+                ApplicationSettings.putPref(AppConstants.KYC_DOC_UPLOADED, true);
+                lyOnBoardInfo.setVisibility(view.GONE);
+                lyIdForm.setVisibility(view.GONE);
+                lyProfile.setVisibility(view.VISIBLE);
+                headerTitle.setText("Profile Photo");
+
+                imageProgressOne.setImageDrawable(getResources().getDrawable(R.drawable.bg_circle_status_active));
+                nextButton2.setEnabled(true);
+                nextButton2.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+                nextButton2.setBackgroundResource(R.drawable.red_rounded_corner);
+            } else {
+                Toast.makeText(this, "Kindly upload KYC documents", Toast.LENGTH_SHORT).show();
+            }
+        } else if (id == R.id.profile_image_back) {
+            onBackPressed();
         }
     }
 
@@ -942,7 +907,7 @@ public class OnboardingActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void uploadImageFile(String imageFile, String documentType, String fileName, String doc_Value) {
+    public void uploadImageFile(String imageFile, final String documentType, String fileName, String doc_Value) {
         if (CommonUtils.isNetworkAvailable(this)) {
             String filePath = imageFile;
             JSONObject response = DataUploadUtils.uploadImageFileToServer(filePath, Urls.getUploadFileUrl());
@@ -959,7 +924,7 @@ public class OnboardingActivity extends AppCompatActivity implements View.OnClic
                         docDataJson.put("doc_url", imageUrl);
                         docDataJson.put("file_name", fileName);
 
-                        KycDocuments kycDocuments = new KycDocuments();
+                        final KycDocuments kycDocuments = new KycDocuments();
                         kycDocuments.setDocName(documentType);
                         kycDocuments.setDocUrl(imageUrl);
                         kycDocuments.setDocValue(doc_Value);
@@ -971,7 +936,7 @@ public class OnboardingActivity extends AppCompatActivity implements View.OnClic
                         if (uploadResponse != null) {
                             try {
                                 if (uploadResponse.has("success")) {
-                                    String successMsg = uploadResponse.getString("success");
+                                    final String successMsg = uploadResponse.getString("success");
                                     if (successMsg != null && !successMsg.isEmpty()) {
                                         runOnUiThread(new Runnable() {
                                             @Override

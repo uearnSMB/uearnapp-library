@@ -593,25 +593,12 @@ public class UearnProfileActivity extends AppCompatActivity implements View.OnCl
 
     public void onClickToEdit(View view) {
 
-        switch (view.getId()) {
-
-            case R.id.edit_user_name:
-                break;
-
-            case R.id.edit_email_id:
-                break;
-
-            case R.id.edit_phone_no:
-                break;
-
-            case R.id.edit_location:
-
-                break;
-
-            case R.id.edit_language:
-
-                break;
-
+        int id = view.getId();
+        if (id == R.id.edit_user_name) {
+        } else if (id == R.id.edit_email_id) {
+        } else if (id == R.id.edit_phone_no) {
+        } else if (id == R.id.edit_location) {
+        } else if (id == R.id.edit_language) {
         }
 
     }
@@ -691,102 +678,59 @@ public class UearnProfileActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.back_imageview:
-                onBackPressed();
-                break;
-
-            case R.id.edit_user_name:
-                edit_user_name.setEnabled(true);
-                user_name.setEnabled(true);
-                user_name.setFocusableInTouchMode(true);
-                user_name.requestFocus();
-                user_name.setClickable(true);
-                user_name.setEnabled(true);
-                user_name.setSelection(user_name.getText().length());
-                String userName = String.valueOf(user_name.getText());
-                isNameChange = true;
-                break;
-
-
-
-            case R.id.outside_imageview:
-                boolean isPermissionEnabled = CommonUtils.permissionsCheck(UearnProfileActivity.this);
-                if(isPermissionEnabled) {
-                    isProfile = true;
-                    isTheme = false;
-                    if (iv_profile_pic.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.uearn_profile_pic).getConstantState() || iv_profile_pic.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.man_profile_pic).getConstantState() || iv_profile_pic.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.others_pic).getConstantState()) {
-                        startDialog("PROFILE PIC");
-                    } else {
-                        startDialogWithRemove("PROFILE PIC");
-                    }
+        if (id == R.id.back_imageview) {
+            onBackPressed();
+        } else if (id == R.id.edit_user_name) {
+            edit_user_name.setEnabled(true);
+            user_name.setEnabled(true);
+            user_name.setFocusableInTouchMode(true);
+            user_name.requestFocus();
+            user_name.setClickable(true);
+            user_name.setEnabled(true);
+            user_name.setSelection(user_name.getText().length());
+            String userName = String.valueOf(user_name.getText());
+            isNameChange = true;
+        } else if (id == R.id.outside_imageview) {
+            boolean isPermissionEnabled = CommonUtils.permissionsCheck(UearnProfileActivity.this);
+            if (isPermissionEnabled) {
+                isProfile = true;
+                isTheme = false;
+                if (iv_profile_pic.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.uearn_profile_pic).getConstantState() || iv_profile_pic.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.man_profile_pic).getConstantState() || iv_profile_pic.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.others_pic).getConstantState()) {
+                    startDialog("PROFILE PIC");
+                } else {
+                    startDialogWithRemove("PROFILE PIC");
                 }
-                break;
-
-            case R.id.profile_theme:
-                isProfile = false;
-                isTheme = true;
-                startDialog("PROFILE THEME");
-                break;
-
-
-            case R.id.edit_email_id:
-                break;
-
-            case R.id.edit_phone_no:
-                break;
-
-            case R.id.edit_location:
-                getUserLocation();
-                break;
-
-            case R.id.editDateOfBirth:
-                getUserDateOfBirth(view.getId(), user_birth_date.getText().toString().trim());
-                break;
-
-
-            case R.id.edit_language:
-                getLanguage();
-
-                break;
-
-            case R.id.editGender:
-                getGender();
-                break;
-
-            case R.id.settting_layout:
-//                Intent intent = new Intent(this, ProfileSettingsActivity.class);
+            }
+        } else if (id == R.id.profile_theme) {
+            isProfile = false;
+            isTheme = true;
+            startDialog("PROFILE THEME");
+        } else if (id == R.id.edit_email_id) {
+        } else if (id == R.id.edit_phone_no) {
+        } else if (id == R.id.edit_location) {
+            getUserLocation();
+        } else if (id == R.id.editDateOfBirth) {
+            getUserDateOfBirth(view.getId(), user_birth_date.getText().toString().trim());
+        } else if (id == R.id.edit_language) {
+            getLanguage();
+        } else if (id == R.id.editGender) {
+            getGender();
+        } else if (id == R.id.settting_layout) {//                Intent intent = new Intent(this, ProfileSettingsActivity.class);
 //                startActivity(intent);
-                break;
-
-            case R.id.getFeedback:
-                getUserFeedback();
-                break;
-
-            case R.id.referAndEarn:
-                getReferAndEarn();
-                break;
-
-
-            case R.id.sign_out_layout:
-                signOutAndExit();
-                break;
-
-
-            case R.id.faqLayout:
-                Intent intent = new Intent(this, UearnFAQActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.slotsregister:
-                Intent intentSlots = new Intent(this, AgentSlotsActivity.class);
-                intentSlots.putExtra("SLOTSREDIRECT", "UearnProfileActivity");
-                startActivity(intentSlots);
-                finish();
-                break;
-
-
-
+        } else if (id == R.id.getFeedback) {
+            getUserFeedback();
+        } else if (id == R.id.referAndEarn) {
+            getReferAndEarn();
+        } else if (id == R.id.sign_out_layout) {
+            signOutAndExit();
+        } else if (id == R.id.faqLayout) {
+            Intent intent = new Intent(this, UearnFAQActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.slotsregister) {
+            Intent intentSlots = new Intent(this, AgentSlotsActivity.class);
+            intentSlots.putExtra("SLOTSREDIRECT", "UearnProfileActivity");
+            startActivity(intentSlots);
+            finish();
         }
     }
 

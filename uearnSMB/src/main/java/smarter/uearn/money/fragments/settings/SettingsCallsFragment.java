@@ -258,133 +258,116 @@ public class SettingsCallsFragment extends Fragment implements CompoundButton.On
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.ivSyncData:
-                ServiceUserProfile.getUserSettings();
-                getFragmentManager().popBackStack();
-                break;
-
+        if (view.getId() == R.id.ivSyncData) {
+            ServiceUserProfile.getUserSettings();
+            getFragmentManager().popBackStack();
         }
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        switch (buttonView.getId()) {
-
-            case R.id.voice_analytics_switch:
-                if (isChecked) {
-                    smartUser.setVoiceAnalytics(true);
-                    ApplicationSettings.putPref(AppConstants.VOICE_ANALYTICS, true);
+        int id = buttonView.getId();
+        if (id == R.id.voice_analytics_switch) {
+            if (isChecked) {
+                smartUser.setVoiceAnalytics(true);
+                ApplicationSettings.putPref(AppConstants.VOICE_ANALYTICS, true);
+            } else {
+                smartUser.setVoiceAnalytics(false);
+                ApplicationSettings.putPref(AppConstants.VOICE_ANALYTICS, false);
+            }
+        } else if (id == R.id.s_my_calls) {
+            if (isChecked) {
+                smartUser.setCallRecordStatus(true);
+                ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, true);
+            } else {
+                smartUser.setCallRecordStatus(false);
+                ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, false);
+            }
+        } else if (id == R.id.sCallRecording) {
+            saveData();
+            if (isChecked) {
+                if (administrator) {
+                    ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, true);
                 } else {
-                    smartUser.setVoiceAnalytics(false);
-                    ApplicationSettings.putPref(AppConstants.VOICE_ANALYTICS, false);
-                }
-                break;
-            case R.id.s_my_calls:
-                if (isChecked) {
                     smartUser.setCallRecordStatus(true);
-                    ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, true);
+                }
+            } else {
+                if (administrator) {
+                    ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, false);
                 } else {
                     smartUser.setCallRecordStatus(false);
-                    ApplicationSettings.putPref(AppConstants.ADMIN_PERSONAL_RECORDING, false);
                 }
-                break;
-            case R.id.sCallRecording:
-                saveData();
-                if (isChecked) {
-                    if (administrator) {
-                        ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, true);
-                    } else {
-                        smartUser.setCallRecordStatus(true);
-                    }
-                } else {
-                    if (administrator) {
-                        ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, false);
-                    } else {
-                        smartUser.setCallRecordStatus(false);
-                    }
-                }
-                break;
-            case R.id.sGpsTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setGpsLocationSettings(true);
-                } else {
-                    smartUser.setGpsLocationSettings(false);
-                }
-                break;
-            case R.id.junkTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setJunkCallSetting(true);
-                } else {
-                    smartUser.setJunkCallSetting(false);
-                }
-                break;
-            case R.id.personalTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setPersonalcallSetting(true);
-                } else {
-                    smartUser.setPersonalcallSetting(false);
-                }
-                break;
-            case R.id.smsTracking:
-                saveData();
-                if (isChecked) {
-                    smartUser.setSmsTrackingAll(true);
-                } else {
-                    smartUser.setSmsTrackingAll(false);
-                }
-                break;
-            case R.id.cloudOutgoingSwitch:
-                saveData();
-                if (isChecked) {
-                    smartUser.setCloudOutgoing(true);
-                    //autoDiler.setEnabled(true);
-                    timer_afterSpinner.setEnabled(true);
-                    timer_beforeSpinner.setEnabled(true);
-                    smartUser.setSipCalls(false);
-                    sipCalls.setEnabled(false);
-                } else {
-                    autoDiler.setEnabled(false);
-                    //checkAutoDialerEnable();
-                    smartUser.setCloudOutgoing(false);
-                    timer_afterSpinner.setEnabled(false);
-                    timer_beforeSpinner.setEnabled(false);
-                    //sipCalls.setEnabled(true);
-                }
-                break;
-            case R.id.autodilerSwitch:
-                saveData();
-                if (isChecked) {
-                    smartUser.setAutoDailer(true);
-                } else {
-                    smartUser.setAutoDailer(false);
-                }
-                break;
-
-            case R.id.sipCallsSwitch:
-                saveData();
-                if (isChecked) {
-                    smartUser.setSipCalls(true);
-                    smartUser.setCloudOutgoing(false);
-                    cloud_outgoing.setEnabled(false);
-                } else {
-                    smartUser.setSipCalls(false);
-                    //cloud_outgoing.setEnabled(true);
-                    //checkAutoDialerEnable();
-                }
-                break;
-            case R.id.manual_dialler:
-                saveData();
-                if (isChecked) {
-                    smartUser.setUnscheduledCall(true);
-                } else {
-                    smartUser.setUnscheduledCall(false);
-                }
-                break;
+            }
+        } else if (id == R.id.sGpsTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setGpsLocationSettings(true);
+            } else {
+                smartUser.setGpsLocationSettings(false);
+            }
+        } else if (id == R.id.junkTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setJunkCallSetting(true);
+            } else {
+                smartUser.setJunkCallSetting(false);
+            }
+        } else if (id == R.id.personalTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setPersonalcallSetting(true);
+            } else {
+                smartUser.setPersonalcallSetting(false);
+            }
+        } else if (id == R.id.smsTracking) {
+            saveData();
+            if (isChecked) {
+                smartUser.setSmsTrackingAll(true);
+            } else {
+                smartUser.setSmsTrackingAll(false);
+            }
+        } else if (id == R.id.cloudOutgoingSwitch) {
+            saveData();
+            if (isChecked) {
+                smartUser.setCloudOutgoing(true);
+                //autoDiler.setEnabled(true);
+                timer_afterSpinner.setEnabled(true);
+                timer_beforeSpinner.setEnabled(true);
+                smartUser.setSipCalls(false);
+                sipCalls.setEnabled(false);
+            } else {
+                autoDiler.setEnabled(false);
+                //checkAutoDialerEnable();
+                smartUser.setCloudOutgoing(false);
+                timer_afterSpinner.setEnabled(false);
+                timer_beforeSpinner.setEnabled(false);
+                //sipCalls.setEnabled(true);
+            }
+        } else if (id == R.id.autodilerSwitch) {
+            saveData();
+            if (isChecked) {
+                smartUser.setAutoDailer(true);
+            } else {
+                smartUser.setAutoDailer(false);
+            }
+        } else if (id == R.id.sipCallsSwitch) {
+            saveData();
+            if (isChecked) {
+                smartUser.setSipCalls(true);
+                smartUser.setCloudOutgoing(false);
+                cloud_outgoing.setEnabled(false);
+            } else {
+                smartUser.setSipCalls(false);
+                //cloud_outgoing.setEnabled(true);
+                //checkAutoDialerEnable();
+            }
+        } else if (id == R.id.manual_dialler) {
+            saveData();
+            if (isChecked) {
+                smartUser.setUnscheduledCall(true);
+            } else {
+                smartUser.setUnscheduledCall(false);
+            }
         }
     }
 

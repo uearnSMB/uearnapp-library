@@ -1093,102 +1093,97 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, AP
         Intent conditionsIntent = new Intent(Intent.ACTION_VIEW);
         Uri termsAndConditionsUrl = null;
 
-        switch (view.getId()) {
-            case R.id.btnSignUp:
-                logEvent("Registration");
-                if (CommonUtils.isNetworkAvailable(getContext())) {
-                    if (getValidBasicInfo()) {
-                        String username, email, phoneNo, passwd;
-                        username = nameEditText.getText().toString();
-                        email = emailEditText.getText().toString();
-                        phoneNo = "+91" + mobileEditText.getText().toString();
-                        passwd = passwordEditText.getText().toString();
+        int id = view.getId();
+        if (id == R.id.btnSignUp) {
+            logEvent("Registration");
+            if (CommonUtils.isNetworkAvailable(getContext())) {
+                if (getValidBasicInfo()) {
+                    String username, email, phoneNo, passwd;
+                    username = nameEditText.getText().toString();
+                    email = emailEditText.getText().toString();
+                    phoneNo = "+91" + mobileEditText.getText().toString();
+                    passwd = passwordEditText.getText().toString();
 
-                        if (selectedLanguages != null && selectedLanguages.size() > 0) {
-                            String[] languages = selectedLanguages.toArray(new String[selectedLanguages.size()]);
-                            if (languages != null && languages.length > 0) {
-                                StringBuilder sb = new StringBuilder();
-                                for (String s : languages) {
-                                    sb.append(s).append(",");
-                                }
-                                language = sb.deleteCharAt(sb.length() - 1).toString();
+                    if (selectedLanguages != null && selectedLanguages.size() > 0) {
+                        String[] languages = selectedLanguages.toArray(new String[selectedLanguages.size()]);
+                        if (languages != null && languages.length > 0) {
+                            StringBuilder sb = new StringBuilder();
+                            for (String s : languages) {
+                                sb.append(s).append(",");
                             }
-                        }
-
-                        JSONObject otherExpObject = null;
-                        try {
-                            otherExpObject = new JSONObject();
-                            otherExpObject.put("voice_support", voiceSupportExpEditText.getText().toString());
-                            otherExpObject.put("customer_support_experience", customerSupportExperience);
-                        } catch (Exception e) {
-
-                        }
-
-                        otherExperience = otherExpObject.toString();
-
-                        if (selectedHardwares != null && selectedHardwares.size() > 0) {
-                            String[] hardwares = selectedHardwares.toArray(new String[selectedHardwares.size()]);
-                            if (hardwares != null && hardwares.length > 0) {
-                                StringBuilder sb = new StringBuilder();
-                                for (String s : hardwares) {
-                                    sb.append(s).append(",");
-                                }
-                                hardware = sb.deleteCharAt(sb.length() - 1).toString();
-                            }
-                        }
-
-                        JSONObject additionalDataObject = null;
-                        try {
-                            additionalDataObject = new JSONObject();
-                            additionalDataObject.put("setup_options", hardware);
-                        } catch (Exception e) {
-
-                        }
-
-                        additionalData = additionalDataObject.toString();
-
-                        SmartUser smartUser = new SmartUser(username, email, phoneNo, passwd, "smb", genderType, language, education, workExperience, businessProcess, otherExperience, additionalData);
-
-                        if (activity == null) {
-                            Activity activity1 = getActivity();
-                            if (activity1 == null) {
-                                activity = ((Activity) getContext());
-                            } else {
-                                activity = activity1;
-                            }
-                        }
-                        boolean isPermissionEnabled = CommonUtils.permissionsCheck(getActivity());
-                        if (isPermissionEnabled) {
-                            registration(smartUser);
+                            language = sb.deleteCharAt(sb.length() - 1).toString();
                         }
                     }
-                } else {
-                    Toast.makeText(getActivity(), "You have no Internet connection.", Toast.LENGTH_SHORT).show();
-                }
-                break;
 
-            case R.id.tvTerms:
-                if (alert != null) {
-                    alert.dismiss();
-                    alert = null;
-                }
-                logEvent("Terms");
-                termsAndConditionsUrl = Uri.parse(Urls.SERVER_ADDRESS + "/terms");
-                conditionsIntent.setData(termsAndConditionsUrl);
-                startActivity(conditionsIntent);
-                break;
+                    JSONObject otherExpObject = null;
+                    try {
+                        otherExpObject = new JSONObject();
+                        otherExpObject.put("voice_support", voiceSupportExpEditText.getText().toString());
+                        otherExpObject.put("customer_support_experience", customerSupportExperience);
+                    } catch (Exception e) {
 
-            case R.id.logIn:
-                if (alert != null) {
-                    alert.dismiss();
-                    alert = null;
+                    }
+
+                    otherExperience = otherExpObject.toString();
+
+                    if (selectedHardwares != null && selectedHardwares.size() > 0) {
+                        String[] hardwares = selectedHardwares.toArray(new String[selectedHardwares.size()]);
+                        if (hardwares != null && hardwares.length > 0) {
+                            StringBuilder sb = new StringBuilder();
+                            for (String s : hardwares) {
+                                sb.append(s).append(",");
+                            }
+                            hardware = sb.deleteCharAt(sb.length() - 1).toString();
+                        }
+                    }
+
+                    JSONObject additionalDataObject = null;
+                    try {
+                        additionalDataObject = new JSONObject();
+                        additionalDataObject.put("setup_options", hardware);
+                    } catch (Exception e) {
+
+                    }
+
+                    additionalData = additionalDataObject.toString();
+
+                    SmartUser smartUser = new SmartUser(username, email, phoneNo, passwd, "smb", genderType, language, education, workExperience, businessProcess, otherExperience, additionalData);
+
+                    if (activity == null) {
+                        Activity activity1 = getActivity();
+                        if (activity1 == null) {
+                            activity = ((Activity) getContext());
+                        } else {
+                            activity = activity1;
+                        }
+                    }
+                    boolean isPermissionEnabled = CommonUtils.permissionsCheck(getActivity());
+                    if (isPermissionEnabled) {
+                        registration(smartUser);
+                    }
                 }
-                logEvent("Sign In");
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.authentication_container, new SignInFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                break;
+            } else {
+                Toast.makeText(getActivity(), "You have no Internet connection.", Toast.LENGTH_SHORT).show();
+            }
+        } else if (id == R.id.tvTerms) {
+            if (alert != null) {
+                alert.dismiss();
+                alert = null;
+            }
+            logEvent("Terms");
+            termsAndConditionsUrl = Uri.parse(Urls.SERVER_ADDRESS + "/terms");
+            conditionsIntent.setData(termsAndConditionsUrl);
+            startActivity(conditionsIntent);
+        } else if (id == R.id.logIn) {
+            if (alert != null) {
+                alert.dismiss();
+                alert = null;
+            }
+            logEvent("Sign In");
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.authentication_container, new SignInFragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
     }
 

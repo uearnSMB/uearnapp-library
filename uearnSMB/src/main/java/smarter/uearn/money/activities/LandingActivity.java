@@ -190,17 +190,13 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
         Intent authenticationIntent = new Intent(this, SmarterAuthActivity.class);
         String itemName = "";
 
-        switch (view.getId()) {
-            case R.id.btnSignIn:
-                authenticationIntent.putExtra("screenType", 1);
-                itemName = "Sign Up";
-                break;
-
-            case R.id.signInBtn:
-                authenticationIntent.putExtra("screenType", 0);
-                itemName = "Sign In";
-                break;
-
+        int id = view.getId();
+        if (id == R.id.btnSignIn) {
+            authenticationIntent.putExtra("screenType", 1);
+            itemName = "Sign Up";
+        } else if (id == R.id.signInBtn) {
+            authenticationIntent.putExtra("screenType", 0);
+            itemName = "Sign In";
         }
 
         Bundle AnalyticsBundle = new Bundle();

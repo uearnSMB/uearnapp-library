@@ -440,51 +440,48 @@ public class SettingsFollowUpsFragment extends Fragment implements CompoundButto
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        switch (buttonView.getId()) {
-            case R.id.switchAutoFollowUps:
-                logAnalytics("Auto_Follow_Up_Switch_Settings", "CheckBox");
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                if (isChecked) {
-                    smartUser.setAutoFollowUpSettings(true);
-                    smartUser.setCallRecordStatus(true);
-                    ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, true);
-                } else {
-                    smartUser.setAutoFollowUpSettings(false);
-                }
-                break;
+        if (buttonView.getId() == R.id.switchAutoFollowUps) {
+            logAnalytics("Auto_Follow_Up_Switch_Settings", "CheckBox");
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            if (isChecked) {
+                smartUser.setAutoFollowUpSettings(true);
+                smartUser.setCallRecordStatus(true);
+                ApplicationSettings.putPref(AppConstants.ADMIN_GROUP_RECORDING, true);
+            } else {
+                smartUser.setAutoFollowUpSettings(false);
+            }
         }
     }
 
     @Override
     public void onClick(View v) {
         final String TIMEPICKER_TAG = "timepicker";
-        switch (v.getId()) {
-            case R.id.ivSyncData:
-                logAnalytics("Sync_Data_Follow_Up_Settings", "ImageView");
-                ServiceUserProfile.getUserSettings();
-                getFragmentManager().popBackStack();
-                break;
-            case R.id.opentime:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-                        final_start_hour = hourOfDay;
-                        final_start_min = minute;
-                        int endHourOfDay = 0, endMinute;
-                        endMinute = minute + 60;
-                        if (endMinute >= 60) {
-                            endHourOfDay = endHourOfDay + 1;
-                            endMinute = minute % 60;
-                        }
-                        endHourOfDay = endHourOfDay + hourOfDay;
-                        if (hourOfDay >= 24) {
-                            endHourOfDay = endHourOfDay % 24;
-                        }
+        int id = v.getId();
+        if (id == R.id.ivSyncData) {
+            logAnalytics("Sync_Data_Follow_Up_Settings", "ImageView");
+            ServiceUserProfile.getUserSettings();
+            getFragmentManager().popBackStack();
+        } else if (id == R.id.opentime) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+                    final_start_hour = hourOfDay;
+                    final_start_min = minute;
+                    int endHourOfDay = 0, endMinute;
+                    endMinute = minute + 60;
+                    if (endMinute >= 60) {
+                        endHourOfDay = endHourOfDay + 1;
+                        endMinute = minute % 60;
+                    }
+                    endHourOfDay = endHourOfDay + hourOfDay;
+                    if (hourOfDay >= 24) {
+                        endHourOfDay = endHourOfDay % 24;
+                    }
 
-                        final_end_hour = endHourOfDay;
-                        final_end_min = endMinute;
-                        updateTime(hourOfDay, minute, 1);
+                    final_end_hour = endHourOfDay;
+                    final_end_min = endMinute;
+                    updateTime(hourOfDay, minute, 1);
                        /* Calendar calendar = Calendar.getInstance();
                         calendar.set(calendar.get(Calendar.YEAR), Calendar.MONTH, Calendar.DAY_OF_MONTH,
                                 hourOfDay, minute, 0);
@@ -492,34 +489,32 @@ public class SettingsFollowUpsFragment extends Fragment implements CompoundButto
                         String satrtime = CommonUtils.getTimeFormatInISO(new Date(startTime));
                         setTime(satrtime, "0", 0);*/
 
+                }
+            }, final_start_hour, final_start_min, false, false);
+            timePickerDialog.setVibrate(true);
+            timePickerDialog.setCloseOnSingleTapMinute(false);
+            timePickerDialog.show(getChildFragmentManager(), TIMEPICKER_TAG);
+        } else if (id == R.id.closetime) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            final TimePickerDialog timePickerDialog2 = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+                    final_start_hour = hourOfDay;
+                    final_start_min = minute;
+                    int endHourOfDay = 0, endMinute;
+                    endMinute = minute + 60;
+                    if (endMinute >= 60) {
+                        endHourOfDay = endHourOfDay + 1;
+                        endMinute = minute % 60;
                     }
-                }, final_start_hour, final_start_min, false, false);
-                timePickerDialog.setVibrate(true);
-                timePickerDialog.setCloseOnSingleTapMinute(false);
-                timePickerDialog.show(getChildFragmentManager(), TIMEPICKER_TAG);
+                    endHourOfDay = endHourOfDay + hourOfDay;
+                    if (hourOfDay >= 24) {
+                        endHourOfDay = endHourOfDay % 24;
+                    }
 
-                break;
-            case R.id.closetime:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                final TimePickerDialog timePickerDialog2 = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-                        final_start_hour = hourOfDay;
-                        final_start_min = minute;
-                        int endHourOfDay = 0, endMinute;
-                        endMinute = minute + 60;
-                        if (endMinute >= 60) {
-                            endHourOfDay = endHourOfDay + 1;
-                            endMinute = minute % 60;
-                        }
-                        endHourOfDay = endHourOfDay + hourOfDay;
-                        if (hourOfDay >= 24) {
-                            endHourOfDay = endHourOfDay % 24;
-                        }
-
-                        final_end_hour = endHourOfDay;
-                        final_end_min = endMinute;
-                        updateTime(hourOfDay, minute, 2);
+                    final_end_hour = endHourOfDay;
+                    final_end_min = endMinute;
+                    updateTime(hourOfDay, minute, 2);
 
                        /* Calendar calendar = Calendar.getInstance();
                         calendar.set(calendar.get(Calendar.YEAR), Calendar.MONTH, Calendar.DAY_OF_MONTH,
@@ -527,47 +522,32 @@ public class SettingsFollowUpsFragment extends Fragment implements CompoundButto
                         long startTime = calendar.getTimeInMillis();
                         String satrtime = CommonUtils.getTimeFormatInISO(new Date(startTime));
                         setTime("0", satrtime, 1);*/
-                    }
-                }, final_start_hour, final_start_min, false, false);
-                timePickerDialog2.setVibrate(true);
-                timePickerDialog2.setCloseOnSingleTapMinute(false);
-                timePickerDialog2.show(getChildFragmentManager(), TIMEPICKER_TAG);
-
-                break;
-            case R.id.m_layout:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                changeLaayoutColor(mLayout, AppConstants.MON);
-                break;
-
-            case R.id.t_layout:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                changeLaayoutColor(tLayout, AppConstants.TUE);
-                break;
-
-            case R.id.w_layout:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                changeLaayoutColor(wLayout, AppConstants.WEN);
-                break;
-
-            case R.id.thursday_layout:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                changeLaayoutColor(thursdayLayout, AppConstants.THU);
-                break;
-
-            case R.id.f_layout:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                changeLaayoutColor(fLayout, AppConstants.FRI);
-                break;
-
-            case R.id.strday_layout:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                changeLaayoutColor(satrdayLayout, AppConstants.SAT);
-                break;
-
-            case R.id.sunday_layout:
-                ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
-                changeLaayoutColor(sundayLayout, AppConstants.SUN);
-                break;
+                }
+            }, final_start_hour, final_start_min, false, false);
+            timePickerDialog2.setVibrate(true);
+            timePickerDialog2.setCloseOnSingleTapMinute(false);
+            timePickerDialog2.show(getChildFragmentManager(), TIMEPICKER_TAG);
+        } else if (id == R.id.m_layout) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            changeLaayoutColor(mLayout, AppConstants.MON);
+        } else if (id == R.id.t_layout) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            changeLaayoutColor(tLayout, AppConstants.TUE);
+        } else if (id == R.id.w_layout) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            changeLaayoutColor(wLayout, AppConstants.WEN);
+        } else if (id == R.id.thursday_layout) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            changeLaayoutColor(thursdayLayout, AppConstants.THU);
+        } else if (id == R.id.f_layout) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            changeLaayoutColor(fLayout, AppConstants.FRI);
+        } else if (id == R.id.strday_layout) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            changeLaayoutColor(satrdayLayout, AppConstants.SAT);
+        } else if (id == R.id.sunday_layout) {
+            ApplicationSettings.putPref(AppConstants.SAVE_SETTINGS, true);
+            changeLaayoutColor(sundayLayout, AppConstants.SUN);
         }
     }
 

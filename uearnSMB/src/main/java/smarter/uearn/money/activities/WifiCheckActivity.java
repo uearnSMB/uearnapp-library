@@ -185,33 +185,28 @@ public class WifiCheckActivity extends AppCompatActivity implements View.OnClick
         }
 
         int id = view.getId();
-        switch (id) {
-            case R.id.wifiRefreshImage:
-                if (CommonUtils.isNetworkAvailable(this)) {
-                    Animation rotation = AnimationUtils.loadAnimation(this, R.anim.button_rotate);
-                    rotation.setRepeatCount(Animation.RELATIVE_TO_SELF);
-                    wifirefresh.startAnimation(rotation);
-                    checkWiFiSpeed();
-                } else {
-                    wifiText1.setText("00");
-                    networkstatus.setImageDrawable(getResources().getDrawable(R.drawable.ic_no_internet));
-                    speedtv.setText("You are not connected to internet");
-                    nexttv.setVisibility(View.GONE);
-                    nextButton.setEnabled(false);
-                    nextButton.setClickable(false);
-                    nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
-                }
-                break;
-            case R.id.btnNext:
-                navigateToDeviceCheckCompleteActivity();
-                break;
-            case R.id.profile_image_back:
-                this.finish();
-                break;
-            case R.id.ll_notification:
-                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                settingsApi(userId);
-                break;
+        if (id == R.id.wifiRefreshImage) {
+            if (CommonUtils.isNetworkAvailable(this)) {
+                Animation rotation = AnimationUtils.loadAnimation(this, R.anim.button_rotate);
+                rotation.setRepeatCount(Animation.RELATIVE_TO_SELF);
+                wifirefresh.startAnimation(rotation);
+                checkWiFiSpeed();
+            } else {
+                wifiText1.setText("00");
+                networkstatus.setImageDrawable(getResources().getDrawable(R.drawable.ic_no_internet));
+                speedtv.setText("You are not connected to internet");
+                nexttv.setVisibility(View.GONE);
+                nextButton.setEnabled(false);
+                nextButton.setClickable(false);
+                nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
+            }
+        } else if (id == R.id.btnNext) {
+            navigateToDeviceCheckCompleteActivity();
+        } else if (id == R.id.profile_image_back) {
+            this.finish();
+        } else if (id == R.id.ll_notification) {
+            String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+            settingsApi(userId);
         }
     }
 

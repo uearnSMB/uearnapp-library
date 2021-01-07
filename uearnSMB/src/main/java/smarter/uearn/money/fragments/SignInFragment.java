@@ -164,60 +164,55 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
 
         CommonOperations.hideKeyboard(getContext(), view);
-        switch (view.getId()) {
-            case R.id.btnLogin:
-                logEvent("Login");
-                if (Validations.isValidEmail(emailEditText.getText().toString())) {
-                    error_email_tv.setVisibility(View.GONE);
+        int id = view.getId();
+        if (id == R.id.btnLogin) {
+            logEvent("Login");
+            if (Validations.isValidEmail(emailEditText.getText().toString())) {
+                error_email_tv.setVisibility(View.GONE);
 
-                    if (passwordEditText.getText().toString().length() > 0) {
-                        error_password_tv.setVisibility(View.GONE);
-                        submitCredentials();
-                    } else {
-                        error_password_tv.setVisibility(View.VISIBLE);
-                    }
-
-                } else {
-                    error_email_tv.setVisibility(View.VISIBLE);
+                if (passwordEditText.getText().toString().length() > 0) {
                     error_password_tv.setVisibility(View.GONE);
-                    error_email_tv.setText(R.string.invalid_email);
+                    submitCredentials();
+                } else {
+                    error_password_tv.setVisibility(View.VISIBLE);
                 }
-                break;
 
-            case R.id.tvSignUp:
-                logEvent("Sign Up");
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.authentication_container, new SignUpFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                break;
-
-            case R.id.forgot_passwordText:
-                logEvent("Forgot Password");
+            } else {
+                error_email_tv.setVisibility(View.VISIBLE);
                 error_password_tv.setVisibility(View.GONE);
-                if (Validations.validateTextLayout(emailEditText, 1)) {
-                    final Dialog forgotPwdDialog = CustomTwoButtonDialog.resetPassword(getActivity());
-                    TextView btnYes = forgotPwdDialog.findViewById(R.id.btn_yes);
-                    btnYes.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            forgotPwdDialog.dismiss();
-                            if (CommonOperations.isNetworkConnected(getContext(), 1)) {
-                                if (Validations.validateTextLayout(emailEditText, 1)) {
-                                    error_email_tv.setVisibility(View.GONE);
-                                    forgot_password(emailEditText.getText().toString());
-                                } else {
-                                    error_email_tv.setVisibility(View.VISIBLE);
-                                }
+                error_email_tv.setText(R.string.invalid_email);
+            }
+        } else if (id == R.id.tvSignUp) {
+            logEvent("Sign Up");
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.authentication_container, new SignUpFragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        } else if (id == R.id.forgot_passwordText) {
+            logEvent("Forgot Password");
+            error_password_tv.setVisibility(View.GONE);
+            if (Validations.validateTextLayout(emailEditText, 1)) {
+                final Dialog forgotPwdDialog = CustomTwoButtonDialog.resetPassword(getActivity());
+                TextView btnYes = forgotPwdDialog.findViewById(R.id.btn_yes);
+                btnYes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        forgotPwdDialog.dismiss();
+                        if (CommonOperations.isNetworkConnected(getContext(), 1)) {
+                            if (Validations.validateTextLayout(emailEditText, 1)) {
+                                error_email_tv.setVisibility(View.GONE);
+                                forgot_password(emailEditText.getText().toString());
+                            } else {
+                                error_email_tv.setVisibility(View.VISIBLE);
                             }
                         }
-                    });
+                    }
+                });
 
-                    forgotPwdDialog.show();
-                } else {
-                    error_email_tv.setVisibility(View.VISIBLE);
-                }
-                break;
+                forgotPwdDialog.show();
+            } else {
+                error_email_tv.setVisibility(View.VISIBLE);
+            }
         }
     }
 

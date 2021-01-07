@@ -243,78 +243,49 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.btnNext:
-                String userStatus = ApplicationSettings.getPref(AppConstants.USER_STATUS, "");
-                if (userStatus != null && !userStatus.isEmpty() && userStatus.equalsIgnoreCase("Voice Test Completed")) {
-                    navigateToOnboardingActivity();
-                } else {
-                    navigateToUearnProcessSelectionActivity();
-                }
-                break;
-            case R.id.image_sync:
-               try{
-                   String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                   settingsApi(userId);
-                   Animation rotation = AnimationUtils.loadAnimation(WelcomeActivity.this, R.anim.button_rotate);
-                   rotation.setRepeatCount(Animation.RELATIVE_TO_SELF);
-                   image_sync.startAnimation(rotation);
-               }catch (Exception e){
-                   e.printStackTrace();
-               }
-               break;
-
-            case R.id.imgNavClose: {
-                toggleLeftDrawer();
-                break;
+        if (id == R.id.btnNext) {
+            String userStatus = ApplicationSettings.getPref(AppConstants.USER_STATUS, "");
+            if (userStatus != null && !userStatus.isEmpty() && userStatus.equalsIgnoreCase("Voice Test Completed")) {
+                navigateToOnboardingActivity();
+            } else {
+                navigateToUearnProcessSelectionActivity();
             }
-
-            case R.id.nevSettings: {
-                toggleLeftDrawer();
-                Intent i = new Intent(WelcomeActivity.this, ProfileActivity.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                break;
+        } else if (id == R.id.image_sync) {
+            try {
+                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+                settingsApi(userId);
+                Animation rotation = AnimationUtils.loadAnimation(WelcomeActivity.this, R.anim.button_rotate);
+                rotation.setRepeatCount(Animation.RELATIVE_TO_SELF);
+                image_sync.startAnimation(rotation);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-            case R.id.navAbout: {
-                toggleLeftDrawer();
-                break;
-            }
-            case R.id.nevRefEarn: {
-                toggleLeftDrawer();
-                getReferAndEarn();
-                break;
-            }
-
-            case R.id.navFAQ: {
-                toggleLeftDrawer();
-                Intent intent = new Intent(this, UearnFAQActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                break;
-            }
-
-            case R.id.navAppVersion: {
-                toggleLeftDrawer();
-                break;
-            }
-
-            case R.id.nevFeedBack: {
-                getUserFeedback();
-                break;
-            }
-
-            case R.id.profile_image: {
-                toggleLeftDrawer();
-                break;
-            }
-
-            case R.id.navLogOut: {
-                signOutAndExit();
-                toggleLeftDrawer();
-                break;
-            }
+        } else if (id == R.id.imgNavClose) {
+            toggleLeftDrawer();
+        } else if (id == R.id.nevSettings) {
+            toggleLeftDrawer();
+            Intent i = new Intent(WelcomeActivity.this, ProfileActivity.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.navAbout) {
+            toggleLeftDrawer();
+        } else if (id == R.id.nevRefEarn) {
+            toggleLeftDrawer();
+            getReferAndEarn();
+        } else if (id == R.id.navFAQ) {
+            toggleLeftDrawer();
+            Intent intent = new Intent(this, UearnFAQActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.navAppVersion) {
+            toggleLeftDrawer();
+        } else if (id == R.id.nevFeedBack) {
+            getUserFeedback();
+        } else if (id == R.id.profile_image) {
+            toggleLeftDrawer();
+        } else if (id == R.id.navLogOut) {
+            signOutAndExit();
+            toggleLeftDrawer();
         }
     }
 

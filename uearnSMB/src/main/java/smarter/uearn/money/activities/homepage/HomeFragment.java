@@ -233,68 +233,42 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
 
         int id = v.getId();
-        switch (id) {
-            case R.id.lyTraining:
-                navigateToTrainingDashboardActivity();
-                break;
-
-            case R.id.imgTraining:
-                navigateToTrainingDashboardActivity();
-                break;
-
-            case R.id.lyInterviewProcess:
-                if (getActivity() != null) {
-                    Intent intent = new Intent(getActivity(), InterViewProcessActivity.class);
-                    startActivity(intent);
-                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                }
-                break;
-
-            case R.id.imgInterview:
-                if (getActivity() != null) {
-                    Intent intent = new Intent(getActivity(), InterViewProcessActivity.class);
-                    startActivity(intent);
-                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                }
-                break;
-
-            case R.id.lyHelp: {
-                if (getActivity() != null) {
-                    Intent intent = new Intent(getActivity(), UearnFAQActivity.class);
-                    startActivity(intent);
-                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                }
+        if (id == R.id.lyTraining) {
+            navigateToTrainingDashboardActivity();
+        } else if (id == R.id.imgTraining) {
+            navigateToTrainingDashboardActivity();
+        } else if (id == R.id.lyInterviewProcess) {
+            if (getActivity() != null) {
+                Intent intent = new Intent(getActivity(), InterViewProcessActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
-            break;
-
-            case R.id.imgHelp: {
-                if (getActivity() != null) {
-                    Intent intent = new Intent(getActivity(), UearnFAQActivity.class);
-                    startActivity(intent);
-                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                }
+        } else if (id == R.id.imgInterview) {
+            if (getActivity() != null) {
+                Intent intent = new Intent(getActivity(), InterViewProcessActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
-            break;
-
-            case R.id.lyOnboardingProcess: {
-                navigateToOnboardingActivity();
+        } else if (id == R.id.lyHelp) {
+            if (getActivity() != null) {
+                Intent intent = new Intent(getActivity(), UearnFAQActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
-            break;
-
-            case R.id.imgOnboard: {
-                navigateToOnboardingActivity();
+        } else if (id == R.id.imgHelp) {
+            if (getActivity() != null) {
+                Intent intent = new Intent(getActivity(), UearnFAQActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
-            break;
-
-            case R.id.tvHelpOnboard: {
-                showPopup(v);
-            }
-            break;
-
-            case R.id.tvHelpTraining: {
-                showPopup(v);
-            }
-            break;
+        } else if (id == R.id.lyOnboardingProcess) {
+            navigateToOnboardingActivity();
+        } else if (id == R.id.imgOnboard) {
+            navigateToOnboardingActivity();
+        } else if (id == R.id.tvHelpOnboard) {
+            showPopup(v);
+        } else if (id == R.id.tvHelpTraining) {
+            showPopup(v);
         }
     }
 
@@ -325,13 +299,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
         int id = view.getId();
         int position = Gravity.TOP;
-        switch (id) {
-            case R.id.tvHelpOnboard:
-                position = Gravity.TOP;
-                break;
-            case R.id.tvHelpTraining:
-                position = Gravity.TOP;
-                break;
+        if (id == R.id.tvHelpOnboard) {
+            position = Gravity.TOP;
+        } else if (id == R.id.tvHelpTraining) {
+            position = Gravity.TOP;
         }
 
         final SimpleTooltip tooltip = new SimpleTooltip.Builder(getActivity())

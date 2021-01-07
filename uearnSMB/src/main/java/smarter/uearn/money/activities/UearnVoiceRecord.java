@@ -97,11 +97,10 @@ public class UearnVoiceRecord extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.recButton:
-                Intent intent = new Intent(this, StartUearnVoiceRecord.class);
-                intent.putExtra("VoiceInfo", voiceInfo);
-                startActivity(intent);
+        if (view.getId() == R.id.recButton) {
+            Intent intent = new Intent(this, StartUearnVoiceRecord.class);
+            intent.putExtra("VoiceInfo", voiceInfo);
+            startActivity(intent);
         }
     }
 }

@@ -1504,765 +1504,360 @@ public class AfterCallActivity extends BaseActivity implements View.OnClickListe
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        switch (v.getId()) {
-            case R.id.btn_ten:
-                logAnalytics("Ten_Minutes", "TextView");
+        int id = v.getId();
+        if (id == R.id.btn_ten) {
+            logAnalytics("Ten_Minutes", "TextView");
 
-                resetBackground();
-                autoCheck = true;
-                btnTen.setBackgroundColor(getResources().getColor(R.color.smb_blue));
+            resetBackground();
+            autoCheck = true;
+            btnTen.setBackgroundColor(getResources().getColor(R.color.smb_blue));
 
-                preAlarmSet = true;
-                mCalendar = Calendar.getInstance();
+            preAlarmSet = true;
+            mCalendar = Calendar.getInstance();
 
-                int calculateMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
-                int calculateHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            int calculateMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
+            int calculateHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
-                if (calculateMinute1 >= 60) {
-                    final_start_min = calculateMinute1 - 60;
-                    final_start_hour = calculateHour1 + 1;
-                } else {
-                    final_start_min = calculateMinute1;
-                    final_start_hour = calculateHour1;
-                }
+            if (calculateMinute1 >= 60) {
+                final_start_min = calculateMinute1 - 60;
+                final_start_hour = calculateHour1 + 1;
+            } else {
+                final_start_min = calculateMinute1;
+                final_start_hour = calculateHour1;
+            }
 
-                int calculateEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
+            int calculateEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
 
-                if (calculateEndMinute1 >= 60) {
-                    final_end_min = calculateEndMinute1 - 60;
-                    final_end_hour = calculateHour1 + 1;
-                } else {
-                    final_end_min = calculateEndMinute1;
-                    final_end_hour = calculateHour1;
-                }
+            if (calculateEndMinute1 >= 60) {
+                final_end_min = calculateEndMinute1 - 60;
+                final_end_hour = calculateHour1 + 1;
+            } else {
+                final_end_min = calculateEndMinute1;
+                final_end_hour = calculateHour1;
+            }
 
-                Calendar cDtTm = Calendar.getInstance();
+            Calendar cDtTm = Calendar.getInstance();
 
-                final_start_year = cDtTm.get(Calendar.YEAR);
-                final_start_month = cDtTm.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm.get(Calendar.YEAR);
-                final_end_month = cDtTm.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
-                Toast.makeText(this, "Alarm set for 10 min", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.btn_thirty:
-                logAnalytics("Thirty_Minutes", "TextView");
+            final_start_year = cDtTm.get(Calendar.YEAR);
+            final_start_month = cDtTm.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm.get(Calendar.YEAR);
+            final_end_month = cDtTm.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
+            Toast.makeText(this, "Alarm set for 10 min", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.btn_thirty) {
+            logAnalytics("Thirty_Minutes", "TextView");
 
-                resetBackground();
-                autoCheck = true;
-                btnThirty.setBackgroundColor(getResources().getColor(R.color.smb_blue));
+            resetBackground();
+            autoCheck = true;
+            btnThirty.setBackgroundColor(getResources().getColor(R.color.smb_blue));
 
-                preAlarmSet = true;
-                mCalendar = Calendar.getInstance();
+            preAlarmSet = true;
+            mCalendar = Calendar.getInstance();
 
-                int calculateMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
-                int calculateHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            int calculateMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
+            int calculateHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
-                if (calculateMinute2 >= 60) {
-                    final_start_min = calculateMinute2 - 60;
-                    final_start_hour = calculateHour2 + 1;
-                } else {
-                    final_start_min = calculateMinute2;
-                    final_start_hour = calculateHour2;
-                }
+            if (calculateMinute2 >= 60) {
+                final_start_min = calculateMinute2 - 60;
+                final_start_hour = calculateHour2 + 1;
+            } else {
+                final_start_min = calculateMinute2;
+                final_start_hour = calculateHour2;
+            }
 
-                int calculateEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
+            int calculateEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
 
-                if (calculateEndMinute2 >= 60) {
-                    final_end_min = calculateEndMinute2 - 60;
-                    final_end_hour = calculateHour2 + 1;
-                } else {
-                    final_end_min = calculateEndMinute2;
-                    final_end_hour = calculateHour2;
-                }
+            if (calculateEndMinute2 >= 60) {
+                final_end_min = calculateEndMinute2 - 60;
+                final_end_hour = calculateHour2 + 1;
+            } else {
+                final_end_min = calculateEndMinute2;
+                final_end_hour = calculateHour2;
+            }
 
-                Calendar cDtTm1 = Calendar.getInstance();
+            Calendar cDtTm1 = Calendar.getInstance();
 
-                final_start_year = cDtTm1.get(Calendar.YEAR);
-                final_start_month = cDtTm1.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm1.get(Calendar.YEAR);
-                final_end_month = cDtTm1.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
-                Toast.makeText(this, "Alarm set for 30 min", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.btn_sixty:
-                logAnalytics("Sixty_Minutes", "TextView");
+            final_start_year = cDtTm1.get(Calendar.YEAR);
+            final_start_month = cDtTm1.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm1.get(Calendar.YEAR);
+            final_end_month = cDtTm1.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
+            Toast.makeText(this, "Alarm set for 30 min", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.btn_sixty) {
+            logAnalytics("Sixty_Minutes", "TextView");
 
-                resetBackground();
-                autoCheck = true;
-                btnSixty.setBackgroundColor(getResources().getColor(R.color.smb_blue));
+            resetBackground();
+            autoCheck = true;
+            btnSixty.setBackgroundColor(getResources().getColor(R.color.smb_blue));
 
-                preAlarmSet = true;
-                mCalendar = Calendar.getInstance();
+            preAlarmSet = true;
+            mCalendar = Calendar.getInstance();
 
-                int calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
-                int calculateHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            int calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
+            int calculateHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
-                if (calculateMinute3 >= 60) {
-                    final_start_min = calculateMinute3 - 60;
-                    final_start_hour = calculateHour3 + 1;
-                } else {
-                    final_start_min = calculateMinute3;
-                    final_start_hour = calculateHour3;
-                }
+            if (calculateMinute3 >= 60) {
+                final_start_min = calculateMinute3 - 60;
+                final_start_hour = calculateHour3 + 1;
+            } else {
+                final_start_min = calculateMinute3;
+                final_start_hour = calculateHour3;
+            }
 
-                int calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
+            int calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
 
-                if (calculateEndMinute3 >= 60) {
-                    final_end_min = calculateEndMinute3 - 60;
+            if (calculateEndMinute3 >= 60) {
+                final_end_min = calculateEndMinute3 - 60;
+                final_end_hour = calculateHour3 + 1;
+
+                if (final_end_min >= 60) {
+                    final_end_min = final_end_min - 60;
                     final_end_hour = calculateHour3 + 1;
-
-                    if (final_end_min >= 60) {
-                        final_end_min = final_end_min - 60;
-                        final_end_hour = calculateHour3 + 1;
-                    }
                 }
+            }
 
-                Calendar cDtTm2 = Calendar.getInstance();
+            Calendar cDtTm2 = Calendar.getInstance();
 
-                final_start_year = cDtTm2.get(Calendar.YEAR);
-                final_start_month = cDtTm2.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm2.get(Calendar.YEAR);
-                final_end_month = cDtTm2.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
-                Toast.makeText(this, "Alarm set for 60 min", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.tv_name_or_number:
-                logAnalytics("Customer_Details", "TextView");
+            final_start_year = cDtTm2.get(Calendar.YEAR);
+            final_start_month = cDtTm2.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm2.get(Calendar.YEAR);
+            final_end_month = cDtTm2.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
+            Toast.makeText(this, "Alarm set for 60 min", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.tv_name_or_number) {
+            logAnalytics("Customer_Details", "TextView");
 
-                final AlertDialog alertDialog = new CustomLogPicker().buildChangePasswordDialog(this, this);
+            final AlertDialog alertDialog = new CustomLogPicker().buildChangePasswordDialog(this, this);
 
-                if (customerNumber == null) {
-                    alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                        @Override
-                        public void onDismiss(DialogInterface dialog) {
-                            customerNumber = CustomLogPicker.selectedNumber;
-                            if (customerNumber.isEmpty()) {
-                                Toast.makeText(AfterCallActivity.this, "You have still not selected a number", Toast.LENGTH_SHORT).show();
-                            } else {
-                                ApplicationSettings.putPref(AFTER_CALL_PHONE, customerNumber);
-                                setLayoutHeader();
-                                mNameOrNumber.setText(customerNumber);
-                                errorText.setVisibility(View.GONE);
-                                getLastUpdatedSalesStage();
-                            }
+            if (customerNumber == null) {
+                alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        customerNumber = CustomLogPicker.selectedNumber;
+                        if (customerNumber.isEmpty()) {
+                            Toast.makeText(AfterCallActivity.this, "You have still not selected a number", Toast.LENGTH_SHORT).show();
+                        } else {
+                            ApplicationSettings.putPref(AFTER_CALL_PHONE, customerNumber);
+                            setLayoutHeader();
+                            mNameOrNumber.setText(customerNumber);
+                            errorText.setVisibility(View.GONE);
+                            getLastUpdatedSalesStage();
                         }
-                    });
-                    alertDialog.show();
-                } else if (customerNumber.isEmpty()) {
-                    alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                        @Override
-                        public void onDismiss(DialogInterface dialog) {
-                            customerNumber = CustomLogPicker.selectedNumber;
-                            if (customerNumber.isEmpty()) {
-                                Toast.makeText(AfterCallActivity.this, "You have still not selected a number", Toast.LENGTH_SHORT).show();
-                            } else {
-                                ApplicationSettings.putPref(AFTER_CALL_PHONE, customerNumber);
-                                setLayoutHeader();
-                                mNameOrNumber.setText(customerNumber);
-                                errorText.setVisibility(View.GONE);
-                                getLastUpdatedSalesStage();
-                            }
+                    }
+                });
+                alertDialog.show();
+            } else if (customerNumber.isEmpty()) {
+                alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        customerNumber = CustomLogPicker.selectedNumber;
+                        if (customerNumber.isEmpty()) {
+                            Toast.makeText(AfterCallActivity.this, "You have still not selected a number", Toast.LENGTH_SHORT).show();
+                        } else {
+                            ApplicationSettings.putPref(AFTER_CALL_PHONE, customerNumber);
+                            setLayoutHeader();
+                            mNameOrNumber.setText(customerNumber);
+                            errorText.setVisibility(View.GONE);
+                            getLastUpdatedSalesStage();
                         }
-                    });
-                    alertDialog.show();
-                } else {
-                    MySql dbHelper = MySql.getInstance(SmarterSMBApplication.currentActivity);
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-                    Cursor cursor = db.rawQuery("SELECT * FROM remindertbNew where _id=" + "'" + String.valueOf(reminderdbId) + "'", null);
-                    if (cursor != null) {
-                        cursor.close();
-                        db.close();
-                        dbHelper.close();
                     }
-
-                    llAfterCallLayout.setVisibility(View.GONE);
-                    String paramNameNumber = "";
-
-                    if (!callerName.isEmpty()) {
-                        paramNameNumber = callerName;
-                    } else if (!customerNumber.isEmpty()) {
-                        paramNameNumber = customerNumber;
-                    }
-                    fragmentTransaction.add(R.id.fl_after_call_container, CustomerDetailFragment.newInstance(paramNameNumber, String.valueOf(reminderdbId), false));
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
-                break;
-            case R.id.ll_notes_click:
-                logAnalytics("Notes_Image", "TextView");
-
-                doNotCloseActivity = true;
-                Random rand = new Random();
-                imagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/notesimage" + rand.nextInt() + ".JPEG"; // Previously set as JPG
-                intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(imagePath)));
-                startActivityForResult(intent, LOAD_IMAGE);
-                break;
-            case R.id.ll_notes_record:
-                logAnalytics("Notes_Audio_Recording", "TextView");
-
-                new CustomAudioRecorderDialog().buildAudioRecorder(this, this);
-                break;
-            case R.id.ll_notes_type:
-                logAnalytics("Notes_Text", "TextView");
-
-                llAfterCallLayout.setVisibility(View.GONE);
-                String notes = ApplicationSettings.getPref(AFTER_CALL_NOTES, " ");
-                fragmentTransaction.add(R.id.fl_after_call_container, AfterCallNotesFragment.newInstance(notes));
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                break;
-            case R.id.ll_not_a_lead:
-                logAnalytics("Not_A_Lead", "TextView");
-
-                notAlead = true;
-                if (customerNumber != null) {
-                    deleteFutureAppointments(customerNumber, "notAlead");
-                    AfterCallActivity.this.finish();
-                    Toast.makeText(this, "No more follow-ups set.", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.ll_junk_call:
-                if (ApplicationSettings.containsPref(AppConstants.JUNKCALL_SETTING)) {
-                    if (ApplicationSettings.getPref(AppConstants.JUNKCALL_SETTING, false)) {
-                        logAnalytics("Junk_Call", "TextView");
-
-                        canUpload = false;
-                        if (customerNumber != null && (!customerNumber.isEmpty())) {
-                            addJunkToServer(customerNumber);
-                            saveJunkNumbers(customerNumber);
-                            deleteFutureAppointments(customerNumber, "private");
-                        }
-                        AfterCallActivity.this.finish();
-                        Toast.makeText(this, "Marked as junk call", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this, "Junk contacts are disabled, Please Check Settings", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                break;
-
-            case R.id.ll_personal_contact:
-                if (ApplicationSettings.containsPref(AppConstants.PERSONALCALL_SETTING)) {
-                    if (ApplicationSettings.getPref(AppConstants.PERSONALCALL_SETTING, false)) {
-                        logAnalytics("Personal_Call", "TextView");
-                        canUpload = false;
-                        if (customerNumber != null && (!customerNumber.isEmpty())) {
-                            private_contacts_array.add(customerNumber);
-                            addPersonalToServer(customerNumber);
-                            savePrivateContacts(customerNumber);
-                            deleteFutureAppointments(customerNumber, "private");
-                            AfterCallActivity.this.finish();
-                            Toast.makeText(this, "Added to personal contacts.", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(this, "Please Check Settings", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(this, "Personal contacts are disabled, Please Check Settings", Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            case R.id.ll_assign_to:
-                logAnalytics("Assign_To", "TextView");
+                });
+                alertDialog.show();
+            } else {
                 MySql dbHelper = MySql.getInstance(SmarterSMBApplication.currentActivity);
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                Cursor mCursor = db.rawQuery("SELECT * FROM TeamMembers", null);
-                try {
-                    if (mCursor != null && mCursor.getCount() > 0) {
-                        llAfterCallLayout.setVisibility(View.GONE);
-                        fragmentTransaction.add(R.id.fl_after_call_container, new AfterCallAssignFragment());
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
-                    } else {
-                        Toast.makeText(this, "You do not have team", Toast.LENGTH_SHORT).show();
-                    }
-                } finally {
-                    mCursor.close();
+
+                Cursor cursor = db.rawQuery("SELECT * FROM remindertbNew where _id=" + "'" + String.valueOf(reminderdbId) + "'", null);
+                if (cursor != null) {
+                    cursor.close();
                     db.close();
+                    dbHelper.close();
                 }
 
-                break;
+                llAfterCallLayout.setVisibility(View.GONE);
+                String paramNameNumber = "";
 
-            case R.id.nextButton:
-                JSONObject jsonobject = null;
-                updateHash();
+                if (!callerName.isEmpty()) {
+                    paramNameNumber = callerName;
+                } else if (!customerNumber.isEmpty()) {
+                    paramNameNumber = customerNumber;
+                }
+                fragmentTransaction.add(R.id.fl_after_call_container, CustomerDetailFragment.newInstance(paramNameNumber, String.valueOf(reminderdbId), false));
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        } else if (id == R.id.ll_notes_click) {
+            logAnalytics("Notes_Image", "TextView");
 
-                resetYesNoButton();
+            doNotCloseActivity = true;
+            Random rand = new Random();
+            imagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/notesimage" + rand.nextInt() + ".JPEG"; // Previously set as JPG
+            intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(imagePath)));
+            startActivityForResult(intent, LOAD_IMAGE);
+        } else if (id == R.id.ll_notes_record) {
+            logAnalytics("Notes_Audio_Recording", "TextView");
 
-                if (currentSelectedScenario != null && !currentSelectedScenario.isEmpty()) {
-                    try {
-                        jsonobject = rootArrayData.getJSONObject(questionCount);
-                        if (jsonobject.has(currentSelectedScenario)) {
-                            rootArrayData = jsonobject.getJSONArray(currentSelectedScenario);
-                            questionCount = 0;
-                            if (rootArrayData.length() != questionCount) {
-                                jsonobject = rootArrayData.getJSONObject(questionCount);
-                                rootQ = jsonobject.getString("q");
-                                rootR = jsonobject.getString("at");
-                                if (jsonobject != null) {
-                                    if (jsonobject.has("dd_data")) {
-                                        dropDownData = jsonobject.getString("dd_data");
-                                        if (dropDownData != null && dropDownData.length() > 0) {
-                                            dropDownHash.put(rootQ, dropDownData);
-                                        }
-                                    }
-                                }
-                                questionnaireHash.put(rootQ, rootR);
-                                tempQuesList.add(questionCount, rootQ);
-                                tempQnAHash.put(rootQ, rootR);
+            new CustomAudioRecorderDialog().buildAudioRecorder(this, this);
+        } else if (id == R.id.ll_notes_type) {
+            logAnalytics("Notes_Text", "TextView");
 
-                                if (rootR.equalsIgnoreCase("RT")) {
-                                    ratingsLayout.setVisibility(View.VISIBLE);
-                                    ratingsTextView.setText(rootQ);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    initSeekBar();
-                                } else if (rootR.equalsIgnoreCase("FT")) {
-                                    freeTextLayout.setVisibility(View.VISIBLE);
-                                    freeTextTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("DD")) {
-                                    dropdownLayout.setVisibility(View.VISIBLE);
-                                    dropDownTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    createSpinner(rootQ);
-                                } else if (rootR.equalsIgnoreCase("BT")) {
-                                    buttonsLayout.setVisibility(View.VISIBLE);
-                                    buttonsTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("YN")) {
-                                    isInterestedLayout.setVisibility(View.VISIBLE);
-                                    isInterestedTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                }
-                            } else {
-                                isInterestedLayout.setVisibility(View.VISIBLE);
-                                isInterestedTextView.setText("Thank you for your survey");
-                                isInterestedTextView.setTextSize(32);
-                                isInterestedTextView.setTypeface(null, Typeface.BOLD);
-                                dropdownLayout.setVisibility(View.GONE);
-                                ratingsLayout.setVisibility(View.GONE);
-                                formButtonLayout.setVisibility(View.GONE);
-                                isInterestedButtonsLayout.setVisibility(View.GONE);
-                                buttonsLayout.setVisibility(View.GONE);
-                                freeTextLayout.setVisibility(View.GONE);
-                                endCallButtonLayout.setVisibility(View.VISIBLE);
-                            }
-                        } else {
-                            questionCount++;
-                            if (rootArrayData.length() != questionCount) {
-                                jsonobject = rootArrayData.getJSONObject(questionCount);
-                                if (jsonobject != null) {
-                                    rootQ = jsonobject.getString("q");
-                                    rootR = jsonobject.getString("at");
-                                    if (jsonobject.has("dd_data")) {
-                                        dropDownData = jsonobject.getString("dd_data");
-                                        if (dropDownData != null && dropDownData.length() > 0) {
-                                            dropDownHash.put(rootQ, dropDownData);
-                                        }
-                                    }
-                                }
-                                questionnaireHash.put(rootQ, rootR);
-                                tempQuesList.add(questionCount, rootQ);
-                                tempQnAHash.put(rootQ, rootR);
+            llAfterCallLayout.setVisibility(View.GONE);
+            String notes = ApplicationSettings.getPref(AFTER_CALL_NOTES, " ");
+            fragmentTransaction.add(R.id.fl_after_call_container, AfterCallNotesFragment.newInstance(notes));
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        } else if (id == R.id.ll_not_a_lead) {
+            logAnalytics("Not_A_Lead", "TextView");
 
-                                if (rootR.equalsIgnoreCase("RT")) {
-                                    ratingsLayout.setVisibility(View.VISIBLE);
-                                    ratingsTextView.setText(rootQ);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    initSeekBar();
-                                } else if (rootR.equalsIgnoreCase("FT")) {
-                                    freeTextLayout.setVisibility(View.VISIBLE);
-                                    freeTextTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("DD")) {
-                                    dropdownLayout.setVisibility(View.VISIBLE);
-                                    dropDownTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    createSpinner(rootQ);
-                                } else if (rootR.equalsIgnoreCase("BT")) {
-                                    buttonsLayout.setVisibility(View.VISIBLE);
-                                    buttonsTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("YN")) {
-                                    isInterestedLayout.setVisibility(View.VISIBLE);
-                                    isInterestedTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                }
-                            } else {
-                                isInterestedLayout.setVisibility(View.VISIBLE);
-                                isInterestedTextView.setText("Thank you for your survey");
-                                isInterestedTextView.setTextSize(32);
-                                isInterestedTextView.setTypeface(null, Typeface.BOLD);
-                                dropdownLayout.setVisibility(View.GONE);
-                                ratingsLayout.setVisibility(View.GONE);
-                                formButtonLayout.setVisibility(View.GONE);
-                                isInterestedButtonsLayout.setVisibility(View.GONE);
-                                buttonsLayout.setVisibility(View.GONE);
-                                freeTextLayout.setVisibility(View.GONE);
-                                endCallButtonLayout.setVisibility(View.VISIBLE);
-                            }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+            notAlead = true;
+            if (customerNumber != null) {
+                deleteFutureAppointments(customerNumber, "notAlead");
+                AfterCallActivity.this.finish();
+                Toast.makeText(this, "No more follow-ups set.", Toast.LENGTH_SHORT).show();
+            }
+        } else if (id == R.id.ll_junk_call) {
+            if (ApplicationSettings.containsPref(AppConstants.JUNKCALL_SETTING)) {
+                if (ApplicationSettings.getPref(AppConstants.JUNKCALL_SETTING, false)) {
+                    logAnalytics("Junk_Call", "TextView");
+
+                    canUpload = false;
+                    if (customerNumber != null && (!customerNumber.isEmpty())) {
+                        addJunkToServer(customerNumber);
+                        saveJunkNumbers(customerNumber);
+                        deleteFutureAppointments(customerNumber, "private");
                     }
-                    currentSelectedScenario = "";
-                } else if (currentRatings != null && !currentRatings.isEmpty() && !currentRatings.equals("0")) {
-                    try {
-                        String key = "";
-                        jsonobject = rootArrayData.getJSONObject(questionCount);
-                        if (jsonobject.has(currentRatings)) {
-                            questionCount = 0;
-                            if (jsonobject != null) {
-                                Iterator<String> keys = jsonobject.keys();
-                                while (keys.hasNext()) {
-                                    key = (String) keys.next();
-                                    if (key.equals(currentRatings)) {
-                                        key = currentRatings;
-                                        break;
-                                    }
-                                }
-                                jsonobject.get(key);
-                                rootQ = jsonobject.getJSONObject(key).getString("q");
-                                rootR = jsonobject.getJSONObject(key).getString("at");
-                                if (jsonobject != null) {
-                                    if (jsonobject.getJSONObject(key).has("dd_data")) {
-                                        dropDownData = jsonobject.getJSONObject(key).getString("dd_data");
-                                        if (dropDownData != null && dropDownData.length() > 0) {
-                                            dropDownHash.put(rootQ, dropDownData);
-                                        }
-                                    }
-                                }
-                                questionnaireHash.put(rootQ, rootR);
-                                tempQuesList.add(questionCount, rootQ);
-                                tempQnAHash.put(rootQ, rootR);
-
-                                if (rootR.equalsIgnoreCase("RT")) {
-                                    ratingsLayout.setVisibility(View.VISIBLE);
-                                    ratingsTextView.setText(rootQ);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    initSeekBar();
-                                } else if (rootR.equalsIgnoreCase("FT")) {
-                                    freeTextLayout.setVisibility(View.VISIBLE);
-                                    freeTextTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("DD")) {
-                                    dropdownLayout.setVisibility(View.VISIBLE);
-                                    dropDownTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    createSpinner(rootQ);
-                                } else if (rootR.equalsIgnoreCase("BT")) {
-                                    buttonsLayout.setVisibility(View.VISIBLE);
-                                    buttonsTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("YN")) {
-                                    isInterestedLayout.setVisibility(View.VISIBLE);
-                                    isInterestedTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                }
-                            } else {
-                                isInterestedLayout.setVisibility(View.VISIBLE);
-                                isInterestedTextView.setText("Thank you for your survey");
-                                isInterestedTextView.setTextSize(32);
-                                isInterestedTextView.setTypeface(null, Typeface.BOLD);
-                                dropdownLayout.setVisibility(View.GONE);
-                                ratingsLayout.setVisibility(View.GONE);
-                                formButtonLayout.setVisibility(View.GONE);
-                                isInterestedButtonsLayout.setVisibility(View.GONE);
-                                buttonsLayout.setVisibility(View.GONE);
-                                freeTextLayout.setVisibility(View.GONE);
-                                endCallButtonLayout.setVisibility(View.VISIBLE);
-                            }
-                        } else {
-                            questionCount++;
-                            if (rootArrayData.length() != questionCount) {
-                                jsonobject = rootArrayData.getJSONObject(questionCount);
-                                if (jsonobject != null) {
-                                    rootQ = jsonobject.getString("q");
-                                    rootR = jsonobject.getString("at");
-                                    if (jsonobject.has("dd_data")) {
-                                        dropDownData = jsonobject.getString("dd_data");
-                                        if (dropDownData != null && dropDownData.length() > 0) {
-                                            dropDownHash.put(rootQ, dropDownData);
-                                        }
-                                    }
-                                }
-                                questionnaireHash.put(rootQ, rootR);
-                                tempQuesList.add(questionCount, rootQ);
-                                tempQnAHash.put(rootQ, rootR);
-
-                                if (rootR.equalsIgnoreCase("RT")) {
-                                    ratingsLayout.setVisibility(View.VISIBLE);
-                                    ratingsTextView.setText(rootQ);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    initSeekBar();
-                                } else if (rootR.equalsIgnoreCase("FT")) {
-                                    freeTextLayout.setVisibility(View.VISIBLE);
-                                    freeTextTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("DD")) {
-                                    dropdownLayout.setVisibility(View.VISIBLE);
-                                    dropDownTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    createSpinner(rootQ);
-                                } else if (rootR.equalsIgnoreCase("BT")) {
-                                    buttonsLayout.setVisibility(View.VISIBLE);
-                                    buttonsTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("YN")) {
-                                    isInterestedLayout.setVisibility(View.VISIBLE);
-                                    isInterestedTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                }
-                            } else {
-                                isInterestedLayout.setVisibility(View.VISIBLE);
-                                isInterestedTextView.setText("Thank you for your survey");
-                                isInterestedTextView.setTextSize(32);
-                                isInterestedTextView.setTypeface(null, Typeface.BOLD);
-                                dropdownLayout.setVisibility(View.GONE);
-                                ratingsLayout.setVisibility(View.GONE);
-                                formButtonLayout.setVisibility(View.GONE);
-                                isInterestedButtonsLayout.setVisibility(View.GONE);
-                                buttonsLayout.setVisibility(View.GONE);
-                                freeTextLayout.setVisibility(View.GONE);
-                                endCallButtonLayout.setVisibility(View.VISIBLE);
-                            }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    currentRatings = "";
-                    customerRatings.setText("");
-                } else if (formStatus != null && !formStatus.isEmpty()) {
-                    try {
-                        jsonobject = rootArrayData.getJSONObject(questionCount);
-                        formStatus = formStatus.substring(0, 1);
-                        if (jsonobject.has(formStatus)) {
-                            rootArrayData = jsonobject.getJSONArray(formStatus);
-                            questionCount = 0;
-                            if (rootArrayData.length() != questionCount) {
-                                jsonobject = rootArrayData.getJSONObject(questionCount);
-                                rootQ = jsonobject.getString("q");
-                                rootR = jsonobject.getString("at");
-                                questionnaireHash.put(rootQ, rootR);
-                                tempQuesList.add(questionCount, rootQ);
-                                tempQnAHash.put(rootQ, rootR);
-
-                                if (rootR.equalsIgnoreCase("RT")) {
-                                    ratingsLayout.setVisibility(View.VISIBLE);
-                                    ratingsTextView.setText(rootQ);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    initSeekBar();
-                                } else if (rootR.equalsIgnoreCase("FT")) {
-                                    freeTextLayout.setVisibility(View.VISIBLE);
-                                    freeTextTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("DD")) {
-                                    dropdownLayout.setVisibility(View.VISIBLE);
-                                    dropDownTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    createSpinner(rootQ);
-                                } else if (rootR.equalsIgnoreCase("BT")) {
-                                    buttonsLayout.setVisibility(View.VISIBLE);
-                                    buttonsTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("YN")) {
-                                    isInterestedLayout.setVisibility(View.VISIBLE);
-                                    isInterestedTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                }
-                            } else {
-                                isInterestedLayout.setVisibility(View.VISIBLE);
-                                isInterestedTextView.setText("Thank you for your survey");
-                                isInterestedTextView.setTextSize(32);
-                                isInterestedTextView.setTypeface(null, Typeface.BOLD);
-                                dropdownLayout.setVisibility(View.GONE);
-                                ratingsLayout.setVisibility(View.GONE);
-                                formButtonLayout.setVisibility(View.GONE);
-                                isInterestedButtonsLayout.setVisibility(View.GONE);
-                                buttonsLayout.setVisibility(View.GONE);
-                                freeTextLayout.setVisibility(View.GONE);
-                                endCallButtonLayout.setVisibility(View.VISIBLE);
-                            }
-                        } else {
-                            questionCount++;
-                            if (rootArrayData.length() != questionCount) {
-                                jsonobject = rootArrayData.getJSONObject(questionCount);
-                                if (jsonobject != null) {
-                                    rootQ = jsonobject.getString("q");
-                                    rootR = jsonobject.getString("at");
-                                }
-                                questionnaireHash.put(rootQ, rootR);
-                                tempQuesList.add(questionCount, rootQ);
-                                tempQnAHash.put(rootQ, rootR);
-
-                                if (rootR.equalsIgnoreCase("RT")) {
-                                    ratingsLayout.setVisibility(View.VISIBLE);
-                                    ratingsTextView.setText(rootQ);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    initSeekBar();
-                                } else if (rootR.equalsIgnoreCase("FT")) {
-                                    freeTextLayout.setVisibility(View.VISIBLE);
-                                    freeTextTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("DD")) {
-                                    dropdownLayout.setVisibility(View.VISIBLE);
-                                    dropDownTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                    createSpinner(rootQ);
-                                } else if (rootR.equalsIgnoreCase("BT")) {
-                                    buttonsLayout.setVisibility(View.VISIBLE);
-                                    buttonsTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    isInterestedLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                } else if (rootR.equalsIgnoreCase("YN")) {
-                                    isInterestedLayout.setVisibility(View.VISIBLE);
-                                    isInterestedTextView.setText(rootQ);
-                                    ratingsLayout.setVisibility(View.GONE);
-                                    freeTextLayout.setVisibility(View.GONE);
-                                    dropdownLayout.setVisibility(View.GONE);
-                                    buttonsLayout.setVisibility(View.GONE);
-                                    endCallButtonLayout.setVisibility(View.VISIBLE);
-                                }
-                            } else {
-                                isInterestedLayout.setVisibility(View.VISIBLE);
-                                isInterestedTextView.setText("Thank you for your survey");
-                                isInterestedTextView.setTextSize(32);
-                                isInterestedTextView.setTypeface(null, Typeface.BOLD);
-                                dropdownLayout.setVisibility(View.GONE);
-                                ratingsLayout.setVisibility(View.GONE);
-                                formButtonLayout.setVisibility(View.GONE);
-                                isInterestedButtonsLayout.setVisibility(View.GONE);
-                                buttonsLayout.setVisibility(View.GONE);
-                                freeTextLayout.setVisibility(View.GONE);
-                                endCallButtonLayout.setVisibility(View.VISIBLE);
-                            }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    formStatus = "";
+                    AfterCallActivity.this.finish();
+                    Toast.makeText(this, "Marked as junk call", Toast.LENGTH_SHORT).show();
                 } else {
-                    try {
+                    Toast.makeText(this, "Junk contacts are disabled, Please Check Settings", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } else if (id == R.id.ll_personal_contact) {
+            if (ApplicationSettings.containsPref(AppConstants.PERSONALCALL_SETTING)) {
+                if (ApplicationSettings.getPref(AppConstants.PERSONALCALL_SETTING, false)) {
+                    logAnalytics("Personal_Call", "TextView");
+                    canUpload = false;
+                    if (customerNumber != null && (!customerNumber.isEmpty())) {
+                        private_contacts_array.add(customerNumber);
+                        addPersonalToServer(customerNumber);
+                        savePrivateContacts(customerNumber);
+                        deleteFutureAppointments(customerNumber, "private");
+                        AfterCallActivity.this.finish();
+                        Toast.makeText(this, "Added to personal contacts.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Please Check Settings", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Personal contacts are disabled, Please Check Settings", Toast.LENGTH_SHORT).show();
+            }
+        } else if (id == R.id.ll_assign_to) {
+            logAnalytics("Assign_To", "TextView");
+            MySql dbHelper = MySql.getInstance(SmarterSMBApplication.currentActivity);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor mCursor = db.rawQuery("SELECT * FROM TeamMembers", null);
+            try {
+                if (mCursor != null && mCursor.getCount() > 0) {
+                    llAfterCallLayout.setVisibility(View.GONE);
+                    fragmentTransaction.add(R.id.fl_after_call_container, new AfterCallAssignFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                } else {
+                    Toast.makeText(this, "You do not have team", Toast.LENGTH_SHORT).show();
+                }
+            } finally {
+                mCursor.close();
+                db.close();
+            }
+        } else if (id == R.id.nextButton) {
+            JSONObject jsonobject = null;
+            updateHash();
+
+            resetYesNoButton();
+
+            if (currentSelectedScenario != null && !currentSelectedScenario.isEmpty()) {
+                try {
+                    jsonobject = rootArrayData.getJSONObject(questionCount);
+                    if (jsonobject.has(currentSelectedScenario)) {
+                        rootArrayData = jsonobject.getJSONArray(currentSelectedScenario);
+                        questionCount = 0;
+                        if (rootArrayData.length() != questionCount) {
+                            jsonobject = rootArrayData.getJSONObject(questionCount);
+                            rootQ = jsonobject.getString("q");
+                            rootR = jsonobject.getString("at");
+                            if (jsonobject != null) {
+                                if (jsonobject.has("dd_data")) {
+                                    dropDownData = jsonobject.getString("dd_data");
+                                    if (dropDownData != null && dropDownData.length() > 0) {
+                                        dropDownHash.put(rootQ, dropDownData);
+                                    }
+                                }
+                            }
+                            questionnaireHash.put(rootQ, rootR);
+                            tempQuesList.add(questionCount, rootQ);
+                            tempQnAHash.put(rootQ, rootR);
+
+                            if (rootR.equalsIgnoreCase("RT")) {
+                                ratingsLayout.setVisibility(View.VISIBLE);
+                                ratingsTextView.setText(rootQ);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                initSeekBar();
+                            } else if (rootR.equalsIgnoreCase("FT")) {
+                                freeTextLayout.setVisibility(View.VISIBLE);
+                                freeTextTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("DD")) {
+                                dropdownLayout.setVisibility(View.VISIBLE);
+                                dropDownTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                createSpinner(rootQ);
+                            } else if (rootR.equalsIgnoreCase("BT")) {
+                                buttonsLayout.setVisibility(View.VISIBLE);
+                                buttonsTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("YN")) {
+                                isInterestedLayout.setVisibility(View.VISIBLE);
+                                isInterestedTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            isInterestedLayout.setVisibility(View.VISIBLE);
+                            isInterestedTextView.setText("Thank you for your survey");
+                            isInterestedTextView.setTextSize(32);
+                            isInterestedTextView.setTypeface(null, Typeface.BOLD);
+                            dropdownLayout.setVisibility(View.GONE);
+                            ratingsLayout.setVisibility(View.GONE);
+                            formButtonLayout.setVisibility(View.GONE);
+                            isInterestedButtonsLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        }
+                    } else {
                         questionCount++;
                         if (rootArrayData.length() != questionCount) {
                             jsonobject = rootArrayData.getJSONObject(questionCount);
@@ -2336,322 +1931,694 @@ public class AfterCallActivity extends BaseActivity implements View.OnClickListe
                             freeTextLayout.setVisibility(View.GONE);
                             endCallButtonLayout.setVisibility(View.VISIBLE);
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                break;
-            case R.id.yes_button:
-                formStatus = "YES";
-                yesButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
-                yesButton.setTextColor(Color.WHITE);
-                yesButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
-                noButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                noButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                break;
-            case R.id.no_button:
-                formStatus = "NO";
-                noButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
-                noButton.setTextColor(Color.WHITE);
-                noButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
-                yesButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                yesButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                break;
-            case R.id.creditCard_button:
-                paymentModeFromButton = "Credit Card";
-                creditCardButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
-                creditCardButton.setTextColor(Color.WHITE);
-                creditCardButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
-                debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                break;
-            case R.id.debitCard_button:
-                paymentModeFromButton = "Debit Card";
-                debitCardButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
-                debitCardButton.setTextColor(Color.WHITE);
-                debitCardButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
-                creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                break;
-            case R.id.wallets_button:
-                paymentModeFromButton = "Wallets";
-                walletsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
-                walletsButton.setTextColor(Color.WHITE);
-                walletsButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
-                creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                break;
-            case R.id.paytm_button:
-                paymentModeFromButton = "PayTM";
-                payTMButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
-                payTMButton.setTextColor(Color.WHITE);
-                payTMButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
-                creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                break;
-            case R.id.cash_button:
-                paymentModeFromButton = "Cash";
-                cashButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
-                cashButton.setTextColor(Color.WHITE);
-                cashButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
-                creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
-                payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
-                break;
-            case R.id.endCallButton:
-                //killCall(this);
-                break;
-            case R.id.ll_call_again:
-                logAnalytics("Call_Again", "TextView");
-
-                if (customerNumber != null) {
-                    if (!customerNumber.isEmpty()) {
-                        Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        String callData = "tel:" + customerNumber;
-                        callIntent.setData(Uri.parse(callData));
-                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            return;
-                        }
-                        AfterCallActivity.this.finish();
-                        startActivity(callIntent);
-                    }
-                }
-                break;
-
-            case R.id.tv_custom_date:
-
-                logAnalytics("Custom_Date", "TextView");
-
-                autoCheck = true;
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog datePickerDialog
-                        = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        preAlarmSet = true;
-
-                        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        mCalendar.set(Calendar.MONTH, month);
-                        mCalendar.set(Calendar.YEAR, year);
-                        SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
-
-                        final_start_year = year;
-                        final_start_month = month;
-                        final_start_dayOfMonth = dayOfMonth;
-                        final_end_year = year;
-                        final_end_month = month;
-                        final_end_dayOfMonth = dayOfMonth;
-                        Date currentDate = new Date();
-                        String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
-
-                        String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
-                        String currentDay = String.valueOf(Integer.parseInt(DateFormat.format("dd", currentDate).toString()) + 1);
-
-                        String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
-                        String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
-                        String settingDay = String.valueOf(Integer.parseInt(DateFormat.format("dd", mCalendar.getTime()).toString()));
-
-                        llCallAgain.setVisibility(View.GONE);
-                        if (curentDate.equalsIgnoreCase(settingDate)) {
-                            mCustomDate.setText("Today");
-                            llCallAgain.setVisibility(View.VISIBLE);
-                        } else if ((currentYearMonth.equalsIgnoreCase(settingYearMonth)) && (currentDay.equalsIgnoreCase(settingDay))) {
-                            mCustomDate.setText("Tomorrow");
-                        } else {
-                            mCustomDate.setText(fmt.format(mCalendar.getTime()));
-                        }
-
-                        int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
-                        int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
-
-                        final_start_min = calculateMinuteAccordingly;
-                        final_start_hour = calculateHourAccordingly;
-
-                        if (calculateMinuteAccordingly + 15 >= 60) {
-                            final_end_min = calculateMinuteAccordingly + 15 - 60;
-                            final_end_hour = calculateHourAccordingly + 1;
-                        } else {
-                            final_end_min = calculateMinuteAccordingly + 15;
-                            final_end_hour = calculateHourAccordingly;
-                        }
-
-                    }
-                }, year, month, day);
-
-                Calendar c1 = Calendar.getInstance();
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-                datePickerDialog.show();
-
-                break;
-            case R.id.tv_custom_time:
-                logAnalytics("Custom_Time", "TextView");
-
-                autoCheck = true;
-                final Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog timePicker
-                        = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-
-                        preAlarmSet = true;
-
-                        String meridian = "";
-
-                        // Prathik issue
-                        Calendar datetime = null;
-                        if (mCustomDate != null) {
-                            if (mCustomDate.getText().toString().equalsIgnoreCase("today")) {
-                                datetime = Calendar.getInstance();
-
-                                int getYear = datetime.get(Calendar.YEAR);
-                                int getMonth = datetime.get(Calendar.MONTH);
-                                int getDay = datetime.get(Calendar.DAY_OF_MONTH);
-
-                                final_start_year = getYear;
-                                final_start_month = getMonth;
-                                final_start_dayOfMonth = getDay;
-
-                                mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
-                                mCalendar.set(Calendar.MONTH, getMonth);
-                                mCalendar.set(Calendar.YEAR, getYear);
-                            } else {
-                                datetime = mCalendar.getInstance();
+                currentSelectedScenario = "";
+            } else if (currentRatings != null && !currentRatings.isEmpty() && !currentRatings.equals("0")) {
+                try {
+                    String key = "";
+                    jsonobject = rootArrayData.getJSONObject(questionCount);
+                    if (jsonobject.has(currentRatings)) {
+                        questionCount = 0;
+                        if (jsonobject != null) {
+                            Iterator<String> keys = jsonobject.keys();
+                            while (keys.hasNext()) {
+                                key = (String) keys.next();
+                                if (key.equals(currentRatings)) {
+                                    key = currentRatings;
+                                    break;
+                                }
                             }
+                            jsonobject.get(key);
+                            rootQ = jsonobject.getJSONObject(key).getString("q");
+                            rootR = jsonobject.getJSONObject(key).getString("at");
+                            if (jsonobject != null) {
+                                if (jsonobject.getJSONObject(key).has("dd_data")) {
+                                    dropDownData = jsonobject.getJSONObject(key).getString("dd_data");
+                                    if (dropDownData != null && dropDownData.length() > 0) {
+                                        dropDownHash.put(rootQ, dropDownData);
+                                    }
+                                }
+                            }
+                            questionnaireHash.put(rootQ, rootR);
+                            tempQuesList.add(questionCount, rootQ);
+                            tempQnAHash.put(rootQ, rootR);
+
+                            if (rootR.equalsIgnoreCase("RT")) {
+                                ratingsLayout.setVisibility(View.VISIBLE);
+                                ratingsTextView.setText(rootQ);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                initSeekBar();
+                            } else if (rootR.equalsIgnoreCase("FT")) {
+                                freeTextLayout.setVisibility(View.VISIBLE);
+                                freeTextTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("DD")) {
+                                dropdownLayout.setVisibility(View.VISIBLE);
+                                dropDownTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                createSpinner(rootQ);
+                            } else if (rootR.equalsIgnoreCase("BT")) {
+                                buttonsLayout.setVisibility(View.VISIBLE);
+                                buttonsTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("YN")) {
+                                isInterestedLayout.setVisibility(View.VISIBLE);
+                                isInterestedTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            isInterestedLayout.setVisibility(View.VISIBLE);
+                            isInterestedTextView.setText("Thank you for your survey");
+                            isInterestedTextView.setTextSize(32);
+                            isInterestedTextView.setTypeface(null, Typeface.BOLD);
+                            dropdownLayout.setVisibility(View.GONE);
+                            ratingsLayout.setVisibility(View.GONE);
+                            formButtonLayout.setVisibility(View.GONE);
+                            isInterestedButtonsLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        questionCount++;
+                        if (rootArrayData.length() != questionCount) {
+                            jsonobject = rootArrayData.getJSONObject(questionCount);
+                            if (jsonobject != null) {
+                                rootQ = jsonobject.getString("q");
+                                rootR = jsonobject.getString("at");
+                                if (jsonobject.has("dd_data")) {
+                                    dropDownData = jsonobject.getString("dd_data");
+                                    if (dropDownData != null && dropDownData.length() > 0) {
+                                        dropDownHash.put(rootQ, dropDownData);
+                                    }
+                                }
+                            }
+                            questionnaireHash.put(rootQ, rootR);
+                            tempQuesList.add(questionCount, rootQ);
+                            tempQnAHash.put(rootQ, rootR);
+
+                            if (rootR.equalsIgnoreCase("RT")) {
+                                ratingsLayout.setVisibility(View.VISIBLE);
+                                ratingsTextView.setText(rootQ);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                initSeekBar();
+                            } else if (rootR.equalsIgnoreCase("FT")) {
+                                freeTextLayout.setVisibility(View.VISIBLE);
+                                freeTextTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("DD")) {
+                                dropdownLayout.setVisibility(View.VISIBLE);
+                                dropDownTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                createSpinner(rootQ);
+                            } else if (rootR.equalsIgnoreCase("BT")) {
+                                buttonsLayout.setVisibility(View.VISIBLE);
+                                buttonsTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("YN")) {
+                                isInterestedLayout.setVisibility(View.VISIBLE);
+                                isInterestedTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            isInterestedLayout.setVisibility(View.VISIBLE);
+                            isInterestedTextView.setText("Thank you for your survey");
+                            isInterestedTextView.setTextSize(32);
+                            isInterestedTextView.setTypeface(null, Typeface.BOLD);
+                            dropdownLayout.setVisibility(View.GONE);
+                            ratingsLayout.setVisibility(View.GONE);
+                            formButtonLayout.setVisibility(View.GONE);
+                            isInterestedButtonsLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                currentRatings = "";
+                customerRatings.setText("");
+            } else if (formStatus != null && !formStatus.isEmpty()) {
+                try {
+                    jsonobject = rootArrayData.getJSONObject(questionCount);
+                    formStatus = formStatus.substring(0, 1);
+                    if (jsonobject.has(formStatus)) {
+                        rootArrayData = jsonobject.getJSONArray(formStatus);
+                        questionCount = 0;
+                        if (rootArrayData.length() != questionCount) {
+                            jsonobject = rootArrayData.getJSONObject(questionCount);
+                            rootQ = jsonobject.getString("q");
+                            rootR = jsonobject.getString("at");
+                            questionnaireHash.put(rootQ, rootR);
+                            tempQuesList.add(questionCount, rootQ);
+                            tempQnAHash.put(rootQ, rootR);
+
+                            if (rootR.equalsIgnoreCase("RT")) {
+                                ratingsLayout.setVisibility(View.VISIBLE);
+                                ratingsTextView.setText(rootQ);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                initSeekBar();
+                            } else if (rootR.equalsIgnoreCase("FT")) {
+                                freeTextLayout.setVisibility(View.VISIBLE);
+                                freeTextTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("DD")) {
+                                dropdownLayout.setVisibility(View.VISIBLE);
+                                dropDownTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                createSpinner(rootQ);
+                            } else if (rootR.equalsIgnoreCase("BT")) {
+                                buttonsLayout.setVisibility(View.VISIBLE);
+                                buttonsTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("YN")) {
+                                isInterestedLayout.setVisibility(View.VISIBLE);
+                                isInterestedTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            isInterestedLayout.setVisibility(View.VISIBLE);
+                            isInterestedTextView.setText("Thank you for your survey");
+                            isInterestedTextView.setTextSize(32);
+                            isInterestedTextView.setTypeface(null, Typeface.BOLD);
+                            dropdownLayout.setVisibility(View.GONE);
+                            ratingsLayout.setVisibility(View.GONE);
+                            formButtonLayout.setVisibility(View.GONE);
+                            isInterestedButtonsLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        questionCount++;
+                        if (rootArrayData.length() != questionCount) {
+                            jsonobject = rootArrayData.getJSONObject(questionCount);
+                            if (jsonobject != null) {
+                                rootQ = jsonobject.getString("q");
+                                rootR = jsonobject.getString("at");
+                            }
+                            questionnaireHash.put(rootQ, rootR);
+                            tempQuesList.add(questionCount, rootQ);
+                            tempQnAHash.put(rootQ, rootR);
+
+                            if (rootR.equalsIgnoreCase("RT")) {
+                                ratingsLayout.setVisibility(View.VISIBLE);
+                                ratingsTextView.setText(rootQ);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                initSeekBar();
+                            } else if (rootR.equalsIgnoreCase("FT")) {
+                                freeTextLayout.setVisibility(View.VISIBLE);
+                                freeTextTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("DD")) {
+                                dropdownLayout.setVisibility(View.VISIBLE);
+                                dropDownTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                                createSpinner(rootQ);
+                            } else if (rootR.equalsIgnoreCase("BT")) {
+                                buttonsLayout.setVisibility(View.VISIBLE);
+                                buttonsTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                isInterestedLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            } else if (rootR.equalsIgnoreCase("YN")) {
+                                isInterestedLayout.setVisibility(View.VISIBLE);
+                                isInterestedTextView.setText(rootQ);
+                                ratingsLayout.setVisibility(View.GONE);
+                                freeTextLayout.setVisibility(View.GONE);
+                                dropdownLayout.setVisibility(View.GONE);
+                                buttonsLayout.setVisibility(View.GONE);
+                                endCallButtonLayout.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            isInterestedLayout.setVisibility(View.VISIBLE);
+                            isInterestedTextView.setText("Thank you for your survey");
+                            isInterestedTextView.setTextSize(32);
+                            isInterestedTextView.setTypeface(null, Typeface.BOLD);
+                            dropdownLayout.setVisibility(View.GONE);
+                            ratingsLayout.setVisibility(View.GONE);
+                            formButtonLayout.setVisibility(View.GONE);
+                            isInterestedButtonsLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                formStatus = "";
+            } else {
+                try {
+                    questionCount++;
+                    if (rootArrayData.length() != questionCount) {
+                        jsonobject = rootArrayData.getJSONObject(questionCount);
+                        if (jsonobject != null) {
+                            rootQ = jsonobject.getString("q");
+                            rootR = jsonobject.getString("at");
+                            if (jsonobject.has("dd_data")) {
+                                dropDownData = jsonobject.getString("dd_data");
+                                if (dropDownData != null && dropDownData.length() > 0) {
+                                    dropDownHash.put(rootQ, dropDownData);
+                                }
+                            }
+                        }
+                        questionnaireHash.put(rootQ, rootR);
+                        tempQuesList.add(questionCount, rootQ);
+                        tempQnAHash.put(rootQ, rootR);
+
+                        if (rootR.equalsIgnoreCase("RT")) {
+                            ratingsLayout.setVisibility(View.VISIBLE);
+                            ratingsTextView.setText(rootQ);
+                            freeTextLayout.setVisibility(View.GONE);
+                            dropdownLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            isInterestedLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                            initSeekBar();
+                        } else if (rootR.equalsIgnoreCase("FT")) {
+                            freeTextLayout.setVisibility(View.VISIBLE);
+                            freeTextTextView.setText(rootQ);
+                            ratingsLayout.setVisibility(View.GONE);
+                            dropdownLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            isInterestedLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        } else if (rootR.equalsIgnoreCase("DD")) {
+                            dropdownLayout.setVisibility(View.VISIBLE);
+                            dropDownTextView.setText(rootQ);
+                            ratingsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            isInterestedLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                            createSpinner(rootQ);
+                        } else if (rootR.equalsIgnoreCase("BT")) {
+                            buttonsLayout.setVisibility(View.VISIBLE);
+                            buttonsTextView.setText(rootQ);
+                            ratingsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            dropdownLayout.setVisibility(View.GONE);
+                            isInterestedLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        } else if (rootR.equalsIgnoreCase("YN")) {
+                            isInterestedLayout.setVisibility(View.VISIBLE);
+                            isInterestedTextView.setText(rootQ);
+                            ratingsLayout.setVisibility(View.GONE);
+                            freeTextLayout.setVisibility(View.GONE);
+                            dropdownLayout.setVisibility(View.GONE);
+                            buttonsLayout.setVisibility(View.GONE);
+                            endCallButtonLayout.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        isInterestedLayout.setVisibility(View.VISIBLE);
+                        isInterestedTextView.setText("Thank you for your survey");
+                        isInterestedTextView.setTextSize(32);
+                        isInterestedTextView.setTypeface(null, Typeface.BOLD);
+                        dropdownLayout.setVisibility(View.GONE);
+                        ratingsLayout.setVisibility(View.GONE);
+                        formButtonLayout.setVisibility(View.GONE);
+                        isInterestedButtonsLayout.setVisibility(View.GONE);
+                        buttonsLayout.setVisibility(View.GONE);
+                        freeTextLayout.setVisibility(View.GONE);
+                        endCallButtonLayout.setVisibility(View.VISIBLE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (id == R.id.yes_button) {
+            formStatus = "YES";
+            yesButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
+            yesButton.setTextColor(Color.WHITE);
+            yesButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
+            noButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            noButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+        } else if (id == R.id.no_button) {
+            formStatus = "NO";
+            noButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
+            noButton.setTextColor(Color.WHITE);
+            noButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
+            yesButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            yesButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+        } else if (id == R.id.creditCard_button) {
+            paymentModeFromButton = "Credit Card";
+            creditCardButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
+            creditCardButton.setTextColor(Color.WHITE);
+            creditCardButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
+            debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+        } else if (id == R.id.debitCard_button) {
+            paymentModeFromButton = "Debit Card";
+            debitCardButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
+            debitCardButton.setTextColor(Color.WHITE);
+            debitCardButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
+            creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+        } else if (id == R.id.wallets_button) {
+            paymentModeFromButton = "Wallets";
+            walletsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
+            walletsButton.setTextColor(Color.WHITE);
+            walletsButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
+            creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+        } else if (id == R.id.paytm_button) {
+            paymentModeFromButton = "PayTM";
+            payTMButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
+            payTMButton.setTextColor(Color.WHITE);
+            payTMButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
+            creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            cashButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            cashButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+        } else if (id == R.id.cash_button) {
+            paymentModeFromButton = "Cash";
+            cashButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.selected_item_color));
+            cashButton.setTextColor(Color.WHITE);
+            cashButton.setBackground(getResources().getDrawable(R.drawable.custom_rounded_corners));
+            creditCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            creditCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            debitCardButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            debitCardButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            walletsButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            walletsButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+            payTMButton.setBackground(getResources().getDrawable(R.drawable.acp_button));
+            payTMButton.setTextColor(ContextCompat.getColor(this, R.color.smb_grey_54));
+        } else if (id == R.id.endCallButton) {//killCall(this);
+        } else if (id == R.id.ll_call_again) {
+            logAnalytics("Call_Again", "TextView");
+
+            if (customerNumber != null) {
+                if (!customerNumber.isEmpty()) {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    String callData = "tel:" + customerNumber;
+                    callIntent.setData(Uri.parse(callData));
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    AfterCallActivity.this.finish();
+                    startActivity(callIntent);
+                }
+            }
+        } else if (id == R.id.tv_custom_date) {
+            logAnalytics("Custom_Date", "TextView");
+
+            autoCheck = true;
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog
+                    = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                    preAlarmSet = true;
+
+                    mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    mCalendar.set(Calendar.MONTH, month);
+                    mCalendar.set(Calendar.YEAR, year);
+                    SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
+
+                    final_start_year = year;
+                    final_start_month = month;
+                    final_start_dayOfMonth = dayOfMonth;
+                    final_end_year = year;
+                    final_end_month = month;
+                    final_end_dayOfMonth = dayOfMonth;
+                    Date currentDate = new Date();
+                    String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
+
+                    String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
+                    String currentDay = String.valueOf(Integer.parseInt(DateFormat.format("dd", currentDate).toString()) + 1);
+
+                    String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
+                    String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
+                    String settingDay = String.valueOf(Integer.parseInt(DateFormat.format("dd", mCalendar.getTime()).toString()));
+
+                    llCallAgain.setVisibility(View.GONE);
+                    if (curentDate.equalsIgnoreCase(settingDate)) {
+                        mCustomDate.setText("Today");
+                        llCallAgain.setVisibility(View.VISIBLE);
+                    } else if ((currentYearMonth.equalsIgnoreCase(settingYearMonth)) && (currentDay.equalsIgnoreCase(settingDay))) {
+                        mCustomDate.setText("Tomorrow");
+                    } else {
+                        mCustomDate.setText(fmt.format(mCalendar.getTime()));
+                    }
+
+                    int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
+                    int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
+
+                    final_start_min = calculateMinuteAccordingly;
+                    final_start_hour = calculateHourAccordingly;
+
+                    if (calculateMinuteAccordingly + 15 >= 60) {
+                        final_end_min = calculateMinuteAccordingly + 15 - 60;
+                        final_end_hour = calculateHourAccordingly + 1;
+                    } else {
+                        final_end_min = calculateMinuteAccordingly + 15;
+                        final_end_hour = calculateHourAccordingly;
+                    }
+
+                }
+            }, year, month, day);
+
+            Calendar c1 = Calendar.getInstance();
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            datePickerDialog.show();
+        } else if (id == R.id.tv_custom_time) {
+            logAnalytics("Custom_Time", "TextView");
+
+            autoCheck = true;
+            final Calendar mcurrentTime = Calendar.getInstance();
+            int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+            int minute = mcurrentTime.get(Calendar.MINUTE);
+            TimePickerDialog timePicker
+                    = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+                    preAlarmSet = true;
+
+                    String meridian = "";
+
+                    // Prathik issue
+                    Calendar datetime = null;
+                    if (mCustomDate != null) {
+                        if (mCustomDate.getText().toString().equalsIgnoreCase("today")) {
+                            datetime = Calendar.getInstance();
+
+                            int getYear = datetime.get(Calendar.YEAR);
+                            int getMonth = datetime.get(Calendar.MONTH);
+                            int getDay = datetime.get(Calendar.DAY_OF_MONTH);
+
+                            final_start_year = getYear;
+                            final_start_month = getMonth;
+                            final_start_dayOfMonth = getDay;
+
+                            mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
+                            mCalendar.set(Calendar.MONTH, getMonth);
+                            mCalendar.set(Calendar.YEAR, getYear);
                         } else {
                             datetime = mCalendar.getInstance();
                         }
-                        datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        datetime.set(Calendar.MINUTE, selectedMinute);
+                    } else {
+                        datetime = mCalendar.getInstance();
+                    }
+                    datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    datetime.set(Calendar.MINUTE, selectedMinute);
 
-                        switch (datetime.get(Calendar.AM_PM)) {
-                            case Calendar.AM:
-                                meridian = "AM";
-                                break;
-                            case Calendar.PM:
-                                meridian = "PM";
-                                break;
-                        }
+                    switch (datetime.get(Calendar.AM_PM)) {
+                        case Calendar.AM:
+                            meridian = "AM";
+                            break;
+                        case Calendar.PM:
+                            meridian = "PM";
+                            break;
+                    }
 
-                        final_start_min = selectedMinute;
-                        final_start_hour = selectedHour;
+                    final_start_min = selectedMinute;
+                    final_start_hour = selectedHour;
 
-                        int endHourOfDay = 0, endMinute;
-                        endMinute = selectedMinute + 60;
-                        if (endMinute >= 60) {
-                            endHourOfDay = endHourOfDay + 1;
-                            endMinute = selectedMinute % 60;
-                        }
-                        endHourOfDay = endHourOfDay + selectedHour;
-                        if (selectedHour >= 24) {
-                            endHourOfDay = endHourOfDay % 24;
-                        }
+                    int endHourOfDay = 0, endMinute;
+                    endMinute = selectedMinute + 60;
+                    if (endMinute >= 60) {
+                        endHourOfDay = endHourOfDay + 1;
+                        endMinute = selectedMinute % 60;
+                    }
+                    endHourOfDay = endHourOfDay + selectedHour;
+                    if (selectedHour >= 24) {
+                        endHourOfDay = endHourOfDay % 24;
+                    }
 
 
-                        mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        mCalendar.set(Calendar.MINUTE, selectedMinute);
+                    mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    mCalendar.set(Calendar.MINUTE, selectedMinute);
 
-                        if (mCalendar.getTime().getTime() > currentTime) {
+                    if (mCalendar.getTime().getTime() > currentTime) {
 
-                            int end = 0;
-                            int modifiedEndMinute = endMinute;
-                            int modifiedEndHour = endHourOfDay;
-                            switch (end) {
-                                case 0:
-                                    if (modifiedEndMinute + 15 > 60) {
-                                        modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
-
-                                        if (modifiedEndHour >= 24) {
-                                            modifiedEndHour = 0;
-                                        } else {
-                                            modifiedEndHour++;
-                                        }
-                                    } else {
-                                        modifiedEndMinute += 15;
-                                    }
-                                    break;
-                                case 1:
-                                    if (modifiedEndMinute + 30 > 60) {
-                                        modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
-                                        if (modifiedEndHour >= 24) {
-                                            modifiedEndHour = 0;
-                                        } else {
-                                            modifiedEndHour++;
-                                        }
-                                    } else {
-                                        modifiedEndMinute += 30;
-                                    }
-                                    break;
-                                case 2:
-                                    if (modifiedEndMinute != 60) {
-                                        modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
-                                    }
+                        int end = 0;
+                        int modifiedEndMinute = endMinute;
+                        int modifiedEndHour = endHourOfDay;
+                        switch (end) {
+                            case 0:
+                                if (modifiedEndMinute + 15 > 60) {
+                                    modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
 
                                     if (modifiedEndHour >= 24) {
                                         modifiedEndHour = 0;
                                     } else {
                                         modifiedEndHour++;
                                     }
-                                    break;
-                            }
+                                } else {
+                                    modifiedEndMinute += 15;
+                                }
+                                break;
+                            case 1:
+                                if (modifiedEndMinute + 30 > 60) {
+                                    modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
+                                    if (modifiedEndHour >= 24) {
+                                        modifiedEndHour = 0;
+                                    } else {
+                                        modifiedEndHour++;
+                                    }
+                                } else {
+                                    modifiedEndMinute += 30;
+                                }
+                                break;
+                            case 2:
+                                if (modifiedEndMinute != 60) {
+                                    modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
+                                }
 
-                            final_end_hour = modifiedEndHour;
-                            final_end_min = modifiedEndMinute;
-
-                            if (selectedHour > 12) {
-                                selectedHour -= 12;
-                            }
-
-                            if (selectedMinute < 10) {
-                                mCustomTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
-                            } else {
-                                mCustomTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
-                            }
-                        } else {
-                            Toast.makeText(AfterCallActivity.this, "Past Date & Time selected, please put follow up in future.", Toast.LENGTH_SHORT).show();
+                                if (modifiedEndHour >= 24) {
+                                    modifiedEndHour = 0;
+                                } else {
+                                    modifiedEndHour++;
+                                }
+                                break;
                         }
-                    }
-                }, hour, minute, false);
-                timePicker.show();
-                break;
 
-            case R.id.next_followup_textview:
-                break;
+                        final_end_hour = modifiedEndHour;
+                        final_end_min = modifiedEndMinute;
+
+                        if (selectedHour > 12) {
+                            selectedHour -= 12;
+                        }
+
+                        if (selectedMinute < 10) {
+                            mCustomTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
+                        } else {
+                            mCustomTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
+                        }
+                    } else {
+                        Toast.makeText(AfterCallActivity.this, "Past Date & Time selected, please put follow up in future.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }, hour, minute, false);
+            timePicker.show();
+        } else if (id == R.id.next_followup_textview) {
         }
     }
 

@@ -125,37 +125,34 @@ public class VoiceTestCompleteActivity extends AppCompatActivity implements View
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.rdb_morning:
-                if (checked)
-                    checkBoxSelected = "Morning (09:00 AM - 12:00 PM)";
-                rdb_morning.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_green));
-                rdb_afternoon.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
-                rdb_evening.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
-                rdb_morning.setChecked(true);
-                rdb_afternoon.setChecked(false);
-                rdb_evening.setChecked(false);
-                break;
-            case R.id.rdb_afternoon:
-                if (checked)
-                    checkBoxSelected = "Afternoon (12:00 PM - 03:00 PM)";
-                rdb_afternoon.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_green));
-                rdb_morning.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
-                rdb_evening.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
-                rdb_afternoon.setChecked(true);
-                rdb_morning.setChecked(false);
-                rdb_evening.setChecked(false);
-                break;
-            case R.id.rdb_evening:
-                if (checked)
-                    checkBoxSelected = "Evening (03:00 PM - 06:00 PM)";
-                rdb_evening.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_green));
-                rdb_morning.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
-                rdb_afternoon.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
-                rdb_evening.setChecked(true);
-                rdb_morning.setChecked(false);
-                rdb_afternoon.setChecked(false);
-                break;
+        int id = view.getId();
+        if (id == R.id.rdb_morning) {
+            if (checked)
+                checkBoxSelected = "Morning (09:00 AM - 12:00 PM)";
+            rdb_morning.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_green));
+            rdb_afternoon.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
+            rdb_evening.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
+            rdb_morning.setChecked(true);
+            rdb_afternoon.setChecked(false);
+            rdb_evening.setChecked(false);
+        } else if (id == R.id.rdb_afternoon) {
+            if (checked)
+                checkBoxSelected = "Afternoon (12:00 PM - 03:00 PM)";
+            rdb_afternoon.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_green));
+            rdb_morning.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
+            rdb_evening.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
+            rdb_afternoon.setChecked(true);
+            rdb_morning.setChecked(false);
+            rdb_evening.setChecked(false);
+        } else if (id == R.id.rdb_evening) {
+            if (checked)
+                checkBoxSelected = "Evening (03:00 PM - 06:00 PM)";
+            rdb_evening.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_green));
+            rdb_morning.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
+            rdb_afternoon.setButtonTintList(ContextCompat.getColorStateList(VoiceTestCompleteActivity.this, R.color.checkbox_gray));
+            rdb_evening.setChecked(true);
+            rdb_morning.setChecked(false);
+            rdb_afternoon.setChecked(false);
         }
 
         if (checkBoxSelected.equalsIgnoreCase("")) {
@@ -253,62 +250,58 @@ public class VoiceTestCompleteActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.btnSubmit:
-                String slotdetail = checkBoxSelected;
-                if (slotdetail != null && !slotdetail.isEmpty()) {
-                    postSlotDetails(slotdetail);
-                }
+        if (id == R.id.btnSubmit) {
+            String slotdetail = checkBoxSelected;
+            if (slotdetail != null && !slotdetail.isEmpty()) {
+                postSlotDetails(slotdetail);
+            }
 
-                if (SmarterSMBApplication.isServiceAgreementDone) {
-                    ApplicationSettings.putPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, true);
-                } else {
-                    ApplicationSettings.putPref(AppConstants.VOICE_TEST_COMPLETED, true);
-                }
+            if (SmarterSMBApplication.isServiceAgreementDone) {
+                ApplicationSettings.putPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, true);
+            } else {
+                ApplicationSettings.putPref(AppConstants.VOICE_TEST_COMPLETED, true);
+            }
 
-                boolean deviceCheckCompleted = ApplicationSettings.getPref(AppConstants.DEVICE_CHECK_COMPLETED, false);
-                boolean voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
-                boolean emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
-                boolean chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
-                boolean callFromInterviewPanelCompleted = ApplicationSettings.getPref(AppConstants.CALL_FROM_INTERVIEW_PANEL_COMPLETED, false);
-                boolean onboardingProcessCompleted = ApplicationSettings.getPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, false);
+            boolean deviceCheckCompleted = ApplicationSettings.getPref(AppConstants.DEVICE_CHECK_COMPLETED, false);
+            boolean voiceTestCompleted = ApplicationSettings.getPref(AppConstants.VOICE_TEST_COMPLETED, false);
+            boolean emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
+            boolean chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
+            boolean callFromInterviewPanelCompleted = ApplicationSettings.getPref(AppConstants.CALL_FROM_INTERVIEW_PANEL_COMPLETED, false);
+            boolean onboardingProcessCompleted = ApplicationSettings.getPref(AppConstants.ONBOARDING_PROCESS_COMPLETED, false);
 
-                JSONObject processStatusObj = null;
-                try {
-                    processStatusObj = new JSONObject();
-                    processStatusObj.put("device_check_completed", deviceCheckCompleted);
-                    processStatusObj.put("voice_test_completed", voiceTestCompleted);
-                    processStatusObj.put("email_test_completed", emailTestCompleted);
-                    processStatusObj.put("chat_test_completed", chatTestCompleted);
-                    processStatusObj.put("call_from_interview_panel_completed", callFromInterviewPanelCompleted);
-                    processStatusObj.put("onboarding_process_completed", onboardingProcessCompleted);
-                } catch (Exception e) {
+            JSONObject processStatusObj = null;
+            try {
+                processStatusObj = new JSONObject();
+                processStatusObj.put("device_check_completed", deviceCheckCompleted);
+                processStatusObj.put("voice_test_completed", voiceTestCompleted);
+                processStatusObj.put("email_test_completed", emailTestCompleted);
+                processStatusObj.put("chat_test_completed", chatTestCompleted);
+                processStatusObj.put("call_from_interview_panel_completed", callFromInterviewPanelCompleted);
+                processStatusObj.put("onboarding_process_completed", onboardingProcessCompleted);
+            } catch (Exception e) {
 
-                }
+            }
 
-                ApplicationSettings.putPref(AppConstants.PROCESS_STATUS, processStatusObj.toString());
-                postCurrentProcessStatus(processStatusObj.toString());
+            ApplicationSettings.putPref(AppConstants.PROCESS_STATUS, processStatusObj.toString());
+            postCurrentProcessStatus(processStatusObj.toString());
 
-                if (SmarterSMBApplication.callingFromProcessSelection) {
-                    String processSelected = ApplicationSettings.getPref(AppConstants.INTERVIEW_PROCESS, "");
-                    emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
-                    chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
-                    if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Email") && !emailTestCompleted) {
-                        navigateToGrammarSkillTestActivity();
-                    } else if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Chat") && !chatTestCompleted) {
-                        navigateToProcessSelectionChatActivity();
-                    } else {
-                        navigateToHomeActivity();
-                    }
+            if (SmarterSMBApplication.callingFromProcessSelection) {
+                String processSelected = ApplicationSettings.getPref(AppConstants.INTERVIEW_PROCESS, "");
+                emailTestCompleted = ApplicationSettings.getPref(AppConstants.GRAMMAR_TEST_COMPLETED, false);
+                chatTestCompleted = ApplicationSettings.getPref(AppConstants.PROCESS_SELECTION_CHAT_COMPLETED, false);
+                if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Email") && !emailTestCompleted) {
+                    navigateToGrammarSkillTestActivity();
+                } else if (processSelected != null && !processSelected.isEmpty() && processSelected.contains("Chat") && !chatTestCompleted) {
+                    navigateToProcessSelectionChatActivity();
                 } else {
                     navigateToHomeActivity();
                 }
-                break;
-
-            case R.id.ll_notification:
-                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                settingsApi(userId);
-                break;
+            } else {
+                navigateToHomeActivity();
+            }
+        } else if (id == R.id.ll_notification) {
+            String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+            settingsApi(userId);
         }
     }
 

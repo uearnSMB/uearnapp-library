@@ -2533,35 +2533,23 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                             viewName = viewName.replaceAll("[^A-Za-z0-9]", "");
                             int resID = getResources().getIdentifier(viewName, "id", getPackageName());
 
-                            switch (resID) {
-                                case R.id.customername:
-                                    customername.setVisibility(View.GONE);
-                                    break;
-                                case R.id.customernumber:
-                                    customernumber.setVisibility(View.GONE);
-                                    break;
-                                case R.id.companyname:
-                                    if (companyname != null) {
-                                        companyname.setVisibility(View.GONE);
-                                    }
-                                    break;
-                                case R.id.leadsource:
-                                    leadsource.setVisibility(View.GONE);
-                                    break;
-                                case R.id.salesstage:
-                                    salesstage.setVisibility(View.GONE);
-                                    break;
-                                case R.id.salesstage1:
-//                                  salesstage1.setVisibility(View.GONE);
-                                    break;
-                                case R.id.address:
-                                    address.setVisibility(View.GONE);
-                                    break;
-                                case R.id.notes:
-                                    notes.setVisibility(View.GONE);
-                                    break;
-                                default:
-                                    break;
+                            if (resID == R.id.customername) {
+                                customername.setVisibility(View.GONE);
+                            } else if (resID == R.id.customernumber) {
+                                customernumber.setVisibility(View.GONE);
+                            } else if (resID == R.id.companyname) {
+                                if (companyname != null) {
+                                    companyname.setVisibility(View.GONE);
+                                }
+                            } else if (resID == R.id.leadsource) {
+                                leadsource.setVisibility(View.GONE);
+                            } else if (resID == R.id.salesstage) {
+                                salesstage.setVisibility(View.GONE);
+                            } else if (resID == R.id.salesstage1) {//                                  salesstage1.setVisibility(View.GONE);
+                            } else if (resID == R.id.address) {
+                                address.setVisibility(View.GONE);
+                            } else if (resID == R.id.notes) {
+                                notes.setVisibility(View.GONE);
                             }
                         }
                     }
@@ -3913,7 +3901,7 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
             if (transferCallResponseJsonObj != null) {
 
                 if (transferCallResponseJsonObj.has("alertmessage")) {
-                    String alertMsg = transferCallResponseJsonObj.getString("alertmessage");
+                    final String alertMsg = transferCallResponseJsonObj.getString("alertmessage");
                     if (alertMsg != null && !alertMsg.isEmpty()) {
                         Handler killCall = new Handler(Looper.getMainLooper());
                         killCall.post(new Runnable() {
@@ -3960,7 +3948,7 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
             if (transferCallResponseJsonObj != null) {
 
                 if (transferCallResponseJsonObj.has("alertmessage")) {
-                    String alertMsg = transferCallResponseJsonObj.getString("alertmessage");
+                    final String alertMsg = transferCallResponseJsonObj.getString("alertmessage");
                     if (alertMsg != null && !alertMsg.isEmpty()) {
                         Handler killCall = new Handler(Looper.getMainLooper());
                         killCall.post(new Runnable() {
@@ -5869,7 +5857,7 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void sendInCallActivityToServer(String next_action) {
+    private void sendInCallActivityToServer(final String next_action) {
 
         if (NotificationData.dialledCustomerNumber != null && !NotificationData.dialledCustomerNumber.isEmpty()) {
             customerNumber = NotificationData.dialledCustomerNumber;
@@ -9257,276 +9245,215 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.update_view:
-                if (checkRNR) {
-                    return;
-                }
-                radMessageLayout.setVisibility(View.GONE);
-                radMessageText.setVisibility(View.GONE);
-                resetCallBackSet();
-                updateMainLinearLayout.setBackgroundResource(R.drawable.card_border_layout);
-                redialMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                rnrMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                callbackMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                callbackCheck = false;
-                submitLayout.setVisibility(View.VISIBLE);
-                String questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
-                if (questionsAct != null && !questionsAct.isEmpty()) {
-                    formButtonLayout.setVisibility(View.GONE);
-                    create_followup_card.setVisibility(View.GONE);
-                    uView.setVisibility(View.VISIBLE);
-                    cView.setVisibility(View.GONE);
-                    rView.setVisibility(View.GONE);
-                    redialView.setVisibility(View.GONE);
-                    remarksCard.setVisibility(View.GONE);
-                    questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
-                    if (questionsAct != null && !questionsAct.isEmpty()) {
-                        acpBottomLayout.setVisibility(View.VISIBLE);
-                        mmtAcpBottomLayout.setVisibility(View.GONE);
-                        checkRNR = false;
-                    }
-                } else {
-                    callbackCheck = false;
-                    checkRNR = false;
-                    changeLayoutColor(111);
-                    uView.setVisibility(View.VISIBLE);
-                    cView.setVisibility(View.GONE);
-                    rView.setVisibility(View.GONE);
-                    redialView.setVisibility(View.GONE);
-                    remarksCard.setVisibility(View.GONE);
-
-                    if (followUpButtonClicked) {
-                        create_followup_card.setVisibility(View.VISIBLE);
-                        llCallAgain.setVisibility(View.VISIBLE);
-                        orText.setVisibility(View.VISIBLE);
-                        remarksCard.setVisibility(View.VISIBLE);
-                    } else {
-                        create_followup_card.setVisibility(View.GONE);
-                        llCallAgain.setVisibility(View.GONE);
-                        orText.setVisibility(View.GONE);
-                        remarksCard.setVisibility(View.GONE);
-                    }
-                    checkViewFocus();
-                    if (leadSheetAttached) {
-                        changeLayoutColor(7);
-                    }
-                }
-                layout5.setVisibility(View.GONE);
-                break;
-            case R.id.redial_layout_view:
-                radMessageLayout.setVisibility(View.GONE);
-                radMessageText.setVisibility(View.GONE);
-                SmarterSMBApplication.remoteEnabledRedialScenario = true;
-                SmarterSMBApplication.showSingleAcp = false;
-                SmarterSMBApplication.isCurrentQuesMandatory = false;
-                ApplicationSettings.putPref(AppConstants.ALLOW_REDIAL_FOR_REMOTE_ENABLED, true);
-                redialMainLinearLayout.setBackgroundResource(R.drawable.card_border_layout);
-                updateMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                rnrMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                callbackMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-
-                long callEndTime = System.currentTimeMillis();
-                ApplicationSettings.putPref(AppConstants.CALL_END_TIME, callEndTime);
-
-                if (SmarterSMBApplication.isDiallingFollowUpC2C) {
-                    SmarterSMBApplication.isDiallingFollowUpC2C = false;
-                }
-
-                if (SmarterSMBApplication.followupsInPredictive) {
-                    SmarterSMBApplication.followupsInPredictive = false;
-                }
-
-                if (SmarterSMBApplication.connectedCustomerInProcess) {
-                    SmarterSMBApplication.connectedCustomerInProcess = false;
-                }
-
-                if (SmarterSMBApplication.disconnectedCustomerInProcess) {
-                    SmarterSMBApplication.disconnectedCustomerInProcess = false;
-                }
-
-                if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
-                    boolean adhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
-                    if (adhocCall) {
-                        String questionnaire = ApplicationSettings.getPref(AppConstants.QUESTIONNAIRE_FROM_SETTINGS, "");
-                        ApplicationSettings.putPref(AppConstants.QUESTIONNAIRE, questionnaire);
-                    }
-                }
-
+        if (id == R.id.update_view) {
+            if (checkRNR) {
+                return;
+            }
+            radMessageLayout.setVisibility(View.GONE);
+            radMessageText.setVisibility(View.GONE);
+            resetCallBackSet();
+            updateMainLinearLayout.setBackgroundResource(R.drawable.card_border_layout);
+            redialMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            rnrMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            callbackMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            callbackCheck = false;
+            submitLayout.setVisibility(View.VISIBLE);
+            String questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
+            if (questionsAct != null && !questionsAct.isEmpty()) {
+                formButtonLayout.setVisibility(View.GONE);
                 create_followup_card.setVisibility(View.GONE);
-                llCallAgain.setVisibility(View.GONE);
-                orText.setVisibility(View.GONE);
-                remarksCard.setVisibility(View.GONE);
-                submitLayout.setVisibility(View.GONE);
-                waitDialog = new ProgressDialog(this);
-                waitDialog.setMessage("Please Wait..");
-                waitDialog.setCancelable(true);
-                waitDialog.show();
-                SmarterSMBApplication.lastConnectedCustomerNumber = ""; //For redial to call we are clearing lastConnectedCustomerNumber to present during call screen.
-                SmarterSMBApplication.redialClickCount++;
-                NotificationData.isSocketResponse = false;
-                callbackCheck = false;
-                UearnActivity.callEndedFromDuringCall = false;
-                allianceSalesStage.setVisibility(View.GONE);
-                uView.setVisibility(View.GONE);
+                uView.setVisibility(View.VISIBLE);
                 cView.setVisibility(View.GONE);
                 rView.setVisibility(View.GONE);
-                redialView.setVisibility(View.VISIBLE);
+                redialView.setVisibility(View.GONE);
+                remarksCard.setVisibility(View.GONE);
                 questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
                 if (questionsAct != null && !questionsAct.isEmpty()) {
                     acpBottomLayout.setVisibility(View.VISIBLE);
                     mmtAcpBottomLayout.setVisibility(View.GONE);
                     checkRNR = false;
-                    mmtRedialScenario = true;
                 }
-                if (!UearnHome.manualDialing)
-                    redialScenario = true;
-                if (customerNumber == null || customerNumber.isEmpty()) {
-                    customerNumber = NotificationData.dialledCustomerNumber;
-                }
-                if (customerNumber != null && !customerNumber.isEmpty()) {
-                    boolean sequencialEndpoint = ApplicationSettings.getPref(AppConstants.C2C_SEQUENCIAL_ENDPOINT, false);
-                    if (sequencialEndpoint) {
-                        getSelectedCustomer(customerNumber);
-                        navigateBackAndStop = true;
-                        clickToCall(customerNumber);
-                    } else {
-                        NotificationData.appointment_db_id = 0;
-                        navigateBackAndStop = true;
-                        if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty()) {
-                            sendRemoteDialStopRequestRedialScenario("Taking a break");
-                        } else {
-                            clickToCall(customerNumber);
-                        }
+            } else {
+                callbackCheck = false;
+                checkRNR = false;
+                changeLayoutColor(111);
+                uView.setVisibility(View.VISIBLE);
+                cView.setVisibility(View.GONE);
+                rView.setVisibility(View.GONE);
+                redialView.setVisibility(View.GONE);
+                remarksCard.setVisibility(View.GONE);
 
-                    }
+                if (followUpButtonClicked) {
+                    create_followup_card.setVisibility(View.VISIBLE);
+                    llCallAgain.setVisibility(View.VISIBLE);
+                    orText.setVisibility(View.VISIBLE);
+                    remarksCard.setVisibility(View.VISIBLE);
                 } else {
-                    tempcustomerList = new ArrayList<>();
-                    boolean sequencialEndpoint = ApplicationSettings.getPref(AppConstants.C2C_SEQUENCIAL_ENDPOINT, false);
-                    if (sequencialEndpoint) {
-                        UearnActivity.redialScenarioCompleted = false;
-                        String customersListViewData = ApplicationSettings.getPref(AppConstants.CUSTOMER_LIST_DATA, "");
-                        CustomerLite[] listOfCustomers = new Gson().fromJson(customersListViewData, CustomerLite[].class);
-                        String number = "";
-                        if (listOfCustomers != null && listOfCustomers.length > 0) {
-                            for (int i = 0; i < listOfCustomers.length; i++) {
-                                CustomerLite customer = listOfCustomers[i];
-                                String custNumber = customer.customerNumber;
+                    create_followup_card.setVisibility(View.GONE);
+                    llCallAgain.setVisibility(View.GONE);
+                    orText.setVisibility(View.GONE);
+                    remarksCard.setVisibility(View.GONE);
+                }
+                checkViewFocus();
+                if (leadSheetAttached) {
+                    changeLayoutColor(7);
+                }
+            }
+            layout5.setVisibility(View.GONE);
+        } else if (id == R.id.redial_layout_view) {
+            String questionsAct;
+            radMessageLayout.setVisibility(View.GONE);
+            radMessageText.setVisibility(View.GONE);
+            SmarterSMBApplication.remoteEnabledRedialScenario = true;
+            SmarterSMBApplication.showSingleAcp = false;
+            SmarterSMBApplication.isCurrentQuesMandatory = false;
+            ApplicationSettings.putPref(AppConstants.ALLOW_REDIAL_FOR_REMOTE_ENABLED, true);
+            redialMainLinearLayout.setBackgroundResource(R.drawable.card_border_layout);
+            updateMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            rnrMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            callbackMainLinearLayout.setBackgroundResource(R.color.card_background_color);
 
-                                if (customer.type != null && !customer.type.isEmpty() && customer.type.equalsIgnoreCase("INVALID")) {
+            long callEndTime = System.currentTimeMillis();
+            ApplicationSettings.putPref(AppConstants.CALL_END_TIME, callEndTime);
 
-                                } else {
-                                    customer.type = "";
-                                }
+            if (SmarterSMBApplication.isDiallingFollowUpC2C) {
+                SmarterSMBApplication.isDiallingFollowUpC2C = false;
+            }
 
-                                number += custNumber + ",";
-                                tempcustomerList.add(i, customer);
-                                ContentValues cv = new ContentValues();
-                                cv.put("COMPLETED", 0);
-                                cv.put("RESPONSE_STATUS", "accepted");
-                                MySql dbHelper = MySql.getInstance(SmarterSMBApplication.currentActivity);
-                                SQLiteDatabase dbase = dbHelper.getWritableDatabase();
-                                dbase.update("remindertbNew", cv, "_id=" + customer.id, null);
-                            }
-                            number = number.substring(0, number.length() - 1);
-                        }
-                        ApplicationSettings.putPref(AppConstants.CONNECTED_CUSTOMER, "");
-                        ApplicationSettings.putPref(AppConstants.CONNECTED_CUSTOMER_NAME, "");
-                        String customerListData = new Gson().toJson(tempcustomerList);
-                        ApplicationSettings.putPref(AppConstants.CUSTOMER_LIST_DATA, customerListData);
-                        //System.out.print(customerListData);
-                        clickToCall(number);
+            if (SmarterSMBApplication.followupsInPredictive) {
+                SmarterSMBApplication.followupsInPredictive = false;
+            }
+
+            if (SmarterSMBApplication.connectedCustomerInProcess) {
+                SmarterSMBApplication.connectedCustomerInProcess = false;
+            }
+
+            if (SmarterSMBApplication.disconnectedCustomerInProcess) {
+                SmarterSMBApplication.disconnectedCustomerInProcess = false;
+            }
+
+            if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
+                boolean adhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
+                if (adhocCall) {
+                    String questionnaire = ApplicationSettings.getPref(AppConstants.QUESTIONNAIRE_FROM_SETTINGS, "");
+                    ApplicationSettings.putPref(AppConstants.QUESTIONNAIRE, questionnaire);
+                }
+            }
+
+            create_followup_card.setVisibility(View.GONE);
+            llCallAgain.setVisibility(View.GONE);
+            orText.setVisibility(View.GONE);
+            remarksCard.setVisibility(View.GONE);
+            submitLayout.setVisibility(View.GONE);
+            waitDialog = new ProgressDialog(this);
+            waitDialog.setMessage("Please Wait..");
+            waitDialog.setCancelable(true);
+            waitDialog.show();
+            SmarterSMBApplication.lastConnectedCustomerNumber = ""; //For redial to call we are clearing lastConnectedCustomerNumber to present during call screen.
+            SmarterSMBApplication.redialClickCount++;
+            NotificationData.isSocketResponse = false;
+            callbackCheck = false;
+            UearnActivity.callEndedFromDuringCall = false;
+            allianceSalesStage.setVisibility(View.GONE);
+            uView.setVisibility(View.GONE);
+            cView.setVisibility(View.GONE);
+            rView.setVisibility(View.GONE);
+            redialView.setVisibility(View.VISIBLE);
+            questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
+            if (questionsAct != null && !questionsAct.isEmpty()) {
+                acpBottomLayout.setVisibility(View.VISIBLE);
+                mmtAcpBottomLayout.setVisibility(View.GONE);
+                checkRNR = false;
+                mmtRedialScenario = true;
+            }
+            if (!UearnHome.manualDialing)
+                redialScenario = true;
+            if (customerNumber == null || customerNumber.isEmpty()) {
+                customerNumber = NotificationData.dialledCustomerNumber;
+            }
+            if (customerNumber != null && !customerNumber.isEmpty()) {
+                boolean sequencialEndpoint = ApplicationSettings.getPref(AppConstants.C2C_SEQUENCIAL_ENDPOINT, false);
+                if (sequencialEndpoint) {
+                    getSelectedCustomer(customerNumber);
+                    navigateBackAndStop = true;
+                    clickToCall(customerNumber);
+                } else {
+                    NotificationData.appointment_db_id = 0;
+                    navigateBackAndStop = true;
+                    if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty()) {
+                        sendRemoteDialStopRequestRedialScenario("Taking a break");
+                    } else {
+                        clickToCall(customerNumber);
                     }
+
                 }
-                submitButton.setVisibility(View.VISIBLE);
-                if (waitDialog != null) {
-                    waitDialog.dismiss();
+            } else {
+                tempcustomerList = new ArrayList<>();
+                boolean sequencialEndpoint = ApplicationSettings.getPref(AppConstants.C2C_SEQUENCIAL_ENDPOINT, false);
+                if (sequencialEndpoint) {
+                    UearnActivity.redialScenarioCompleted = false;
+                    String customersListViewData = ApplicationSettings.getPref(AppConstants.CUSTOMER_LIST_DATA, "");
+                    CustomerLite[] listOfCustomers = new Gson().fromJson(customersListViewData, CustomerLite[].class);
+                    String number = "";
+                    if (listOfCustomers != null && listOfCustomers.length > 0) {
+                        for (int i = 0; i < listOfCustomers.length; i++) {
+                            CustomerLite customer = listOfCustomers[i];
+                            String custNumber = customer.customerNumber;
+
+                            if (customer.type != null && !customer.type.isEmpty() && customer.type.equalsIgnoreCase("INVALID")) {
+
+                            } else {
+                                customer.type = "";
+                            }
+
+                            number += custNumber + ",";
+                            tempcustomerList.add(i, customer);
+                            ContentValues cv = new ContentValues();
+                            cv.put("COMPLETED", 0);
+                            cv.put("RESPONSE_STATUS", "accepted");
+                            MySql dbHelper = MySql.getInstance(SmarterSMBApplication.currentActivity);
+                            SQLiteDatabase dbase = dbHelper.getWritableDatabase();
+                            dbase.update("remindertbNew", cv, "_id=" + customer.id, null);
+                        }
+                        number = number.substring(0, number.length() - 1);
+                    }
+                    ApplicationSettings.putPref(AppConstants.CONNECTED_CUSTOMER, "");
+                    ApplicationSettings.putPref(AppConstants.CONNECTED_CUSTOMER_NAME, "");
+                    String customerListData = new Gson().toJson(tempcustomerList);
+                    ApplicationSettings.putPref(AppConstants.CUSTOMER_LIST_DATA, customerListData);
+                    //System.out.print(customerListData);
+                    clickToCall(number);
                 }
-                //}
-                break;
-            case R.id.callback_view:
-                if (checkRNR) {
+            }
+            submitButton.setVisibility(View.VISIBLE);
+            if (waitDialog != null) {
+                waitDialog.dismiss();
+            }
+            //}
+        } else if (id == R.id.callback_view) {
+            String questionsAct;
+            if (checkRNR) {
+                return;
+            }
+
+            if (ApplicationSettings.containsPref(AppConstants.DISABLE_CALLBACK)) {
+                boolean disableCallback = ApplicationSettings.getPref(AppConstants.DISABLE_CALLBACK, false);
+                if (disableCallback) {
                     return;
                 }
+            }
 
-                if (ApplicationSettings.containsPref(AppConstants.DISABLE_CALLBACK)) {
-                    boolean disableCallback = ApplicationSettings.getPref(AppConstants.DISABLE_CALLBACK, false);
-                    if (disableCallback) {
-                        return;
-                    }
-                }
-
-                radMessageLayout.setVisibility(View.GONE);
-                radMessageText.setVisibility(View.GONE);
-                callbackMainLinearLayout.setBackgroundResource(R.drawable.card_border_layout);
-                updateMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                rnrMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                redialMainLinearLayout.setBackgroundResource(R.color.card_background_color);
-                submitLayout.setVisibility(View.GONE);
-                questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
-                if ((questionsAct != null && !questionsAct.isEmpty() && questionsAct.equals("AJIO"))) {
-                    String callBackStatus = ApplicationSettings.getPref(AppConstants.MMT_STATUS, "");
-                    if (callBackStatus != null && !callBackStatus.equals("ASSIGNTOL2")) {
-                        allianceStatus = "";
-                        allianceSubStatus = "";
-                        allianceSalesStage.setVisibility(View.GONE);
-                        applicationNumber_Card.setVisibility(View.GONE);
-                        councellingLocationLayout.setVisibility(View.GONE);
-                        allianceInterestedLayout.setVisibility(View.GONE);
-                        councelingDateTimeCard.setVisibility(View.GONE);
-                        notInterested_Card.setVisibility(View.GONE);
-
-                        questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
-                        if (questionsAct != null && !questionsAct.isEmpty()) {
-                            formButtonLayout.setVisibility(View.GONE);
-                            questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
-                            if (questionsAct != null && !questionsAct.isEmpty()) {
-                                acpBottomLayout.setVisibility(View.VISIBLE);
-                                mmtAcpBottomLayout.setVisibility(View.GONE);
-                                checkRNR = false;
-                            }
-                        }
-                        changeLayoutColor(111);
-                        callbackCheck = true;
-                        if (NotificationData.statusString != null && !(NotificationData.statusString.isEmpty())) {
-                            status = NotificationData.statusString;
-                        } else {
-                            status = "";
-                        }
-
-                        if (NotificationData.substatus1 != null) {
-                            subStatus1 = NotificationData.substatus1;
-                        } else {
-                            subStatus1 = "";
-                        }
-                        if (NotificationData.substatus2 != null) {
-                            subStatus2 = NotificationData.substatus2;
-                        } else {
-                            subStatus2 = "";
-                        }
-
-                        if (NotificationData.notes_string != null) {
-                            notesString = NotificationData.notes_string;
-                            if (notesString != null && !notesString.isEmpty() && !notesString.equals("null"))
-                                remarks.setText(notesString);
-                        } else {
-                            notesString = getNotesFromDB();
-                            if (notesString != null && !notesString.isEmpty() && !notesString.equals("null"))
-                                remarks.setText(notesString);
-                        }
-
-                        create_followup_card.setVisibility(View.VISIBLE);
-                        llCallAgain.setVisibility(View.VISIBLE);
-                        uView.setVisibility(View.GONE);
-                        cView.setVisibility(View.VISIBLE);
-                        rView.setVisibility(View.GONE);
-                        redialView.setVisibility(View.GONE);
-                        submitButton.setVisibility(View.VISIBLE);
-                        remarksCard.setVisibility(View.VISIBLE);
-                        pan_available_layout.setVisibility(View.VISIBLE);
-                        orText.setVisibility(View.VISIBLE);
-                    }
-                } else {
+            radMessageLayout.setVisibility(View.GONE);
+            radMessageText.setVisibility(View.GONE);
+            callbackMainLinearLayout.setBackgroundResource(R.drawable.card_border_layout);
+            updateMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            rnrMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            redialMainLinearLayout.setBackgroundResource(R.color.card_background_color);
+            submitLayout.setVisibility(View.GONE);
+            questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
+            if ((questionsAct != null && !questionsAct.isEmpty() && questionsAct.equals("AJIO"))) {
+                String callBackStatus = ApplicationSettings.getPref(AppConstants.MMT_STATUS, "");
+                if (callBackStatus != null && !callBackStatus.equals("ASSIGNTOL2")) {
                     allianceStatus = "";
                     allianceSubStatus = "";
                     allianceSalesStage.setVisibility(View.GONE);
@@ -9535,6 +9462,7 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                     allianceInterestedLayout.setVisibility(View.GONE);
                     councelingDateTimeCard.setVisibility(View.GONE);
                     notInterested_Card.setVisibility(View.GONE);
+
                     questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
                     if (questionsAct != null && !questionsAct.isEmpty()) {
                         formButtonLayout.setVisibility(View.GONE);
@@ -9585,420 +9513,461 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                     pan_available_layout.setVisibility(View.VISIBLE);
                     orText.setVisibility(View.VISIBLE);
                 }
-                break;
-            case R.id.appliedLayout:
-                allianceStatus = "APPROVED ALREADY";
-                applicationNumber_Card.setVisibility(View.VISIBLE);
-                councellingLocationLayout.setVisibility(View.GONE);
-                allianceInterestedLayout.setVisibility(View.GONE);
-                councelingDateTimeCard.setVisibility(View.GONE);
-                notInterested_Card.setVisibility(View.GONE);
-                appliedBtn.setBackgroundColor(getResources().getColor(R.color.button_color));
-                interestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                notInterestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                break;
-            case R.id.interestedLayout:
-                allianceStatus = "INTERESTED";
-                applicationNumber_Card.setVisibility(View.GONE);
-                notInterested_Card.setVisibility(View.GONE);
-                councellingLocationLayout.setVisibility(View.VISIBLE);
-                allianceInterestedLayout.setVisibility(View.VISIBLE);
-                councelingDateTimeCard.setVisibility(View.VISIBLE);
-                interestedBtn.setBackgroundColor(getResources().getColor(R.color.button_color));
-                appliedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                notInterestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                break;
-            case R.id.notInterestedLayout:
-                allianceStatus = "NOT INTERESTED";
-                notInterested_Card.setVisibility(View.VISIBLE);
+            } else {
+                allianceStatus = "";
+                allianceSubStatus = "";
+                allianceSalesStage.setVisibility(View.GONE);
                 applicationNumber_Card.setVisibility(View.GONE);
                 councellingLocationLayout.setVisibility(View.GONE);
                 allianceInterestedLayout.setVisibility(View.GONE);
                 councelingDateTimeCard.setVisibility(View.GONE);
-                notInterestedBtn.setBackgroundColor(getResources().getColor(R.color.button_color));
-                appliedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                interestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                break;
-            case R.id.upload_attach_button:
-                /*SecureRandom rand = new SecureRandom();
+                notInterested_Card.setVisibility(View.GONE);
+                questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
+                if (questionsAct != null && !questionsAct.isEmpty()) {
+                    formButtonLayout.setVisibility(View.GONE);
+                    questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
+                    if (questionsAct != null && !questionsAct.isEmpty()) {
+                        acpBottomLayout.setVisibility(View.VISIBLE);
+                        mmtAcpBottomLayout.setVisibility(View.GONE);
+                        checkRNR = false;
+                    }
+                }
+                changeLayoutColor(111);
+                callbackCheck = true;
+                if (NotificationData.statusString != null && !(NotificationData.statusString.isEmpty())) {
+                    status = NotificationData.statusString;
+                } else {
+                    status = "";
+                }
+
+                if (NotificationData.substatus1 != null) {
+                    subStatus1 = NotificationData.substatus1;
+                } else {
+                    subStatus1 = "";
+                }
+                if (NotificationData.substatus2 != null) {
+                    subStatus2 = NotificationData.substatus2;
+                } else {
+                    subStatus2 = "";
+                }
+
+                if (NotificationData.notes_string != null) {
+                    notesString = NotificationData.notes_string;
+                    if (notesString != null && !notesString.isEmpty() && !notesString.equals("null"))
+                        remarks.setText(notesString);
+                } else {
+                    notesString = getNotesFromDB();
+                    if (notesString != null && !notesString.isEmpty() && !notesString.equals("null"))
+                        remarks.setText(notesString);
+                }
+
+                create_followup_card.setVisibility(View.VISIBLE);
+                llCallAgain.setVisibility(View.VISIBLE);
+                uView.setVisibility(View.GONE);
+                cView.setVisibility(View.VISIBLE);
+                rView.setVisibility(View.GONE);
+                redialView.setVisibility(View.GONE);
+                submitButton.setVisibility(View.VISIBLE);
+                remarksCard.setVisibility(View.VISIBLE);
+                pan_available_layout.setVisibility(View.VISIBLE);
+                orText.setVisibility(View.VISIBLE);
+            }
+        } else if (id == R.id.appliedLayout) {
+            allianceStatus = "APPROVED ALREADY";
+            applicationNumber_Card.setVisibility(View.VISIBLE);
+            councellingLocationLayout.setVisibility(View.GONE);
+            allianceInterestedLayout.setVisibility(View.GONE);
+            councelingDateTimeCard.setVisibility(View.GONE);
+            notInterested_Card.setVisibility(View.GONE);
+            appliedBtn.setBackgroundColor(getResources().getColor(R.color.button_color));
+            interestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+            notInterestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+        } else if (id == R.id.interestedLayout) {
+            allianceStatus = "INTERESTED";
+            applicationNumber_Card.setVisibility(View.GONE);
+            notInterested_Card.setVisibility(View.GONE);
+            councellingLocationLayout.setVisibility(View.VISIBLE);
+            allianceInterestedLayout.setVisibility(View.VISIBLE);
+            councelingDateTimeCard.setVisibility(View.VISIBLE);
+            interestedBtn.setBackgroundColor(getResources().getColor(R.color.button_color));
+            appliedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+            notInterestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+        } else if (id == R.id.notInterestedLayout) {
+            allianceStatus = "NOT INTERESTED";
+            notInterested_Card.setVisibility(View.VISIBLE);
+            applicationNumber_Card.setVisibility(View.GONE);
+            councellingLocationLayout.setVisibility(View.GONE);
+            allianceInterestedLayout.setVisibility(View.GONE);
+            councelingDateTimeCard.setVisibility(View.GONE);
+            notInterestedBtn.setBackgroundColor(getResources().getColor(R.color.button_color));
+            appliedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+            interestedBtn.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+        } else if (id == R.id.upload_attach_button) {/*SecureRandom rand = new SecureRandom();
                 imagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/notesimage" + rand.nextInt() + ".JPEG";
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(imagePath)));
                 startActivityForResult(intent, UPLOAD_ATTACHMENT);*/
-                startDialog();
-                break;
-            case R.id.ll_call_flow_delete:
-                ll_call_flow_upload_file.setVisibility(View.VISIBLE);
-                attachmentReadyButton.setVisibility(View.GONE);
-                uploadAttachmentButton.setVisibility(View.VISIBLE);
-                break;
-            case R.id.edit_name:
-                tv_name_or_number.setEnabled(true);
-                tv_name_or_number.setFocusable(true);
-                tv_name_or_number.setFocusableInTouchMode(true);
-                tv_name_or_number.setSelection(tv_name_or_number.getText().length());
-                break;
-            case R.id.btn_ten:
-                autoCheck = true;
-                preAlarmSet = true;
-                alarmBefore = 0;
-                resetBackground(0);
-                mCalendar = Calendar.getInstance();
-                int calculateMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
-                int calculateHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateMinute1 >= 60) {
-                    final_start_min = calculateMinute1 - 60;
-                    final_start_hour = calculateHour1 + 1;
-                } else {
-                    final_start_min = calculateMinute1;
-                    final_start_hour = calculateHour1;
-                }
-                int calculateEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
-                if (calculateEndMinute1 >= 60) {
-                    final_end_min = calculateEndMinute1 - 60;
-                    final_end_hour = calculateHour1 + 1;
-                } else {
-                    final_end_min = calculateEndMinute1;
-                    final_end_hour = calculateHour1;
-                }
-                Calendar cDtTm = Calendar.getInstance();
-                final_start_year = cDtTm.get(Calendar.YEAR);
-                final_start_month = cDtTm.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm.get(Calendar.YEAR);
-                final_end_month = cDtTm.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.questionnaire_btnTen:
-                autoCheck = true;
-                preAlarmSet = true;
-                alarmBefore = 0;
-                resetBackgroundQuestionnaire(0);
-                followupDate.setText("Select Date");
-                followupTime.setText("Select Time");
-                mCalendar = Calendar.getInstance();
-                calculateMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
-                calculateHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateMinute1 >= 60) {
-                    final_start_min = calculateMinute1 - 60;
-                    final_start_hour = calculateHour1 + 1;
-                } else {
-                    final_start_min = calculateMinute1;
-                    final_start_hour = calculateHour1;
-                }
-                calculateEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
-                if (calculateEndMinute1 >= 60) {
-                    final_end_min = calculateEndMinute1 - 60;
-                    final_end_hour = calculateHour1 + 1;
-                } else {
-                    final_end_min = calculateEndMinute1;
-                    final_end_hour = calculateHour1;
-                }
-                cDtTm = Calendar.getInstance();
-                final_start_year = cDtTm.get(Calendar.YEAR);
-                final_start_month = cDtTm.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm.get(Calendar.YEAR);
-                final_end_month = cDtTm.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.oyo_btn_ten1:
-                autoCheck = true;
-                preAlarmSet = true;
-                alarmBefore = 0;
-                resetBackground(0);
-                mCalendar = Calendar.getInstance();
-                int calculateOyoMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
-                int calculateOyoHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateOyoMinute1 >= 60) {
-                    final_start_min = calculateOyoMinute1 - 60;
-                    final_start_hour = calculateOyoHour1 + 1;
-                } else {
-                    final_start_min = calculateOyoMinute1;
-                    final_start_hour = calculateOyoHour1;
-                }
-                int calculateOyoEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
-                if (calculateOyoEndMinute1 >= 60) {
-                    final_end_min = calculateOyoEndMinute1 - 60;
-                    final_end_hour = calculateOyoHour1 + 1;
-                } else {
-                    final_end_min = calculateOyoEndMinute1;
-                    final_end_hour = calculateOyoHour1;
-                }
-                Calendar cDOyotTm = Calendar.getInstance();
-                final_start_year = cDOyotTm.get(Calendar.YEAR);
-                final_start_month = cDOyotTm.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDOyotTm.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDOyotTm.get(Calendar.YEAR);
-                final_end_month = cDOyotTm.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDOyotTm.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.btn_thirty:
-                alarmBefore = 10;
-                autoCheck = true;
-                preAlarmSet = true;
-                resetBackground(1);
-                mCalendar = Calendar.getInstance();
-                int calculateMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
-                int calculateHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateMinute2 >= 60) {
-                    final_start_min = calculateMinute2 - 60;
-                    final_start_hour = calculateHour2 + 1;
-                } else {
-                    final_start_min = calculateMinute2;
-                    final_start_hour = calculateHour2;
-                }
-                int calculateEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
-                if (calculateEndMinute2 >= 60) {
-                    final_end_min = calculateEndMinute2 - 60;
-                    final_end_hour = calculateHour2 + 1;
-                } else {
-                    final_end_min = calculateEndMinute2;
-                    final_end_hour = calculateHour2;
-                }
-                Calendar cDtTm1 = Calendar.getInstance();
-                final_start_year = cDtTm1.get(Calendar.YEAR);
-                final_start_month = cDtTm1.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm1.get(Calendar.YEAR);
-                final_end_month = cDtTm1.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.questionnaire_btn_thirty:
-                alarmBefore = 10;
-                autoCheck = true;
-                preAlarmSet = true;
-                resetBackgroundQuestionnaire(1);
-                followupDate.setText("Select Date");
-                followupTime.setText("Select Time");
-                mCalendar = Calendar.getInstance();
-                calculateMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
-                calculateHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateMinute2 >= 60) {
-                    final_start_min = calculateMinute2 - 60;
-                    final_start_hour = calculateHour2 + 1;
-                } else {
-                    final_start_min = calculateMinute2;
-                    final_start_hour = calculateHour2;
-                }
-                calculateEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
-                if (calculateEndMinute2 >= 60) {
-                    final_end_min = calculateEndMinute2 - 60;
-                    final_end_hour = calculateHour2 + 1;
-                } else {
-                    final_end_min = calculateEndMinute2;
-                    final_end_hour = calculateHour2;
-                }
-                cDtTm1 = Calendar.getInstance();
-                final_start_year = cDtTm1.get(Calendar.YEAR);
-                final_start_month = cDtTm1.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm1.get(Calendar.YEAR);
-                final_end_month = cDtTm1.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.oyo_btn_thirty1:
-                alarmBefore = 10;
-                autoCheck = true;
-                preAlarmSet = true;
-                resetBackground(1);
-                mCalendar = Calendar.getInstance();
-                int calculateOyoMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
-                int calculateOyoHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateOyoMinute2 >= 60) {
-                    final_start_min = calculateOyoMinute2 - 60;
-                    final_start_hour = calculateOyoHour2 + 1;
-                } else {
-                    final_start_min = calculateOyoMinute2;
-                    final_start_hour = calculateOyoHour2;
-                }
-                int calculateOyoEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
-                if (calculateOyoEndMinute2 >= 60) {
-                    final_end_min = calculateOyoEndMinute2 - 60;
-                    final_end_hour = calculateOyoHour2 + 1;
-                } else {
-                    final_end_min = calculateOyoEndMinute2;
-                    final_end_hour = calculateOyoHour2;
-                }
-                Calendar cDtOyoTm1 = Calendar.getInstance();
-                final_start_year = cDtOyoTm1.get(Calendar.YEAR);
-                final_start_month = cDtOyoTm1.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtOyoTm1.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtOyoTm1.get(Calendar.YEAR);
-                final_end_month = cDtOyoTm1.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtOyoTm1.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.btn_sixty:
-                alarmBefore = 10;
-                autoCheck = true;
-                preAlarmSet = true;
-                resetBackground(2);
-                mCalendar = Calendar.getInstance();
-                int calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
-                int calculateHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateMinute3 >= 60) {
-                    final_start_min = calculateMinute3 - 60;
-                    final_start_hour = calculateHour3 + 1;
-                } else {
-                    final_start_min = calculateMinute3;
-                    final_start_hour = calculateHour3;
-                }
-                int calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
-                if (calculateEndMinute3 >= 60) {
-                    final_end_min = calculateEndMinute3 - 60;
-                    final_end_hour = calculateHour3 + 1;
+            startDialog();
+        } else if (id == R.id.ll_call_flow_delete) {
+            ll_call_flow_upload_file.setVisibility(View.VISIBLE);
+            attachmentReadyButton.setVisibility(View.GONE);
+            uploadAttachmentButton.setVisibility(View.VISIBLE);
+        } else if (id == R.id.edit_name) {
+            tv_name_or_number.setEnabled(true);
+            tv_name_or_number.setFocusable(true);
+            tv_name_or_number.setFocusableInTouchMode(true);
+            tv_name_or_number.setSelection(tv_name_or_number.getText().length());
+        } else if (id == R.id.btn_ten) {
+            autoCheck = true;
+            preAlarmSet = true;
+            alarmBefore = 0;
+            resetBackground(0);
+            mCalendar = Calendar.getInstance();
+            int calculateMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
+            int calculateHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateMinute1 >= 60) {
+                final_start_min = calculateMinute1 - 60;
+                final_start_hour = calculateHour1 + 1;
+            } else {
+                final_start_min = calculateMinute1;
+                final_start_hour = calculateHour1;
+            }
+            int calculateEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
+            if (calculateEndMinute1 >= 60) {
+                final_end_min = calculateEndMinute1 - 60;
+                final_end_hour = calculateHour1 + 1;
+            } else {
+                final_end_min = calculateEndMinute1;
+                final_end_hour = calculateHour1;
+            }
+            Calendar cDtTm = Calendar.getInstance();
+            final_start_year = cDtTm.get(Calendar.YEAR);
+            final_start_month = cDtTm.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm.get(Calendar.YEAR);
+            final_end_month = cDtTm.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.questionnaire_btnTen) {
+            Calendar cDtTm;
+            int calculateEndMinute1;
+            int calculateMinute1;
+            int calculateHour1;
+            autoCheck = true;
+            preAlarmSet = true;
+            alarmBefore = 0;
+            resetBackgroundQuestionnaire(0);
+            followupDate.setText("Select Date");
+            followupTime.setText("Select Time");
+            mCalendar = Calendar.getInstance();
+            calculateMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
+            calculateHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateMinute1 >= 60) {
+                final_start_min = calculateMinute1 - 60;
+                final_start_hour = calculateHour1 + 1;
+            } else {
+                final_start_min = calculateMinute1;
+                final_start_hour = calculateHour1;
+            }
+            calculateEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
+            if (calculateEndMinute1 >= 60) {
+                final_end_min = calculateEndMinute1 - 60;
+                final_end_hour = calculateHour1 + 1;
+            } else {
+                final_end_min = calculateEndMinute1;
+                final_end_hour = calculateHour1;
+            }
+            cDtTm = Calendar.getInstance();
+            final_start_year = cDtTm.get(Calendar.YEAR);
+            final_start_month = cDtTm.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm.get(Calendar.YEAR);
+            final_end_month = cDtTm.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.oyo_btn_ten1) {
+            autoCheck = true;
+            preAlarmSet = true;
+            alarmBefore = 0;
+            resetBackground(0);
+            mCalendar = Calendar.getInstance();
+            int calculateOyoMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 10;
+            int calculateOyoHour1 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateOyoMinute1 >= 60) {
+                final_start_min = calculateOyoMinute1 - 60;
+                final_start_hour = calculateOyoHour1 + 1;
+            } else {
+                final_start_min = calculateOyoMinute1;
+                final_start_hour = calculateOyoHour1;
+            }
+            int calculateOyoEndMinute1 = Calendar.getInstance().get(Calendar.MINUTE) + 25;
+            if (calculateOyoEndMinute1 >= 60) {
+                final_end_min = calculateOyoEndMinute1 - 60;
+                final_end_hour = calculateOyoHour1 + 1;
+            } else {
+                final_end_min = calculateOyoEndMinute1;
+                final_end_hour = calculateOyoHour1;
+            }
+            Calendar cDOyotTm = Calendar.getInstance();
+            final_start_year = cDOyotTm.get(Calendar.YEAR);
+            final_start_month = cDOyotTm.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDOyotTm.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDOyotTm.get(Calendar.YEAR);
+            final_end_month = cDOyotTm.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDOyotTm.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.btn_thirty) {
+            alarmBefore = 10;
+            autoCheck = true;
+            preAlarmSet = true;
+            resetBackground(1);
+            mCalendar = Calendar.getInstance();
+            int calculateMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
+            int calculateHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateMinute2 >= 60) {
+                final_start_min = calculateMinute2 - 60;
+                final_start_hour = calculateHour2 + 1;
+            } else {
+                final_start_min = calculateMinute2;
+                final_start_hour = calculateHour2;
+            }
+            int calculateEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
+            if (calculateEndMinute2 >= 60) {
+                final_end_min = calculateEndMinute2 - 60;
+                final_end_hour = calculateHour2 + 1;
+            } else {
+                final_end_min = calculateEndMinute2;
+                final_end_hour = calculateHour2;
+            }
+            Calendar cDtTm1 = Calendar.getInstance();
+            final_start_year = cDtTm1.get(Calendar.YEAR);
+            final_start_month = cDtTm1.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm1.get(Calendar.YEAR);
+            final_end_month = cDtTm1.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.questionnaire_btn_thirty) {
+            Calendar cDtTm1;
+            int calculateEndMinute2;
+            int calculateMinute2;
+            int calculateHour2;
+            alarmBefore = 10;
+            autoCheck = true;
+            preAlarmSet = true;
+            resetBackgroundQuestionnaire(1);
+            followupDate.setText("Select Date");
+            followupTime.setText("Select Time");
+            mCalendar = Calendar.getInstance();
+            calculateMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
+            calculateHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateMinute2 >= 60) {
+                final_start_min = calculateMinute2 - 60;
+                final_start_hour = calculateHour2 + 1;
+            } else {
+                final_start_min = calculateMinute2;
+                final_start_hour = calculateHour2;
+            }
+            calculateEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
+            if (calculateEndMinute2 >= 60) {
+                final_end_min = calculateEndMinute2 - 60;
+                final_end_hour = calculateHour2 + 1;
+            } else {
+                final_end_min = calculateEndMinute2;
+                final_end_hour = calculateHour2;
+            }
+            cDtTm1 = Calendar.getInstance();
+            final_start_year = cDtTm1.get(Calendar.YEAR);
+            final_start_month = cDtTm1.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm1.get(Calendar.YEAR);
+            final_end_month = cDtTm1.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm1.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.oyo_btn_thirty1) {
+            alarmBefore = 10;
+            autoCheck = true;
+            preAlarmSet = true;
+            resetBackground(1);
+            mCalendar = Calendar.getInstance();
+            int calculateOyoMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 30;
+            int calculateOyoHour2 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateOyoMinute2 >= 60) {
+                final_start_min = calculateOyoMinute2 - 60;
+                final_start_hour = calculateOyoHour2 + 1;
+            } else {
+                final_start_min = calculateOyoMinute2;
+                final_start_hour = calculateOyoHour2;
+            }
+            int calculateOyoEndMinute2 = Calendar.getInstance().get(Calendar.MINUTE) + 45;
+            if (calculateOyoEndMinute2 >= 60) {
+                final_end_min = calculateOyoEndMinute2 - 60;
+                final_end_hour = calculateOyoHour2 + 1;
+            } else {
+                final_end_min = calculateOyoEndMinute2;
+                final_end_hour = calculateOyoHour2;
+            }
+            Calendar cDtOyoTm1 = Calendar.getInstance();
+            final_start_year = cDtOyoTm1.get(Calendar.YEAR);
+            final_start_month = cDtOyoTm1.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtOyoTm1.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtOyoTm1.get(Calendar.YEAR);
+            final_end_month = cDtOyoTm1.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtOyoTm1.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.btn_sixty) {
+            alarmBefore = 10;
+            autoCheck = true;
+            preAlarmSet = true;
+            resetBackground(2);
+            mCalendar = Calendar.getInstance();
+            int calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
+            int calculateHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateMinute3 >= 60) {
+                final_start_min = calculateMinute3 - 60;
+                final_start_hour = calculateHour3 + 1;
+            } else {
+                final_start_min = calculateMinute3;
+                final_start_hour = calculateHour3;
+            }
+            int calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
+            if (calculateEndMinute3 >= 60) {
+                final_end_min = calculateEndMinute3 - 60;
+                final_end_hour = calculateHour3 + 1;
 
-                    if (final_end_min >= 60) {
-                        final_end_min = final_end_min - 60;
-                        final_end_hour = calculateHour3 + 1;
-                    }
-                }
-                Calendar cDtTm2 = Calendar.getInstance();
-                final_start_year = cDtTm2.get(Calendar.YEAR);
-                final_start_month = cDtTm2.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm2.get(Calendar.YEAR);
-                final_end_month = cDtTm2.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.questionnaire_btn_sixty:
-                alarmBefore = 10;
-                autoCheck = true;
-                preAlarmSet = true;
-                resetBackgroundQuestionnaire(2);
-                followupDate.setText("Select Date");
-                followupTime.setText("Select Time");
-                mCalendar = Calendar.getInstance();
-                if(flp_duration > 1){
-                    calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + flp_duration*60;
-                } else {
-                    calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
-                }
-                calculateHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateMinute3 >= 60) {
-                    final_start_min = calculateMinute3 - 60;
-                    final_start_hour = calculateHour3 + 1;
-                } else {
-                    final_start_min = calculateMinute3;
-                    final_start_hour = calculateHour3;
-                }
-                if(flp_duration > 1){
-                    calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + (flp_duration*60)+15;
-                } else {
-                    calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
-                }
-                if (calculateEndMinute3 >= 60) {
-                    final_end_min = calculateEndMinute3 - 60;
+                if (final_end_min >= 60) {
+                    final_end_min = final_end_min - 60;
                     final_end_hour = calculateHour3 + 1;
+                }
+            }
+            Calendar cDtTm2 = Calendar.getInstance();
+            final_start_year = cDtTm2.get(Calendar.YEAR);
+            final_start_month = cDtTm2.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm2.get(Calendar.YEAR);
+            final_end_month = cDtTm2.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.questionnaire_btn_sixty) {
+            Calendar cDtTm2;
+            int calculateMinute3;
+            int calculateHour3;
+            int calculateEndMinute3;
+            alarmBefore = 10;
+            autoCheck = true;
+            preAlarmSet = true;
+            resetBackgroundQuestionnaire(2);
+            followupDate.setText("Select Date");
+            followupTime.setText("Select Time");
+            mCalendar = Calendar.getInstance();
+            if (flp_duration > 1) {
+                calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + flp_duration * 60;
+            } else {
+                calculateMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
+            }
+            calculateHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateMinute3 >= 60) {
+                final_start_min = calculateMinute3 - 60;
+                final_start_hour = calculateHour3 + 1;
+            } else {
+                final_start_min = calculateMinute3;
+                final_start_hour = calculateHour3;
+            }
+            if (flp_duration > 1) {
+                calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + (flp_duration * 60) + 15;
+            } else {
+                calculateEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
+            }
+            if (calculateEndMinute3 >= 60) {
+                final_end_min = calculateEndMinute3 - 60;
+                final_end_hour = calculateHour3 + 1;
 
-                    if (final_end_min >= 60) {
-                        final_end_min = final_end_min - 60;
-                        final_end_hour = calculateHour3 + 1;
-                    }
+                if (final_end_min >= 60) {
+                    final_end_min = final_end_min - 60;
+                    final_end_hour = calculateHour3 + 1;
                 }
-                cDtTm2 = Calendar.getInstance();
-                final_start_year = cDtTm2.get(Calendar.YEAR);
-                final_start_month = cDtTm2.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtTm2.get(Calendar.YEAR);
-                final_end_month = cDtTm2.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.oyo_btn_sixty1:
-                alarmBefore = 10;
-                autoCheck = true;
-                preAlarmSet = true;
-                resetBackground(2);
-                mCalendar = Calendar.getInstance();
-                int calculateOyoMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
-                int calculateOyoHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (calculateOyoMinute3 >= 60) {
-                    final_start_min = calculateOyoMinute3 - 60;
-                    final_start_hour = calculateOyoHour3 + 1;
-                } else {
-                    final_start_min = calculateOyoMinute3;
-                    final_start_hour = calculateOyoHour3;
-                }
-                int calculateOyoEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
-                if (calculateOyoEndMinute3 >= 60) {
-                    final_end_min = calculateOyoEndMinute3 - 60;
+            }
+            cDtTm2 = Calendar.getInstance();
+            final_start_year = cDtTm2.get(Calendar.YEAR);
+            final_start_month = cDtTm2.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtTm2.get(Calendar.YEAR);
+            final_end_month = cDtTm2.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtTm2.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.oyo_btn_sixty1) {
+            alarmBefore = 10;
+            autoCheck = true;
+            preAlarmSet = true;
+            resetBackground(2);
+            mCalendar = Calendar.getInstance();
+            int calculateOyoMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 60;
+            int calculateOyoHour3 = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            if (calculateOyoMinute3 >= 60) {
+                final_start_min = calculateOyoMinute3 - 60;
+                final_start_hour = calculateOyoHour3 + 1;
+            } else {
+                final_start_min = calculateOyoMinute3;
+                final_start_hour = calculateOyoHour3;
+            }
+            int calculateOyoEndMinute3 = Calendar.getInstance().get(Calendar.MINUTE) + 75;
+            if (calculateOyoEndMinute3 >= 60) {
+                final_end_min = calculateOyoEndMinute3 - 60;
+                final_end_hour = calculateOyoHour3 + 1;
+
+                if (final_end_min >= 60) {
+                    final_end_min = final_end_min - 60;
                     final_end_hour = calculateOyoHour3 + 1;
-
-                    if (final_end_min >= 60) {
-                        final_end_min = final_end_min - 60;
-                        final_end_hour = calculateOyoHour3 + 1;
-                    }
                 }
-                Calendar cDtOyoTm2 = Calendar.getInstance();
-                final_start_year = cDtOyoTm2.get(Calendar.YEAR);
-                final_start_month = cDtOyoTm2.get(Calendar.MONTH);
-                final_start_dayOfMonth = cDtOyoTm2.get(Calendar.DAY_OF_MONTH);
-                final_end_year = cDtOyoTm2.get(Calendar.YEAR);
-                final_end_month = cDtOyoTm2.get(Calendar.MONTH);
-                final_end_dayOfMonth = cDtOyoTm2.get(Calendar.DAY_OF_MONTH);
-                break;
-            case R.id.submit_button:
-            case R.id.mmt_submit_button:
-
-                //SmarterSMBApplication.inboundCallInOutbound = false;
-                SmarterSMBApplication.webViewOutgoingCallEventTriggered = false;
-                SmarterSMBApplication.enableECBAndESB = false;
-                SmarterSMBApplication.redialClickCount = 0;
-                SmarterSMBApplication.isC2CAutoStart = false;
-                SmarterSMBApplication.relaunchSameActivityStayHome = false;
-                SmarterSMBApplication.manualDialScenario = false;
-                SmarterSMBApplication.agentIsInConnectedState = false;
-                submitButtonPressed = true;
-                dismissAlertDialog = true;
-                nestedQuesHash = new LinkedHashMap();
-                indexQuesHash = new LinkedHashMap();
-                if (redialScenario || UearnHome.autoDial) {
-                    startAutodialler = true;
-                    questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
-                    redialScenario = questionsAct != null && !questionsAct.isEmpty();
-                    if (UearnHome.autoDial) {
-                        redialScenario = false;
-                    }
+            }
+            Calendar cDtOyoTm2 = Calendar.getInstance();
+            final_start_year = cDtOyoTm2.get(Calendar.YEAR);
+            final_start_month = cDtOyoTm2.get(Calendar.MONTH);
+            final_start_dayOfMonth = cDtOyoTm2.get(Calendar.DAY_OF_MONTH);
+            final_end_year = cDtOyoTm2.get(Calendar.YEAR);
+            final_end_month = cDtOyoTm2.get(Calendar.MONTH);
+            final_end_dayOfMonth = cDtOyoTm2.get(Calendar.DAY_OF_MONTH);
+        } else if (id == R.id.submit_button || id == R.id.mmt_submit_button) {
+            String questionsAct;//SmarterSMBApplication.inboundCallInOutbound = false;
+            SmarterSMBApplication.webViewOutgoingCallEventTriggered = false;
+            SmarterSMBApplication.enableECBAndESB = false;
+            SmarterSMBApplication.redialClickCount = 0;
+            SmarterSMBApplication.isC2CAutoStart = false;
+            SmarterSMBApplication.relaunchSameActivityStayHome = false;
+            SmarterSMBApplication.manualDialScenario = false;
+            SmarterSMBApplication.agentIsInConnectedState = false;
+            submitButtonPressed = true;
+            dismissAlertDialog = true;
+            nestedQuesHash = new LinkedHashMap();
+            indexQuesHash = new LinkedHashMap();
+            if (redialScenario || UearnHome.autoDial) {
+                startAutodialler = true;
+                questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
+                redialScenario = questionsAct != null && !questionsAct.isEmpty();
+                if (UearnHome.autoDial) {
+                    redialScenario = false;
                 }
-                dummyAppointmentForRedial = false;
-                long callSubmitTime = System.currentTimeMillis();
-                ApplicationSettings.putPref(AppConstants.CALL_SUBMIT_TIME, callSubmitTime);
+            }
+            dummyAppointmentForRedial = false;
+            long callSubmitTime = System.currentTimeMillis();
+            ApplicationSettings.putPref(AppConstants.CALL_SUBMIT_TIME, callSubmitTime);
 
-                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                    if (fkControl) {
-                        Handler handler = new Handler(Looper.getMainLooper());
-                        handler.post(new Runnable() {
-                            public void run() {
-                                totalActiveTime();
-                            }
-                        });
-                    }
-                }
-
-                submitButtonClicked = true;
-                submit();
-                break;
-            case R.id.attachment_ready_button:
-                if (imageUrl != null) {
-                    loadDataFromUrl(imageUrl);
-                }
-                break;
-            case R.id.getInfo:
-                if (SmarterSMBApplication.outgoingCallNotInStartMode) {
-                    if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                        boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                        if (ibControl) {
-                            getConnectedCustomerInfoNotInStartMode(NotificationData.transactionId);
-                        } else {
-                            if (processAfterCallConnected) {
-                                processAfterCallConnected = false;
-                            }
-                            NotificationData.isSocketResponse = false;
-                            NotificationData.dialledCustomerNumber = "";
-                            NotificationData.dialledCustomerName = "";
-                            getConnectedCustomerInfo(NotificationData.transactionId);
+            if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                if (fkControl) {
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        public void run() {
+                            totalActiveTime();
                         }
+                    });
+                }
+            }
+
+            submitButtonClicked = true;
+            submit();
+        } else if (id == R.id.attachment_ready_button) {
+            if (imageUrl != null) {
+                loadDataFromUrl(imageUrl);
+            }
+        } else if (id == R.id.getInfo) {
+            if (SmarterSMBApplication.outgoingCallNotInStartMode) {
+                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                    if (ibControl) {
+                        getConnectedCustomerInfoNotInStartMode(NotificationData.transactionId);
                     } else {
                         if (processAfterCallConnected) {
                             processAfterCallConnected = false;
@@ -10017,269 +9986,248 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                     NotificationData.dialledCustomerName = "";
                     getConnectedCustomerInfo(NotificationData.transactionId);
                 }
-                break;
-            case R.id.rnr_view:
-                radMessageLayout.setVisibility(View.GONE);
-                radMessageText.setVisibility(View.GONE);
-                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                    if (fkControl) {
-                        rnrUpdateACPLayout();
-                    } else if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                        boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                        if (ibControl) {
-                            rnrUpdateACPLayout();
-                        } else {
-                            defaultRNRLayout();
-                        }
-                    } else {
-                        defaultRNRLayout();
-                    }
+            } else {
+                if (processAfterCallConnected) {
+                    processAfterCallConnected = false;
+                }
+                NotificationData.isSocketResponse = false;
+                NotificationData.dialledCustomerNumber = "";
+                NotificationData.dialledCustomerName = "";
+                getConnectedCustomerInfo(NotificationData.transactionId);
+            }
+        } else if (id == R.id.rnr_view) {
+            radMessageLayout.setVisibility(View.GONE);
+            radMessageText.setVisibility(View.GONE);
+            if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                if (fkControl) {
+                    rnrUpdateACPLayout();
                 } else if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
                     boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
                     if (ibControl) {
-                        if (SmarterSMBApplication.webViewOutgoingCallEventTriggered && (NotificationData.outboundDialledCustomerNumber == null || NotificationData.outboundDialledCustomerNumber.isEmpty())) {
-                            defaultRNRLayout();
-                        } else {
-                            rnrUpdateACPLayout();
-                        }
-                    } else {
-                        defaultRNRLayout();
-                    }
-                } else {
-                    if(SmarterSMBApplication.inboundCallInOutbound){
                         rnrUpdateACPLayout();
-                    }else{
+                    } else {
                         defaultRNRLayout();
                     }
-                }
-
-                break;
-            case R.id.qde_approved_layout:
-                changeLayoutColor(8);
-                break;
-            case R.id.showMore:
-                DisplayMetrics displayMetrics = new DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-                int height;
-                Display display = getWindowManager().getDefaultDisplay();
-                Point size = new Point();
-                display.getSize(size);
-                int height2 = size.y;
-                if (isShowMore) {
-                    isShowMore = false;
-                    showMore.setImageResource(R.drawable.down_arrow);
-                    height = 230;
                 } else {
-                    isShowMore = true;
-                    showMore.setImageResource(R.drawable.up_arrow);
-                    height = 300;
+                    defaultRNRLayout();
                 }
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) card_view.getLayoutParams();
-                layoutParams.height = height;
-                card_view.setLayoutParams(layoutParams);
-                break;
-            case R.id.nextButton:
-                nextButtonAction();
-                break;
-            case R.id.previousButton:
-                previousButtonAction();
-                break;
-            case R.id.rnr_button:
-                isOyoRnr = true;
-                isOyoInvalid = false;
-                disposition_spinner.setSelection(0);
-                sub_disposition_spinner.setSelection(0);
-                submitButton.setEnabled(true);
-                rnrButton.setBackgroundColor(getResources().getColor(R.color.button_color));
-                invalidButton.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                submitButton.setBackgroundColor(getResources().getColor(R.color.button_color));
-                submitButton.setEnabled(true);
-                break;
-            case R.id.invalid_button:
-                isOyoInvalid = true;
-                isOyoRnr = false;
-                disposition_spinner.setSelection(0);
-                sub_disposition_spinner.setSelection(0);
-                submitButton.setEnabled(true);
-                rnrButton.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
-                invalidButton.setBackgroundColor(getResources().getColor(R.color.button_color));
-                submitButton.setBackgroundColor(getResources().getColor(R.color.button_color));
-                submitButton.setEnabled(true);
-                break;
-            case R.id.mmt_invalid_button:
-                mmtStatus = "OTHERS";
-                mmtSubStatus1 = "INVALID NUMBER";
-                ApplicationSettings.putPref(AppConstants.MMT_STATUS, mmtStatus);
-                ApplicationSettings.putPref(AppConstants.MMT_SUBSTATUS, mmtSubStatus1);
-                checkRNR = false;
-                submitButtonPressed = true;
-                if (redialScenario || UearnHome.autoDial) {
-                    startAutodialler = true;
-                    redialScenario = false;
-                }
-                dummyAppointmentForRedial = false;
-                callSubmitTime = System.currentTimeMillis();
-                ApplicationSettings.putPref(AppConstants.CALL_SUBMIT_TIME, callSubmitTime);
-                mmtInvalidButtonClicked = true;
-                submit();
-                break;
-            case R.id.yes_button:
-                yesnobuttonClicked = true;
-                formStatus = "YES";
-                yesButton.setTextColor(Color.WHITE);
-                yesButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button_red));
-                noButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button));
-                noButton.setTextColor(ContextCompat.getColor(this, R.color.ques_text_color));
-                break;
-            case R.id.no_button:
-                yesnobuttonClicked = true;
-                formStatus = "NO";
-                noButton.setTextColor(Color.WHITE);
-                noButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button_red));
-                yesButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button));
-                yesButton.setTextColor(ContextCompat.getColor(this, R.color.ques_text_color));
-                break;
-            case R.id.endCallButton:
-                SmarterSMBApplication.endCallButtonClicked = true;
-                try {
-
-                    if (SmarterSMBApplication.outgoingCallNotInStartMode) {
-                        SmarterSMBApplication.matchingInNumberNotInStartMode = true;
+            } else if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (SmarterSMBApplication.webViewOutgoingCallEventTriggered && (NotificationData.outboundDialledCustomerNumber == null || NotificationData.outboundDialledCustomerNumber.isEmpty())) {
+                        defaultRNRLayout();
                     } else {
-                        SmarterSMBApplication.matchingInNumberNotInStartMode = false;
+                        rnrUpdateACPLayout();
                     }
-
-                    if (SmarterSMBApplication.enableECBAndESB) {
-
-                    } else if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
-
-                    } else {
-                        if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
-                            String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
-                            if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
-                                Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
-                                return;
-                            } else {
-                                Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                        }
-                    }
-                    if (!SmarterSMBApplication.incomingCallAcceptedByAgent) {
-                        SmarterSMBApplication.incomingCallRejectedByAgent = true;
-                        SmarterSMBApplication.isRemoteDialledStart = false;
-
-                        if (ApplicationSettings.containsPref(AppConstants.SYSTEM_CONTROL)) {
-                            boolean systemControl = ApplicationSettings.getPref(AppConstants.SYSTEM_CONTROL, false);
-                            if (systemControl) {
-                                SmarterSMBApplication.disableStatusBarAndNavigation = false;
-                            }
-                        }
-
-                        SmarterSMBApplication.endTheSession = true;
-                        SmarterSMBApplication.enableECBAndESB = false;
-
-                        if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                            boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                            if (ibControl) {
-                                SmarterSMBApplication.autoCallAnswered = false;
-                            }
-                        }
-                        SmarterSMBApplication.matchingInNumberNotInStartMode = false;
-                        navigateToUearnHome();
-                    } else {
-                        endCallButtonAction();
-                    }
-                } catch (Exception e) {
-                    int version_code = CommonUtils.getVersionCode(this);
-                    String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
-                            ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnActivity - Error endCallButton onClick(): " + e.getMessage();
-                    ServiceApplicationUsage.callErrorLog(message);
+                } else {
+                    defaultRNRLayout();
                 }
-                break;
-            case R.id.muteCallButton:
-                try {
-                    muteCall();
-                } catch (Exception e) {
-                    int version_code = CommonUtils.getVersionCode(this);
-                    String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
-                            ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnActivity - Error muteCallButton onClick(): " + e.getMessage();
-                    ServiceApplicationUsage.callErrorLog(message);
+            } else {
+                if (SmarterSMBApplication.inboundCallInOutbound) {
+                    rnrUpdateACPLayout();
+                } else {
+                    defaultRNRLayout();
                 }
-                break;
-            case R.id.transferCallButton:
-                if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && (SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connecting"))) {
+            }
+        } else if (id == R.id.qde_approved_layout) {
+            changeLayoutColor(8);
+        } else if (id == R.id.showMore) {
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int height;
+            Display display = getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int height2 = size.y;
+            if (isShowMore) {
+                isShowMore = false;
+                showMore.setImageResource(R.drawable.down_arrow);
+                height = 230;
+            } else {
+                isShowMore = true;
+                showMore.setImageResource(R.drawable.up_arrow);
+                height = 300;
+            }
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) card_view.getLayoutParams();
+            layoutParams.height = height;
+            card_view.setLayoutParams(layoutParams);
+        } else if (id == R.id.nextButton) {
+            nextButtonAction();
+        } else if (id == R.id.previousButton) {
+            previousButtonAction();
+        } else if (id == R.id.rnr_button) {
+            isOyoRnr = true;
+            isOyoInvalid = false;
+            disposition_spinner.setSelection(0);
+            sub_disposition_spinner.setSelection(0);
+            submitButton.setEnabled(true);
+            rnrButton.setBackgroundColor(getResources().getColor(R.color.button_color));
+            invalidButton.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+            submitButton.setBackgroundColor(getResources().getColor(R.color.button_color));
+            submitButton.setEnabled(true);
+        } else if (id == R.id.invalid_button) {
+            isOyoInvalid = true;
+            isOyoRnr = false;
+            disposition_spinner.setSelection(0);
+            sub_disposition_spinner.setSelection(0);
+            submitButton.setEnabled(true);
+            rnrButton.setBackgroundColor(getResources().getColor(R.color.action_bar_color));
+            invalidButton.setBackgroundColor(getResources().getColor(R.color.button_color));
+            submitButton.setBackgroundColor(getResources().getColor(R.color.button_color));
+            submitButton.setEnabled(true);
+        } else if (id == R.id.mmt_invalid_button) {
+            long callSubmitTime;
+            mmtStatus = "OTHERS";
+            mmtSubStatus1 = "INVALID NUMBER";
+            ApplicationSettings.putPref(AppConstants.MMT_STATUS, mmtStatus);
+            ApplicationSettings.putPref(AppConstants.MMT_SUBSTATUS, mmtSubStatus1);
+            checkRNR = false;
+            submitButtonPressed = true;
+            if (redialScenario || UearnHome.autoDial) {
+                startAutodialler = true;
+                redialScenario = false;
+            }
+            dummyAppointmentForRedial = false;
+            callSubmitTime = System.currentTimeMillis();
+            ApplicationSettings.putPref(AppConstants.CALL_SUBMIT_TIME, callSubmitTime);
+            mmtInvalidButtonClicked = true;
+            submit();
+        } else if (id == R.id.yes_button) {
+            yesnobuttonClicked = true;
+            formStatus = "YES";
+            yesButton.setTextColor(Color.WHITE);
+            yesButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button_red));
+            noButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button));
+            noButton.setTextColor(ContextCompat.getColor(this, R.color.ques_text_color));
+        } else if (id == R.id.no_button) {
+            yesnobuttonClicked = true;
+            formStatus = "NO";
+            noButton.setTextColor(Color.WHITE);
+            noButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button_red));
+            yesButton.setBackground(getResources().getDrawable(R.drawable.call_flow_button));
+            yesButton.setTextColor(ContextCompat.getColor(this, R.color.ques_text_color));
+        } else if (id == R.id.endCallButton) {
+            SmarterSMBApplication.endCallButtonClicked = true;
+            try {
+
+                if (SmarterSMBApplication.outgoingCallNotInStartMode) {
+                    SmarterSMBApplication.matchingInNumberNotInStartMode = true;
+                } else {
+                    SmarterSMBApplication.matchingInNumberNotInStartMode = false;
+                }
+
+                if (SmarterSMBApplication.enableECBAndESB) {
+
+                } else if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
 
                 } else {
-                    callOptionsDialog(UearnActivity.this, "", "Do you really want to transfer this call?", "Transfer Call").show();
+                    if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
+                        String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
+                        if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
+                            Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
+                            return;
+                        } else {
+                            Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
                 }
-                break;
-            case R.id.conferenceCallButton:
-                if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && (SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connecting"))) {
+                if (!SmarterSMBApplication.incomingCallAcceptedByAgent) {
+                    SmarterSMBApplication.incomingCallRejectedByAgent = true;
+                    SmarterSMBApplication.isRemoteDialledStart = false;
 
+                    if (ApplicationSettings.containsPref(AppConstants.SYSTEM_CONTROL)) {
+                        boolean systemControl = ApplicationSettings.getPref(AppConstants.SYSTEM_CONTROL, false);
+                        if (systemControl) {
+                            SmarterSMBApplication.disableStatusBarAndNavigation = false;
+                        }
+                    }
+
+                    SmarterSMBApplication.endTheSession = true;
+                    SmarterSMBApplication.enableECBAndESB = false;
+
+                    if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                        boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                        if (ibControl) {
+                            SmarterSMBApplication.autoCallAnswered = false;
+                        }
+                    }
+                    SmarterSMBApplication.matchingInNumberNotInStartMode = false;
+                    navigateToUearnHome();
                 } else {
-                    callOptionsDialog(UearnActivity.this, "", "Do you really want to merge this call?", "Merge Call").show();
+                    endCallButtonAction();
                 }
-                break;
-            case R.id.launchAppButton:
-                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                    if (fkControl) {
-                        if (SmarterSMBApplication.currentModeIsConnected) {
-                            if (!enableESBTimerStarted) {
-                                enableESBTimerStarted = true;
-                                long enableECBTime = 0l;
-                                if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
-                                    String enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
-                                    if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty()) {
-                                        enableECBTime = Long.valueOf(enableECBTimeStr);
-                                    }
-                                    if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && enableECBTimeStr.equals("0")) {
-                                        enableESBTimerCompleted = true;
-                                        enableESBTimerStarted = false;
-                                    }
-                                } else {
+            } catch (Exception e) {
+                int version_code = CommonUtils.getVersionCode(this);
+                String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
+                        ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnActivity - Error endCallButton onClick(): " + e.getMessage();
+                ServiceApplicationUsage.callErrorLog(message);
+            }
+        } else if (id == R.id.muteCallButton) {
+            try {
+                muteCall();
+            } catch (Exception e) {
+                int version_code = CommonUtils.getVersionCode(this);
+                String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
+                        ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnActivity - Error muteCallButton onClick(): " + e.getMessage();
+                ServiceApplicationUsage.callErrorLog(message);
+            }
+        } else if (id == R.id.transferCallButton) {
+            if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && (SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connecting"))) {
+
+            } else {
+                callOptionsDialog(UearnActivity.this, "", "Do you really want to transfer this call?", "Transfer Call").show();
+            }
+        } else if (id == R.id.conferenceCallButton) {
+            if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && (SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connecting"))) {
+
+            } else {
+                callOptionsDialog(UearnActivity.this, "", "Do you really want to merge this call?", "Merge Call").show();
+            }
+        } else if (id == R.id.launchAppButton) {
+            if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                if (fkControl) {
+                    if (SmarterSMBApplication.currentModeIsConnected) {
+                        if (!enableESBTimerStarted) {
+                            enableESBTimerStarted = true;
+                            long enableECBTime = 0l;
+                            if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
+                                String enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
+                                if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty()) {
+                                    enableECBTime = Long.valueOf(enableECBTimeStr);
+                                }
+                                if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && enableECBTimeStr.equals("0")) {
                                     enableESBTimerCompleted = true;
                                     enableESBTimerStarted = false;
                                 }
-                                new Handler().postDelayed(new Runnable() {
-                                    public void run() {
-                                        enableESBTimerCompleted = true;
-                                        enableESBTimerStarted = false;
-                                        SmarterSMBApplication.currentModeIsConnected = false;
-                                    }
-                                }, enableECBTime * 2);
-                            }
-                            if (enableESBTimerCompleted) {
-                                enableESBTimerCompleted = false;
-                                SmarterSMBApplication.launchAppButtonClicked = true;
-                                String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
-                                if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
-                                    stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
-                                } else {
-                                    launchAppButtonAction();
-                                }
                             } else {
-                                if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
-                                    String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
-                                    if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
-                                        Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        long enableECBTime = 0l;
-                                        if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
-                                            String enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
-                                            if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && !enableECBTimeStr.equals("0")) {
-                                                enableECBTime = Long.valueOf(enableECBTimeStr);
-                                                long seconds = TimeUnit.MILLISECONDS.toSeconds(enableECBTime);
-                                                Toast.makeText(UearnActivity.this, "This action will be enabled in " + seconds + " seconds.", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
-                                            }
-                                        } else {
-                                            Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
+                                enableESBTimerCompleted = true;
+                                enableESBTimerStarted = false;
+                            }
+                            new Handler().postDelayed(new Runnable() {
+                                public void run() {
+                                    enableESBTimerCompleted = true;
+                                    enableESBTimerStarted = false;
+                                    SmarterSMBApplication.currentModeIsConnected = false;
+                                }
+                            }, enableECBTime * 2);
+                        }
+                        if (enableESBTimerCompleted) {
+                            enableESBTimerCompleted = false;
+                            SmarterSMBApplication.launchAppButtonClicked = true;
+                            String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
+                            if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
+                                stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
+                            } else {
+                                launchAppButtonAction();
+                            }
+                        } else {
+                            if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
+                                String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
+                                if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
+                                    Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
                                 } else {
                                     long enableECBTime = 0l;
                                     if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
@@ -10295,61 +10243,61 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                                         Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
                                     }
                                 }
-                            }
-                        } else {
-                            if (!enableESBTimerStarted) {
-                                enableESBTimerStarted = true;
+                            } else {
                                 long enableECBTime = 0l;
                                 if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
                                     String enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
-                                    if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty()) {
+                                    if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && !enableECBTimeStr.equals("0")) {
                                         enableECBTime = Long.valueOf(enableECBTimeStr);
+                                        long seconds = TimeUnit.MILLISECONDS.toSeconds(enableECBTime);
+                                        Toast.makeText(UearnActivity.this, "This action will be enabled in " + seconds + " seconds.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
+                                    Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    } else {
+                        if (!enableESBTimerStarted) {
+                            enableESBTimerStarted = true;
+                            long enableECBTime = 0l;
+                            if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
+                                String enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
+                                if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty()) {
+                                    enableECBTime = Long.valueOf(enableECBTimeStr);
+                                }
+                            } else {
+                                enableESBTimerCompleted = true;
+                                enableESBTimerStarted = false;
+                            }
+
+                            new Handler().postDelayed(new Runnable() {
+                                public void run() {
                                     enableESBTimerCompleted = true;
                                     enableESBTimerStarted = false;
                                 }
-
-                                new Handler().postDelayed(new Runnable() {
-                                    public void run() {
-                                        enableESBTimerCompleted = true;
-                                        enableESBTimerStarted = false;
-                                    }
-                                }, enableECBTime);
-                            }
+                            }, enableECBTime);
                         }
-                        if (enableESBTimerCompleted) {
-                            enableESBTimerCompleted = false;
-                            SmarterSMBApplication.launchAppButtonClicked = true;
-                            String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
-                            if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
-                                stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
-                            } else {
-                                launchAppButtonAction();
-                            }
+                    }
+                    if (enableESBTimerCompleted) {
+                        enableESBTimerCompleted = false;
+                        SmarterSMBApplication.launchAppButtonClicked = true;
+                        String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
+                        if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
+                            stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
                         } else {
-                            if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
-                                String enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
-                                if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && !enableECBTimeStr.equals("0")) {
-                                    if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
-                                        String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
-                                        if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
-                                            Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            long enableECBTime = 0l;
-                                            if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
-                                                enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
-                                                if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && !enableECBTimeStr.equals("0")) {
-                                                    enableECBTime = Long.valueOf(enableECBTimeStr);
-                                                    long seconds = TimeUnit.MILLISECONDS.toSeconds(enableECBTime);
-                                                    Toast.makeText(UearnActivity.this, "This action will be enabled in " + seconds + " seconds.", Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
-                                                }
-                                            } else {
-                                                Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
+                            launchAppButtonAction();
+                        }
+                    } else {
+                        if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
+                            String enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
+                            if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && !enableECBTimeStr.equals("0")) {
+                                if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
+                                    String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
+                                    if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
+                                        Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
                                     } else {
                                         long enableECBTime = 0l;
                                         if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
@@ -10366,12 +10314,18 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                                         }
                                     }
                                 } else {
-                                    SmarterSMBApplication.launchAppButtonClicked = true;
-                                    String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
-                                    if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
-                                        stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
+                                    long enableECBTime = 0l;
+                                    if (ApplicationSettings.containsPref(AppConstants.ENABLE_ECB)) {
+                                        enableECBTimeStr = ApplicationSettings.getPref(AppConstants.ENABLE_ECB, "");
+                                        if (enableECBTimeStr != null && !enableECBTimeStr.isEmpty() && !enableECBTimeStr.equals("0")) {
+                                            enableECBTime = Long.valueOf(enableECBTimeStr);
+                                            long seconds = TimeUnit.MILLISECONDS.toSeconds(enableECBTime);
+                                            Toast.makeText(UearnActivity.this, "This action will be enabled in " + seconds + " seconds.", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
+                                        }
                                     } else {
-                                        launchAppButtonAction();
+                                        Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             } else {
@@ -10383,15 +10337,6 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                                     launchAppButtonAction();
                                 }
                             }
-                        }
-                    }
-                } else if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
-                        if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
-                            //Log.e("ResetHome", "launchAppButton SmarterSMBApplication.currentAppState" +SmarterSMBApplication.currentAppState);
-                            Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             SmarterSMBApplication.launchAppButtonClicked = true;
                             String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
@@ -10402,57 +10347,29 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                             }
                         }
                     }
-                } else {
-                    try {
-                        boolean truePredictive = ApplicationSettings.getPref(AppConstants.TRUE_PREDICTIVE, false);
-                        if (truePredictive) {
-                            if (SmarterSMBApplication.incomingCallAcceptedByAgent && SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
-                                if (ApplicationSettings.containsPref(AppConstants.ABORT_CALL_SESSION)) {
-                                    boolean abortCallSession = ApplicationSettings.getPref(AppConstants.ABORT_CALL_SESSION, false);
-                                    if (abortCallSession) {
-                                        SmarterSMBApplication.abortCallSessionScenario = true;
-                                        String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
-                                        if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
-                                            stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
-                                        } else {
-                                            clearEndSessionContext();
-                                            showACPScreen();
-                                            endSessionButtonAction();
-                                        }
-                                    } else {
-                                        if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
-                                            String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
-                                            if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
-                                                Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
-                                            }
-                                        } else {
-                                            Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                } else {
-                                    if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
-                                        String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
-                                        if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
-                                            Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
-                                        }
-                                    } else {
-                                        Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            } else {
-                                SmarterSMBApplication.launchAppButtonClicked = true;
-                                String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
-                                if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
-                                    stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
-                                } else {
-                                    launchAppButtonAction();
-                                }
-                            }
-                        } else if (SmarterSMBApplication.incomingCallAcceptedByAgent || SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
+                }
+            } else if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
+                        //Log.e("ResetHome", "launchAppButton SmarterSMBApplication.currentAppState" +SmarterSMBApplication.currentAppState);
+                        Toast.makeText(UearnActivity.this, "Action is disabled, please try after sometime", Toast.LENGTH_SHORT).show();
+                        return;
+                    } else {
+                        SmarterSMBApplication.launchAppButtonClicked = true;
+                        String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
+                        if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
+                            stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
+                        } else {
+                            launchAppButtonAction();
+                        }
+                    }
+                }
+            } else {
+                try {
+                    boolean truePredictive = ApplicationSettings.getPref(AppConstants.TRUE_PREDICTIVE, false);
+                    if (truePredictive) {
+                        if (SmarterSMBApplication.incomingCallAcceptedByAgent && SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
                             if (ApplicationSettings.containsPref(AppConstants.ABORT_CALL_SESSION)) {
                                 boolean abortCallSession = ApplicationSettings.getPref(AppConstants.ABORT_CALL_SESSION, false);
                                 if (abortCallSession) {
@@ -10498,742 +10415,792 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
                                 launchAppButtonAction();
                             }
                         }
-                    } catch (Exception e) {
-                        int version_code = CommonUtils.getVersionCode(this);
-                        String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
-                                ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnActivity - Error launchAppButton onClick(): " + e.getMessage();
-                        ServiceApplicationUsage.callErrorLog(message);
+                    } else if (SmarterSMBApplication.incomingCallAcceptedByAgent || SmarterSMBApplication.currentAppState != null && !SmarterSMBApplication.currentAppState.isEmpty() && SmarterSMBApplication.currentAppState.equalsIgnoreCase("Connected")) {
+                        if (ApplicationSettings.containsPref(AppConstants.ABORT_CALL_SESSION)) {
+                            boolean abortCallSession = ApplicationSettings.getPref(AppConstants.ABORT_CALL_SESSION, false);
+                            if (abortCallSession) {
+                                SmarterSMBApplication.abortCallSessionScenario = true;
+                                String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
+                                if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
+                                    stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
+                                } else {
+                                    clearEndSessionContext();
+                                    showACPScreen();
+                                    endSessionButtonAction();
+                                }
+                            } else {
+                                if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
+                                    String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
+                                    if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
+                                        Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        } else {
+                            if (ApplicationSettings.containsPref(AppConstants.ENABLE_MESSAGE)) {
+                                String enableMessageStr = ApplicationSettings.getPref(AppConstants.ENABLE_MESSAGE, "");
+                                if (enableMessageStr != null && !enableMessageStr.isEmpty() && !enableMessageStr.equals("null")) {
+                                    Toast.makeText(UearnActivity.this, enableMessageStr, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(UearnActivity.this, "As incoming call was answered this action is disabled", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
+                        SmarterSMBApplication.launchAppButtonClicked = true;
+                        String remoteAutoEnabled = ApplicationSettings.getPref(AppConstants.REMOTE_AUTO_DIALLING, "");
+                        if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty() && remoteAutoEnabled.equals("onsolicit")) {
+                            stopCallAndMoveToHomescreenDialog(UearnActivity.this, "", "Do you want to end the session?").show();
+                        } else {
+                            launchAppButtonAction();
+                        }
+                    }
+                } catch (Exception e) {
+                    int version_code = CommonUtils.getVersionCode(this);
+                    String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
+                            ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnActivity - Error launchAppButton onClick(): " + e.getMessage();
+                    ServiceApplicationUsage.callErrorLog(message);
+                }
+            }
+        } else if (id == R.id.questionnaire_date || id == R.id.followup_date || id == R.id.tv_custom_date) {
+            btnTen.setBackgroundResource(R.drawable.editext_background);
+            btnThirty.setBackgroundResource(R.drawable.editext_background);
+            btnSixty.setBackgroundResource(R.drawable.editext_background);
+            questionnaire_btnTen.setBackgroundResource(R.drawable.call_flow_button);
+            questionnaire_btnThirty.setBackgroundResource(R.drawable.call_flow_button);
+            questionnaire_btnSixty.setBackgroundResource(R.drawable.call_flow_button);
+            quesButtonTenTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
+            quesButtonThirtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
+            quesButtonSixtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                    mCalendar = Calendar.getInstance();
+                    mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    mCalendar.set(Calendar.MONTH, month);
+                    mCalendar.set(Calendar.YEAR, year);
+                    SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
+
+                    final_start_year = year;
+                    final_start_month = month;
+                    final_start_dayOfMonth = dayOfMonth;
+                    final_end_year = year;
+                    final_end_month = month;
+                    final_end_dayOfMonth = dayOfMonth;
+
+                    Calendar currentSettings = Calendar.getInstance();
+
+                    Date currentDate = new Date();
+                    String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
+
+                    String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
+                    String dateString = DateFormat.format("dd", currentDate).toString();
+                    String currentDay = "", settingDay = "";
+                    if (dateString != null && !dateString.isEmpty()) {
+                        int date = Integer.parseInt(dateString);
+                        date = date + 1;
+                        currentDay = String.valueOf(date);
+                    }
+
+                    String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
+                    String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
+
+                    String time = DateFormat.format("dd", mCalendar.getTime()).toString();
+                    if (time != null && !time.isEmpty()) {
+                        settingDay = String.valueOf(Integer.parseInt(time));
+                    }
+
+                    if (curentDate != null && curentDate.equalsIgnoreCase(settingDate)) {
+                        questDate.setText("Today");
+                        followupDate.setText("Today");
+                        mCustomDate.setText("Today");
+                    } else if ((currentYearMonth != null && currentYearMonth.equalsIgnoreCase(settingYearMonth)) && settingDate != null && (currentDay.equalsIgnoreCase(settingDay))) {
+                        questDate.setText("Tomorrow");
+                        followupDate.setText("Tomorrow");
+                        mCustomDate.setText("Tomorrow");
+                    } else {
+                        questDate.setText(fmt.format(mCalendar.getTime()));
+                        followupDate.setText(fmt.format(mCalendar.getTime()));
+                        mCustomDate.setText(fmt.format(mCalendar.getTime()));
+                    }
+                    int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
+                    int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
+
+                    final_start_min = calculateMinuteAccordingly;
+                    final_start_hour = calculateHourAccordingly;
+
+                    if (calculateMinuteAccordingly + 15 >= 60) {
+                        final_end_min = calculateMinuteAccordingly + 15 - 60;
+                        final_end_hour = calculateHourAccordingly + 1;
+                    } else {
+                        final_end_min = calculateMinuteAccordingly + 15;
+                        final_end_hour = calculateHourAccordingly;
+                    }
+
+                    if ((final_start_year == 0) && (final_start_month == 0) && (final_start_dayOfMonth == 0) && (final_start_hour == 0) && (final_start_min == 0)) {
+                        mCalendar = Calendar.getInstance();
+                    } else {
+                        mCalendar = new GregorianCalendar(final_start_year, final_start_month, final_start_dayOfMonth, final_start_hour, final_start_min);
+                    }
+
+                    if (mCalendar != null) {
+                        if (mCalendar.getTime() != null) {
+                            selectedDateTime = String.valueOf(mCalendar.getTime());
+                        }
+                    } else {
+                        selectedDateTime = "";
                     }
                 }
-                break;
-            case R.id.questionnaire_date:
-            case R.id.followup_date:
-            case R.id.tv_custom_date:
-                btnTen.setBackgroundResource(R.drawable.editext_background);
-                btnThirty.setBackgroundResource(R.drawable.editext_background);
-                btnSixty.setBackgroundResource(R.drawable.editext_background);
-                questionnaire_btnTen.setBackgroundResource(R.drawable.call_flow_button);
-                questionnaire_btnThirty.setBackgroundResource(R.drawable.call_flow_button);
-                questionnaire_btnSixty.setBackgroundResource(R.drawable.call_flow_button);
-                quesButtonTenTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
-                quesButtonThirtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
-                quesButtonSixtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
+            }, year, month, day);
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            datePickerDialog.show();
+        } else if (id == R.id.councelingfollowup_date) {
+            int day;
+            int year;
+            Calendar calendar;
+            int month;
+            DatePickerDialog datePickerDialog;
+            calendar = Calendar.getInstance();
+            year = calendar.get(Calendar.YEAR);
+            month = calendar.get(Calendar.MONTH);
+            day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            datePickerDialog = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                        mCalendar = Calendar.getInstance();
-                        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        mCalendar.set(Calendar.MONTH, month);
-                        mCalendar.set(Calendar.YEAR, year);
-                        SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
+                    mCalendar = Calendar.getInstance();
+                    mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    mCalendar.set(Calendar.MONTH, month);
+                    mCalendar.set(Calendar.YEAR, year);
+                    SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
 
-                        final_start_year = year;
-                        final_start_month = month;
-                        final_start_dayOfMonth = dayOfMonth;
-                        final_end_year = year;
-                        final_end_month = month;
-                        final_end_dayOfMonth = dayOfMonth;
+                    final_start_year = year;
+                    final_start_month = month;
+                    final_start_dayOfMonth = dayOfMonth;
+                    final_end_year = year;
+                    final_end_month = month;
+                    final_end_dayOfMonth = dayOfMonth;
 
-                        Calendar currentSettings = Calendar.getInstance();
+                    Calendar currentSettings = Calendar.getInstance();
 
-                        Date currentDate = new Date();
-                        String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
+                    Date currentDate = new Date();
+                    String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
 
-                        String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
-                        String dateString = DateFormat.format("dd", currentDate).toString();
-                        String currentDay = "", settingDay = "";
-                        if (dateString != null && !dateString.isEmpty()) {
-                            int date = Integer.parseInt(dateString);
-                            date = date + 1;
-                            currentDay = String.valueOf(date);
-                        }
-
-                        String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
-                        String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
-
-                        String time = DateFormat.format("dd", mCalendar.getTime()).toString();
-                        if (time != null && !time.isEmpty()) {
-                            settingDay = String.valueOf(Integer.parseInt(time));
-                        }
-
-                        if (curentDate != null && curentDate.equalsIgnoreCase(settingDate)) {
-                            questDate.setText("Today");
-                            followupDate.setText("Today");
-                            mCustomDate.setText("Today");
-                        } else if ((currentYearMonth != null && currentYearMonth.equalsIgnoreCase(settingYearMonth)) && settingDate != null && (currentDay.equalsIgnoreCase(settingDay))) {
-                            questDate.setText("Tomorrow");
-                            followupDate.setText("Tomorrow");
-                            mCustomDate.setText("Tomorrow");
-                        } else {
-                            questDate.setText(fmt.format(mCalendar.getTime()));
-                            followupDate.setText(fmt.format(mCalendar.getTime()));
-                            mCustomDate.setText(fmt.format(mCalendar.getTime()));
-                        }
-                        int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
-                        int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
-
-                        final_start_min = calculateMinuteAccordingly;
-                        final_start_hour = calculateHourAccordingly;
-
-                        if (calculateMinuteAccordingly + 15 >= 60) {
-                            final_end_min = calculateMinuteAccordingly + 15 - 60;
-                            final_end_hour = calculateHourAccordingly + 1;
-                        } else {
-                            final_end_min = calculateMinuteAccordingly + 15;
-                            final_end_hour = calculateHourAccordingly;
-                        }
-
-                        if ((final_start_year == 0) && (final_start_month == 0) && (final_start_dayOfMonth == 0) && (final_start_hour == 0) && (final_start_min == 0)) {
-                            mCalendar = Calendar.getInstance();
-                        } else {
-                            mCalendar = new GregorianCalendar(final_start_year, final_start_month, final_start_dayOfMonth, final_start_hour, final_start_min);
-                        }
-
-                        if (mCalendar != null) {
-                            if (mCalendar.getTime() != null) {
-                                selectedDateTime = String.valueOf(mCalendar.getTime());
-                            }
-                        } else {
-                            selectedDateTime = "";
-                        }
+                    String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
+                    String dateString = DateFormat.format("dd", currentDate).toString();
+                    String currentDay = "", settingDay = "";
+                    if (dateString != null && !dateString.isEmpty()) {
+                        int date = Integer.parseInt(dateString);
+                        date = date + 1;
+                        currentDay = String.valueOf(date);
                     }
-                }, year, month, day);
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-                datePickerDialog.show();
-                break;
-            case R.id.councelingfollowup_date:
-                calendar = Calendar.getInstance();
-                year = calendar.get(Calendar.YEAR);
-                month = calendar.get(Calendar.MONTH);
-                day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                datePickerDialog = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
+                    String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
 
-                        mCalendar = Calendar.getInstance();
-                        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        mCalendar.set(Calendar.MONTH, month);
-                        mCalendar.set(Calendar.YEAR, year);
-                        SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
-
-                        final_start_year = year;
-                        final_start_month = month;
-                        final_start_dayOfMonth = dayOfMonth;
-                        final_end_year = year;
-                        final_end_month = month;
-                        final_end_dayOfMonth = dayOfMonth;
-
-                        Calendar currentSettings = Calendar.getInstance();
-
-                        Date currentDate = new Date();
-                        String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
-
-                        String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
-                        String dateString = DateFormat.format("dd", currentDate).toString();
-                        String currentDay = "", settingDay = "";
-                        if (dateString != null && !dateString.isEmpty()) {
-                            int date = Integer.parseInt(dateString);
-                            date = date + 1;
-                            currentDay = String.valueOf(date);
-                        }
-
-                        String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
-                        String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
-
-                        String time = DateFormat.format("dd", mCalendar.getTime()).toString();
-                        if (time != null && !time.isEmpty()) {
-                            settingDay = String.valueOf(Integer.parseInt(time));
-                        }
-
-                        if (curentDate != null && curentDate.equalsIgnoreCase(settingDate)) {
-                            councelingfollowup_date.setText("Today");
-                        } else if ((currentYearMonth != null && currentYearMonth.equalsIgnoreCase(settingYearMonth)) && settingDate != null && (currentDay.equalsIgnoreCase(settingDay))) {
-                            councelingfollowup_date.setText("Tomorrow");
-                        } else {
-                            councelingfollowup_date.setText(fmt.format(mCalendar.getTime()));
-                        }
-
-                        int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
-                        int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
-
-                        final_start_min = calculateMinuteAccordingly;
-                        final_start_hour = calculateHourAccordingly;
-
-                        if (calculateMinuteAccordingly + 15 >= 60) {
-                            final_end_min = calculateMinuteAccordingly + 15 - 60;
-                            final_end_hour = calculateHourAccordingly + 1;
-                        } else {
-                            final_end_min = calculateMinuteAccordingly + 15;
-                            final_end_hour = calculateHourAccordingly;
-                        }
-
+                    String time = DateFormat.format("dd", mCalendar.getTime()).toString();
+                    if (time != null && !time.isEmpty()) {
+                        settingDay = String.valueOf(Integer.parseInt(time));
                     }
-                }, year, month, day);
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-                datePickerDialog.show();
-                break;
-            case R.id.call_back_date:
-                calendar = Calendar.getInstance();
-                year = calendar.get(Calendar.YEAR);
-                month = calendar.get(Calendar.MONTH);
-                day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                datePickerDialog = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        mCalendar = Calendar.getInstance();
-                        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        mCalendar.set(Calendar.MONTH, month);
-                        mCalendar.set(Calendar.YEAR, year);
-                        SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
-
-                        final_start_year = year;
-                        final_start_month = month;
-                        final_start_dayOfMonth = dayOfMonth;
-                        final_end_year = year;
-                        final_end_month = month;
-                        final_end_dayOfMonth = dayOfMonth;
-
-                        Calendar currentSettings = Calendar.getInstance();
-
-                        Date currentDate = new Date();
-                        String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
-
-                        String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
-                        String dateString = DateFormat.format("dd", currentDate).toString();
-                        String currentDay = "", settingDay = "";
-                        if (dateString != null && !dateString.isEmpty()) {
-                            int date = Integer.parseInt(dateString);
-                            date = date + 1;
-                            currentDay = String.valueOf(date);
-                        }
-
-                        String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
-                        String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
-
-                        String time = DateFormat.format("dd", mCalendar.getTime()).toString();
-                        if (time != null && !time.isEmpty()) {
-                            settingDay = String.valueOf(Integer.parseInt(time));
-                        }
-
-                        if (curentDate != null && curentDate.equalsIgnoreCase(settingDate)) {
-                            callBackDate.setText("Today");
-                        } else if ((currentYearMonth != null && currentYearMonth.equalsIgnoreCase(settingYearMonth)) && settingDate != null && (currentDay.equalsIgnoreCase(settingDay))) {
-                            callBackDate.setText("Tomorrow");
-                        } else {
-                            callBackDate.setText(fmt.format(mCalendar.getTime()));
-                        }
-
-                        int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
-                        int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
-
-                        final_start_min = calculateMinuteAccordingly;
-                        final_start_hour = calculateHourAccordingly;
-
-                        if (calculateMinuteAccordingly + 15 >= 60) {
-                            final_end_min = calculateMinuteAccordingly + 15 - 60;
-                            final_end_hour = calculateHourAccordingly + 1;
-                        } else {
-                            final_end_min = calculateMinuteAccordingly + 15;
-                            final_end_hour = calculateHourAccordingly;
-                        }
-
+                    if (curentDate != null && curentDate.equalsIgnoreCase(settingDate)) {
+                        councelingfollowup_date.setText("Today");
+                    } else if ((currentYearMonth != null && currentYearMonth.equalsIgnoreCase(settingYearMonth)) && settingDate != null && (currentDay.equalsIgnoreCase(settingDay))) {
+                        councelingfollowup_date.setText("Tomorrow");
+                    } else {
+                        councelingfollowup_date.setText(fmt.format(mCalendar.getTime()));
                     }
-                }, year, month, day);
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-                datePickerDialog.show();
-                break;
-            case R.id.call_back_time:
-                final Calendar questionnaireTime1 = Calendar.getInstance();
-                int hour = questionnaireTime1.get(Calendar.HOUR_OF_DAY);
-                int minute = questionnaireTime1.get(Calendar.MINUTE);
-                TimePickerDialog timePicker = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-                        mCalendar = Calendar.getInstance();
+                    int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
+                    int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
 
-                        String meridian = "";
-                        // Prathik issue
-                        Calendar datetime = null;
-                        if (callBackDate != null) {
-                            if (callBackDate.getText().toString() != null && callBackDate.getText().toString().equalsIgnoreCase("today")) {
-                                datetime = Calendar.getInstance();
+                    final_start_min = calculateMinuteAccordingly;
+                    final_start_hour = calculateHourAccordingly;
 
-                                int getYear = datetime.get(Calendar.YEAR);
-                                int getMonth = datetime.get(Calendar.MONTH);
-                                int getDay = datetime.get(Calendar.DAY_OF_MONTH);
+                    if (calculateMinuteAccordingly + 15 >= 60) {
+                        final_end_min = calculateMinuteAccordingly + 15 - 60;
+                        final_end_hour = calculateHourAccordingly + 1;
+                    } else {
+                        final_end_min = calculateMinuteAccordingly + 15;
+                        final_end_hour = calculateHourAccordingly;
+                    }
 
-                                final_start_year = getYear;
-                                final_start_month = getMonth;
-                                final_start_dayOfMonth = getDay;
+                }
+            }, year, month, day);
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            datePickerDialog.show();
+        } else if (id == R.id.call_back_date) {
+            int day;
+            int year;
+            Calendar calendar;
+            int month;
+            DatePickerDialog datePickerDialog;
+            calendar = Calendar.getInstance();
+            year = calendar.get(Calendar.YEAR);
+            month = calendar.get(Calendar.MONTH);
+            day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                                mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
-                                mCalendar.set(Calendar.MONTH, getMonth);
-                                mCalendar.set(Calendar.YEAR, getYear);
-                            } else {
-                                datetime = Calendar.getInstance();
-                            }
+            datePickerDialog = new DatePickerDialog(this, R.style.MaterialPickerTheme, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                    mCalendar = Calendar.getInstance();
+                    mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    mCalendar.set(Calendar.MONTH, month);
+                    mCalendar.set(Calendar.YEAR, year);
+                    SimpleDateFormat fmt = new SimpleDateFormat("EEE, d MMM yy");
+
+                    final_start_year = year;
+                    final_start_month = month;
+                    final_start_dayOfMonth = dayOfMonth;
+                    final_end_year = year;
+                    final_end_month = month;
+                    final_end_dayOfMonth = dayOfMonth;
+
+                    Calendar currentSettings = Calendar.getInstance();
+
+                    Date currentDate = new Date();
+                    String curentDate = DateFormat.format("yyyy/MM/dd", currentDate).toString();
+
+                    String currentYearMonth = DateFormat.format("yyyy/MM", currentDate).toString();
+                    String dateString = DateFormat.format("dd", currentDate).toString();
+                    String currentDay = "", settingDay = "";
+                    if (dateString != null && !dateString.isEmpty()) {
+                        int date = Integer.parseInt(dateString);
+                        date = date + 1;
+                        currentDay = String.valueOf(date);
+                    }
+
+                    String settingDate = DateFormat.format("yyyy/MM/dd", mCalendar.getTime()).toString();
+                    String settingYearMonth = DateFormat.format("yyyy/MM", mCalendar.getTime()).toString();
+
+                    String time = DateFormat.format("dd", mCalendar.getTime()).toString();
+                    if (time != null && !time.isEmpty()) {
+                        settingDay = String.valueOf(Integer.parseInt(time));
+                    }
+
+                    if (curentDate != null && curentDate.equalsIgnoreCase(settingDate)) {
+                        callBackDate.setText("Today");
+                    } else if ((currentYearMonth != null && currentYearMonth.equalsIgnoreCase(settingYearMonth)) && settingDate != null && (currentDay.equalsIgnoreCase(settingDay))) {
+                        callBackDate.setText("Tomorrow");
+                    } else {
+                        callBackDate.setText(fmt.format(mCalendar.getTime()));
+                    }
+
+                    int calculateMinuteAccordingly = mCalendar.get(Calendar.MINUTE);
+                    int calculateHourAccordingly = mCalendar.get(Calendar.HOUR_OF_DAY);
+
+                    final_start_min = calculateMinuteAccordingly;
+                    final_start_hour = calculateHourAccordingly;
+
+                    if (calculateMinuteAccordingly + 15 >= 60) {
+                        final_end_min = calculateMinuteAccordingly + 15 - 60;
+                        final_end_hour = calculateHourAccordingly + 1;
+                    } else {
+                        final_end_min = calculateMinuteAccordingly + 15;
+                        final_end_hour = calculateHourAccordingly;
+                    }
+
+                }
+            }, year, month, day);
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            datePickerDialog.show();
+        } else if (id == R.id.call_back_time) {
+            final Calendar questionnaireTime1 = Calendar.getInstance();
+            int hour = questionnaireTime1.get(Calendar.HOUR_OF_DAY);
+            int minute = questionnaireTime1.get(Calendar.MINUTE);
+            TimePickerDialog timePicker = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+                    mCalendar = Calendar.getInstance();
+
+                    String meridian = "";
+                    // Prathik issue
+                    Calendar datetime = null;
+                    if (callBackDate != null) {
+                        if (callBackDate.getText().toString() != null && callBackDate.getText().toString().equalsIgnoreCase("today")) {
+                            datetime = Calendar.getInstance();
+
+                            int getYear = datetime.get(Calendar.YEAR);
+                            int getMonth = datetime.get(Calendar.MONTH);
+                            int getDay = datetime.get(Calendar.DAY_OF_MONTH);
+
+                            final_start_year = getYear;
+                            final_start_month = getMonth;
+                            final_start_dayOfMonth = getDay;
+
+                            mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
+                            mCalendar.set(Calendar.MONTH, getMonth);
+                            mCalendar.set(Calendar.YEAR, getYear);
                         } else {
                             datetime = Calendar.getInstance();
                         }
-                        datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        datetime.set(Calendar.MINUTE, selectedMinute);
+                    } else {
+                        datetime = Calendar.getInstance();
+                    }
+                    datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    datetime.set(Calendar.MINUTE, selectedMinute);
 
-                        switch (datetime.get(Calendar.AM_PM)) {
-                            case Calendar.AM:
-                                meridian = "AM";
-                                break;
-                            case Calendar.PM:
-                                meridian = "PM";
-                                break;
-                        }
+                    switch (datetime.get(Calendar.AM_PM)) {
+                        case Calendar.AM:
+                            meridian = "AM";
+                            break;
+                        case Calendar.PM:
+                            meridian = "PM";
+                            break;
+                    }
 
-                        final_start_min = selectedMinute;
-                        final_start_hour = selectedHour;
+                    final_start_min = selectedMinute;
+                    final_start_hour = selectedHour;
 
-                        int endHourOfDay = 0, endMinute;
-                        endMinute = selectedMinute + 60;
-                        if (endMinute >= 60) {
-                            endHourOfDay = endHourOfDay + 1;
-                            endMinute = selectedMinute % 60;
-                        }
-                        endHourOfDay = endHourOfDay + selectedHour;
-                        if (selectedHour >= 24) {
-                            endHourOfDay = endHourOfDay % 24;
-                        }
-                        mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        mCalendar.set(Calendar.MINUTE, selectedMinute);
+                    int endHourOfDay = 0, endMinute;
+                    endMinute = selectedMinute + 60;
+                    if (endMinute >= 60) {
+                        endHourOfDay = endHourOfDay + 1;
+                        endMinute = selectedMinute % 60;
+                    }
+                    endHourOfDay = endHourOfDay + selectedHour;
+                    if (selectedHour >= 24) {
+                        endHourOfDay = endHourOfDay % 24;
+                    }
+                    mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    mCalendar.set(Calendar.MINUTE, selectedMinute);
 
-                        int end = 0;
-                        int modifiedEndMinute = endMinute;
-                        int modifiedEndHour = endHourOfDay;
-                        switch (end) {
-                            case 0:
-                                if (modifiedEndMinute + 15 > 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
-
-                                    if (modifiedEndHour >= 24) {
-                                        modifiedEndHour = 0;
-                                    } else {
-                                        modifiedEndHour++;
-                                    }
-                                } else {
-                                    modifiedEndMinute += 15;
-                                }
-                                break;
-                            case 1:
-                                if (modifiedEndMinute + 30 > 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
-                                    if (modifiedEndHour >= 24) {
-                                        modifiedEndHour = 0;
-                                    } else {
-                                        modifiedEndHour++;
-                                    }
-                                } else {
-                                    modifiedEndMinute += 30;
-                                }
-                                break;
-                            case 2:
-                                if (modifiedEndMinute != 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
-                                }
+                    int end = 0;
+                    int modifiedEndMinute = endMinute;
+                    int modifiedEndHour = endHourOfDay;
+                    switch (end) {
+                        case 0:
+                            if (modifiedEndMinute + 15 > 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
 
                                 if (modifiedEndHour >= 24) {
                                     modifiedEndHour = 0;
                                 } else {
                                     modifiedEndHour++;
                                 }
-                                break;
-                        }
-
-                        final_end_hour = modifiedEndHour;
-                        final_end_min = modifiedEndMinute;
-
-                        if (selectedHour > 12) {
-                            selectedHour -= 12;
-                        }
-
-                        if (selectedMinute < 10) {
-                            callBackTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
-                        } else {
-                            callBackTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
-                        }
-                    }
-                }, hour, minute, false);
-                timePicker.show();
-                break;
-            case R.id.councelingfollowup_time:
-                final Calendar councelingfollowupTime1 = Calendar.getInstance();
-                hour = councelingfollowupTime1.get(Calendar.HOUR_OF_DAY);
-                minute = councelingfollowupTime1.get(Calendar.MINUTE);
-                timePicker = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        mCalendar = Calendar.getInstance();
-                        String meridian = "";
-                        // Prathik issue
-                        Calendar datetime = null;
-                        if (councelingfollowup_date != null) {
-                            if (councelingfollowup_date.getText().toString() != null && councelingfollowup_date.getText().toString().equalsIgnoreCase("today")) {
-                                datetime = Calendar.getInstance();
-
-                                int getYear = datetime.get(Calendar.YEAR);
-                                int getMonth = datetime.get(Calendar.MONTH);
-                                int getDay = datetime.get(Calendar.DAY_OF_MONTH);
-
-                                final_start_year = getYear;
-                                final_start_month = getMonth;
-                                final_start_dayOfMonth = getDay;
-
-                                mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
-                                mCalendar.set(Calendar.MONTH, getMonth);
-                                mCalendar.set(Calendar.YEAR, getYear);
                             } else {
-                                datetime = Calendar.getInstance();
+                                modifiedEndMinute += 15;
                             }
+                            break;
+                        case 1:
+                            if (modifiedEndMinute + 30 > 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
+                                if (modifiedEndHour >= 24) {
+                                    modifiedEndHour = 0;
+                                } else {
+                                    modifiedEndHour++;
+                                }
+                            } else {
+                                modifiedEndMinute += 30;
+                            }
+                            break;
+                        case 2:
+                            if (modifiedEndMinute != 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
+                            }
+
+                            if (modifiedEndHour >= 24) {
+                                modifiedEndHour = 0;
+                            } else {
+                                modifiedEndHour++;
+                            }
+                            break;
+                    }
+
+                    final_end_hour = modifiedEndHour;
+                    final_end_min = modifiedEndMinute;
+
+                    if (selectedHour > 12) {
+                        selectedHour -= 12;
+                    }
+
+                    if (selectedMinute < 10) {
+                        callBackTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
+                    } else {
+                        callBackTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
+                    }
+                }
+            }, hour, minute, false);
+            timePicker.show();
+        } else if (id == R.id.councelingfollowup_time) {
+            int minute;
+            TimePickerDialog timePicker;
+            int hour;
+            final Calendar councelingfollowupTime1 = Calendar.getInstance();
+            hour = councelingfollowupTime1.get(Calendar.HOUR_OF_DAY);
+            minute = councelingfollowupTime1.get(Calendar.MINUTE);
+            timePicker = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                    mCalendar = Calendar.getInstance();
+                    String meridian = "";
+                    // Prathik issue
+                    Calendar datetime = null;
+                    if (councelingfollowup_date != null) {
+                        if (councelingfollowup_date.getText().toString() != null && councelingfollowup_date.getText().toString().equalsIgnoreCase("today")) {
+                            datetime = Calendar.getInstance();
+
+                            int getYear = datetime.get(Calendar.YEAR);
+                            int getMonth = datetime.get(Calendar.MONTH);
+                            int getDay = datetime.get(Calendar.DAY_OF_MONTH);
+
+                            final_start_year = getYear;
+                            final_start_month = getMonth;
+                            final_start_dayOfMonth = getDay;
+
+                            mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
+                            mCalendar.set(Calendar.MONTH, getMonth);
+                            mCalendar.set(Calendar.YEAR, getYear);
                         } else {
                             datetime = Calendar.getInstance();
                         }
-                        datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        datetime.set(Calendar.MINUTE, selectedMinute);
+                    } else {
+                        datetime = Calendar.getInstance();
+                    }
+                    datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    datetime.set(Calendar.MINUTE, selectedMinute);
 
-                        switch (datetime.get(Calendar.AM_PM)) {
-                            case Calendar.AM:
-                                meridian = "AM";
-                                break;
-                            case Calendar.PM:
-                                meridian = "PM";
-                                break;
-                        }
+                    switch (datetime.get(Calendar.AM_PM)) {
+                        case Calendar.AM:
+                            meridian = "AM";
+                            break;
+                        case Calendar.PM:
+                            meridian = "PM";
+                            break;
+                    }
 
-                        final_start_min = selectedMinute;
-                        final_start_hour = selectedHour;
+                    final_start_min = selectedMinute;
+                    final_start_hour = selectedHour;
 
-                        int endHourOfDay = 0, endMinute;
-                        endMinute = selectedMinute + 60;
-                        if (endMinute >= 60) {
-                            endHourOfDay = endHourOfDay + 1;
-                            endMinute = selectedMinute % 60;
-                        }
-                        endHourOfDay = endHourOfDay + selectedHour;
-                        if (selectedHour >= 24) {
-                            endHourOfDay = endHourOfDay % 24;
-                        }
-                        mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        mCalendar.set(Calendar.MINUTE, selectedMinute);
+                    int endHourOfDay = 0, endMinute;
+                    endMinute = selectedMinute + 60;
+                    if (endMinute >= 60) {
+                        endHourOfDay = endHourOfDay + 1;
+                        endMinute = selectedMinute % 60;
+                    }
+                    endHourOfDay = endHourOfDay + selectedHour;
+                    if (selectedHour >= 24) {
+                        endHourOfDay = endHourOfDay % 24;
+                    }
+                    mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    mCalendar.set(Calendar.MINUTE, selectedMinute);
 
-                        int end = 0;
-                        int modifiedEndMinute = endMinute;
-                        int modifiedEndHour = endHourOfDay;
-                        switch (end) {
-                            case 0:
-                                if (modifiedEndMinute + 15 > 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
-
-                                    if (modifiedEndHour >= 24) {
-                                        modifiedEndHour = 0;
-                                    } else {
-                                        modifiedEndHour++;
-                                    }
-                                } else {
-                                    modifiedEndMinute += 15;
-                                }
-                                break;
-                            case 1:
-                                if (modifiedEndMinute + 30 > 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
-                                    if (modifiedEndHour >= 24) {
-                                        modifiedEndHour = 0;
-                                    } else {
-                                        modifiedEndHour++;
-                                    }
-                                } else {
-                                    modifiedEndMinute += 30;
-                                }
-                                break;
-                            case 2:
-                                if (modifiedEndMinute != 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
-                                }
+                    int end = 0;
+                    int modifiedEndMinute = endMinute;
+                    int modifiedEndHour = endHourOfDay;
+                    switch (end) {
+                        case 0:
+                            if (modifiedEndMinute + 15 > 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
 
                                 if (modifiedEndHour >= 24) {
                                     modifiedEndHour = 0;
                                 } else {
                                     modifiedEndHour++;
                                 }
-                                break;
-                        }
+                            } else {
+                                modifiedEndMinute += 15;
+                            }
+                            break;
+                        case 1:
+                            if (modifiedEndMinute + 30 > 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
+                                if (modifiedEndHour >= 24) {
+                                    modifiedEndHour = 0;
+                                } else {
+                                    modifiedEndHour++;
+                                }
+                            } else {
+                                modifiedEndMinute += 30;
+                            }
+                            break;
+                        case 2:
+                            if (modifiedEndMinute != 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
+                            }
 
-                        final_end_hour = modifiedEndHour;
-                        final_end_min = modifiedEndMinute;
-
-                        if (selectedHour > 12) {
-                            selectedHour -= 12;
-                        }
-
-                        if (selectedMinute < 10) {
-                            councelingfollowup_time.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
-                        } else {
-                            councelingfollowup_time.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
-                        }
+                            if (modifiedEndHour >= 24) {
+                                modifiedEndHour = 0;
+                            } else {
+                                modifiedEndHour++;
+                            }
+                            break;
                     }
-                }, hour, minute, false);
-                timePicker.show();
-                break;
-            case R.id.sm_call_button:
-                String number = et_sm_number.getText().toString();
-                et_sm_number.setCursorVisible(false);
-                if(number == null || number.isEmpty()){
-                    et_sm_number.setText("Number cannot be empty");
-                } else {
-                    et_sm_number.setText("Dialing.."+number);
-                    adhocCallFromHome(number);
-                    sm_call_button.setEnabled(false);
-                }
 
-                //chatMakingCall = true;
+                    final_end_hour = modifiedEndHour;
+                    final_end_min = modifiedEndMinute;
+
+                    if (selectedHour > 12) {
+                        selectedHour -= 12;
+                    }
+
+                    if (selectedMinute < 10) {
+                        councelingfollowup_time.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
+                    } else {
+                        councelingfollowup_time.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
+                    }
+                }
+            }, hour, minute, false);
+            timePicker.show();
+        } else if (id == R.id.sm_call_button) {
+            String number = et_sm_number.getText().toString();
+            et_sm_number.setCursorVisible(false);
+            if (number == null || number.isEmpty()) {
+                et_sm_number.setText("Number cannot be empty");
+            } else {
+                et_sm_number.setText("Dialing.." + number);
+                adhocCallFromHome(number);
+                sm_call_button.setEnabled(false);
+            }
+
+            //chatMakingCall = true;
                 /*CommonUtils.chatMakeCall(this, number, 0, "",
                         "", "", "",
                         "", "");*/
-                break;
-            case R.id.questionnaire_time:
-            case R.id.followup_time:
-            case R.id.tv_custom_time:
-                btnTen.setBackgroundResource(R.drawable.editext_background);
-                btnThirty.setBackgroundResource(R.drawable.editext_background);
-                btnSixty.setBackgroundResource(R.drawable.editext_background);
-                questionnaire_btnTen.setBackgroundResource(R.drawable.call_flow_button);
-                questionnaire_btnThirty.setBackgroundResource(R.drawable.call_flow_button);
-                questionnaire_btnSixty.setBackgroundResource(R.drawable.call_flow_button);
-                quesButtonTenTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
-                quesButtonThirtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
-                quesButtonSixtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
+        } else if (id == R.id.questionnaire_time || id == R.id.followup_time || id == R.id.tv_custom_time) {
+            int minute;
+            TimePickerDialog timePicker;
+            int hour;
+            btnTen.setBackgroundResource(R.drawable.editext_background);
+            btnThirty.setBackgroundResource(R.drawable.editext_background);
+            btnSixty.setBackgroundResource(R.drawable.editext_background);
+            questionnaire_btnTen.setBackgroundResource(R.drawable.call_flow_button);
+            questionnaire_btnThirty.setBackgroundResource(R.drawable.call_flow_button);
+            questionnaire_btnSixty.setBackgroundResource(R.drawable.call_flow_button);
+            quesButtonTenTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
+            quesButtonThirtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
+            quesButtonSixtyTextView.setTextColor(getResources().getColor(R.color.ques_text_color));
 
-                final Calendar questionnaireTime = Calendar.getInstance();
-                hour = questionnaireTime.get(Calendar.HOUR_OF_DAY);
-                minute = questionnaireTime.get(Calendar.MINUTE);
-                timePicker = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+            final Calendar questionnaireTime = Calendar.getInstance();
+            hour = questionnaireTime.get(Calendar.HOUR_OF_DAY);
+            minute = questionnaireTime.get(Calendar.MINUTE);
+            timePicker = new TimePickerDialog(this, R.style.MaterialPickerTheme, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-                        mCalendar = Calendar.getInstance();
+                    mCalendar = Calendar.getInstance();
 
-                        String meridian = "";
-                        // Prathik issue
-                        Calendar datetime = null;
-                        if (questDate != null) {
-                            if (questDate.getText().toString() != null && questDate.getText().toString().equalsIgnoreCase("today")) {
-                                datetime = Calendar.getInstance();
+                    String meridian = "";
+                    // Prathik issue
+                    Calendar datetime = null;
+                    if (questDate != null) {
+                        if (questDate.getText().toString() != null && questDate.getText().toString().equalsIgnoreCase("today")) {
+                            datetime = Calendar.getInstance();
 
-                                int getYear = datetime.get(Calendar.YEAR);
-                                int getMonth = datetime.get(Calendar.MONTH);
-                                int getDay = datetime.get(Calendar.DAY_OF_MONTH);
+                            int getYear = datetime.get(Calendar.YEAR);
+                            int getMonth = datetime.get(Calendar.MONTH);
+                            int getDay = datetime.get(Calendar.DAY_OF_MONTH);
 
-                                final_start_year = getYear;
-                                final_start_month = getMonth;
-                                final_start_dayOfMonth = getDay;
+                            final_start_year = getYear;
+                            final_start_month = getMonth;
+                            final_start_dayOfMonth = getDay;
 
-                                mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
-                                mCalendar.set(Calendar.MONTH, getMonth);
-                                mCalendar.set(Calendar.YEAR, getYear);
-                            } else {
-                                datetime = Calendar.getInstance();
-                            }
-                        } else if (followupDate != null) {
-                            if (followupDate.getText().toString() != null && followupDate.getText().toString().equalsIgnoreCase("today")) {
-                                datetime = Calendar.getInstance();
-
-                                int getYear = datetime.get(Calendar.YEAR);
-                                int getMonth = datetime.get(Calendar.MONTH);
-                                int getDay = datetime.get(Calendar.DAY_OF_MONTH);
-
-                                final_start_year = getYear;
-                                final_start_month = getMonth;
-                                final_start_dayOfMonth = getDay;
-
-                                mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
-                                mCalendar.set(Calendar.MONTH, getMonth);
-                                mCalendar.set(Calendar.YEAR, getYear);
-                            } else {
-                                datetime = Calendar.getInstance();
-                            }
-                        } else if (mCustomDate != null) {
-                            if (mCustomDate.getText().toString() != null && mCustomDate.getText().toString().equalsIgnoreCase("today")) {
-                                datetime = Calendar.getInstance();
-
-                                int getYear = datetime.get(Calendar.YEAR);
-                                int getMonth = datetime.get(Calendar.MONTH);
-                                int getDay = datetime.get(Calendar.DAY_OF_MONTH);
-
-                                final_start_year = getYear;
-                                final_start_month = getMonth;
-                                final_start_dayOfMonth = getDay;
-
-                                mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
-                                mCalendar.set(Calendar.MONTH, getMonth);
-                                mCalendar.set(Calendar.YEAR, getYear);
-                            } else {
-                                datetime = Calendar.getInstance();
-                            }
+                            mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
+                            mCalendar.set(Calendar.MONTH, getMonth);
+                            mCalendar.set(Calendar.YEAR, getYear);
                         } else {
                             datetime = Calendar.getInstance();
                         }
+                    } else if (followupDate != null) {
+                        if (followupDate.getText().toString() != null && followupDate.getText().toString().equalsIgnoreCase("today")) {
+                            datetime = Calendar.getInstance();
 
-                        datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        datetime.set(Calendar.MINUTE, selectedMinute);
+                            int getYear = datetime.get(Calendar.YEAR);
+                            int getMonth = datetime.get(Calendar.MONTH);
+                            int getDay = datetime.get(Calendar.DAY_OF_MONTH);
 
-                        switch (datetime.get(Calendar.AM_PM)) {
-                            case Calendar.AM:
-                                meridian = "AM";
-                                break;
-                            case Calendar.PM:
-                                meridian = "PM";
-                                break;
+                            final_start_year = getYear;
+                            final_start_month = getMonth;
+                            final_start_dayOfMonth = getDay;
+
+                            mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
+                            mCalendar.set(Calendar.MONTH, getMonth);
+                            mCalendar.set(Calendar.YEAR, getYear);
+                        } else {
+                            datetime = Calendar.getInstance();
                         }
+                    } else if (mCustomDate != null) {
+                        if (mCustomDate.getText().toString() != null && mCustomDate.getText().toString().equalsIgnoreCase("today")) {
+                            datetime = Calendar.getInstance();
 
-                        final_start_min = selectedMinute;
-                        final_start_hour = selectedHour;
+                            int getYear = datetime.get(Calendar.YEAR);
+                            int getMonth = datetime.get(Calendar.MONTH);
+                            int getDay = datetime.get(Calendar.DAY_OF_MONTH);
 
-                        int endHourOfDay = 0, endMinute;
-                        endMinute = selectedMinute + 60;
-                        if (endMinute >= 60) {
-                            endHourOfDay = endHourOfDay + 1;
-                            endMinute = selectedMinute % 60;
+                            final_start_year = getYear;
+                            final_start_month = getMonth;
+                            final_start_dayOfMonth = getDay;
+
+                            mCalendar.set(Calendar.DAY_OF_MONTH, getDay);
+                            mCalendar.set(Calendar.MONTH, getMonth);
+                            mCalendar.set(Calendar.YEAR, getYear);
+                        } else {
+                            datetime = Calendar.getInstance();
                         }
-                        endHourOfDay = endHourOfDay + selectedHour;
-                        if (selectedHour >= 24) {
-                            endHourOfDay = endHourOfDay % 24;
-                        }
+                    } else {
+                        datetime = Calendar.getInstance();
+                    }
+
+                    datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    datetime.set(Calendar.MINUTE, selectedMinute);
+
+                    switch (datetime.get(Calendar.AM_PM)) {
+                        case Calendar.AM:
+                            meridian = "AM";
+                            break;
+                        case Calendar.PM:
+                            meridian = "PM";
+                            break;
+                    }
+
+                    final_start_min = selectedMinute;
+                    final_start_hour = selectedHour;
+
+                    int endHourOfDay = 0, endMinute;
+                    endMinute = selectedMinute + 60;
+                    if (endMinute >= 60) {
+                        endHourOfDay = endHourOfDay + 1;
+                        endMinute = selectedMinute % 60;
+                    }
+                    endHourOfDay = endHourOfDay + selectedHour;
+                    if (selectedHour >= 24) {
+                        endHourOfDay = endHourOfDay % 24;
+                    }
 
 
-                        mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        mCalendar.set(Calendar.MINUTE, selectedMinute);
-                        int end = 0;
-                        int modifiedEndMinute = endMinute;
-                        int modifiedEndHour = endHourOfDay;
-                        switch (end) {
-                            case 0:
-                                if (modifiedEndMinute + 15 > 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
-
-                                    if (modifiedEndHour >= 24) {
-                                        modifiedEndHour = 0;
-                                    } else {
-                                        modifiedEndHour++;
-                                    }
-                                } else {
-                                    modifiedEndMinute += 15;
-                                }
-                                break;
-                            case 1:
-                                if (modifiedEndMinute + 30 > 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
-                                    if (modifiedEndHour >= 24) {
-                                        modifiedEndHour = 0;
-                                    } else {
-                                        modifiedEndHour++;
-                                    }
-                                } else {
-                                    modifiedEndMinute += 30;
-                                }
-                                break;
-                            case 2:
-                                if (modifiedEndMinute != 60) {
-                                    modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
-                                }
+                    mCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
+                    mCalendar.set(Calendar.MINUTE, selectedMinute);
+                    int end = 0;
+                    int modifiedEndMinute = endMinute;
+                    int modifiedEndHour = endHourOfDay;
+                    switch (end) {
+                        case 0:
+                            if (modifiedEndMinute + 15 > 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 15) - modifiedEndMinute;
 
                                 if (modifiedEndHour >= 24) {
                                     modifiedEndHour = 0;
                                 } else {
                                     modifiedEndHour++;
                                 }
-                                break;
-                        }
-
-                        final_end_hour = modifiedEndHour;
-                        final_end_min = modifiedEndMinute;
-
-                        if (selectedHour > 12) {
-                            selectedHour -= 12;
-                        }
-
-                        if (selectedMinute < 10) {
-                            questTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
-                            followupTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
-                            mCustomTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
-                        } else {
-                            questTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
-                            followupTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
-                            mCustomTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
-                        }
-                        if ((final_start_year == 0) && (final_start_month == 0) && (final_start_dayOfMonth == 0) && (final_start_hour == 0) && (final_start_min == 0)) {
-                            mCalendar = Calendar.getInstance();
-                        } else {
-                            mCalendar = new GregorianCalendar(final_start_year, final_start_month, final_start_dayOfMonth, final_start_hour, final_start_min);
-                        }
-
-                        if (mCalendar != null) {
-                            if (mCalendar.getTime() != null) {
-                                selectedDateTime = String.valueOf(mCalendar.getTime());
+                            } else {
+                                modifiedEndMinute += 15;
                             }
-                        } else {
-                            selectedDateTime = "";
-                        }
+                            break;
+                        case 1:
+                            if (modifiedEndMinute + 30 > 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 30) - modifiedEndMinute;
+                                if (modifiedEndHour >= 24) {
+                                    modifiedEndHour = 0;
+                                } else {
+                                    modifiedEndHour++;
+                                }
+                            } else {
+                                modifiedEndMinute += 30;
+                            }
+                            break;
+                        case 2:
+                            if (modifiedEndMinute != 60) {
+                                modifiedEndMinute = (modifiedEndMinute + 60) - modifiedEndMinute;
+                            }
+
+                            if (modifiedEndHour >= 24) {
+                                modifiedEndHour = 0;
+                            } else {
+                                modifiedEndHour++;
+                            }
+                            break;
                     }
-                }, hour, minute, false);
-                timePicker.show();
-                break;
-            default:
-                if (view instanceof Button) {
-                    resetPreviousButtonSelection();
-                    Button button = (Button) findViewById(view.getId());
-                    paymentModeFromButton = button.getText().toString();
-                    currentSelectedButton = button.getText().toString();
-                    button.setTextColor(getResources().getColor(R.color.white));
-                    button.setBackground(getResources().getDrawable(R.drawable.call_flow_button_red));
-                    selectedButtonList.add(view.getId());
-                } else {
-                    questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
-                    if (questionsAct != null && !questionsAct.isEmpty()) {
-                        formButtonLayout.setVisibility(View.GONE);
-                        create_followup_card.setVisibility(View.GONE);
-                        uView.setVisibility(View.VISIBLE);
-                        cView.setVisibility(View.GONE);
-                        rView.setVisibility(View.GONE);
-                        redialView.setVisibility(View.GONE);
-                        ServiceHandler.processCompleted = false;
+
+                    final_end_hour = modifiedEndHour;
+                    final_end_min = modifiedEndMinute;
+
+                    if (selectedHour > 12) {
+                        selectedHour -= 12;
+                    }
+
+                    if (selectedMinute < 10) {
+                        questTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
+                        followupTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
+                        mCustomTime.setText("" + selectedHour + ":0" + selectedMinute + " " + meridian);
                     } else {
-                        callbackCheck = false;
-                        checkRNR = false;
-                        changeLayoutColor(111);
-                        uView.setVisibility(View.VISIBLE);
-                        cView.setVisibility(View.GONE);
-                        rView.setVisibility(View.GONE);
-                        redialView.setVisibility(View.GONE);
-                        if (followUpButtonClicked) {
-                            create_followup_card.setVisibility(View.VISIBLE);
-                            llCallAgain.setVisibility(View.VISIBLE);
-                            orText.setVisibility(View.VISIBLE);
-                            remarksCard.setVisibility(View.VISIBLE);
-                        } else {
-                            create_followup_card.setVisibility(View.GONE);
-                            llCallAgain.setVisibility(View.GONE);
-                            orText.setVisibility(View.GONE);
-                            remarksCard.setVisibility(View.GONE);
+                        questTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
+                        followupTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
+                        mCustomTime.setText("" + selectedHour + ":" + selectedMinute + " " + meridian);
+                    }
+                    if ((final_start_year == 0) && (final_start_month == 0) && (final_start_dayOfMonth == 0) && (final_start_hour == 0) && (final_start_min == 0)) {
+                        mCalendar = Calendar.getInstance();
+                    } else {
+                        mCalendar = new GregorianCalendar(final_start_year, final_start_month, final_start_dayOfMonth, final_start_hour, final_start_min);
+                    }
+
+                    if (mCalendar != null) {
+                        if (mCalendar.getTime() != null) {
+                            selectedDateTime = String.valueOf(mCalendar.getTime());
                         }
-                        checkViewFocus();
+                    } else {
+                        selectedDateTime = "";
                     }
                 }
-                break;
+            }, hour, minute, false);
+            timePicker.show();
+        } else {
+            String questionsAct;
+            if (view instanceof Button) {
+                resetPreviousButtonSelection();
+                Button button = (Button) findViewById(view.getId());
+                paymentModeFromButton = button.getText().toString();
+                currentSelectedButton = button.getText().toString();
+                button.setTextColor(getResources().getColor(R.color.white));
+                button.setBackground(getResources().getDrawable(R.drawable.call_flow_button_red));
+                selectedButtonList.add(view.getId());
+            } else {
+                questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
+                if (questionsAct != null && !questionsAct.isEmpty()) {
+                    formButtonLayout.setVisibility(View.GONE);
+                    create_followup_card.setVisibility(View.GONE);
+                    uView.setVisibility(View.VISIBLE);
+                    cView.setVisibility(View.GONE);
+                    rView.setVisibility(View.GONE);
+                    redialView.setVisibility(View.GONE);
+                    ServiceHandler.processCompleted = false;
+                } else {
+                    callbackCheck = false;
+                    checkRNR = false;
+                    changeLayoutColor(111);
+                    uView.setVisibility(View.VISIBLE);
+                    cView.setVisibility(View.GONE);
+                    rView.setVisibility(View.GONE);
+                    redialView.setVisibility(View.GONE);
+                    if (followUpButtonClicked) {
+                        create_followup_card.setVisibility(View.VISIBLE);
+                        llCallAgain.setVisibility(View.VISIBLE);
+                        orText.setVisibility(View.VISIBLE);
+                        remarksCard.setVisibility(View.VISIBLE);
+                    } else {
+                        create_followup_card.setVisibility(View.GONE);
+                        llCallAgain.setVisibility(View.GONE);
+                        orText.setVisibility(View.GONE);
+                        remarksCard.setVisibility(View.GONE);
+                    }
+                    checkViewFocus();
+                }
+            }
         }
     }
 
@@ -19946,7 +19913,7 @@ public class UearnActivity extends AppCompatActivity implements View.OnClickList
         ApplicationSettings.putPref(AppConstants.CUSTOMER_UUID_MAP, hashMapString);
     }
 
-    private Dialog callOptionsDialog(final Activity activity, String title, String message, String type) {
+    private Dialog callOptionsDialog(final Activity activity, String title, String message, final String type) {
 
         final Dialog exitDialog = buildTwoButtonDialog(activity, title, message);
         exitDialog.setCanceledOnTouchOutside(false);

@@ -175,7 +175,7 @@ public class MyStopAlertDialog extends Activity implements TextToSpeech.OnInitLi
                     alertDialog1.setCancelable(false);
                     alertDialog1.show();
 
-                    AlertDialog finalAlertDialog = alertDialog1;
+                    final AlertDialog finalAlertDialog = alertDialog1;
                     yesBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

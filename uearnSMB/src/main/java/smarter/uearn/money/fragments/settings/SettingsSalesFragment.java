@@ -116,12 +116,10 @@ public class SettingsSalesFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ivSyncData:
-                logAnalytics("Sync_Data_Sales_Settings", "ImageView");
-                ServiceUserProfile.getUserSettings();
-                getFragmentManager().popBackStack();
-                break;
+        if (v.getId() == R.id.ivSyncData) {
+            logAnalytics("Sync_Data_Sales_Settings", "ImageView");
+            ServiceUserProfile.getUserSettings();
+            getFragmentManager().popBackStack();
         }
     }
 

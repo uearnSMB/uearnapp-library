@@ -91,44 +91,39 @@ public class CustomAudioRecorderDialog implements View.OnClickListener, MediaPla
             mediaPlayer.stop();
         }
 
-        switch (view.getId()) {
-            case R.id.tv_start_stop_recording:
-                if (recording) {
-                    recording = false;
-                    mediaRecordWrapper.startRecording(path, MediaRecorder.AudioSource.MIC);
-                    mRecordingText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_media_stop, 0, 0);
-                } else {
-                    mediaRecordWrapper.stopRecording();
-                    mMediaControls.setVisibility(View.VISIBLE);
-                    recording = true;
-                    mRecordingText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_start_recording, 0, 0);
-                }
-                break;
-            case R.id.tv_media_play:
-                if (playing) {
-                    mediaPlayer.setOnCompletionListener(this);
-                    mediaPlayer = MediaPlayer.create(mContext, Uri.parse(path));
-                    mediaPlayer.start();
+        int id = view.getId();
+        if (id == R.id.tv_start_stop_recording) {
+            if (recording) {
+                recording = false;
+                mediaRecordWrapper.startRecording(path, MediaRecorder.AudioSource.MIC);
+                mRecordingText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_media_stop, 0, 0);
+            } else {
+                mediaRecordWrapper.stopRecording();
+                mMediaControls.setVisibility(View.VISIBLE);
+                recording = true;
+                mRecordingText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_start_recording, 0, 0);
+            }
+        } else if (id == R.id.tv_media_play) {
+            if (playing) {
+                mediaPlayer.setOnCompletionListener(this);
+                mediaPlayer = MediaPlayer.create(mContext, Uri.parse(path));
+                mediaPlayer.start();
 
-                    playing = false;
-                    mPlayPauseText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_media_pause, 0, 0);
-                } else {
-                    playing = true;
-                    mPlayPauseText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_start_recording, 0, 0);
-                }
-                break;
-            case R.id.tv_media_stop:
+                playing = false;
+                mPlayPauseText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_media_pause, 0, 0);
+            } else {
                 playing = true;
                 mPlayPauseText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_start_recording, 0, 0);
-                break;
-            case R.id.iv_close:
-                alertDialog.dismiss();
-                break;
-            case R.id.btn_save:
-                UploadNotesAudio uploadNotesAudio = new UploadNotesAudio();
-                uploadNotesAudio.execute();
-                alertDialog.dismiss();
-                break;
+            }
+        } else if (id == R.id.tv_media_stop) {
+            playing = true;
+            mPlayPauseText.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.ic_start_recording, 0, 0);
+        } else if (id == R.id.iv_close) {
+            alertDialog.dismiss();
+        } else if (id == R.id.btn_save) {
+            UploadNotesAudio uploadNotesAudio = new UploadNotesAudio();
+            uploadNotesAudio.execute();
+            alertDialog.dismiss();
         }
     }
 

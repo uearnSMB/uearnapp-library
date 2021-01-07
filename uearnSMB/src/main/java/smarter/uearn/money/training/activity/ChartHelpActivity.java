@@ -104,7 +104,7 @@ public class ChartHelpActivity extends BaseActivity implements TrainingHelpChart
         } catch (Exception ex) {
         }
     }
-    private void submitAnswer(HelpDeskInfoData strAnswer,int position){
+    private void submitAnswer(HelpDeskInfoData strAnswer, final int position){
         try {
 
             new APIProvider.SubmitHelpDeskAnswer(strAnswer, 1, ChartHelpActivity.this, "Processing your request.", new API_Response_Listener<String>() {

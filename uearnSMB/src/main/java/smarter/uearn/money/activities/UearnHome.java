@@ -1166,7 +1166,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
     }
     JSONObject rsponseObj;
     private void setGoalValue(String goalAmount) {
-        if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
+        if (CommonUtils.isNetworkAvailable(this)) {
             final String user_id = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
             final JSONObject userDetailObj = new JSONObject();
             JSONArray userInfoArr = new JSONArray();
@@ -1691,7 +1691,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
 
                     if (action != null && !action.isEmpty() && action.equalsIgnoreCase("movetonormal")) {
                         SmarterSMBApplication.moveToNormal = true;
-                        ActivityManager am = (ActivityManager)getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+                        ActivityManager am = (ActivityManager)activity.getSystemService(Context.ACTIVITY_SERVICE);
                         ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
                         if(cn != null && cn.getClassName().equals("smarter.uearn.money.activities.UearnActivity")) {
                             finish();
@@ -3070,7 +3070,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
             if (userStatus != null && !(userStatus.equalsIgnoreCase("On Board") || userStatus.equalsIgnoreCase("OJT") || userStatus.equalsIgnoreCase("Production") || userStatus.equalsIgnoreCase("Project"))) {
                 boolean isPermissionEnabled = CommonUtils.permissionsCheck(UearnHome.this);
                 if (isPermissionEnabled) {
-                    Intent intent2 = new Intent(getApplicationContext(), UearnVoiceTestActivity.class);
+                    Intent intent2 = new Intent(this, UearnVoiceTestActivity.class);
                     startActivity(intent2);
                 }
             } else {
@@ -3141,7 +3141,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                                         }
                                     } catch (Exception e) {
                                         Log.e("UearnHome", "Error calling deactivateCW()", e);
-                                        int version_code = CommonUtils.getVersionCode(getApplicationContext());
+                                        int version_code = CommonUtils.getVersionCode(this);
                                         String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
                                                 ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnHome - Error calling deactivateCW(): " + e.getMessage();
                                         ServiceApplicationUsage.callErrorLog(message);
@@ -3174,7 +3174,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                                         }
                                     } catch (Exception e) {
                                         Log.e("UearnHome", "Error calling deactivateCW()", e);
-                                        int version_code = CommonUtils.getVersionCode(getApplicationContext());
+                                        int version_code = CommonUtils.getVersionCode(this);
                                         String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
                                                 ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnHome - Error calling deactivateCW(): " + e.getMessage();
                                         ServiceApplicationUsage.callErrorLog(message);
@@ -3212,7 +3212,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                                     }
                                 } catch (Exception e) {
                                     Log.e("UearnHome", "Error calling deactivateCW()", e);
-                                    int version_code = CommonUtils.getVersionCode(getApplicationContext());
+                                    int version_code = CommonUtils.getVersionCode(this);
                                     String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
                                             ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnHome - Error calling deactivateCW(): " + e.getMessage();
                                     ServiceApplicationUsage.callErrorLog(message);
@@ -3325,75 +3325,81 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.swipe_to_start:
-            case R.id.manual_swipe_to_start:
-                if (CommonUtils.isNetworkAvailable(this)) {
-                    if(remoteAutoEnabled == null || remoteAutoEnabled.isEmpty()) {
-                        Toast.makeText(this, "Required settings are not enabled. Please re-sync", Toast.LENGTH_SHORT).show();
-                    } else {
-                        start();
-                    }
+        if (id == R.id.swipe_to_start || id == R.id.manual_swipe_to_start) {
+            if (CommonUtils.isNetworkAvailable(this)) {
+                if (remoteAutoEnabled == null || remoteAutoEnabled.isEmpty()) {
+                    Toast.makeText(this, "Required settings are not enabled. Please re-sync", Toast.LENGTH_SHORT).show();
                 } else {
-                    sendRemoteDialStartRequest = false;
-                    uearnLoader.setVisibility(View.GONE);
-                    connectedLoader.setVisibility(View.GONE);
-                    completedFollowups.setVisibility(View.VISIBLE);
-                    connectionStatus.setText(getResources().getString(R.string.no_connection_msg));
-                    connectionStatus.setBackgroundColor(getResources().getColor(R.color.no_connection));
-                    testNow.setBackground(getResources().getDrawable(R.drawable.no_connection));
-                    connectionStatusLayout.setVisibility(View.VISIBLE);
-                    connectionStatusLayout.setBackgroundColor(getResources().getColor(R.color.no_connection));
-                    internet_status.setText("NO INTERNET");
-                    internet_status_goal_before.setText("NO INTERNET");
-                    internet_status.setTextColor(getResources().getColor(R.color.no_connection));
-                    internet_status_goal_before.setTextColor(getResources().getColor(R.color.no_connection));
-                    noNetworkAnimation(internet_status, internet_status_goal_before);
-                    disableStartButton();
-                    connectionStatusLayout.setVisibility(View.GONE);
+                    start();
                 }
-                break;
+            } else {
+                sendRemoteDialStartRequest = false;
+                uearnLoader.setVisibility(View.GONE);
+                connectedLoader.setVisibility(View.GONE);
+                completedFollowups.setVisibility(View.VISIBLE);
+                connectionStatus.setText(getResources().getString(R.string.no_connection_msg));
+                connectionStatus.setBackgroundColor(getResources().getColor(R.color.no_connection));
+                testNow.setBackground(getResources().getDrawable(R.drawable.no_connection));
+                connectionStatusLayout.setVisibility(View.VISIBLE);
+                connectionStatusLayout.setBackgroundColor(getResources().getColor(R.color.no_connection));
+                internet_status.setText("NO INTERNET");
+                internet_status_goal_before.setText("NO INTERNET");
+                internet_status.setTextColor(getResources().getColor(R.color.no_connection));
+                internet_status_goal_before.setTextColor(getResources().getColor(R.color.no_connection));
+                noNetworkAnimation(internet_status, internet_status_goal_before);
+                disableStartButton();
+                connectionStatusLayout.setVisibility(View.GONE);
+            }
+        } else if (id == R.id.gotItButton) {
+            sendRemoteDialStopRequest("Taking a break");
+            gotItButtonAction();
+        } else if (id == R.id.profile_image) {
+            if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                if (fkControl) {
 
-            case R.id.gotItButton:
-                sendRemoteDialStopRequest("Taking a break");
-                gotItButtonAction();
-                break;
-
-            case R.id.profile_image:
-                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                    if (fkControl) {
-
-                    }
-                } else {
-                    unregisterAllReceivers();
                 }
-                if(pingTimer != null) {
-                    pingTimer.cancel();
-                    pingTimer = null;
-                }
-                timerStopped = false;
-                pingInProgress  = false;
+            } else {
+                unregisterAllReceivers();
+            }
+            if (pingTimer != null) {
+                pingTimer.cancel();
+                pingTimer = null;
+            }
+            timerStopped = false;
+            pingInProgress = false;
 
 //                if(gotItlayout.getVisibility() == View.VISIBLE){
 //                    gotItButtonAction();
 //                }
 
-                testNowLoader.setVisibility(View.GONE);
-                testNow.setVisibility(View.VISIBLE);
-                SmarterSMBApplication.moveToRAD = false;
-                //Intent intent3 = new Intent(getApplicationContext(), UearnProfileActivity.class);
-                SmarterSMBApplication.moveToNormal = false;
-                //startActivity(intent3);
-                toggleLeftDrawer();
-                overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
-                //this.finish();
-                break;
-
-            case R.id.ll_today_goal:
-                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
+            testNowLoader.setVisibility(View.GONE);
+            testNow.setVisibility(View.VISIBLE);
+            SmarterSMBApplication.moveToRAD = false;
+            //Intent intent3 = new Intent(this, UearnProfileActivity.class);
+            SmarterSMBApplication.moveToNormal = false;
+            //startActivity(intent3);
+            toggleLeftDrawer();
+            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
+            //this.finish();
+        } else if (id == R.id.ll_today_goal) {
+            if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
+                        boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
+                        if (homeNavigation) {
+                            SmarterSMBApplication.moveToRAD = false;
+                            Intent ueranIntent = new Intent(this, UearnPassbookActivity.class);
+                            SmarterSMBApplication.moveToNormal = false;
+                            startActivity(ueranIntent);
+                        }
+                    }
+                }
+            } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                    if (fkControl) {
                         if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
                             boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
                             if (homeNavigation) {
@@ -3404,34 +3410,40 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             }
                         }
                     }
-                } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                        boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                        if (fkControl) {
-                            if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
-                                boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
-                                if (homeNavigation) {
-                                    SmarterSMBApplication.moveToRAD = false;
-                                    Intent ueranIntent = new Intent(this, UearnPassbookActivity.class);
-                                    SmarterSMBApplication.moveToNormal = false;
-                                    startActivity(ueranIntent);
-                                }
+                }
+            } else {
+                unregisterConnectivityReceiver();
+                SmarterSMBApplication.moveToRAD = false;
+                Intent ueranIntent = new Intent(this, UearnPassbookActivity.class);
+                SmarterSMBApplication.moveToNormal = false;
+                startActivity(ueranIntent);
+            }
+        } else if (id == R.id.firstCallFollowup) {
+            if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
+                        boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
+                        if (homeNavigation) {
+                            if (firstCallfollowups > 0) {
+                                ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                                SmarterSMBApplication.moveToRAD = false;
+                                Intent ueranFollowup = new Intent(this, UearnFollowupActivity.class);
+                                ueranFollowup.putExtra("FollowUpType", "FirstCall");
+                                isStart = false;
+                                removeFragment();
+                                startActivity(ueranFollowup);
+                                this.finish();
+                            } else {
+                                Toast.makeText(this, "You don't have any data to dial!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
-                } else {
-                    unregisterConnectivityReceiver();
-                    SmarterSMBApplication.moveToRAD = false;
-                    Intent ueranIntent = new Intent(this, UearnPassbookActivity.class);
-                    SmarterSMBApplication.moveToNormal = false;
-                    startActivity(ueranIntent);
                 }
-                break;
-
-            case R.id.firstCallFollowup:
-                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
+            } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                    if (fkControl) {
                         if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
                             boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
                             if (homeNavigation) {
@@ -3450,49 +3462,43 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             }
                         }
                     }
-                } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                        boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                        if (fkControl) {
-                            if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
-                                boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
-                                if (homeNavigation) {
-                                    if (firstCallfollowups > 0) {
-                                        ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                                        SmarterSMBApplication.moveToRAD = false;
-                                        Intent ueranFollowup = new Intent(this, UearnFollowupActivity.class);
-                                        ueranFollowup.putExtra("FollowUpType", "FirstCall");
-                                        isStart = false;
-                                        removeFragment();
-                                        startActivity(ueranFollowup);
-                                        this.finish();
-                                    } else {
-                                        Toast.makeText(this, "You don't have any data to dial!", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
+                }
+            } else {
+                if (firstCallfollowups > 0) {
+                    ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                    SmarterSMBApplication.moveToRAD = false;
+                    Intent ueranFollowup = new Intent(this, UearnFollowupActivity.class);
+                    ueranFollowup.putExtra("FollowUpType", "FirstCall");
+                    isStart = false;
+                    removeFragment();
+                    startActivity(ueranFollowup);
+                    this.finish();
+                } else {
+                    Toast.makeText(this, "You don't have any data to dial!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } else if (id == R.id.followupsMissed) {
+            if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
+                        boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
+                        if (homeNavigation) {
+                            ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                            SmarterSMBApplication.moveToRAD = false;
+                            Intent followupMissed = new Intent(this, UearnFollowupActivity.class);
+                            followupMissed.putExtra("FollowUpType", "FollowUpMissed");
+                            isStart = false;
+                            removeFragment();
+                            startActivity(followupMissed);
+                            this.finish();
                         }
                     }
-                } else {
-                    if (firstCallfollowups > 0) {
-                        ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                        SmarterSMBApplication.moveToRAD = false;
-                        Intent ueranFollowup = new Intent(this, UearnFollowupActivity.class);
-                        ueranFollowup.putExtra("FollowUpType", "FirstCall");
-                        isStart = false;
-                        removeFragment();
-                        startActivity(ueranFollowup);
-                        this.finish();
-                    } else {
-                        Toast.makeText(this, "You don't have any data to dial!", Toast.LENGTH_SHORT).show();
-                    }
                 }
-                break;
-
-            case R.id.followupsMissed:
-                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
+            } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                    if (fkControl) {
                         if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
                             boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
                             if (homeNavigation) {
@@ -3507,41 +3513,39 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             }
                         }
                     }
-                } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                        boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                        if (fkControl) {
-                            if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
-                                boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
-                                if (homeNavigation) {
-                                    ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                                    SmarterSMBApplication.moveToRAD = false;
-                                    Intent followupMissed = new Intent(this, UearnFollowupActivity.class);
-                                    followupMissed.putExtra("FollowUpType", "FollowUpMissed");
-                                    isStart = false;
-                                    removeFragment();
-                                    startActivity(followupMissed);
-                                    this.finish();
-                                }
-                            }
+                }
+            } else {
+                ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                SmarterSMBApplication.moveToRAD = false;
+                Intent followupMissed = new Intent(this, UearnFollowupActivity.class);
+                followupMissed.putExtra("FollowUpType", "FollowUpMissed");
+                isStart = false;
+                removeFragment();
+                startActivity(followupMissed);
+                this.finish();
+            }
+        } else if (id == R.id.followupsMissedBtn) {
+            if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
+                        boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
+                        if (homeNavigation) {
+                            ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                            SmarterSMBApplication.moveToRAD = false;
+                            Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
+                            followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
+                            isStart = false;
+                            removeFragment();
+                            startActivity(followupsMissed);
+                            this.finish();
                         }
                     }
-                } else {
-                    ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                    SmarterSMBApplication.moveToRAD = false;
-                    Intent followupMissed = new Intent(this, UearnFollowupActivity.class);
-                    followupMissed.putExtra("FollowUpType", "FollowUpMissed");
-                    isStart = false;
-                    removeFragment();
-                    startActivity(followupMissed);
-                    this.finish();
                 }
-                break;
-
-            case R.id.followupsMissedBtn:
-                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
+            } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                    if (fkControl) {
                         if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
                             boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
                             if (homeNavigation) {
@@ -3556,41 +3560,39 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             }
                         }
                     }
-                } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                        boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                        if (fkControl) {
-                            if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
-                                boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
-                                if (homeNavigation) {
-                                    ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                                    SmarterSMBApplication.moveToRAD = false;
-                                    Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
-                                    followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
-                                    isStart = false;
-                                    removeFragment();
-                                    startActivity(followupsMissed);
-                                    this.finish();
-                                }
-                            }
+                }
+            } else {
+                ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                SmarterSMBApplication.moveToRAD = false;
+                Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
+                followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
+                isStart = false;
+                removeFragment();
+                startActivity(followupsMissed);
+                this.finish();
+            }
+        } else if (id == R.id.ll_follow_ups) {
+            if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
+                        boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
+                        if (homeNavigation) {
+                            ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                            SmarterSMBApplication.moveToRAD = false;
+                            Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
+                            followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
+                            isStart = false;
+                            removeFragment();
+                            startActivity(followupsMissed);
+                            this.finish();
                         }
                     }
-                } else {
-                    ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                    SmarterSMBApplication.moveToRAD = false;
-                    Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
-                    followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
-                    isStart = false;
-                    removeFragment();
-                    startActivity(followupsMissed);
-                    this.finish();
                 }
-                break;
-
-            case R.id.ll_follow_ups:
-                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
+            } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                    if (fkControl) {
                         if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
                             boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
                             if (homeNavigation) {
@@ -3605,41 +3607,36 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             }
                         }
                     }
-                } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                        boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                        if (fkControl) {
-                            if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
-                                boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
-                                if (homeNavigation) {
-                                    ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                                    SmarterSMBApplication.moveToRAD = false;
-                                    Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
-                                    followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
-                                    isStart = false;
-                                    removeFragment();
-                                    startActivity(followupsMissed);
-                                    this.finish();
-                                }
-                            }
+                }
+            } else {
+                ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
+                SmarterSMBApplication.moveToRAD = false;
+                Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
+                followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
+                isStart = false;
+                removeFragment();
+                startActivity(followupsMissed);
+                this.finish();
+            }
+        } else if (id == R.id.completedFollowupsLayout) {
+            if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
+                        boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
+                        if (homeNavigation) {
+                            removeFragment();
+                            SmarterSMBApplication.moveToRAD = false;
+                            Intent intent = new Intent(this, DashboardAgent.class);
+                            DashboardAgent.contactedInfoList = contactedInfoList;
+                            this.startActivity(intent);
                         }
                     }
-                } else {
-                    ApplicationSettings.putPref(AppConstants.SELECTED_DATE_FROM_CALENDAR_VIEW, "");
-                    SmarterSMBApplication.moveToRAD = false;
-                    Intent followupsMissed = new Intent(this, UearnFollowupActivity.class);
-                    followupsMissed.putExtra("FollowUpType", "FollowUpMissed");
-                    isStart = false;
-                    removeFragment();
-                    startActivity(followupsMissed);
-                    this.finish();
                 }
-                break;
-
-            case R.id.completedFollowupsLayout:
-                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
+            } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                    if (fkControl) {
                         if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
                             boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
                             if (homeNavigation) {
@@ -3651,36 +3648,34 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             }
                         }
                     }
-                } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                        boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                        if (fkControl) {
-                            if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
-                                boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
-                                if (homeNavigation) {
-                                    removeFragment();
-                                    SmarterSMBApplication.moveToRAD = false;
-                                    Intent intent = new Intent(this, DashboardAgent.class);
-                                    DashboardAgent.contactedInfoList = contactedInfoList;
-                                    this.startActivity(intent);
-                                }
-                            }
+                }
+            } else {
+                removeFragment();
+                unregisterConnectivityReceiver();
+                SmarterSMBApplication.moveToRAD = false;
+                Intent intent = new Intent(this, DashboardAgent.class);
+                DashboardAgent.contactedInfoList = contactedInfoList;
+                this.startActivity(intent);
+            }
+        } else if (id == R.id.doneFollowupsBtn) {
+            if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
+                boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
+                if (ibControl) {
+                    if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
+                        boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
+                        if (homeNavigation) {
+                            removeFragment();
+                            SmarterSMBApplication.moveToRAD = false;
+                            Intent intent1 = new Intent(this, DashboardAgent.class);
+                            DashboardAgent.contactedInfoList = contactedInfoList;
+                            this.startActivity(intent1);
                         }
                     }
-                } else {
-                    removeFragment();
-                    unregisterConnectivityReceiver();
-                    SmarterSMBApplication.moveToRAD = false;
-                    Intent intent = new Intent(this, DashboardAgent.class);
-                    DashboardAgent.contactedInfoList = contactedInfoList;
-                    this.startActivity(intent);
                 }
-                break;
-
-            case R.id.doneFollowupsBtn :
-                if (ApplicationSettings.containsPref(AppConstants.IB_CONTROL)) {
-                    boolean ibControl = ApplicationSettings.getPref(AppConstants.IB_CONTROL, false);
-                    if (ibControl) {
+            } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                    boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                    if (fkControl) {
                         if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
                             boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
                             if (homeNavigation) {
@@ -3692,114 +3687,107 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             }
                         }
                     }
-                } else if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                    if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                        boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                        if (fkControl) {
-                            if (ApplicationSettings.containsPref(AppConstants.HOME_NAVIGATION)) {
-                                boolean homeNavigation = ApplicationSettings.getPref(AppConstants.HOME_NAVIGATION, false);
-                                if (homeNavigation) {
-                                    removeFragment();
-                                    SmarterSMBApplication.moveToRAD = false;
-                                    Intent intent1 = new Intent(this, DashboardAgent.class);
-                                    DashboardAgent.contactedInfoList = contactedInfoList;
-                                    this.startActivity(intent1);
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    removeFragment();
-                    unregisterConnectivityReceiver();
-                    SmarterSMBApplication.moveToRAD = false;
-                    Intent intent1 = new Intent(this, DashboardAgent.class);
-                    DashboardAgent.contactedInfoList = contactedInfoList;
-                    this.startActivity(intent1);
                 }
-                break;
-
-            case R.id.hintsTv:
-                //goalEarnedTv.setBackgroundResource(R.drawable.textview_border);
-                underLineView.setVisibility(View.GONE);
-                //goalEarnedTv.setWidth(140);
-                goalEarnedTv.setGravity(Gravity.CENTER);
-                //goalEarnedTv.setHeight(52);
-                goalEarnedTv.setPaintFlags(0);
-                hintsTv.setVisibility(View.GONE);
-                goalEarnedTv.setTextColor(Color.parseColor("#8f8a8a"));
-                setGoalLayout.setVisibility(View.VISIBLE);
-                goalEarnedTv.setFocusable(true);
-                goalEarnedTv.setClickable(true);
-                goalEarnedTv.setEnabled(true);
-                goalEarnedTv.setFocusableInTouchMode(true);
-                goalEarnedTv.requestFocus();
-                goalEarnedTv.setText("10000");
-                ll_update_goalLayout.setVisibility(View.VISIBLE);
-                today_uearn_layout.setVisibility(View.GONE);
-                ll_bottom_layout.setVisibility(View.GONE);
-                if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
-                    boolean allowAdhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
-                    if (allowAdhocCall) {
-                        adhocCallCardView.setVisibility(View.GONE);
-                        adhocCallViewLayout.setVisibility(View.GONE);
-                    }
+            } else {
+                removeFragment();
+                unregisterConnectivityReceiver();
+                SmarterSMBApplication.moveToRAD = false;
+                Intent intent1 = new Intent(this, DashboardAgent.class);
+                DashboardAgent.contactedInfoList = contactedInfoList;
+                this.startActivity(intent1);
+            }
+        } else if (id == R.id.hintsTv) {//goalEarnedTv.setBackgroundResource(R.drawable.textview_border);
+            underLineView.setVisibility(View.GONE);
+            //goalEarnedTv.setWidth(140);
+            goalEarnedTv.setGravity(Gravity.CENTER);
+            //goalEarnedTv.setHeight(52);
+            goalEarnedTv.setPaintFlags(0);
+            hintsTv.setVisibility(View.GONE);
+            goalEarnedTv.setTextColor(Color.parseColor("#8f8a8a"));
+            setGoalLayout.setVisibility(View.VISIBLE);
+            goalEarnedTv.setFocusable(true);
+            goalEarnedTv.setClickable(true);
+            goalEarnedTv.setEnabled(true);
+            goalEarnedTv.setFocusableInTouchMode(true);
+            goalEarnedTv.requestFocus();
+            goalEarnedTv.setText("10000");
+            ll_update_goalLayout.setVisibility(View.VISIBLE);
+            today_uearn_layout.setVisibility(View.GONE);
+            ll_bottom_layout.setVisibility(View.GONE);
+            if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
+                boolean allowAdhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
+                if (allowAdhocCall) {
+                    adhocCallCardView.setVisibility(View.GONE);
+                    adhocCallViewLayout.setVisibility(View.GONE);
                 }
+            }
 
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(goalEarnedTv, InputMethodManager.SHOW_IMPLICIT);
-                break;
-
-            case R.id.ll_update_goalLayout:
-                ll_update_goalLayout.setVisibility(View.VISIBLE);
-                goalEarnedTv.setVisibility(View.VISIBLE);
-                setGoalLayout.setVisibility(View.VISIBLE);
-                setGoal.setVisibility(View.VISIBLE);
-                goalEarnedTv.setPaintFlags(0);
-                hintsTv.setVisibility(View.GONE);
-                goalEarnedTv.setTextColor(Color.parseColor("#8f8a8a"));
-                setGoalLayout.setVisibility(View.VISIBLE);
-                goalEarnedTv.setFocusable(true);
-                goalEarnedTv.setClickable(true);
-                goalEarnedTv.setEnabled(true);
-                goalEarnedTv.setFocusableInTouchMode(true);
-                goalEarnedTv.requestFocus();
-                //goalEarnedTv.setText("10000");
-                today_uearn_layout.setVisibility(View.GONE);
-                ll_bottom_layout.setVisibility(View.GONE);
-                break;
-            case R.id.goalEarnedTv:
-                //goalEarnedTv.setBackgroundResource(R.drawable.textview_border);
-                underLineView.setVisibility(View.GONE);
-                //goalEarnedTv.setWidth(140);
-                //goalEarnedTv.setGravity(Gravity.CENTER);
-                //goalEarnedTv.setHeight(52);
-                goalEarnedTv.setPaintFlags(0);
-                hintsTv.setVisibility(View.GONE);
-                goalEarnedTv.setTextColor(Color.parseColor("#8f8a8a"));
-                setGoalLayout.setVisibility(View.VISIBLE);
-                goalEarnedTv.setFocusable(true);
-                goalEarnedTv.setClickable(true);
-                goalEarnedTv.setEnabled(true);
-                goalEarnedTv.setFocusableInTouchMode(true);
-                goalEarnedTv.requestFocus();
-                goalEarnedTv.setText("10000");
-                ll_update_goalLayout.setVisibility(View.VISIBLE);
-                goalEarnedTv.setVisibility(View.VISIBLE);
-                setGoalLayout.setVisibility(View.VISIBLE);
-                setGoal.setVisibility(View.VISIBLE);
-                today_uearn_layout.setVisibility(View.GONE);
-                ll_bottom_layout.setVisibility(View.GONE);
-                InputMethodManager imm2 = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm2.showSoftInput(goalEarnedTv, InputMethodManager.SHOW_IMPLICIT);
-                break;
-
-            case R.id.setGoalLayout:
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(goalEarnedTv, InputMethodManager.SHOW_IMPLICIT);
+        } else if (id == R.id.ll_update_goalLayout) {
+            ll_update_goalLayout.setVisibility(View.VISIBLE);
+            goalEarnedTv.setVisibility(View.VISIBLE);
+            setGoalLayout.setVisibility(View.VISIBLE);
+            setGoal.setVisibility(View.VISIBLE);
+            goalEarnedTv.setPaintFlags(0);
+            hintsTv.setVisibility(View.GONE);
+            goalEarnedTv.setTextColor(Color.parseColor("#8f8a8a"));
+            setGoalLayout.setVisibility(View.VISIBLE);
+            goalEarnedTv.setFocusable(true);
+            goalEarnedTv.setClickable(true);
+            goalEarnedTv.setEnabled(true);
+            goalEarnedTv.setFocusableInTouchMode(true);
+            goalEarnedTv.requestFocus();
+            //goalEarnedTv.setText("10000");
+            today_uearn_layout.setVisibility(View.GONE);
+            ll_bottom_layout.setVisibility(View.GONE);
+        } else if (id == R.id.goalEarnedTv) {//goalEarnedTv.setBackgroundResource(R.drawable.textview_border);
+            underLineView.setVisibility(View.GONE);
+            //goalEarnedTv.setWidth(140);
+            //goalEarnedTv.setGravity(Gravity.CENTER);
+            //goalEarnedTv.setHeight(52);
+            goalEarnedTv.setPaintFlags(0);
+            hintsTv.setVisibility(View.GONE);
+            goalEarnedTv.setTextColor(Color.parseColor("#8f8a8a"));
+            setGoalLayout.setVisibility(View.VISIBLE);
+            goalEarnedTv.setFocusable(true);
+            goalEarnedTv.setClickable(true);
+            goalEarnedTv.setEnabled(true);
+            goalEarnedTv.setFocusableInTouchMode(true);
+            goalEarnedTv.requestFocus();
+            goalEarnedTv.setText("10000");
+            ll_update_goalLayout.setVisibility(View.VISIBLE);
+            goalEarnedTv.setVisibility(View.VISIBLE);
+            setGoalLayout.setVisibility(View.VISIBLE);
+            setGoal.setVisibility(View.VISIBLE);
+            today_uearn_layout.setVisibility(View.GONE);
+            ll_bottom_layout.setVisibility(View.GONE);
+            InputMethodManager imm2 = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm2.showSoftInput(goalEarnedTv, InputMethodManager.SHOW_IMPLICIT);
+        } else if (id == R.id.setGoalLayout) {
+            goalLayout.setVisibility(View.GONE);
+            setGoalsLayout.setVisibility(View.VISIBLE);
+            setGoalLayout.setVisibility(View.VISIBLE);
+            setGoalLayout.setVisibility(View.VISIBLE);
+            ll_update_goalLayout.setVisibility(View.VISIBLE);
+            earnTv.setText(goalEarnedTv.getText());
+            if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
+                boolean allowAdhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
+                if (allowAdhocCall) {
+                    adhocCallCardView.setVisibility(View.VISIBLE);
+                    adhocCallViewLayout.setVisibility(View.VISIBLE);
+                }
+            }
+        } else if (id == R.id.setGoal) {
+            String earnValue = goalEarnedTv.getText().toString();
+            if (!earnValue.equals("0") && !earnValue.equals("")) {
+                setGoalValue(earnValue);
+                setGoalLayout.setVisibility(View.GONE);
                 goalLayout.setVisibility(View.GONE);
                 setGoalsLayout.setVisibility(View.VISIBLE);
-                setGoalLayout.setVisibility(View.VISIBLE);
-                setGoalLayout.setVisibility(View.VISIBLE);
-                ll_update_goalLayout.setVisibility(View.VISIBLE);
-                earnTv.setText(goalEarnedTv.getText());
+                ll_update_goalLayout.setVisibility(View.GONE);
+                today_uearn_layout.setVisibility(View.VISIBLE);
+                ll_bottom_layout.setVisibility(View.VISIBLE);
                 if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
                     boolean allowAdhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
                     if (allowAdhocCall) {
@@ -3807,188 +3795,97 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                         adhocCallViewLayout.setVisibility(View.VISIBLE);
                     }
                 }
-                break;
-
-            case R.id.setGoal:
-                String earnValue = goalEarnedTv.getText().toString();
-                if (!earnValue.equals("0") && !earnValue.equals("")) {
-                    setGoalValue(earnValue);
-                    setGoalLayout.setVisibility(View.GONE);
-                    goalLayout.setVisibility(View.GONE);
-                    setGoalsLayout.setVisibility(View.VISIBLE);
-                    ll_update_goalLayout.setVisibility(View.GONE);
-                    today_uearn_layout.setVisibility(View.VISIBLE);
-                    ll_bottom_layout.setVisibility(View.VISIBLE);
-                    if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
-                        boolean allowAdhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
-                        if (allowAdhocCall) {
-                            adhocCallCardView.setVisibility(View.VISIBLE);
-                            adhocCallViewLayout.setVisibility(View.VISIBLE);
-                        }
-                    }
-                } else {
-                    Toast.makeText(this, "Uearn goal value should be greater than zero", Toast.LENGTH_SHORT).show();
-                    bizPrize = "10,000";
-                    goalLayout.setVisibility(View.VISIBLE);
-                    setGoalLayout.setVisibility(View.GONE);
-                    setGoalsLayout.setVisibility(View.GONE);
-                    underLineView.setVisibility(View.GONE);
-                    //goalEarnedTv.setWidth(140);
-                    goalEarnedTv.setGravity(Gravity.CENTER);
-                    //goalEarnedTv.setHeight(52);
-                    goalEarnedTv.setPaintFlags(0);
-                    hintsTv.setVisibility(View.VISIBLE);
-                    goalEarnedTv.setFocusable(false);
-                    goalEarnedTv.setText(bizPrize);
-                    //goalEarnedTv.setTextColor(getApplication().getResources().getColor(R.color.white));
-                    goalEarnedTv.setBackgroundResource(0);
-                    underLineView.setVisibility(View.VISIBLE);
-                    setGoalLayout.setVisibility(View.VISIBLE);
-                    goalEarnedTv.setFocusable(true);
-                    //setGoalLayout.setVisibility(View.GONE);
-                    if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
-                        boolean allowAdhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
-                        if (allowAdhocCall) {
-                            adhocCallCardView.setVisibility(View.GONE);
-                            adhocCallViewLayout.setVisibility(View.GONE);
-                        }
-                    }
-                }
-                break;
-
-            case R.id.testNow:
-                SmarterSMBApplication.networkCheckInProgress = true;
-                testNowLoader.setVisibility(View.VISIBLE);
-                testNow.setVisibility(View.GONE);
-                if ((SmarterSMBApplication.SmartUser != null) && !SmarterSMBApplication.SmartUser.getEmulationOn()) {
-                    if (connectingStatus != null) {
-                        connectionStatus.setText(getResources().getString(R.string.connection_check_msg));
-                        connectionStatus.setBackgroundColor(getResources().getColor(R.color.connection_check));
-                        testNow.setBackground(getResources().getDrawable(R.drawable.connection_check));
-                        connectionStatusLayout.setVisibility(View.VISIBLE);
-                        connectionStatusLayout.setBackgroundColor(getResources().getColor(R.color.connection_check));
-                        connectionStatusLayout.setVisibility(View.GONE);
-                    }
-                    sendPingRequestToCheckNetworkSpeed();
-                }
-                break;
-
-            case R.id.newGoalSet:
-                goalsCompletedLayout.setVisibility(View.GONE);
+            } else {
+                Toast.makeText(this, "Uearn goal value should be greater than zero", Toast.LENGTH_SHORT).show();
+                bizPrize = "10,000";
                 goalLayout.setVisibility(View.VISIBLE);
-                break;
-
-            case R.id.image_chat:
-                //Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show();
-                if (CommonUtils.isNetworkAvailable(this)) {
-                    if (CommonUtils.allowChatBot()) {
-                        Log.e("UearnHome", "ChatDetails :: " + CommonUtils.chatbotURL());
-                        Intent chatIntent = new Intent(this, ChatActivity.class);
-                        startActivity(chatIntent);
-                    } else {
-                        Toast.makeText(this, "Chat disabled, please contact your manager", Toast.LENGTH_SHORT).show();
+                setGoalLayout.setVisibility(View.GONE);
+                setGoalsLayout.setVisibility(View.GONE);
+                underLineView.setVisibility(View.GONE);
+                //goalEarnedTv.setWidth(140);
+                goalEarnedTv.setGravity(Gravity.CENTER);
+                //goalEarnedTv.setHeight(52);
+                goalEarnedTv.setPaintFlags(0);
+                hintsTv.setVisibility(View.VISIBLE);
+                goalEarnedTv.setFocusable(false);
+                goalEarnedTv.setText(bizPrize);
+                //goalEarnedTv.setTextColor(getApplication().getResources().getColor(R.color.white));
+                goalEarnedTv.setBackgroundResource(0);
+                underLineView.setVisibility(View.VISIBLE);
+                setGoalLayout.setVisibility(View.VISIBLE);
+                goalEarnedTv.setFocusable(true);
+                //setGoalLayout.setVisibility(View.GONE);
+                if (ApplicationSettings.containsPref(AppConstants.ADHOC_CALL)) {
+                    boolean allowAdhocCall = ApplicationSettings.getPref(AppConstants.ADHOC_CALL, false);
+                    if (allowAdhocCall) {
+                        adhocCallCardView.setVisibility(View.GONE);
+                        adhocCallViewLayout.setVisibility(View.GONE);
                     }
-                }else{
-                    Toast.makeText(this, "You have no internet connection", Toast.LENGTH_SHORT).show();
                 }
-                break;
-
-            case R.id.image_notification:
-                //if (CommonUtils.allowASF()) {
-                Intent notificationIntent = new Intent(this, NotificationMessageActivity.class);
-                startActivity(notificationIntent);
+            }
+        } else if (id == R.id.testNow) {
+            SmarterSMBApplication.networkCheckInProgress = true;
+            testNowLoader.setVisibility(View.VISIBLE);
+            testNow.setVisibility(View.GONE);
+            if ((SmarterSMBApplication.SmartUser != null) && !SmarterSMBApplication.SmartUser.getEmulationOn()) {
+                if (connectingStatus != null) {
+                    connectionStatus.setText(getResources().getString(R.string.connection_check_msg));
+                    connectionStatus.setBackgroundColor(getResources().getColor(R.color.connection_check));
+                    testNow.setBackground(getResources().getDrawable(R.drawable.connection_check));
+                    connectionStatusLayout.setVisibility(View.VISIBLE);
+                    connectionStatusLayout.setBackgroundColor(getResources().getColor(R.color.connection_check));
+                    connectionStatusLayout.setVisibility(View.GONE);
+                }
+                sendPingRequestToCheckNetworkSpeed();
+            }
+        } else if (id == R.id.newGoalSet) {
+            goalsCompletedLayout.setVisibility(View.GONE);
+            goalLayout.setVisibility(View.VISIBLE);
+        } else if (id == R.id.image_chat) {//Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show();
+            if (CommonUtils.isNetworkAvailable(this)) {
+                if (CommonUtils.allowChatBot()) {
+                    Log.e("UearnHome", "ChatDetails :: " + CommonUtils.chatbotURL());
+                    Intent chatIntent = new Intent(this, ChatActivity.class);
+                    startActivity(chatIntent);
+                } else {
+                    Toast.makeText(this, "Chat disabled, please contact your manager", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "You have no internet connection", Toast.LENGTH_SHORT).show();
+            }
+        } else if (id == R.id.image_notification) {//if (CommonUtils.allowASF()) {
+            Intent notificationIntent = new Intent(this, NotificationMessageActivity.class);
+            startActivity(notificationIntent);
                 /*} else {
                     Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show();
                 }*/
-                break;
-
-            case R.id.image_sync:
-                SmarterSMBApplication.syncMenuItemClicked = true;
-                boolean isMobiledata = false;
-                if(gotItlayout.getVisibility() == View.VISIBLE){
-                    Toast.makeText(this, "Click on GOT IT button first", Toast.LENGTH_SHORT).show();
-                } else {
-                    if(remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty()){
-                        if(internet_status.getText().toString().equalsIgnoreCase("Please connect to WIFI")
-                                || internet_status.getText().toString().equalsIgnoreCase("NO INTERNET")
-                                || internet_status.getText().toString().equalsIgnoreCase("POOR")) {
-                            disableStartButton();
-                        }else{
-                           enableStartButton();
-                        }
-                    }
-                    if(webViewText != null) {
-                        webViewText.setVisibility(View.GONE);
-                    }
-                    start_layout.setVisibility(View.VISIBLE);
-                    gotItlayout.setVisibility(View.GONE);
-                    setStartButtonVisibility(true);
-                    bizPrize = ApplicationSettings.getPref(AppConstants.BIZ_PRIZE_VALUE, "");
-                    if (CommonUtils.isNetworkAvailable(this)) {
-
-                        String connectionStatusStr = connectionStatus.getText().toString();
-                        if(connectionStatusStr != null && !connectionStatusStr.isEmpty() &&
-                                connectionStatusStr.equalsIgnoreCase(getResources().getString(R.string.no_connection_msg))){
-                            disableStartButton();
-                            internet_status.setText("NO INTERNET");
-                            internet_status_goal_before.setText("NO INTERNET");
-                            internet_status.setTextColor(getResources().getColor(R.color.no_connection));
-                            internet_status_goal_before.setTextColor(getResources().getColor(R.color.no_connection));
-                            noNetworkAnimation(internet_status, internet_status_goal_before);
-                            Toast.makeText(this, "You have no internet connection", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
-                                boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
-                                if (fkControl) {
-                                    Toast.makeText(this, "Syncing...", Toast.LENGTH_LONG).show();
-                                    settingsApi(SmarterSMBApplication.SmartUser.getId());
-                                }
-                            } else {
-                                initCalender();
-                                if (start_time != null && end_time != null) {
-                                    Toast.makeText(this, "Syncing...", Toast.LENGTH_SHORT).show();
-                                    if (ApplicationSettings.containsPref(AppConstants.DATA_START_TIME)) {
-                                        long start = ApplicationSettings.getPref(AppConstants.DATA_START_TIME, 0l);
-                                        setSync(start, 0);
-                                    } else {
-                                        getSmartUserCalendarDataFromServer(start_time, end_time, 0);
-                                    }
-                                    Intent intent = new Intent(this, ReuploadService.class);
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                        startForegroundService(intent);
-                                    } else {
-                                        startService(intent);
-                                    }
-                                    syncSettings();
-                                    getUearnDashboardInfo();
-                                    settingsApi(SmarterSMBApplication.SmartUser.getId());
-                                    getContactedList();
-                                    getUpdatedUserDetails();
-                                    getLocalDbFlpCounts(v);
-                                    callingReuploadService();
-
-                                    if(SmarterSMBApplication.currentStateIsStartMode || SmarterSMBApplication.stayAtHomeScenario) {
-                                        getConnectedCustomerInfo(start_time, end_time, 0);
-                                    }
-                                    if (ApplicationSettings.containsPref(AppConstants.ALLOW_PING)) {
-                                        boolean allowPing = ApplicationSettings.getPref(AppConstants.ALLOW_PING, false);
-                                        if (allowPing) {
-                                            sendPingRequestToCheckNetworkSpeed();
-                                        }
-                                    }
-                                }
-                                if (internet_status.getText().toString().equalsIgnoreCase("Please connect to WIFI")
-                                        || internet_status.getText().toString().equalsIgnoreCase("NO INTERNET")
-                                        || internet_status.getText().toString().equalsIgnoreCase("POOR")) {
-                                    disableStartButton();
-                                } else {
-                                    enableStartButton();
-                                }
-
-                                refresh();
-                            }
-                        }
+        } else if (id == R.id.image_sync) {
+            SmarterSMBApplication.syncMenuItemClicked = true;
+            boolean isMobiledata = false;
+            if (gotItlayout.getVisibility() == View.VISIBLE) {
+                Toast.makeText(this, "Click on GOT IT button first", Toast.LENGTH_SHORT).show();
+            } else {
+                if (remoteAutoEnabled != null && !remoteAutoEnabled.isEmpty()) {
+                    if (internet_status.getText().toString().equalsIgnoreCase("Please connect to WIFI")
+                            || internet_status.getText().toString().equalsIgnoreCase("NO INTERNET")
+                            || internet_status.getText().toString().equalsIgnoreCase("POOR")) {
+                        disableStartButton();
                     } else {
+                        enableStartButton();
+                    }
+                }
+                if (webViewText != null) {
+                    webViewText.setVisibility(View.GONE);
+                }
+                start_layout.setVisibility(View.VISIBLE);
+                gotItlayout.setVisibility(View.GONE);
+                setStartButtonVisibility(true);
+                bizPrize = ApplicationSettings.getPref(AppConstants.BIZ_PRIZE_VALUE, "");
+                if (CommonUtils.isNetworkAvailable(this)) {
+
+                    String connectionStatusStr = connectionStatus.getText().toString();
+                    if (connectionStatusStr != null && !connectionStatusStr.isEmpty() &&
+                            connectionStatusStr.equalsIgnoreCase(getResources().getString(R.string.no_connection_msg))) {
                         disableStartButton();
                         internet_status.setText("NO INTERNET");
                         internet_status_goal_before.setText("NO INTERNET");
@@ -3996,88 +3893,119 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                         internet_status_goal_before.setTextColor(getResources().getColor(R.color.no_connection));
                         noNetworkAnimation(internet_status, internet_status_goal_before);
                         Toast.makeText(this, "You have no internet connection", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                break;
-            case R.id.adhocCallImageButton:
-                String number = adhocCallEditText.getText().toString();
-                adhocCallEditText.setCursorVisible(false);
-                if(number == null || number.isEmpty()){
-                    adhocCallEditText.setText("Number cannot be empty");
-                } else {
-                    adhocCallEditText.setText("Dialing.."+number);
-                    adhocCallFromHome(number);
-                }
-                break;
+                    } else {
+                        if (ApplicationSettings.containsPref(AppConstants.FK_CONTROL)) {
+                            boolean fkControl = ApplicationSettings.getPref(AppConstants.FK_CONTROL, false);
+                            if (fkControl) {
+                                Toast.makeText(this, "Syncing...", Toast.LENGTH_LONG).show();
+                                settingsApi(SmarterSMBApplication.SmartUser.getId());
+                            }
+                        } else {
+                            initCalender();
+                            if (start_time != null && end_time != null) {
+                                Toast.makeText(this, "Syncing...", Toast.LENGTH_SHORT).show();
+                                if (ApplicationSettings.containsPref(AppConstants.DATA_START_TIME)) {
+                                    long start = ApplicationSettings.getPref(AppConstants.DATA_START_TIME, 0l);
+                                    setSync(start, 0);
+                                } else {
+                                    getSmartUserCalendarDataFromServer(start_time, end_time, 0);
+                                }
+                                Intent intent = new Intent(this, ReuploadService.class);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    startForegroundService(intent);
+                                } else {
+                                    startService(intent);
+                                }
+                                syncSettings();
+                                getUearnDashboardInfo();
+                                settingsApi(SmarterSMBApplication.SmartUser.getId());
+                                getContactedList();
+                                getUpdatedUserDetails();
+                                getLocalDbFlpCounts(v);
+                                callingReuploadService();
 
-            case R.id.imgNavClose: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                break;
-            }
-            case R.id.nevSettings: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                Intent i = new Intent(this, ProfileActivity.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                break;
-            }
-            case R.id.navAbout: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                break;
-            }
-            case R.id.nevRefEarn: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                getReferAndEarn();
-                break;
-            }
-            case R.id.navWorkSlots: {
-                Intent intentSlots = new Intent(this, AgentSlotsActivity.class);
-                //intentSlots.putExtra("SLOTSREDIRECT", "UearnProfileActivity");
-                startActivity(intentSlots);
-                finish();
+                                if (SmarterSMBApplication.currentStateIsStartMode || SmarterSMBApplication.stayAtHomeScenario) {
+                                    getConnectedCustomerInfo(start_time, end_time, 0);
+                                }
+                                if (ApplicationSettings.containsPref(AppConstants.ALLOW_PING)) {
+                                    boolean allowPing = ApplicationSettings.getPref(AppConstants.ALLOW_PING, false);
+                                    if (allowPing) {
+                                        sendPingRequestToCheckNetworkSpeed();
+                                    }
+                                }
+                            }
+                            if (internet_status.getText().toString().equalsIgnoreCase("Please connect to WIFI")
+                                    || internet_status.getText().toString().equalsIgnoreCase("NO INTERNET")
+                                    || internet_status.getText().toString().equalsIgnoreCase("POOR")) {
+                                disableStartButton();
+                            } else {
+                                enableStartButton();
+                            }
 
-                break;
-            }
-
-            case R.id.navFAQ: {
-
-                toggleLeftDrawer();//Close Nav-drawer layout
-                Intent intent = new Intent(this, UearnFAQActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                break;
-            }
-            case R.id.navAppVersion: {
-
-                toggleLeftDrawer();//Close Nav-drawer layout
-                break;
-            }
-            case R.id.nevFeedBack: {
-                toggleLeftDrawer();
-                getUserFeedback();
-                break;
-            }
-
-
-            case R.id.navLogOut: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                signOutAndExit();
-                break;
-            }
-            case R.id.manualDial:
-                SmarterSMBApplication.manualDialScenario = true;
-                if(SmarterSMBApplication.currentStateIsStartMode) {
-                    if (ApplicationSettings.containsPref(AppConstants.UNSCHEDULED_CALL)) {
-                        boolean schedulecall = ApplicationSettings.getPref(AppConstants.UNSCHEDULED_CALL, false);
-                        if (schedulecall) {
-                            scheduleCall();
+                            refresh();
                         }
                     }
                 } else {
-                    manualDialStartButtonClickedCheckDialog();
+                    disableStartButton();
+                    internet_status.setText("NO INTERNET");
+                    internet_status_goal_before.setText("NO INTERNET");
+                    internet_status.setTextColor(getResources().getColor(R.color.no_connection));
+                    internet_status_goal_before.setTextColor(getResources().getColor(R.color.no_connection));
+                    noNetworkAnimation(internet_status, internet_status_goal_before);
+                    Toast.makeText(this, "You have no internet connection", Toast.LENGTH_SHORT).show();
                 }
-                break;
+            }
+        } else if (id == R.id.adhocCallImageButton) {
+            String number = adhocCallEditText.getText().toString();
+            adhocCallEditText.setCursorVisible(false);
+            if (number == null || number.isEmpty()) {
+                adhocCallEditText.setText("Number cannot be empty");
+            } else {
+                adhocCallEditText.setText("Dialing.." + number);
+                adhocCallFromHome(number);
+            }
+        } else if (id == R.id.imgNavClose) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+        } else if (id == R.id.nevSettings) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            Intent i = new Intent(this, ProfileActivity.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.navAbout) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+        } else if (id == R.id.nevRefEarn) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            getReferAndEarn();
+        } else if (id == R.id.navWorkSlots) {
+            Intent intentSlots = new Intent(this, AgentSlotsActivity.class);
+            //intentSlots.putExtra("SLOTSREDIRECT", "UearnProfileActivity");
+            startActivity(intentSlots);
+            finish();
+        } else if (id == R.id.navFAQ) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            Intent intent = new Intent(this, UearnFAQActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.navAppVersion) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+        } else if (id == R.id.nevFeedBack) {
+            toggleLeftDrawer();
+            getUserFeedback();
+        } else if (id == R.id.navLogOut) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            signOutAndExit();
+        } else if (id == R.id.manualDial) {
+            SmarterSMBApplication.manualDialScenario = true;
+            if (SmarterSMBApplication.currentStateIsStartMode) {
+                if (ApplicationSettings.containsPref(AppConstants.UNSCHEDULED_CALL)) {
+                    boolean schedulecall = ApplicationSettings.getPref(AppConstants.UNSCHEDULED_CALL, false);
+                    if (schedulecall) {
+                        scheduleCall();
+                    }
+                }
+            } else {
+                manualDialStartButtonClickedCheckDialog();
+            }
         }
     }
 
@@ -4105,8 +4033,8 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
 
     private void getApplicationVersion() {
         try {
-            PackageManager pm = getApplicationContext().getPackageManager();
-            String pkgName = getApplicationContext().getPackageName();
+            PackageManager pm = activity.getPackageManager();
+            String pkgName = activity.getPackageName();
             PackageInfo pkgInfo = null;
             try {
                 pkgInfo = pm.getPackageInfo(pkgName, 0);
@@ -4648,8 +4576,8 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
     }
 
     public void deleteExistingAlarm() {
-        Intent intent = new Intent(getApplicationContext(), Alarm_Receiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(activity, Alarm_Receiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(activity, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarm1 = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarm1.cancel(pendingIntent);
     }
@@ -5488,7 +5416,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                                             activateCW();
                                         } catch (Exception e) {
                                             Log.e("UearnHome", "Error calling activateCW()", e);
-                                            int version_code = CommonUtils.getVersionCode(getApplicationContext());
+                                            int version_code = CommonUtils.getVersionCode(activity);
                                             String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
                                                     ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnHome - Error calling activateCW(): " + e.getMessage();
                                             ServiceApplicationUsage.callErrorLog(message);
@@ -5583,7 +5511,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                                     activateCW();
                                 } catch (Exception e) {
                                     Log.e("UearnHome", "Error calling activateCW()", e);
-                                    int version_code = CommonUtils.getVersionCode(getApplicationContext());
+                                    int version_code = CommonUtils.getVersionCode(activity);
                                     String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
                                             ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnHome - Error calling activateCW(): " + e.getMessage();
                                     ServiceApplicationUsage.callErrorLog(message);
@@ -5760,7 +5688,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                     activateCW();
                 } catch (Exception e){
                     Log.e("UearnHome", "Error calling activateCW()", e);
-                    int version_code = CommonUtils.getVersionCode(getApplicationContext());
+                    int version_code = CommonUtils.getVersionCode(activity);
                     String message = "<br/><br/>eMail : " + ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "") + "<br/>ID : " +
                             ApplicationSettings.getPref(AppConstants.USERINFO_ID, "") + "<br/><br/>App Version: " + version_code + "<br/><br/>UearnHome - Error calling activateCW(): " + e.getMessage();
                     ServiceApplicationUsage.callErrorLog(message);
@@ -6230,7 +6158,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                                     SmarterSMBApplication.outgoingCallNotInStartMode = true;
                                     navigateToUearnActivity();
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "No info for connected customer", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(activity, "No info for connected customer", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         } catch (Exception e) {
@@ -6338,7 +6266,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
 
         @Override
         protected Void doInBackground(ArrayList<GetCalendarEntryInfo>... params) {
-            CommonUtils.saveCalendarSyncDataToLocalDB(db, start, end, getApplicationContext(), getCalendarEntryInfos);
+            CommonUtils.saveCalendarSyncDataToLocalDB(db, start, end, activity, getCalendarEntryInfos);
             return null;
         }
 
@@ -7183,7 +7111,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
     }
 
     private void finishCurrentActivity() {
-        ActivityManager am = (ActivityManager)getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager am = (ActivityManager)activity.getSystemService(Context.ACTIVITY_SERVICE);
         ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
         if(cn != null && cn.getClassName().equals("smarter.uearn.money.activities.UearnActivity")) {
             if (Build.VERSION.SDK_INT < 16) {
@@ -7405,7 +7333,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
         if(context != null) {
             if(checkPermission(this)) {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
-                    SubscriptionManager subscriptionManager = SubscriptionManager.from(getApplicationContext());
+                    SubscriptionManager subscriptionManager = SubscriptionManager.from(activity);
                     List<SubscriptionInfo> subsInfoList = subscriptionManager.getActiveSubscriptionInfoList();
                     if (subsInfoList != null) {
                         for (SubscriptionInfo subscriptionInfo : subsInfoList) {
@@ -7487,7 +7415,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                                 adhocCallEditText.setText("Invalid Number");
                             }
                         } else {
-                            CommonUtils.setToast(getApplicationContext(),data.replace("_SMBALERT_", ""));
+                            CommonUtils.setToast(activity,data.replace("_SMBALERT_", ""));
                         }
                     } else if (data.contains("_SMBACP_")) {
                         String uuidValue = data.replace("_SMBACP_", "");
@@ -7502,7 +7430,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
                             e.printStackTrace();
                         }
                         storeUuidHash(customernumber,uuidValue);
-                        CommonUtils.showACPScreen(getApplicationContext());
+                        CommonUtils.showACPScreen(activity);
                     } else {
                         try {
                             NotificationData.transactionId = data;
@@ -7771,24 +7699,24 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
     private void enableStartButton(){
         swipe_to_start.setEnabled(true);
         swipe_to_start.setClickable(true);
-        swipe_to_start.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+        swipe_to_start.setTextColor(activity.getResources().getColor(R.color.white));
         swipe_to_start.setBackgroundResource(R.drawable.green_rounded_corner);
 
         manual_swipe_to_start.setEnabled(true);
         manual_swipe_to_start.setClickable(true);
-        manual_swipe_to_start.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+        manual_swipe_to_start.setTextColor(activity.getResources().getColor(R.color.white));
         manual_swipe_to_start.setBackgroundResource(R.drawable.green_rounded_corner);
     }
 
     private void disableStartButton(){
         swipe_to_start.setEnabled(false);
         swipe_to_start.setClickable(false);
-        swipe_to_start.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+        swipe_to_start.setTextColor(activity.getResources().getColor(R.color.white));
         swipe_to_start.setBackgroundResource(R.drawable.grey_rounded_corner);
 
         manual_swipe_to_start.setEnabled(false);
         manual_swipe_to_start.setClickable(false);
-        manual_swipe_to_start.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+        manual_swipe_to_start.setTextColor(activity.getResources().getColor(R.color.white));
         manual_swipe_to_start.setBackgroundResource(R.drawable.grey_rounded_corner);
     }
 
@@ -7864,7 +7792,7 @@ public class UearnHome extends BaseActivity implements View.OnClickListener, Vie
         return false;
     }
 
-    private Dialog exitOnclickOfBackButtonDialog(Activity activity, String title, String message) {
+    private Dialog exitOnclickOfBackButtonDialog(final Activity activity, String title, String message) {
 
         final Dialog exitDialog = buildTwoButtonDialog(activity, title, message);
         exitDialog.setCancelable(false);

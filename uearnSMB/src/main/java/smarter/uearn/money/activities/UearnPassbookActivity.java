@@ -687,54 +687,49 @@ public class UearnPassbookActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
 
         int id = v.getId();
-        switch (id) {
-            case R.id.today_card:
-                viewPager.setVisibility(View.VISIBLE);
-                lifetimeEarnedView.setVisibility(View.GONE);
-                total_earned_till_date.setVisibility(View.GONE);
-                uearnPassbookScrollView.setVisibility(View.GONE);
-                todayEarnedView.setVisibility(View.VISIBLE);
-                if (!isShowMore) {
-                    showmoreImg.setImageResource(R.drawable.up_arrow);
-                    tabLayout.setVisibility(View.VISIBLE);
-                    isShowMore = true;
-                } else {
-                    showmoreImg.setImageResource(R.drawable.down_arrow);
-                    isShowMore = false;
-                    tabLayout.setVisibility(View.GONE);
-                }
-                break;
-
-            case R.id.lifetimeEarnedCard:
-                viewPager.setVisibility(View.GONE);
-                getUearnPassbookLifetimeData();
-                setVisibilityPassbookLifetime();
+        if (id == R.id.today_card) {
+            viewPager.setVisibility(View.VISIBLE);
+            lifetimeEarnedView.setVisibility(View.GONE);
+            total_earned_till_date.setVisibility(View.GONE);
+            uearnPassbookScrollView.setVisibility(View.GONE);
+            todayEarnedView.setVisibility(View.VISIBLE);
+            if (!isShowMore) {
+                showmoreImg.setImageResource(R.drawable.up_arrow);
+                tabLayout.setVisibility(View.VISIBLE);
+                isShowMore = true;
+            } else {
                 showmoreImg.setImageResource(R.drawable.down_arrow);
                 isShowMore = false;
                 tabLayout.setVisibility(View.GONE);
-                lifetimeEarnedView.setVisibility(View.VISIBLE);
-                total_earned_till_date.setText("TOTAL EARNED TILL DATE\n" + "  " + passbookLifetimeObj.currency + " " +  passbookLifetimeObj.total_earned);
-                total_earned_till_date.setTextColor(getApplication().getResources().getColor(R.color.black_text_color));
-                total_earned_till_date.setBackgroundResource(R.drawable.grey_rounded_lifetime);
-                todayEarnedView.setVisibility(View.GONE);
+            }
+        } else if (id == R.id.lifetimeEarnedCard) {
+            viewPager.setVisibility(View.GONE);
+            getUearnPassbookLifetimeData();
+            setVisibilityPassbookLifetime();
+            showmoreImg.setImageResource(R.drawable.down_arrow);
+            isShowMore = false;
+            tabLayout.setVisibility(View.GONE);
+            lifetimeEarnedView.setVisibility(View.VISIBLE);
+            total_earned_till_date.setText("TOTAL EARNED TILL DATE\n" + "  " + passbookLifetimeObj.currency + " " + passbookLifetimeObj.total_earned);
+            total_earned_till_date.setTextColor(getApplication().getResources().getColor(R.color.black_text_color));
+            total_earned_till_date.setBackgroundResource(R.drawable.grey_rounded_lifetime);
+            todayEarnedView.setVisibility(View.GONE);
 
-                dateOfJoinTxt.setText(passbookLifetimeObj.date_of_join_txt);
-                dateOfJoin.setText(passbookLifetimeObj.date_of_join);
-                totalWorkingDaysTxt.setText(passbookLifetimeObj.total_working_days_txt);
-                totalWorkingDays.setText(passbookLifetimeObj.total_working_days);
-                totalActiveTimeTxt.setText(passbookLifetimeObj.total_active_time_txt);
-                totalActiveTime.setText(passbookLifetimeObj.total_active_time);
-                totalPaymentDone.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.payment_done);
-                closingBalance.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.closing_balance);
-                callEarningTxt.setText(passbookLifetimeObj.call_earning_txt);
-                callEarning.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.call_earning);
-                bonusTxt.setText(passbookLifetimeObj.bonus_txt);
-                bonus.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.bonus);
+            dateOfJoinTxt.setText(passbookLifetimeObj.date_of_join_txt);
+            dateOfJoin.setText(passbookLifetimeObj.date_of_join);
+            totalWorkingDaysTxt.setText(passbookLifetimeObj.total_working_days_txt);
+            totalWorkingDays.setText(passbookLifetimeObj.total_working_days);
+            totalActiveTimeTxt.setText(passbookLifetimeObj.total_active_time_txt);
+            totalActiveTime.setText(passbookLifetimeObj.total_active_time);
+            totalPaymentDone.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.payment_done);
+            closingBalance.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.closing_balance);
+            callEarningTxt.setText(passbookLifetimeObj.call_earning_txt);
+            callEarning.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.call_earning);
+            bonusTxt.setText(passbookLifetimeObj.bonus_txt);
+            bonus.setText(passbookLifetimeObj.currency + " " + passbookLifetimeObj.bonus);
 
-                createProjectTableLayout();
-                createBonusTableLayout();
-
-                break;
+            createProjectTableLayout();
+            createBonusTableLayout();
         }
     }
 

@@ -611,186 +611,190 @@ public class DashboardAgent extends BaseActivity implements AdapterView.OnItemCl
     public void onClick(View view) {
         String questionsAct = ApplicationSettings.getPref(AppConstants.QUESTIONS_ACT, "");
         int id = view.getId();
-        switch (id) {
-            case R.id.done_card:
-                isContacted = true;
-                isFilledForms = false;
-                switchOffSocket();
-                selection = 1;
-                connected_list.setVisibility(View.VISIBLE);
-                filledFormsBar.setVisibility(View.GONE);
-                if(sbi_timeReport != null) {
-                    sbi_timeReport.setVisibility(View.GONE);
-                }
-                syncWithServer();
-                if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
-                    filledforms_list.setVisibility(View.GONE);
-                    filledFormsBar.setVisibility(View.GONE);
-                    uearnedBar.setVisibility(View.GONE);
-                }
-                searchMenuItem.setVisible(true);
-                talkTimeLayout.setVisibility(View.GONE);
-                agentTableLayout.setVisibility(View.GONE);
-                doneBar.setVisibility(View.VISIBLE);
-                qdeBar.setVisibility(View.GONE);
-                panBar.setVisibility(View.GONE);
-                talktimeBar.setVisibility(View.GONE);
-                break;
-            case R.id.oyo_done_card:
-                selection = 1;
-                oyo_uearned_layout.setVisibility(View.GONE);
-                oyo_dashboard_time_layout.setVisibility(View.GONE);
-                connected_list.setVisibility(View.VISIBLE);
-                syncWithServer();
-                searchMenuItem.setVisible(true);
-                oyoDoneBar.setVisibility(View.VISIBLE);
-                oyoTimeReportBar.setVisibility(View.GONE);
-                oyoUearnedBar.setVisibility(View.GONE);
-                break;
-
-            case R.id.oyo_uearned_card_layout:
-                oyo_uearned_layout.setVisibility(View.VISIBLE);
-                oyo_dashboard_time_layout.setVisibility(View.GONE);
-                connected_list.setVisibility(View.GONE);
-                syncWithServer();
-                searchMenuItem.setVisible(false);
-                oyoDoneBar.setVisibility(View.GONE);
-                oyoTimeReportBar.setVisibility(View.GONE);
-                oyoUearnedBar.setVisibility(View.VISIBLE);
-                break;
-
-            case R.id.talktime_card:
-                selection = 2;
-                handleView();
-                connected_list.setVisibility(View.GONE);
-                if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
-                    filledforms_list.setVisibility(View.GONE);
-                    filledFormsBar.setVisibility(View.GONE);
-                    uearnedBar.setVisibility(View.GONE);
-                }
-                searchMenuItem.setVisible(false);
-                talkTimeLayout.setVisibility(View.GONE);
-                agentTableLayout.setVisibility(View.VISIBLE);
-                doneBar.setVisibility(View.GONE);
-                qdeBar.setVisibility(View.GONE);
-                panBar.setVisibility(View.GONE);
-                talktimeBar.setVisibility(View.VISIBLE);
-                fetchDashboardDataFromServer();
-                if(sbi_timeReport != null) {
-                    sbi_timeReport.setVisibility(View.VISIBLE);
-                }
-                updateTimerTable();
-                break;
-            case R.id.pan_gen_card:
-                switchOffSocket();
-                selection = 3;
-                connected_list.setVisibility(View.GONE);
-                if(sbi_timeReport != null) {
-                    sbi_timeReport.setVisibility(View.GONE);
-                }
-                if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
-                    filledforms_list.setVisibility(View.GONE);
-                    filledFormsBar.setVisibility(View.GONE);
-                    uearnedBar.setVisibility(View.GONE);
-                }
-                searchMenuItem.setVisible(false);
-                talkTimeLayout.setVisibility(View.GONE);
-                agentTableLayout.setVisibility(View.VISIBLE);
-                doneBar.setVisibility(View.GONE);
-                talktimeBar.setVisibility(View.GONE);
-                qdeBar.setVisibility(View.GONE);
-                panBar.setVisibility(View.VISIBLE);
-                plotTable(0);
-                break;
-
-            case R.id.oyo_talktime_card:
-                connected_list.setVisibility(View.GONE);
-                oyo_dashboard_time_layout.setVisibility(View.VISIBLE);
-                oyoDoneBar.setVisibility(View.GONE);
-                oyoTimeReportBar.setVisibility(View.VISIBLE);
-                oyoUearnedBar.setVisibility(View.GONE);
-
-            case R.id.qde_gen_cardview:
-                switchOffSocket();
-                selection = 4;
-                connected_list.setVisibility(View.GONE);
-                if(sbi_timeReport != null) {
-                    sbi_timeReport.setVisibility(View.GONE);
-                }
-                if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
-                    filledforms_list.setVisibility(View.GONE);
-                    filledFormsBar.setVisibility(View.GONE);
-                    uearnedBar.setVisibility(View.GONE);
-                }
-                searchMenuItem.setVisible(false);
-                talkTimeLayout.setVisibility(View.GONE);
-                agentTableLayout.setVisibility(View.VISIBLE);
-                doneBar.setVisibility(View.GONE);
-                talktimeBar.setVisibility(View.GONE);
-                panBar.setVisibility(View.GONE);
-                qdeBar.setVisibility(View.VISIBLE);
-                plotTable(1);
-                break;
-            case R.id.head_view:
-                if(sbi_timeReport != null) {
-                    sbi_timeReport.setVisibility(View.GONE);
-                }
-                activity_spinner.setEnabled(false);
-                activity_spinner.performClick();
-                activity_spinner.setClickable(false);
-                activity_spinner.setFocusable(true);
-                activity_spinner.setFocusableInTouchMode(true);
-                activity_spinner.requestFocus();
-                break;
-            case R.id.campaign_head_view:
-                activity_spinner2.setEnabled(false);
-                activity_spinner2.performClick();
-                activity_spinner2.setClickable(false);
-                activity_spinner2.setFocusable(true);
-                activity_spinner2.setFocusableInTouchMode(true);
-                activity_spinner2.requestFocus();
-                break;
-            case R.id.filled_forms_card:
-                searchMenuItem.setVisible(true);
-                noDataTextViewlayout.setVisibility(View.GONE);
-                selection = 5;
-                connected_list.setVisibility(View.GONE);
-                filledforms_list.setVisibility(View.VISIBLE);
-                doneBar.setVisibility(View.GONE);
-                talktimeBar.setVisibility(View.GONE);
-                panBar.setVisibility(View.GONE);
-                qdeBar.setVisibility(View.GONE);
-                filledFormsBar.setVisibility(View.VISIBLE);
-                uearnedBar.setVisibility(View.GONE);
-                isContacted = false;
-                isFilledForms = true;
-                getListOfCustomers();
-                getCustomersCount();
-                break;
-            case R.id.uearned_card:
-                selection = 6;
-                connected_list.setVisibility(View.GONE);
+        if (id == R.id.done_card) {
+            isContacted = true;
+            isFilledForms = false;
+            switchOffSocket();
+            selection = 1;
+            connected_list.setVisibility(View.VISIBLE);
+            filledFormsBar.setVisibility(View.GONE);
+            if (sbi_timeReport != null) {
+                sbi_timeReport.setVisibility(View.GONE);
+            }
+            syncWithServer();
+            if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
                 filledforms_list.setVisibility(View.GONE);
-                searchMenuItem.setVisible(false);
-                talkTimeLayout.setVisibility(View.GONE);
-                agentTableLayout.setVisibility(View.GONE);
-                doneBar.setVisibility(View.GONE);
-                talktimeBar.setVisibility(View.GONE);
-                panBar.setVisibility(View.GONE);
-                qdeBar.setVisibility(View.GONE);
                 filledFormsBar.setVisibility(View.GONE);
-                uearnedBar.setVisibility(View.VISIBLE);
-                getUearnedValue();
-                break;
+                uearnedBar.setVisibility(View.GONE);
+            }
+            searchMenuItem.setVisible(true);
+            talkTimeLayout.setVisibility(View.GONE);
+            agentTableLayout.setVisibility(View.GONE);
+            doneBar.setVisibility(View.VISIBLE);
+            qdeBar.setVisibility(View.GONE);
+            panBar.setVisibility(View.GONE);
+            talktimeBar.setVisibility(View.GONE);
+        } else if (id == R.id.oyo_done_card) {
+            selection = 1;
+            oyo_uearned_layout.setVisibility(View.GONE);
+            oyo_dashboard_time_layout.setVisibility(View.GONE);
+            connected_list.setVisibility(View.VISIBLE);
+            syncWithServer();
+            searchMenuItem.setVisible(true);
+            oyoDoneBar.setVisibility(View.VISIBLE);
+            oyoTimeReportBar.setVisibility(View.GONE);
+            oyoUearnedBar.setVisibility(View.GONE);
+        } else if (id == R.id.oyo_uearned_card_layout) {
+            oyo_uearned_layout.setVisibility(View.VISIBLE);
+            oyo_dashboard_time_layout.setVisibility(View.GONE);
+            connected_list.setVisibility(View.GONE);
+            syncWithServer();
+            searchMenuItem.setVisible(false);
+            oyoDoneBar.setVisibility(View.GONE);
+            oyoTimeReportBar.setVisibility(View.GONE);
+            oyoUearnedBar.setVisibility(View.VISIBLE);
+        } else if (id == R.id.talktime_card) {
+            selection = 2;
+            handleView();
+            connected_list.setVisibility(View.GONE);
+            if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
+                filledforms_list.setVisibility(View.GONE);
+                filledFormsBar.setVisibility(View.GONE);
+                uearnedBar.setVisibility(View.GONE);
+            }
+            searchMenuItem.setVisible(false);
+            talkTimeLayout.setVisibility(View.GONE);
+            agentTableLayout.setVisibility(View.VISIBLE);
+            doneBar.setVisibility(View.GONE);
+            qdeBar.setVisibility(View.GONE);
+            panBar.setVisibility(View.GONE);
+            talktimeBar.setVisibility(View.VISIBLE);
+            fetchDashboardDataFromServer();
+            if (sbi_timeReport != null) {
+                sbi_timeReport.setVisibility(View.VISIBLE);
+            }
+            updateTimerTable();
+        } else if (id == R.id.pan_gen_card) {
+            switchOffSocket();
+            selection = 3;
+            connected_list.setVisibility(View.GONE);
+            if (sbi_timeReport != null) {
+                sbi_timeReport.setVisibility(View.GONE);
+            }
+            if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
+                filledforms_list.setVisibility(View.GONE);
+                filledFormsBar.setVisibility(View.GONE);
+                uearnedBar.setVisibility(View.GONE);
+            }
+            searchMenuItem.setVisible(false);
+            talkTimeLayout.setVisibility(View.GONE);
+            agentTableLayout.setVisibility(View.VISIBLE);
+            doneBar.setVisibility(View.GONE);
+            talktimeBar.setVisibility(View.GONE);
+            qdeBar.setVisibility(View.GONE);
+            panBar.setVisibility(View.VISIBLE);
+            plotTable(0);
+        } else if (id == R.id.oyo_talktime_card) {
+            connected_list.setVisibility(View.GONE);
+            oyo_dashboard_time_layout.setVisibility(View.VISIBLE);
+            oyoDoneBar.setVisibility(View.GONE);
+            oyoTimeReportBar.setVisibility(View.VISIBLE);
+            oyoUearnedBar.setVisibility(View.GONE);
 
-            case R.id.toolbar_head_view:
-                toolbar_activity_spinner.setEnabled(false);
-                toolbar_activity_spinner.performClick();
-                toolbar_activity_spinner.setClickable(false);
-                toolbar_activity_spinner.setFocusable(true);
-                toolbar_activity_spinner.setFocusableInTouchMode(true);
-                toolbar_activity_spinner.requestFocus();
-                break;
+
+            switchOffSocket();
+            selection = 4;
+            connected_list.setVisibility(View.GONE);
+            if (sbi_timeReport != null) {
+                sbi_timeReport.setVisibility(View.GONE);
+            }
+            if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
+                filledforms_list.setVisibility(View.GONE);
+                filledFormsBar.setVisibility(View.GONE);
+                uearnedBar.setVisibility(View.GONE);
+            }
+            searchMenuItem.setVisible(false);
+            talkTimeLayout.setVisibility(View.GONE);
+            agentTableLayout.setVisibility(View.VISIBLE);
+            doneBar.setVisibility(View.GONE);
+            talktimeBar.setVisibility(View.GONE);
+            panBar.setVisibility(View.GONE);
+            qdeBar.setVisibility(View.VISIBLE);
+            plotTable(1);
+        } else if (id == R.id.qde_gen_cardview) {
+            switchOffSocket();
+            selection = 4;
+            connected_list.setVisibility(View.GONE);
+            if (sbi_timeReport != null) {
+                sbi_timeReport.setVisibility(View.GONE);
+            }
+            if (questionsAct != null && !questionsAct.isEmpty() && ((questionsAct.equals("GFIT") || questionsAct.equals("ALLIANCE") || questionsAct.equals("MMT")))) {
+                filledforms_list.setVisibility(View.GONE);
+                filledFormsBar.setVisibility(View.GONE);
+                uearnedBar.setVisibility(View.GONE);
+            }
+            searchMenuItem.setVisible(false);
+            talkTimeLayout.setVisibility(View.GONE);
+            agentTableLayout.setVisibility(View.VISIBLE);
+            doneBar.setVisibility(View.GONE);
+            talktimeBar.setVisibility(View.GONE);
+            panBar.setVisibility(View.GONE);
+            qdeBar.setVisibility(View.VISIBLE);
+            plotTable(1);
+        } else if (id == R.id.head_view) {
+            if (sbi_timeReport != null) {
+                sbi_timeReport.setVisibility(View.GONE);
+            }
+            activity_spinner.setEnabled(false);
+            activity_spinner.performClick();
+            activity_spinner.setClickable(false);
+            activity_spinner.setFocusable(true);
+            activity_spinner.setFocusableInTouchMode(true);
+            activity_spinner.requestFocus();
+        } else if (id == R.id.campaign_head_view) {
+            activity_spinner2.setEnabled(false);
+            activity_spinner2.performClick();
+            activity_spinner2.setClickable(false);
+            activity_spinner2.setFocusable(true);
+            activity_spinner2.setFocusableInTouchMode(true);
+            activity_spinner2.requestFocus();
+        } else if (id == R.id.filled_forms_card) {
+            searchMenuItem.setVisible(true);
+            noDataTextViewlayout.setVisibility(View.GONE);
+            selection = 5;
+            connected_list.setVisibility(View.GONE);
+            filledforms_list.setVisibility(View.VISIBLE);
+            doneBar.setVisibility(View.GONE);
+            talktimeBar.setVisibility(View.GONE);
+            panBar.setVisibility(View.GONE);
+            qdeBar.setVisibility(View.GONE);
+            filledFormsBar.setVisibility(View.VISIBLE);
+            uearnedBar.setVisibility(View.GONE);
+            isContacted = false;
+            isFilledForms = true;
+            getListOfCustomers();
+            getCustomersCount();
+        } else if (id == R.id.uearned_card) {
+            selection = 6;
+            connected_list.setVisibility(View.GONE);
+            filledforms_list.setVisibility(View.GONE);
+            searchMenuItem.setVisible(false);
+            talkTimeLayout.setVisibility(View.GONE);
+            agentTableLayout.setVisibility(View.GONE);
+            doneBar.setVisibility(View.GONE);
+            talktimeBar.setVisibility(View.GONE);
+            panBar.setVisibility(View.GONE);
+            qdeBar.setVisibility(View.GONE);
+            filledFormsBar.setVisibility(View.GONE);
+            uearnedBar.setVisibility(View.VISIBLE);
+            getUearnedValue();
+        } else if (id == R.id.toolbar_head_view) {
+            toolbar_activity_spinner.setEnabled(false);
+            toolbar_activity_spinner.performClick();
+            toolbar_activity_spinner.setClickable(false);
+            toolbar_activity_spinner.setFocusable(true);
+            toolbar_activity_spinner.setFocusableInTouchMode(true);
+            toolbar_activity_spinner.requestFocus();
         }
     }
 

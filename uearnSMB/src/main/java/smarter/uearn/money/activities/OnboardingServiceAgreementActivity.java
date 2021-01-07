@@ -292,36 +292,29 @@ public class OnboardingServiceAgreementActivity extends AppCompatActivity implem
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.btnNext:
-                navigateToHomeActivity();
-                break;
-            case R.id.ll_notification:
-                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                settingsApi(userId);
-                break;
-
-            case R.id.imgAttach_Sign:
-                startDialog();
-                break;
-
-            case R.id.imgDelete_Sign:
-                try {
-                    ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_SERVICE_AGREEMENT, null);
-                    imgDelete_Sign.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
-                    imgDelete_Sign.setColorFilter(getResources().getColor(R.color.delete_button_disable));
-                    imgStatus_Sign.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
-                    progress_sign.setProgress(0);
-                    imgAttach_Sign.setEnabled(true);
-                    tvSuccesProfileImg.setText("");
-                    nextButton.setEnabled(false);
-                    nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
-                    nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
-                    isScanCopyUploaded = false;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
+        if (id == R.id.btnNext) {
+            navigateToHomeActivity();
+        } else if (id == R.id.ll_notification) {
+            String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+            settingsApi(userId);
+        } else if (id == R.id.imgAttach_Sign) {
+            startDialog();
+        } else if (id == R.id.imgDelete_Sign) {
+            try {
+                ApplicationSettings.setKycDocument(this, AppConstants.DOCUMENT_KYC_SERVICE_AGREEMENT, null);
+                imgDelete_Sign.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete_attachment));
+                imgDelete_Sign.setColorFilter(getResources().getColor(R.color.delete_button_disable));
+                imgStatus_Sign.setImageDrawable(getResources().getDrawable(R.drawable.ic_attachment_not_uploaded));
+                progress_sign.setProgress(0);
+                imgAttach_Sign.setEnabled(true);
+                tvSuccesProfileImg.setText("");
+                nextButton.setEnabled(false);
+                nextButton.setTextColor(getApplicationContext().getResources().getColor(R.color.white));
+                nextButton.setBackgroundResource(R.drawable.disable_rounded_corner);
+                isScanCopyUploaded = false;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -507,7 +500,7 @@ public class OnboardingServiceAgreementActivity extends AppCompatActivity implem
         }).start();
     }
 
-    public void uploadImageFile(String imageFile, String documentType, String fileName, String doc_Value) {
+    public void uploadImageFile(String imageFile, final String documentType, String fileName, String doc_Value) {
         if (CommonUtils.isNetworkAvailable(this)) {
             String filePath = imageFile;
             JSONObject response = DataUploadUtils.uploadImageFileToServer(filePath, Urls.getUploadFileUrl());
@@ -523,7 +516,7 @@ public class OnboardingServiceAgreementActivity extends AppCompatActivity implem
                         docDataJson.put("doc_url", imageUrl);
                         docDataJson.put("file_name", fileName);
 
-                        KycDocuments kycDocuments = new KycDocuments();
+                        final KycDocuments kycDocuments = new KycDocuments();
                         kycDocuments.setDocName(documentType);
                         kycDocuments.setDocUrl(imageUrl);
                         kycDocuments.setDocValue(doc_Value);
@@ -536,7 +529,7 @@ public class OnboardingServiceAgreementActivity extends AppCompatActivity implem
                         if (uploadResponse != null) {
                             try {
                                 if (uploadResponse.has("success")) {
-                                    String successMsg = uploadResponse.getString("success");
+                                    final String successMsg = uploadResponse.getString("success");
                                     if (successMsg != null && !successMsg.isEmpty()) {
                                         runOnUiThread(new Runnable() {
                                             @Override

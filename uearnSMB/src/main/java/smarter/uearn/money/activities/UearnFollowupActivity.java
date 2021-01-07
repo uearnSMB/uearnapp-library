@@ -1353,66 +1353,51 @@ public class UearnFollowupActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
 
         int id = view.getId();
-        switch (id) {
-
-            case R.id.head_view:
-                activity_spinner.setEnabled(false);
-                activity_spinner.performClick();
-                activity_spinner.setClickable(false);
-                activity_spinner.setFocusable(true);
-                activity_spinner.setFocusableInTouchMode(true);
-                activity_spinner.requestFocus();
-                break;
-
-            case R.id.first_call_card:
-                selection = 4;
-                setCardColors(4);
-                break;
-
-            case R.id.flp_todo_card:
-                selection = 1;
-                removeFragment();
-                setCardColors(1);
-                if(flpCursorAdapter != null){
-                    flpCursorAdapter.notifyDataSetChanged();
-                }
-                break;
-
-            case R.id.flp_overdue_card:
-                selection = 2;
-                removeFragment();
-                setCardColors(2);
-                break;
-
-            case R.id.start_button:
-                UearnActivity.onBackPressed = false;
-                manualDialing = false;
-                dialingFromList = false;
-                autoDial = true;
-                click();
-                break;
-
-            case R.id.toolbar_head_view:
-                toolbar_activity_spinner.setEnabled(false);
-                toolbar_activity_spinner.performClick();
-                toolbar_activity_spinner.setClickable(false);
-                toolbar_activity_spinner.setFocusable(true);
-                toolbar_activity_spinner.setFocusableInTouchMode(true);
-                toolbar_activity_spinner.requestFocus();
-                break;
-
-            case R.id.manualDial:
-                if(SmarterSMBApplication.currentStateIsStartMode) {
-                    if (ApplicationSettings.containsPref(AppConstants.UNSCHEDULED_CALL)) {
-                        boolean schedulecall = ApplicationSettings.getPref(AppConstants.UNSCHEDULED_CALL, false);
-                        if (schedulecall) {
-                            scheduleCall();
-                        }
+        if (id == R.id.head_view) {
+            activity_spinner.setEnabled(false);
+            activity_spinner.performClick();
+            activity_spinner.setClickable(false);
+            activity_spinner.setFocusable(true);
+            activity_spinner.setFocusableInTouchMode(true);
+            activity_spinner.requestFocus();
+        } else if (id == R.id.first_call_card) {
+            selection = 4;
+            setCardColors(4);
+        } else if (id == R.id.flp_todo_card) {
+            selection = 1;
+            removeFragment();
+            setCardColors(1);
+            if (flpCursorAdapter != null) {
+                flpCursorAdapter.notifyDataSetChanged();
+            }
+        } else if (id == R.id.flp_overdue_card) {
+            selection = 2;
+            removeFragment();
+            setCardColors(2);
+        } else if (id == R.id.start_button) {
+            UearnActivity.onBackPressed = false;
+            manualDialing = false;
+            dialingFromList = false;
+            autoDial = true;
+            click();
+        } else if (id == R.id.toolbar_head_view) {
+            toolbar_activity_spinner.setEnabled(false);
+            toolbar_activity_spinner.performClick();
+            toolbar_activity_spinner.setClickable(false);
+            toolbar_activity_spinner.setFocusable(true);
+            toolbar_activity_spinner.setFocusableInTouchMode(true);
+            toolbar_activity_spinner.requestFocus();
+        } else if (id == R.id.manualDial) {
+            if (SmarterSMBApplication.currentStateIsStartMode) {
+                if (ApplicationSettings.containsPref(AppConstants.UNSCHEDULED_CALL)) {
+                    boolean schedulecall = ApplicationSettings.getPref(AppConstants.UNSCHEDULED_CALL, false);
+                    if (schedulecall) {
+                        scheduleCall();
                     }
-                } else {
-                    manualDialStartButtonClickedCheckDialog();
                 }
-                break;
+            } else {
+                manualDialStartButtonClickedCheckDialog();
+            }
         }
     }
 

@@ -142,17 +142,11 @@ public class JDSMSDialog extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.dialogButtonOK:
+		int id = v.getId();
+		if (id == R.id.dialogButtonOK) {
 			sendMessage(phoneNumber, message);
-			break;
-
-		case R.id.dialogButtonCancel:
+		} else if (id == R.id.dialogButtonCancel) {
 			finish();
-			break;
-
-		default:
-			break;
 		}
 	}
 	

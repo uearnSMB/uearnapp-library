@@ -71,8 +71,6 @@
         android:name="android.permission.MODIFY_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
 
-    <library tools:node="removeAll" />
-
     <application
         android:name=".utils.SmarterSMBApplication"
         android:allowBackup="false"
@@ -372,11 +370,6 @@
             android:name=".activities.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.SmarterAuthActivity"

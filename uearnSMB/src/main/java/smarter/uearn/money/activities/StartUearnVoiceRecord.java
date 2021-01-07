@@ -350,123 +350,114 @@ public class StartUearnVoiceRecord extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.doneButton:
-                String voiceTestAlertMessage = ApplicationSettings.getPref("UearnVoiceTestAlertMessage", "");
-                if (!voiceTestAlertMessage.equalsIgnoreCase("")) {
-                    showVoiceTestAlertMessageDialog(StartUearnVoiceRecord.this, "Alert", voiceTestAlertMessage).show();
-                } else {
-                    voiceuploaderror.setVisibility(View.GONE);
-                    startOverButton.setTextColor(getResources().getColor(R.color.uearn_red_color));
-                    doneButton.setTextColor(getResources().getColor(R.color.uearn_red_color));
-                    doneButton.setEnabled(false);
-                    doneButton.setClickable(false);
-                    doneButton.setBackground(this.getResources().getDrawable(R.drawable.edit_text_shape));
-                    if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
-                        if (!voiceInfo.isPara1) {
-                            if (!voiceInfo.para2.isEmpty()) {
-                                Intent intent1 = new Intent(this, StartUearnVoiceRecord.class);
-                                voiceInfo.isPara1 = true;
-                                sendAudioDatatoServer(recordFilePath, 1);
-                            } else {
-                                Intent intent1 = new Intent(this, VoiceTestCompleteActivity.class);
-                                intent1.putExtra("VoiceTestCompleted", true);
-                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                sendAudioDatatoServer(recordFilePath, 3);
-                            }
-                        } else if (voiceInfo.isPara1 && !voiceInfo.isPara2) {
-                            if (!voiceInfo.para3.isEmpty()) {
-                                Intent intent1 = new Intent(this, StartUearnVoiceRecord.class);
-                                voiceInfo.isPara2 = true;
-                                sendAudioDatatoServer(recordFilePath, 2);
-                            } else {
-                                Intent intent1 = new Intent(this, VoiceTestCompleteActivity.class);
-                                intent1.putExtra("VoiceTestCompleted", true);
-                                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                sendAudioDatatoServer(recordFilePath, 3);
-                            }
+        int id = view.getId();
+        if (id == R.id.doneButton) {
+            String voiceTestAlertMessage = ApplicationSettings.getPref("UearnVoiceTestAlertMessage", "");
+            if (!voiceTestAlertMessage.equalsIgnoreCase("")) {
+                showVoiceTestAlertMessageDialog(StartUearnVoiceRecord.this, "Alert", voiceTestAlertMessage).show();
+            } else {
+                voiceuploaderror.setVisibility(View.GONE);
+                startOverButton.setTextColor(getResources().getColor(R.color.uearn_red_color));
+                doneButton.setTextColor(getResources().getColor(R.color.uearn_red_color));
+                doneButton.setEnabled(false);
+                doneButton.setClickable(false);
+                doneButton.setBackground(this.getResources().getDrawable(R.drawable.edit_text_shape));
+                if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
+                    if (!voiceInfo.isPara1) {
+                        if (!voiceInfo.para2.isEmpty()) {
+                            Intent intent1 = new Intent(this, StartUearnVoiceRecord.class);
+                            voiceInfo.isPara1 = true;
+                            sendAudioDatatoServer(recordFilePath, 1);
                         } else {
                             Intent intent1 = new Intent(this, VoiceTestCompleteActivity.class);
                             intent1.putExtra("VoiceTestCompleted", true);
                             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             sendAudioDatatoServer(recordFilePath, 3);
                         }
-
+                    } else if (voiceInfo.isPara1 && !voiceInfo.isPara2) {
+                        if (!voiceInfo.para3.isEmpty()) {
+                            Intent intent1 = new Intent(this, StartUearnVoiceRecord.class);
+                            voiceInfo.isPara2 = true;
+                            sendAudioDatatoServer(recordFilePath, 2);
+                        } else {
+                            Intent intent1 = new Intent(this, VoiceTestCompleteActivity.class);
+                            intent1.putExtra("VoiceTestCompleted", true);
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            sendAudioDatatoServer(recordFilePath, 3);
+                        }
                     } else {
-                        voiceuploaderror.setVisibility(View.VISIBLE);
-                        voiceuploaderror.setText("No internet connection");
-                        voiceuploaderror.setTextColor(getResources().getColor(R.color.uearn_red_color));
-                        doneButton.setTextColor(Color.WHITE);
-                        doneButton.setEnabled(true);
-                        doneButton.setClickable(true);
-                        doneButton.setBackground(this.getResources().getDrawable(R.drawable.red_rounded_corner));
+                        Intent intent1 = new Intent(this, VoiceTestCompleteActivity.class);
+                        intent1.putExtra("VoiceTestCompleted", true);
+                        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        sendAudioDatatoServer(recordFilePath, 3);
                     }
+
+                } else {
+                    voiceuploaderror.setVisibility(View.VISIBLE);
+                    voiceuploaderror.setText("No internet connection");
+                    voiceuploaderror.setTextColor(getResources().getColor(R.color.uearn_red_color));
+                    doneButton.setTextColor(Color.WHITE);
+                    doneButton.setEnabled(true);
+                    doneButton.setClickable(true);
+                    doneButton.setBackground(this.getResources().getDrawable(R.drawable.red_rounded_corner));
                 }
-                break;
+            }
+        } else if (id == R.id.startOverButton) {
+            voiceuploaderror.setVisibility(View.GONE);
+            hints1Tv.setVisibility(View.VISIBLE);
+            startOverButton.setTextColor(getResources().getColor(R.color.uearn_red_color));
+            startOverButton.setBackground(this.getResources().getDrawable(R.drawable.edit_text_shape));
+            doneButton.setTextColor(Color.WHITE);
+            doneButton.setEnabled(false);
+            doneButton.setClickable(false);
+            doneButton.setBackground(this.getResources().getDrawable(R.drawable.grey_rounded_corner));
+            startOverButton.setVisibility(View.VISIBLE);
+            doneButton.setVisibility(View.VISIBLE);
+            stopAudioRecord();
+            Intent i = getIntent();
+            voiceInfo = (UearnVoiceTestInfo) i.getSerializableExtra("VoiceInfo");
+            questionTv.setMovementMethod(new ScrollingMovementMethod());
+            Typeface face = Typeface.createFromAsset(getAssets(), "fonts/sf-pro-display-regular.ttf");
+            Typeface titleFace = Typeface.createFromAsset(getAssets(), "fonts/SF-UI-Display-Semibold.ttf");
+            hints1Tv.setTypeface(titleFace);
+            hints2Tv.setTypeface(face);
+            String question1 = voiceInfo.para1;
+            questionLength = question1.length();
+            numberOfTime = questionLength / 5;
+            startAudioRecord();
+            visualizerView.setVisibility(View.VISIBLE);
+            audioPlayer.setVisibility(View.GONE);
+            audioPlayer.setEnabled(false);
+        } else if (id == R.id.micButton) {
+            timer.setVisibility(View.VISIBLE);
+            starttv.setVisibility(View.GONE);
+            t = new Timer();
+            t.scheduleAtFixedRate(new TimerTask() {
 
-            case R.id.startOverButton:
-                voiceuploaderror.setVisibility(View.GONE);
-                hints1Tv.setVisibility(View.VISIBLE);
-                startOverButton.setTextColor(getResources().getColor(R.color.uearn_red_color));
-                startOverButton.setBackground(this.getResources().getDrawable(R.drawable.edit_text_shape));
-                doneButton.setTextColor(Color.WHITE);
-                doneButton.setEnabled(false);
-                doneButton.setClickable(false);
-                doneButton.setBackground(this.getResources().getDrawable(R.drawable.grey_rounded_corner));
-                startOverButton.setVisibility(View.VISIBLE);
-                doneButton.setVisibility(View.VISIBLE);
-                stopAudioRecord();
-                Intent i = getIntent();
-                voiceInfo = (UearnVoiceTestInfo) i.getSerializableExtra("VoiceInfo");
-                questionTv.setMovementMethod(new ScrollingMovementMethod());
-                Typeface face = Typeface.createFromAsset(getAssets(), "fonts/sf-pro-display-regular.ttf");
-                Typeface titleFace = Typeface.createFromAsset(getAssets(), "fonts/SF-UI-Display-Semibold.ttf");
-                hints1Tv.setTypeface(titleFace);
-                hints2Tv.setTypeface(face);
-                String question1 = voiceInfo.para1;
-                questionLength = question1.length();
-                numberOfTime = questionLength / 5;
-                startAudioRecord();
-                visualizerView.setVisibility(View.VISIBLE);
-                audioPlayer.setVisibility(View.GONE);
-                audioPlayer.setEnabled(false);
-                break;
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
 
-            case R.id.micButton:
-                timer.setVisibility(View.VISIBLE);
-                starttv.setVisibility(View.GONE);
-                t = new Timer();
-                t.scheduleAtFixedRate(new TimerTask() {
-
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                timer.setText("00:" + "0" + String.valueOf(seconds));
-                                seconds -= 1;
-                                if (seconds == -1) {
-                                    if (t != null) {
-                                        t.cancel();
-                                        t = null;
-                                        onClickMic();
-                                    }
+                        @Override
+                        public void run() {
+                            timer.setText("00:" + "0" + String.valueOf(seconds));
+                            seconds -= 1;
+                            if (seconds == -1) {
+                                if (t != null) {
+                                    t.cancel();
+                                    t = null;
+                                    onClickMic();
                                 }
                             }
-                        });
-                    }
-                }, 0, 1000);
-                break;
-
-            case R.id.profile_image_back:
-                onBackPressed();
-                break;
-
-            case R.id.ll_notification:
-                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                settingsApi(userId);
-                break;
+                        }
+                    });
+                }
+            }, 0, 1000);
+        } else if (id == R.id.profile_image_back) {
+            onBackPressed();
+        } else if (id == R.id.ll_notification) {
+            String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+            settingsApi(userId);
         }
     }
 

@@ -180,60 +180,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         int id = view.getId();
-        switch (id) {
-//==========Home Nav views click====================================
-            case R.id.imgNavClose: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                break;
-            }
-            case R.id.nevSettings: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                break;
-            }
-            case R.id.navAbout: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                break;
-            }
-            case R.id.nevRefEarn: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                getReferAndEarn();
-                break;
-            }
-
-            case R.id.navFAQ: {
-
-                toggleLeftDrawer();//Close Nav-drawer layout
-                Intent intent = new Intent(this, UearnFAQActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                break;
-            }
-            case R.id.navAppVersion: {
-
-                toggleLeftDrawer();//Close Nav-drawer layout
-                break;
-            }
-            case R.id.nevFeedBack: {
-                toggleLeftDrawer();
-                getUserFeedback();
-                break;
-            }
-
-
-            case R.id.navLogOut: {
-                toggleLeftDrawer();//Close Nav-drawer layout
-                signOutAndExit();
-                break;
-            }
+        //==========Home Nav views click====================================
+        if (id == R.id.imgNavClose) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+        } else if (id == R.id.nevSettings) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.navAbout) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+        } else if (id == R.id.nevRefEarn) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            getReferAndEarn();
+        } else if (id == R.id.navFAQ) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            Intent intent = new Intent(this, UearnFAQActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.navAppVersion) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+        } else if (id == R.id.nevFeedBack) {
+            toggleLeftDrawer();
+            getUserFeedback();
+        } else if (id == R.id.navLogOut) {
+            toggleLeftDrawer();//Close Nav-drawer layout
+            signOutAndExit();
             //================================================
-            case R.id.lyNotification: {
-
-                break;
-            }
+        } else if (id == R.id.lyNotification) {
         }
     }
 

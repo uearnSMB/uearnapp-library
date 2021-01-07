@@ -201,49 +201,47 @@ public class AddTeamMemberActivity extends BaseActivity implements View.OnClickL
     public void onClick(View v) {
         String userMail = ApplicationSettings.getPref(AppConstants.USERINFO_EMAIL, "");
 
-        switch (v.getId()) {
-            case R.id.btn_contact_picker:
-                logAnalytics("pick_contacts", "Button");
-                Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                startActivityForResult(contactPickerIntent, PICK_CONTACT);
-                break;
-            case R.id.btn_create_member:
-                logAnalytics("create_team_member", "Button");
-                String country, pincode, city, region, state, name, email, phone;
-                country = countryText.getText().toString();
-                pincode = etPincode.getText().toString();
-                city = etCity.getText().toString();
-                region = etRegion.getText().toString();
-                state = etState.getText().toString();
+        int id = v.getId();
+        if (id == R.id.btn_contact_picker) {
+            logAnalytics("pick_contacts", "Button");
+            Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+            startActivityForResult(contactPickerIntent, PICK_CONTACT);
+        } else if (id == R.id.btn_create_member) {
+            logAnalytics("create_team_member", "Button");
+            String country, pincode, city, region, state, name, email, phone;
+            country = countryText.getText().toString();
+            pincode = etPincode.getText().toString();
+            city = etCity.getText().toString();
+            region = etRegion.getText().toString();
+            state = etState.getText().toString();
 
-                name = etName.getText().toString();
-                phone = etPhoneNumber.getText().toString();
-                email = etEmailAddress.getText().toString();
-                tipNameLayout.setError("");
-                tipPhoneLayout.setError("");
-                tipEmailLayout.setError("");
+            name = etName.getText().toString();
+            phone = etPhoneNumber.getText().toString();
+            email = etEmailAddress.getText().toString();
+            tipNameLayout.setError("");
+            tipPhoneLayout.setError("");
+            tipEmailLayout.setError("");
 
-                if (name.isEmpty()) {
-                    tipNameLayout.setError("Please Enter valid name");
-                    return;
-                } else if (!Validation.isEmailAddress(etEmailAddress, true, "Invalid email Address")) {
-                    tipEmailLayout.setError("Please Enter Valid Email Id");
-                    return;
-                } else if (phone.length() < 8) {
-                    tipPhoneLayout.setError("Please Enter valid phone number");
-                    return;
-                }
+            if (name.isEmpty()) {
+                tipNameLayout.setError("Please Enter valid name");
+                return;
+            } else if (!Validation.isEmailAddress(etEmailAddress, true, "Invalid email Address")) {
+                tipEmailLayout.setError("Please Enter Valid Email Id");
+                return;
+            } else if (phone.length() < 8) {
+                tipPhoneLayout.setError("Please Enter valid phone number");
+                return;
+            }
 
-                if (CommonUtils.isNetworkAvailable(this)) {
-                    if (email.equalsIgnoreCase(userMail)) {
-                        tipEmailLayout.setError("You cannot add your own email ID");
-                    } else {
-                        doSave(name, "engineer", email, phone, pincode, region, city, state, country);
-                    }
+            if (CommonUtils.isNetworkAvailable(this)) {
+                if (email.equalsIgnoreCase(userMail)) {
+                    tipEmailLayout.setError("You cannot add your own email ID");
                 } else {
-                    Toast.makeText(this, "You have no Internet connection.", Toast.LENGTH_SHORT).show();
+                    doSave(name, "engineer", email, phone, pincode, region, city, state, country);
                 }
-                break;
+            } else {
+                Toast.makeText(this, "You have no Internet connection.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

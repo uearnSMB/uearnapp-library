@@ -188,22 +188,19 @@ public class UearnVoiceTestActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.voiceTest:
-                Intent intent2 = new Intent(this, StartUearnVoiceRecord.class);
-                selectedIndex = wva.getSeletedIndex();
-                UearnVoiceTestInfo info = voiceTestArr.get(selectedIndex);
-                intent2.putExtra("VoiceInfo", info);
-                startActivity(intent2);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                break;
-            case R.id.profile_image_back:
-                onBackPressed();
-                break;
-            case R.id.ll_notification:
-                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                settingsApi(userId);
-                break;
+        int id = view.getId();
+        if (id == R.id.voiceTest) {
+            Intent intent2 = new Intent(this, StartUearnVoiceRecord.class);
+            selectedIndex = wva.getSeletedIndex();
+            UearnVoiceTestInfo info = voiceTestArr.get(selectedIndex);
+            intent2.putExtra("VoiceInfo", info);
+            startActivity(intent2);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.profile_image_back) {
+            onBackPressed();
+        } else if (id == R.id.ll_notification) {
+            String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+            settingsApi(userId);
         }
     }
 

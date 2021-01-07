@@ -173,14 +173,12 @@ public class GrammarSkillTestActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.btnNext:
-                if (nextButton.getText().toString().equalsIgnoreCase("NEXT")) {
-                    nextButtonAction();
-                } else if (nextButton.getText().toString().equalsIgnoreCase("SUBMIT")) {
-                    nextButtonAction();
-                }
-                break;
+        if (id == R.id.btnNext) {
+            if (nextButton.getText().toString().equalsIgnoreCase("NEXT")) {
+                nextButtonAction();
+            } else if (nextButton.getText().toString().equalsIgnoreCase("SUBMIT")) {
+                nextButtonAction();
+            }
         }
     }
 

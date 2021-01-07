@@ -368,17 +368,13 @@ public class DeviceCheckActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.btnNext:
-                navigateToWifiCheckActivity();
-                break;
-            case R.id.profile_image_back:
-                onBackPressed();
-                break;
-            case R.id.ll_notification:
-                String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
-                settingsApi(userId);
-                break;
+        if (id == R.id.btnNext) {
+            navigateToWifiCheckActivity();
+        } else if (id == R.id.profile_image_back) {
+            onBackPressed();
+        } else if (id == R.id.ll_notification) {
+            String userId = ApplicationSettings.getPref(AppConstants.USERINFO_ID, "");
+            settingsApi(userId);
         }
     }
 
