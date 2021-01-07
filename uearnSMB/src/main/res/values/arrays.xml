@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- <array name="snooze_dismiss_drawables">
+        <item>@drawable/diconnect</item>
+        <item>@null</item>
+        <item>@drawable/call</item>
+        <item>@null</item>
+    </array> -->
+
+    <array name="activity_menu">
+        <item>All Activities</item>
+        <item>Offline Activities</item>
+    </array>
+
+    <!--<array name="spinner_array">
+        <item>initial</item>
+        <item>contacted</item>
+        <item>interested</item>
+        <item>proposal sent</item>
+        <item>order placed</item>
+        <item>contact for future</item>
+        <item>lost</item>
+    </array>-->
+
+</resources>

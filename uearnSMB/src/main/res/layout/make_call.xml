@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:weightSum="3">
+
+    <RelativeLayout
+        android:id="@+id/home_cancel_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:id="@+id/home_cancel"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_clear_black_24px"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/call_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+    <EditText
+        android:id="@+id/numbertoCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:backgroundTint="@color/custom_gray_color"
+        android:layout_toLeftOf="@+id/call_action_layout"
+        android:layout_marginRight="8dp"
+        android:maxLength="13"
+        android:inputType="number" />
+
+        <RelativeLayout
+            android:id="@+id/call_action_layout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/manual_dial_circle"
+            android:layout_centerVertical="true" >
+
+            <ImageView
+                android:id="@+id/call_action"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/time"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_call"
+                android:tint="@color/white"/>
+        </RelativeLayout>
+
+
+    <Button
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call"
+        android:textColor="@color/white"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/circle"
+        android:layout_weight="1"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_above="@+id/call_layout"
+        android:layout_below="@+id/home_cancel_layout"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="You do not have any contacts"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/searchListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,185 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar1"
+            layout="@layout/onboarding_header_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="@dimen/block_padding"
+        android:layout_above="@+id/buttons_layout"
+        android:layout_below="@+id/header"
+        tools:context="smarter.uearn.money.fragments.SignInFragment">
+
+    <LinearLayout
+        android:id="@+id/llRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/short_margin_between_elements"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:srcCompat="@drawable/ic_welcome" />
+
+            <RelativeLayout
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:id="@+id/welcomeText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/app_color_purple"
+                    android:textSize="38sp"
+                    android:layout_gravity="center"
+                    android:text="Thank You" />
+
+                <TextView
+                    android:id="@+id/welcomeText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:lineSpacingExtra="1sp"
+                    android:padding="5dp"
+                    android:textColor="#0c0c0c"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="You have completed your grammar skill test"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/welcomeText1Layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/welcomeText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:lineSpacingExtra="1sp"
+                android:padding="5dp"
+                android:text="Your level is"
+                android:gravity="center"
+                android:textColor="#707070"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="26sp" />
+            <TextView
+                android:id="@+id/grade"
+                android:layout_width="100dp"
+                android:layout_height="85dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:lineSpacingExtra="1sp"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:textColor="#707070"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="50sp" />
+            <TextView
+                android:id="@+id/levelText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:lineSpacingExtra="1sp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textColor="#707070"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/totalTimeTaken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:lineSpacingExtra="1sp"
+                android:padding="5dp"
+                android:textColor="#707070"
+                android:gravity="center"
+                android:text="Time taken: 3 minutes, 48 seconds"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <smarter.uearn.money.views.GeneralButton
+            android:id="@+id/btnDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/get_started"/>
+    </LinearLayout>
+</RelativeLayout>

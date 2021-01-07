@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.profilesettings.ProfileActivity">
+
+    <include
+        android:id="@+id/lyToolbar"
+        layout="@layout/item_toolbar" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lyToolbar">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.87" />
+
+        <LinearLayout
+            android:id="@+id/ly_profileimg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_16dip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="98dp"
+                        android:layout_height="98dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_circle_white"
+                            android:padding="6dp">
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/imgProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY" />
+
+                        </RelativeLayout>
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/imgEditPhoto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_margin="2dp"
+                            android:padding="2dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:srcCompat="@drawable/ic_camera" />
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="top">
+
+                    <TextView
+                        android:id="@+id/auditScoreTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/ellipsis_background"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/margin_16dip"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="@dimen/margin_16dip"
+                        android:scaleType="fitXY"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="visible"
+                        tools:text="0.0" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvProfileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold"
+                    tools:text="Prathap Pothan" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvProfileBio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text_color"
+                android:textSize="@dimen/text_12"
+                android:textStyle="bold"
+                tools:text="" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ly_profileimg"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_horizontal_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8dip"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="6sp"
+                        android:text="Personal Details"
+                        android:textColor="@color/home_appcolor_purple"
+                        android:textSize="@dimen/text_12"
+                        android:textStyle="bold" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_8dip"
+                        android:orientation="horizontal">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.6" />
+
+                        <LinearLayout
+
+                            android:id="@+id/lyDOB"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="false"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/img_Text_DOB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="DOB"
+                                    android:textColor="@color/secondary_text_color"
+                                    android:textSize="@dimen/text_10" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/img_Edit_DOB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_8dip"
+                                    android:background="?attr/selectableItemBackground"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:visibility="gone"
+                                    app:srcCompat="@drawable/ic_edit" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvDOB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary_text_color"
+                                    android:textSize="@dimen/text_12"
+                                    tools:text="" />
+
+                                <View
+                                    android:id="@+id/ul_DOB"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@drawable/underline_dashline"
+                                    android:layerType="software" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lyGender"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="false"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/guideline4"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/img_Text_Gender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4.7sp"
+                                    android:text="Gender"
+                                    android:textColor="@color/secondary_text_color"
+                                    android:textSize="@dimen/text_10" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/img_Edit_Gender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:background="?attr/selectableItemBackground"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:visibility="gone"
+                                    app:srcCompat="@drawable/ic_edit" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvGender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4.7sp"
+                                    android:textColor="@color/primary_text_color"
+                                    android:textSize="@dimen/text_12"
+                                    tools:text="" />
+
+                                <View
+                                    android:id="@+id/ul_Gender"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:visibility="gone"
+                                    android:background="@drawable/underline_dashline"
+                                    android:layerType="software" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_8dip"
+                        android:orientation="horizontal">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.6" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Email"
+                                    android:textColor="@color/secondary_text_color"
+                                    android:textSize="@dimen/text_10" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/img_Edit_Email"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_marginStart="@dimen/margin_8dip"
+                                    android:src="@drawable/edit_icon"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text_color"
+                                android:textSize="@dimen/text_12"
+                                tools:text="" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/guideline5"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4.7sp"
+                                    android:text="Phone"
+                                    android:textColor="@color/secondary_text_color"
+                                    android:textSize="@dimen/text_10" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/img_Edit_Phone"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_marginStart="@dimen/margin_8dip"
+                                    android:background="?attr/selectableItemBackground"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:src="@drawable/edit_icon"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/tvPhoneNum"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="4.7sp"
+                                android:textColor="@color/primary_text_color"
+                                android:textSize="@dimen/text_12"
+                                tools:text="" />
+
+                        </LinearLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="@dimen/margin_8dip"
+                    android:layout_marginBottom="@dimen/margin_8dip"
+                    android:background="@drawable/horizontal_dashline_devider"
+                    android:layerType="software" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_8dip"
+                    android:orientation="vertical">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_8dip"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="6sp"
+                                android:text="Privacy Settings"
+                                android:textColor="@color/home_appcolor_purple"
+                                android:textSize="@dimen/text_14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Password"
+                                android:textColor="@color/secondary_text_color"
+                                android:textSize="@dimen/text_14" />
+
+                            <TextView
+                                android:id="@+id/tvPassword"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:inputType="textPassword"
+                                android:textColor="@color/primary_text_color"
+                                android:textSize="@dimen/text_14"
+                                tools:text="******************" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:layout_marginTop="@dimen/margin_8dip"
+                                android:layout_marginBottom="@dimen/margin_8dip"
+                                android:background="@drawable/horizontal_dashline_devider" />
+                        </LinearLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:lineSpacingExtra="6sp"
+                            android:text="Other Details"
+                            android:textColor="@color/home_appcolor_purple"
+                            android:textSize="@dimen/text_12"
+                            android:textStyle="bold" />
+
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/margin_8dip">
+
+                            <android.support.constraint.Guideline
+                                android:id="@+id/guideline8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layout_constraintGuide_percent="0.6" />
+
+
+                            <LinearLayout
+                                android:id="@+id/lyLanguage"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/img_Text_Language"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:lineSpacingExtra="4.7sp"
+                                        android:text="Language"
+                                        android:textColor="@color/secondary_text_color"
+                                        android:textSize="@dimen/text_10" />
+
+                                    <android.support.v7.widget.AppCompatImageView
+                                        android:id="@+id/img_Edit_Language"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:background="?attr/selectableItemBackground"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:visibility="gone"
+                                        app:srcCompat="@drawable/ic_edit" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tvLanguage"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:lineSpacingExtra="4.7sp"
+                                        android:textColor="@color/primary_text_color"
+                                        android:textSize="@dimen/text_12"
+                                        tools:text="English" />
+
+                                    <View
+                                        android:id="@+id/ul_Language"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="2dp"
+                                        android:background="@drawable/underline_dashline"
+                                        android:layerType="software"
+                                        android:visibility="gone"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                          <!--  <LinearLayout
+                                android:id="@+id/lyLocation"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">-->
+
+                            <LinearLayout
+                                android:id="@+id/lyLocation"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:clickable="false"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingEnd="@dimen/margin_8dip"
+                                android:paddingStart="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/img_Text_Location"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:lineSpacingExtra="4.7sp"
+                                        android:text="Location"
+                                        android:textColor="@color/secondary_text_color"
+                                        android:textSize="@dimen/text_10" />
+
+                                    <android.support.v7.widget.AppCompatImageView
+                                        android:id="@+id/img_Edit_Location"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:background="?attr/selectableItemBackground"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:visibility="gone"
+                                        app:srcCompat="@drawable/ic_edit" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                 <!--   <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:lineSpacingExtra="4.7sp"
+                                        android:textColor="@color/primary_text_color"
+                                        android:textSize="@dimen/text_12"
+                                        tools:text="123, Her Layout Bangalore,Karnataka" />-->
+
+                                    <TextView
+                                        android:id="@+id/tvLocation"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/primary_text_color"
+                                        android:textSize="@dimen/text_12"
+                                        tools:text="" />
+
+                                    <View
+                                        android:id="@+id/ul_Location"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="2dp"
+                                        android:background="@drawable/underline_dashline"
+                                        android:layerType="software"
+                                        android:visibility="gone"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </android.support.constraint.ConstraintLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_8dip"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/guideline8"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4.7sp"
+                                    android:text="Current Project"
+                                    android:textColor="@color/secondary_text_color"
+                                    android:textSize="@dimen/text_10"
+                                    tools:text="Current Project" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/img_Edit_CurrentProject"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:visibility="gone"
+                                    app:srcCompat="@drawable/ic_edit" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvCurrentProject"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="4.7sp"
+                                android:textColor="@color/primary_text_color"
+                                android:textSize="@dimen/text_12"
+                                tools:text="" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="@dimen/margin_8dip"
+                    android:layout_marginBottom="@dimen/margin_8dip"
+                    android:background="@drawable/horizontal_dashline_devider"
+                    android:layerType="software" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnDone"
+            style="@style/B3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:shadowColor="@color/white"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="0"
+            android:text="Save"
+            android:textColor="@color/home_appcolor_pink"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+
+        <Button
+            android:id="@+id/btnEditProfile"
+            style="@style/B3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:shadowColor="@color/white"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="0"
+            android:text="EDIT PROFILE"
+            android:textColor="@color/home_appcolor_pink"
+            android:textStyle="normal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

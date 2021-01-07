@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/jan"
+        android:enabled="true"
+        android:title="January"
+        android:orderInCategory="0"></item>
+
+
+    <item android:id="@+id/feb"
+        android:enabled="true"
+        android:orderInCategory="1"
+        android:title="February"></item>
+    <item android:id="@+id/mar"
+        android:enabled="true"
+        android:title="March"
+        android:orderInCategory="2"></item>
+    <item android:id="@+id/april"
+        android:enabled="true"
+        android:title="April"
+        android:orderInCategory="3"></item>
+    <item android:id="@+id/may"
+        android:enabled="true"
+        android:title="May"
+        android:orderInCategory="4"></item>
+    <item android:id="@+id/june"
+        android:enabled="true"
+        android:title="June"
+        android:orderInCategory="5"></item>
+    <item android:id="@+id/july"
+        android:enabled="true"
+        android:title="July"
+        android:orderInCategory="6"></item>
+    <item android:id="@+id/aug"
+        android:enabled="true"
+        android:title="August"
+        android:orderInCategory="7"></item>
+    <item android:id="@+id/sept"
+        android:enabled="true"
+        android:title="September"
+        android:orderInCategory="8"></item>
+    <item android:id="@+id/oct"
+        android:enabled="true"
+        android:title="October"
+        android:orderInCategory="9"></item>
+    <item android:id="@+id/nov"
+        android:enabled="true"
+        android:title="November"
+        android:orderInCategory="10"></item>
+    <item android:id="@+id/dec"
+        android:enabled="true"
+        android:title="December"
+        android:orderInCategory="11"></item>
+
+</menu>

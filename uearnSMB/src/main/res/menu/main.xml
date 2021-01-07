@@ -1,0 +1,68 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="smarter.uearn.money.smarterview.Homescreeen" >
+
+    <!--<item
+        android:title="REC"
+        android:id="@+id/recText"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/togglerec"
+        android:title="Rec"
+        app:showAsAction="always"
+        android:icon="@drawable/red"/>-->
+
+    <item android:id="@+id/search"
+        android:title="Search"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:icon="@drawable/search"/>
+<!--
+    <item
+        android:id="@+id/salesAgent"
+        android:title="Rec"
+        app:showAsAction="always"
+        android:icon="@drawable/sales_agent"/>-->
+
+  <!--  <item android:id="@+id/help_menu"
+        android:icon="@drawable/help"
+        android:title="Help" />
+
+    <item android:id="@+id/contact_us_menu"
+        android:icon="@drawable/settings_contact_us"
+        android:title="Contact us"
+        />
+    <item android:id="@+id/changepassword_menu"
+        android:title="Change password"
+        />
+
+    <item android:id="@+id/signout_menu"
+        android:icon="@drawable/settings_logout"
+        android:title="Sign out"
+       />-->
+<!--
+    <item
+        android:id="@+id/recLayout"
+        android:title="Rec"
+        app:showAsAction="always"
+        app:actionLayout="@layout/custom_actionbar"/>
+-->
+
+
+    <!-- <item
+        android:id="@+id/pick_action_provider"
+        android:actionProviderClass="com.example.AppPickActionProvider"
+        android:icon="@drawable/home_icon"
+        android:showAsAction="always"
+        android:title="More"/> -->
+        
+       <!-- <item
+        android:id="@+id/action_example"
+        android:icon="@drawable/ic_action_new_email"
+        android:title="@string/action_example"
+        app:actionViewClass="android.widget.ImageButton"
+        app:showAsAction="ifRoom"/>-->
+
+
+</menu>

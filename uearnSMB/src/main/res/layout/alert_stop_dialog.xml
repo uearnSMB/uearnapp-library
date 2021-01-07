@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp"
+    >
+
+
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:alpha="0.8"
+        android:layout_marginTop="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_marginTop="16dp"
+        android:textSize="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:alpha="0.8"
+        android:text=" "
+        />
+
+    <Spinner
+        android:id="@+id/spinner_stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rect_signout_cancel"
+            android:text="@string/btn_no"
+            android:textAllCaps="true"
+            android:textColor="@color/signout_cancel"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/yesBtn"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rect_signout_confirm"
+            android:text="@string/btn_yes"
+            android:textAllCaps="true"
+            android:textColor="@color/uearn_red_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

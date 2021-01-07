@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="blue" type="color">#FF33B5E5</item>
+    <item name="purple" type="color">#FFAA66CC</item>
+    <item name="green" type="color">#FF99CC00</item>
+    <item name="orange" type="color">#FFFFBB33</item>
+    <item name="red" type="color">#FFFF4444</item>
+    <item name="darkblue" type="color">#FF0099CC</item>
+    <item name="darkpurple" type="color">#FF9933CC</item>
+
+
+    <!-- drop down list header font color -->
+    <color name="drop_down_list_header_font_color">#000000</color>
+    <!-- drop down list header second font color -->
+    <!-- drop down list footer font color -->
+    <color name="drop_down_list_footer_font_color">#000000</color>
+
+    <!--Added for DatePicker-->
+
+    <color name="white">#ffffffff</color>
+    <color name="black">#000000</color>
+    <color name="circle_background">#fff2f2f2</color>
+    <color name="darker_blue">#ff0099cc</color>
+    <color name="date_picker_text_normal">#ff999999</color>
+    <color name="date_picker_view_animator">#fff2f2f2</color>
+
+    <color name="ampm_text_color">#8c8c8c</color>
+    <color name="numbers_text_color">#8c8c8c</color>
+
+
+    <!--Added for fAB-->
+
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+
+    <color name="error_message_shape_color">#E40659</color>
+
+    <color name="box_border">#E7E7E7</color>
+  <!--  <color name="smb_green">#76FF03</color>-->
+    <color name="smb_green">#32EB19</color>
+    <color name="smb_text">#D2D2D2</color>
+    <color name="light_gray">#f2f2f2</color>
+    <color name="reconnect">#77b1ff</color>
+    <color name="connected">#2ab72a</color>
+
+    <color name="action_bar_color">#E0E0E0</color>
+    <!--<color name="actionbar_bottom_color_blue">#0D47A1</color>
+    <color name="status_bar_blue">#1A237E</color>-->
+
+    <color name="actionbar_bottom_color_blue">#303F9F</color>
+    <!--<color name="status_bar_blue">#303F9F</color>-->
+    <color name="status_bar_blue">#7030A0</color>
+
+    <color name="uearn_red_color">#E40659</color>
+
+
+    <color name="voice_text_color">#383737</color>
+
+    <color name="smb_text_dark">#828282</color>
+    <color name="smb_blue">#bbdefb</color>
+    <color name="smb_darkblue">#2196f3</color>
+
+    <color name="uearn_black_text">#000000</color>
+    <color name="uearn_gray_color">#dcdcdc</color>
+
+    <!--<color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976d2</color>-->
+    <color name="colorPrimary">#30379f</color>
+
+    <!-- <color name="colorAccent">#32EB19</color>-->
+    <color name="colorAccent">#E40659</color>
+    <color name="colorAccent2">#E40659</color>
+    <color name="colorLightGrey">#EEEEEE</color>
+    <color name="colorDarkGrey">#828282</color>
+
+    <color name="darkGrey">#828282</color>
+    <color name="actionbarBlue">#303F9F</color>
+
+    <color name="dialog_background">#80ffffff</color>
+
+   <!-- <color name="n_backgroumd">#C5CAE9</color>-->
+    <color name="n_backgroumd">#E0E0E0</color>
+    <color name="smd_card_backgroumd">#EDEDED</color>
+    <color name="smd_action">#9E9E9E</color>
+
+    <color name="smb_black">#757575</color>
+    <color name="smb_grey_54">#212121</color>
+    <color name="smb_grey_26">#BDBDBD</color>
+
+    <color name="smb_white_70">#B2B2B2</color>
+    <color name="app_color">#E40659</color>
+    <color name="success_color">#1ad20d</color>
+    <color name="app_text_color">#E40659</color>
+    <color name="spinner_background_color">#65ABCF</color>
+    <color name="card_background_color">#ffffff</color>
+    <color name="toolbar_color">#7030A0</color>
+    <color name="white_text_color">#ffffff</color>
+    <color name="green_text_color">#3cb14c</color>
+
+
+
+
+    <color name="black_text_color">#444444</color>
+
+    <!-- Accent -->
+    <color name="button_color">#C5AF59</color>
+    #ffffff
+    <color name="selected_view_color">#ffffff</color>
+    <color name="selected_item_color">#E40659</color>
+    <color name="play_call_recording_icon_color">#E40659</color>
+    <color name="user_status_color">#ffd426</color>
+
+    <color name="uearn_green_cercle">#23a735</color>
+
+    <color name="card_border_color">#E40659</color>
+
+
+    <!-- Gray -->
+    <color name="custom_gray_color">#B3BCC1</color>
+
+    <!-- Black -->
+
+    <color name="profile_background_color">#dcdcdc</color>
+    <color name="seekbar_yellow">#f7ff00</color>
+    <color name="seekbar_grey">#edeef6</color>
+    <color name="blue_color">#78b1e3</color>
+    <color name="red_color">#e5293e</color>
+    <color name="purple_color">#7030a0</color>
+
+    <color name="connection_good">#2fc443</color>
+    <color name="connection_average">#FF99CC00</color>
+    <color name="connection_weak">#f3971e</color>
+    <color name="connection_poor">#f91834</color>
+    <color name="no_connection">#f91834</color>
+    <color name="connection_check">#2196f3</color>
+
+    <color name="grey_slot_button">#D2D2D2</color>
+    <color name="green_slot_button">#3cb14c</color>
+
+    <color name="colorPrimaryDark">#125688</color>
+
+    <color name="chat_background">#EEEEEE</color>
+  <!--
+     <color name="checkbox_green">#1ad20d</color>
+     <color name="checkbox_gray">#707070</color>
+     -->
+    <color name="checkbox_green">#20d224</color>
+    <color name="checkbox_gray">#cecece</color>
+    <color name="checkbox_disabled">#828282</color>
+
+    <color name="app_color_purple">#7030A0</color>
+    <color name="app_color_red">#E40659</color>
+    <color name="app_color_yellow">#FFC000</color>
+    <color name="app_color_gray">#F0F0F0</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color">#828282</color>
+
+    <color name="divider_line_color">#707070</color>
+
+    <color name="primary_text_color">#707070</color>
+    <color name="secondary_text_color">#a4a4a4</color>
+    <color name="secondary2_text_color">#939393</color>
+    <color name="nav_text_color">#797979</color>
+    <color name="error_text_color">#FF0000</color>
+
+
+
+    <color name="button_active">#e40659</color>
+    <color name="button_inactive">#a4a4a4</color>
+    <color name="button_ripple">#dcdcdc</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="check_circle_inactive">#828282</color>
+    <color name="check_circle_active">#828282</color>
+    <color name="delete_button_disable">#828282</color>
+
+    <color name="home_btn_text">#a3a3a3</color>
+
+    <color name="home_appcolor_purple">#7030a0</color>
+    <color name="home_appcolor_pink">#e40659</color>
+    <color name="home_textcolor_banner">#9d9d9d</color>
+
+    <color name="welcome_background_color">#f7f7f7</color>
+
+    <!--calendar color-->
+    <color name="calendar_background">#FFFFFF</color>
+    <color name="calendar_month_font">#2A99BC</color>
+    <color name="calendar_day_of_the_week_font">#161d20</color>
+    <color name="calendar_selected_day_font">#FFFFFF</color>
+    <color name="calendar_selected_day_background">#20BEB2</color>
+    <color name="calendar_current_day_ring">#CCCCCC</color>
+    <color name="calendar_day_of_the_month_font">#4F4F4F</color>
+    <color name="calendar_circle_1">#3cb14c</color>
+    <color name="calendar_circle_2">#FFD300</color>
+    <color name="calendar_month_arrow">#55c6da</color>
+
+    <color name="goal_text">#455c6e</color>
+    <color name="passbook_background">#F9F4FD</color>#999999
+    <color name="signout_cancel">#999999</color>
+
+    <color name="dialog_disable_button">#8e8b8c</color>
+
+    <color name="tab_normal_text">#aaa8ac</color>
+    <color name="tab_active_text">#e40f59</color>
+    <color name="tab_active_indicator">#7030a0</color>
+
+    <color name="error_colorCode">#c40000</color>
+    <color name="internet_status_color">#4fb654</color>
+
+  <!--  Home page buttons -->
+    <color name="inactive_color">#dedede</color>
+    <color name="active_color">#e40659</color>
+    <color name="popup_status_inactive_color">#b4b4b4</color>
+    <color name="popup_background_color">#fafafa</color>
+    <color name="popup_text_color">#a3a3a3</color>
+
+
+    <color name="simpletooltip_background">#f7f7f7</color>
+    <color name="simpletooltip_arrow">#f7f7f7</color>
+    <color name="ripple_color">#f7f7f7</color>
+    <color name="tab_underline_color">#7030A0</color>
+    <color name="ques_text_color">#6a6666</color>
+    <color name="ques_title_color">#7030a0</color>
+    <color name="screen_background_color">#e6e6e6</color>
+    <color name="button_green_color">#4fb654</color>
+
+</resources>

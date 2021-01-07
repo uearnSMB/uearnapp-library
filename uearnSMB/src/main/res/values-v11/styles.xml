@@ -1,0 +1,20 @@
+<resources>
+
+    <!--
+    <item name="android:homeAsUpIndicator">@android:drawable/arrow_up_float</item>
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    -->
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!-- API 11 theme customizations can go here. -->
+        <item name="android:textAppearanceLargePopupMenu">@style/ActionBar.Solid.Example</item>
+        
+    </style>
+
+    <style name="ActionBar.Solid.Example" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="actionMenuTextColor">@android:color/white</item>
+
+    </style>
+
+
+</resources>

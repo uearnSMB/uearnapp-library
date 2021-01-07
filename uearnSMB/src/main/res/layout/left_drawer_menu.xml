@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imgNavClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dip"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/margin_16dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_nav_close" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_8dip"
+        app:layout_constraintBottom_toTopOf="@+id/guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgNavClose">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lyBtnHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/nevHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_home"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Home"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyBtnProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nevSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_settings"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Profile Settings"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyBtnWorkSlots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/navWorkSlots"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_work_slots"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="My Work Slots"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyBtnInvite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nevRefEarn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_invite_earn"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/invite_and_earn"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyBtnFeedBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nevFeedBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_feedback"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+
+                    android:text="Give Us Feedback"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyBtnAboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/navAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_uearn"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="About Uearn"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyBtnFaq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/navFAQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_question_circle"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="FAQ’S"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lyBtnAppVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/navAppVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_versions"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp"
+                    tools:text="App Version 2.7(A)" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyBtnLogOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/navLogOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_logout"
+                    android:drawablePadding="20dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Logout"
+                    android:layerType="software"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layerType="software"
+                    android:background="@drawable/horizontal_dashline_devider" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline1">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_uearn_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="4.7sp"
+            android:text="2020 All Rights Reserved"
+            android:textColor="#7c7b7b"
+            android:textSize="@dimen/text_14"
+            tools:text="2020 All Rights Reserved" />
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

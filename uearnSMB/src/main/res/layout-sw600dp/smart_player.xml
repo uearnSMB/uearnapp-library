@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/player"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp">
+
+            <TextView
+                android:id="@+id/player_timeleft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="right"
+                android:text="@string/player_timeleft"
+                android:textSize="18dp"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_weight="3.2"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp">
+
+
+            <SeekBar
+                android:id="@+id/player_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10px"
+                android:paddingBottom="10px"
+                android:progressDrawable="@drawable/progress_seekbar"
+                android:progressTint="#6ca7d9"
+                android:thumbTint="#6ca7d9"
+                android:thumb="@drawable/ellipse_267" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp">
+
+            <TextView
+                android:id="@+id/player_timeright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:text="@string/player_timeleft"
+                android:textSize="18dp"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="46dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ToggleButton
+            android:layout_below="@+id/today_uearn"
+            android:id="@+id/player_play"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/player_play_button"
+            android:textOff=""
+            android:textOn=""
+            android:checked="false" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center_vertical"
+    android:layout_weight="1"
+
+    android:tag="dayOfTheMonthLayout">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="2dp"
+        android:tag="dayOfTheMonthBackground">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/CalendarDayOfTheMonthText"
+            tools:text="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginBottom="2dp"
+            android:tag="dayOfTheMonthText" />
+        <TextView
+            android:id="@+id/textViewDay"
+            style="@style/CalendarDayOfTheMonthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textView"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:text=""
+            android:tag="dayNameTheMonthText" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewDay"
+            android:layout_centerHorizontal="true"
+            android:divider="@drawable/empty_divider"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp"
+            android:showDividers="middle">
+
+            <ImageView
+                android:layout_width="@dimen/calendar_circle_size"
+                android:layout_height="@dimen/calendar_circle_size"
+                android:src="@drawable/circle"
+                android:tag="dayOfTheMonthCircleImage1"
+                android:tint="@color/calendar_circle_1"
+                android:visibility="visible" />
+
+            <ImageView
+                android:layout_width="@dimen/calendar_circle_size"
+                android:layout_height="@dimen/calendar_circle_size"
+                android:src="@drawable/circle"
+                android:tag="dayOfTheMonthCircleImage2"
+                android:tint="@color/calendar_circle_2"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

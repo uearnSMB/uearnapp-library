@@ -1,0 +1,1058 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/version_layout"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="@dimen/block_padding"
+        tools:context="smarter.uearn.money.fragments.SignUpFragment">
+
+
+        <LinearLayout
+            android:id="@+id/llRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/short_margin_between_elements">
+
+                <TextView
+                    android:id="@+id/welcomeTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Register"
+                    android:textColor="@color/app_color_purple"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:weightSum="2">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etname"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/nameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/edit_text_shape"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Full Name"
+                        android:inputType="textEmailAddress"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/error_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Please enter valid name"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etmobile"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/mobileEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/edit_text_shape"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Mobile Number"
+                        android:inputType="phone"
+                        android:maxLength="13"
+                        android:digits="0123456789"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/error_mobile_no_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Please enter valid mobile number"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etusername"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/emailEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/edit_text_shape"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/error_email_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Please provide a valid email"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red"
+                    app:passwordToggleEnabled="true">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/passwordEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edit_text_shape"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/error_password_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Please provide a valid password"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red"
+                    app:passwordToggleEnabled="true">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/etConfirmPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edit_text_shape"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+                <TextView
+                    android:id="@+id/error_ConPassword_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Password mismatch"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/hints_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingBottom="5dp"
+                    android:text="Gender"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/smb_text_dark"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioGroup
+                        android:id="@+id/genderradiogroup"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/femaleButton"
+                            android:text="Female"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <RadioButton
+                            android:id="@+id/maleButton"
+                            android:text="Male"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <RadioButton
+                            android:id="@+id/othersButton"
+                            android:text="Not to disclose"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="12dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etLanguage"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:hint="Languages you know"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/languageEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="none"
+
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+                <LinearLayout
+                    android:id="@+id/language_main_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+                </LinearLayout>
+
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/error_language_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Please select languages"
+                android:textColor="@color/error_text_color"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_regular"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etEducationQual"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/educationalQualificationEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:drawablePadding="8dp"
+                        android:hint="Education Qualification"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="none"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/error_qualification_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Please select qualification"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etworkExperience"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/workExperienceEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:drawablePadding="8dp"
+                        android:hint="Work Experience"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="none"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/error_work_experience_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Select work experience"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/customer_support_exp_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingBottom="5dp"
+                    android:text="Experience in customer support"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/smb_text_dark"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioGroup
+                        android:id="@+id/customersupportradiogroup"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/yesButton"
+                            android:text="Yes"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <RadioButton
+                            android:id="@+id/noButton"
+                            android:text="No"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/business_process_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingBottom="5dp"
+                    android:text="Business process"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/smb_text_dark"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioGroup
+                        android:id="@+id/businessprocessradiogroup"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/voiceButton"
+                            android:text="Voice"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <RadioButton
+                            android:id="@+id/nonvoiceButton"
+                            android:text="Non Voice"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etvoiceSupportExperience"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/voiceSupportExpEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:drawablePadding="8dp"
+                        android:hint="Experience in voice support"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="none"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/error_voice_experience_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Select voice support experience"
+                    android:textColor="@color/error_text_color"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="12dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etHardware"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:hint="Choose your set up"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/smb_text_dark"
+                    android:titleTextColor="@color/app_color_red"
+                    app:boxStrokeColor="@color/app_color_red">
+
+                    <smarter.uearn.money.utils.UearnEditText
+                        android:id="@+id/hardwareEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="none"
+                        android:textColor="@color/smb_text_dark"
+                        android:textColorHint="@color/smb_text_dark"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+                <LinearLayout
+                    android:id="@+id/hardware_main_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+                </LinearLayout>
+
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/error_choose_setup_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Please choose your setup"
+                android:textColor="@color/error_text_color"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_regular"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <smarter.uearn.money.views.GeneralButton
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:background="@drawable/register"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/short_margin_between_elements"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/box_border" />
+
+                <smarter.uearn.money.views.SubTitleTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/or_text"
+                    android:textColor="@color/smb_text_dark" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/box_border" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:text="@string/sign_up_using"
+                    android:textColor="@color/smb_text_dark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:weightSum="2">
+
+
+                <TextView
+                    android:id="@+id/accountTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account? Click to"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="#707070"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/logIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Login"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/app_color_red"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/agrementTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="By creating an account you are agreeing to our"
+                    android:textColor="#707070"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTerms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:text="User Agreement"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/app_color_red"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/version_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/versionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

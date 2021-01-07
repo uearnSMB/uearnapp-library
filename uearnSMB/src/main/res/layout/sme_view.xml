@@ -1,0 +1,65 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/chat_background"
+    tools:context="smarter.uearn.money.chats.fragment.TechFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:id="@+id/messages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:scrollbars="vertical"
+
+        android:scrollbarStyle="outsideOverlay"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+
+        android:gravity="center_vertical">
+
+        <EditText
+            android:background="@drawable/enter_chat"
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type a message"
+            android:imeActionLabel="send"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:singleLine="true"/>
+        <ImageButton
+            android:id="@+id/send_attachment"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/attach_file"/>
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/send_button"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_send"/>
+        <ImageButton
+            android:id="@+id/send_voice"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/record_mic"/>
+
+    </LinearLayout>
+
+</LinearLayout>

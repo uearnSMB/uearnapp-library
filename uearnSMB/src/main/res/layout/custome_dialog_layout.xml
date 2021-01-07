@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:textSize="22sp"
+        android:text="DMS"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/message"
+        android:textSize="15sp"
+        android:layout_margin="10dp"
+        android:text="DMS"
+        android:textColor="@color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:theme="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No, personal number"
+            android:layout_weight="1"
+            android:background="@color/dialog_background"
+            android:textColor="@color/smb_darkblue"/>
+
+        <Button
+            android:theme="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:layout_weight="1"
+            android:background="@color/dialog_background"
+            android:textColor="@color/smb_darkblue"
+            />
+    </LinearLayout>
+</LinearLayout>

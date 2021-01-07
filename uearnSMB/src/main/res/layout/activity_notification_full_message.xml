@@ -1,0 +1,119 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar1"
+            layout="@layout/training_header_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_batch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="10dp"
+        android:layout_below="@+id/header"
+        card_view:cardUseCompatPadding="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/rl_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_margin="15dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/tv_message_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="#2e2e2e"
+                        android:lineSpacingExtra="3sp"
+                        android:text="Message"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:id="@+id/tv_message_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="#2e2e2e"
+                            android:lineSpacingExtra="2sp"
+                            android:text="July 18,2020,"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif"
+                            android:textStyle="normal"
+                            android:textColor="#2f2f2f"
+                            android:lineSpacingExtra="2sp"
+                            android:layout_marginLeft="5dp"
+                            android:text="11:01"/>
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_full_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="#2f2f2f"
+                        android:lineSpacingExtra="3sp"
+                        android:layout_marginTop="20dp"
+                        android:text="After you create sections, you can use tags to: Distinguish common elements you use like Popups, Dialogs
+Sort screens based on status like In Progress and Done \n \n
+Organize screens based on features like Login and Browse
+Assign screens to certain users
+Clicking on a tag in the Dashboard will show all of the screens associated with that tag. \n \n
+You can even use ⌘ + Click to select multiple tags. For example, only the screens with both Lock Screen and Music tags are listed below."
+                        />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_first">
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

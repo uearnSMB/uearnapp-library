@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recorder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_below="@id/end"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/recorder_record_button"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/mic"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            />
+
+        <smarter.uearn.money.views.SmartAudioPlayer
+            android:layout_marginTop="50dp"
+            android:gravity="center_vertical"
+            android:id="@+id/recorder_smart_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </smarter.uearn.money.views.SmartAudioPlayer>
+
+    </LinearLayout>
+</LinearLayout>

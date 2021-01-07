@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="smarter.uearn.money"
+    android:versionCode="28"
+    android:versionName="3.3">
+
+    <supports-screens
+        android:anyDensity="false"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:requiresSmallestWidthDp="600"
+        android:smallScreens="false"
+        android:xlargeScreens="true" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.PROCESS_INCOMING_CALLS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.RECORD_MIC" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="smarter.uearn.money.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.CAPTURE_AUDIO_OUTPUT"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+
+    <library tools:node="removeAll" />
+
+    <application
+        android:name=".utils.SmarterSMBApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:fullBackupOnly="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        tools:replace="android:label,android:icon,android:name,android:allowBackup,android:fullBackupOnly,android:fullBackupContent">
+        <activity android:name=".activities.feedback.FeedBackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Homepage"  />
+        <activity
+            android:name=".activities.interview_process.InterViewProcessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Homepage" />
+        <activity
+            android:name=".training.activity.CalendarActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".activities.UearnFAQActivity" />
+        <activity android:name=".activities.UearnReferralProgram" />
+        <activity android:name=".activities.UearnReferAndEarnActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_Profile" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_android_map_api_key" />
+
+        <receiver
+            android:name=".broadcastReceiver.NotificationReceiver"
+            android:exported="true"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="ACCEPT_APPOINTMENT" />
+                <action android:name="REJECT_APPOINTMENT" />
+                <action android:name="DELETE_INTENT" />
+                <action android:name="ACCEPT_TEAM_MEMBER" />
+                <action android:name="REJECT_TEAM_MEMBER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcastReceiver.ConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <!-- Intent filters for broadcast receiver -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".services.UpdateAlarmTriggerService"
+            android:enabled="false"
+            android:stopWithTask="true" />
+        <receiver
+            android:name=".services.DeleteBefore30daysAppointmentsService"
+            android:enabled="false"
+            android:stopWithTask="true" />
+        <receiver
+            android:name=".views.events.CallReciever"
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.READ_PHONE_STATE" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".views.events.HeadPhoneReciever"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.HEADSET_PLUG" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="smarter.uearn.money" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcastReceiver.ShutdownReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_INSTALL" />
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <action android:name="android.intent.action.QUICKBOOT_POWEROFF" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcastReceiver.AlarmNotificationReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_TICK" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcastReceiver.CallNotificationsReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <receiver
+            android:name=".broadcastReceiver.Alarm_Receiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_TICK" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcastReceiver.DailyAlarmReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <receiver
+            android:name=".broadcastReceiver.AutoFollowupCreateReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <receiver
+            android:name=".broadcastReceiver.BootableService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcastReceiver.OnTimeReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <receiver
+            android:name=".views.events.CallAndSMSListener"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.provider.Telephony.SMS_SENT" />
+                <action android:name="android.provider.Telephony.NEW_OUTGOING_SMS" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".views.events.NetworkBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".views.events.ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".chats.receiver.ChatNetworkReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".utils.gcm.MyGcmListenerService"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".utils.gcm.RegistrationIntentService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".utils.gcm.MyInstanceIDListenerService"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".callrecord.RecorderService"
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false" />
+        <service
+            android:name=".utils.upload.MediaUploadService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".services.CreateNotificationService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".services.CreateOptionsNotificationService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".services.AcceptOrRejectNotificationService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".utils.upload.ReuploadService"
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false" />
+        <service
+            android:name=".services.AutoFollowupService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".services.DeleteEventService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".services.CalldataSendService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".services.HandleAppStatusService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".speechapi.ServiceToconvertText"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".services.SocketIOService"
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.facebook.accountkit.ApplicationName"
+            android:value="@string/facebook_app" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_appid" />
+        <meta-data
+            android:name="com.facebook.accountkit.ClientToken"
+            android:value="@string/facebook_clientToken" />
+
+        <activity
+            android:name=".activities.UearnHome"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.SmarterAuthActivity"
+            android:label="SignAndSignup"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MakeACallActivity"
+            android:label="MakeACall"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name=".activities.MakeACallAfterCallActivity"
+            android:label="MakeACall"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.LandingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.DataLoadingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.MyAlertDialog"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activities.UearnVoiceTestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.UearnVoiceRecord"
+            android:label="Manage Private Contacts"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.SettingsPreferencesActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.microsoft.aad.adal.AuthenticationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".dialogs.LiveMeetingSMSDialog"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".dialogs.JDSMSDialog"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.appointment.ViewCalendarActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.appointment.AppointmentEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.appointment.AppointmentViewActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="smarter.uearn.money.activities.appointment.ViewCalendarActivity" />
+        </activity>
+        <activity
+            android:name=".activities.team.AddTeamMemberActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activities.UserLocationReport"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.UearnActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize|adjustPan" />
+        <activity
+            android:name=".activities.AutoDailerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.CustomActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" />
+        <activity android:name=".activities.UearnListActivity" />
+        <activity
+            android:name=".activities.StartUearnVoiceRecord"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.UearnProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".activities.UearnValueActivity" />
+        <activity
+            android:name=".activities.UearnPassbookActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".activities.UearnFeedbackActivity" />
+        <activity
+            android:name=".activities.UearnFollowupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.UearnCompletedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.DashboardAgent"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".agentslots.activity.AgentSlotsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".notificationmessages.activity.NotificationMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".notificationmessages.activity.ViewMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.MyStopAlertDialog"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".chats.activity.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".chats.activity.ImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".chats.activity.AudioActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.TrainingDashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.BatchDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.TrainerDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.MyTrainingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.NotificationListActivtiy"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.NotificationFullMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.HelpListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.HelpChatListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".training.activity.ChartHelpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.JoinUsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.ProcessSelectionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.DeviceCheckActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.DeviceCheckCompleteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.WifiCheckActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.VoiceTestCompleteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.ProcessSelectionChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".activities.GrammarSkillTestActivity" />
+        <activity
+            android:name=".activities.GrammarSkillTestResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.OnboardingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.OnboardingServiceAgreementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.profilesettings.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_Profile" />
+        <activity
+            android:name=".activities.homepage.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Homepage" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="smarter.uearn.money.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

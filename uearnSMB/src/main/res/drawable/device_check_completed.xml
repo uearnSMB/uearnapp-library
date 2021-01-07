@@ -1,0 +1,61 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+    android:viewportWidth="327"
+    android:viewportHeight="28"
+    android:width="327dp"
+    android:height="28dp">
+    <group
+        android:translateX="-17"
+        android:translateY="-151">
+        <group
+            android:translateX="17"
+            android:translateY="161">
+            <path
+                android:pathData="M8 4A4 4 0 0 1 0 4A4 4 0 0 1 8 4Z"
+                android:fillColor="#828282" />
+        </group>
+        <group
+            android:translateX="25"
+            android:translateY="164">
+            <path
+                android:pathData="M0 0H311V2H0Z"
+                android:fillColor="#828282" />
+        </group>
+        <group
+            android:translateX="336"
+            android:translateY="161">
+            <path
+                android:pathData="M8 4A4 4 0 0 1 0 4A4 4 0 0 1 8 4Z"
+                android:fillColor="#828282" />
+        </group>
+        <group
+            android:translateX="17"
+            android:translateY="151">
+            <group
+                android:translateX="41"
+                android:translateY="6">
+                <path
+                    android:pathData="M16 8A8 8 0 0 1 0 8A8 8 0 0 1 16 8Z"
+                    android:fillColor="#1ad20d" />
+                <path
+                    android:pathData="M14.5 8A6.5 6.5 0 0 1 1.5 8A6.5 6.5 0 0 1 14.5 8Z"
+                    android:strokeColor="#dcdcdc"
+                    android:strokeWidth="3" />
+            </group>
+        </group>
+        <group
+            android:translateX="17"
+            android:translateY="151">
+            <group
+                android:translateX="265"
+                android:translateY="6">
+                <path
+                    android:pathData="M16 8A8 8 0 0 1 0 8A8 8 0 0 1 16 8Z"
+                    android:fillColor="#1ad20d" />
+                <path
+                    android:pathData="M14.5 8A6.5 6.5 0 0 1 1.5 8A6.5 6.5 0 0 1 14.5 8Z"
+                    android:strokeColor="#dcdcdc"
+                    android:strokeWidth="3" />
+            </group>
+        </group>
+    </group>
+</vector>

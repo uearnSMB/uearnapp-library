@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    
+    <item 
+        android:id="@+id/action_one"
+        android:title="Save"
+        app:showAsAction="always" />
+
+    <item
+        android:visible="false"
+        android:id="@+id/action_done"
+        android:title="Done"
+        android:icon="@drawable/ic_offline_pin_white_24px"
+        app:showAsAction="always" />
+
+
+    <!--<item
+        android:id="@+id/action_two"
+        android:title="Assign"
+        app:showAsAction="never"/>-->
+    
+</menu>

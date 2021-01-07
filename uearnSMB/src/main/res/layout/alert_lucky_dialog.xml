@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+
+
+    <TextView
+        android:id="@+id/hints1Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        />
+
+    <TextView
+        android:id="@+id/hints2Tv"
+        android:layout_marginTop="16dp"
+        android:textSize="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Current slot is full. Please book another slot. "
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/yesBtn"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/AppTheme.RoundedCornerMaterialButton"
+            android:text="@string/btn_yes"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/AppTheme.RoundedCornerMaterialButton"
+            android:text="@string/btn_no"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@+id/uearn_layout"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="0dp"
+        android:background="#f9f9f9"
+        android:gravity="center_vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/dateOfEarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:color="@color/goal_text"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="21 Dec 2018"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:color="#66FF0000"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Closing Balance :"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/closingBalanceEarned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:color="#66FF0000"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="700"
+            android:textSize="14sp" />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bonus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/work_units"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        android:orientation="vertical"
+        android:background="#ffffff">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="0dp">
+
+            <RelativeLayout
+                android:id="@+id/brandImgLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/brandImg"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/app_logo" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/brandLayout"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:background="@drawable/dailer_circle"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="BLAK"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight=".5"
+
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/callEarning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="2"
+                        android:text="Call earning"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:maxLines="10"
+                        android:layout_weight="1"
+                        android:text="01:11 PM"
+                        android:textColor="#9b9797"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1.5">
+
+
+                    <TextView
+                        android:id="@+id/todayEarning"
+                        android:layout_below="@+id/callEarning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:text="+ \u20B9 600"
+                        android:textColor="@color/status_bar_blue"
+                        android:layout_gravity="center"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fcf8ff"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar1"
+            layout="@layout/training_header_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="#000000"
+                android:lineSpacingExtra="14sp"
+                android:text="Select From Below List"/>
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/help_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_searchreactangle"
+                android:drawableRight="@drawable/ic_icon_search"
+                android:paddingRight="20dp"
+                android:paddingLeft="13dp"
+                android:hint="Search"
+                android:fontFamily="@font/poppins_regular"
+                ></android.support.v7.widget.AppCompatEditText>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_help_topics"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

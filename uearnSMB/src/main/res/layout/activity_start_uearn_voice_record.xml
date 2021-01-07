@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.StartUearnVoiceRecord">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar1"
+            layout="@layout/onboarding_header_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:id="@+id/uearn_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp"
+        android:overScrollMode="never">
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/header">
+
+            <LinearLayout
+                android:id="@+id/llRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/short_margin_between_elements"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:id="@+id/voicetest"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/voicetesttv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:text="Voice Test"
+                        android:textColor="#7030a0"
+                        android:textSize="30dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/ready"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Are you ready for the voice test?"
+                    android:textColor="#828282"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/placemic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Click the mic button below. Place mic one inch from mouth."
+                    android:textColor="#707070"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/readtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Read the below text loudly for the voice skill test"
+                    android:textColor="#828282"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/questionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llRoot"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/voice_edit_text_shape"
+                android:color="#d9d9d9">
+
+                <TextView
+                    android:id="@+id/questionTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:inputType="textMultiLine|textImeMultiLine|textNoSuggestions"
+                    android:maxLines="7"
+                    android:minLines="1"
+                    android:scrollbars="vertical"
+                    android:text="Speech A I Powered smarter sales assistant to capture leads in a innovative manner
+Speech A I Powered smarter sales assistant to capture leads in a innovative manner Speech"
+                    android:textColor="#4a4a4a"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recButton"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="60dp"
+                android:gravity="center"
+                android:text="00:05"
+                android:textColor="#838383"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/micButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@null"
+                android:layout_below="@+id/timer"
+                app:srcCompat="@drawable/ic_mic" />
+
+            <TextView
+                android:id="@+id/startTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/micButton"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="60dp"
+                android:gravity="center"
+                android:text="Press mic button to start"
+                android:textColor="#707070"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/recButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/questionLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/listen"
+                android:visibility="gone" />
+
+            <smarter.uearn.money.views.VisualizerView
+                android:id="@+id/visualizer"
+                android:layout_width="220dp"
+                android:layout_below="@+id/questionLayout"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/hints1Tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/visualizer"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:gravity="center"
+                android:text="I'm Listening"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_marginBottom="200dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/hints2Tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hints1Tv"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="60dp"
+                android:gravity="center"
+                android:text="Please connect your headphone and then click to call"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <smarter.uearn.money.views.SmartAudioPlayer
+                android:id="@+id/player"
+                android:layout_below="@+id/questionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+            </smarter.uearn.money.views.SmartAudioPlayer>
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_voice_upload_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/app_color_red"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/text_18"
+        android:paddingBottom="5dp"
+        android:visibility="gone"
+        android:layout_above="@+id/buttonLayout"
+        />
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/startOverButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:enabled="true"
+                android:text="REDO"
+                android:layout_marginTop="5dp"
+                android:textAllCaps="false"
+                android:textColor="@color/uearn_red_color"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/doneButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:enabled="true"
+                android:text="SUBMIT"
+                android:layout_marginTop="5dp"
+                android:textAllCaps="false"
+                android:textColor="@color/uearn_red_color"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/othersButton"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_shape"
+                android:enabled="true"
+                android:text="Others"
+                android:textAllCaps="false"
+                android:textColor="@color/uearn_red_color"
+                android:visibility="visible" />
+            >
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

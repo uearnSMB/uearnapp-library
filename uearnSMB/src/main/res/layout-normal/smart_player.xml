@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/player"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/player_play"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/today_uearn"
+            android:background="@drawable/player_play_button"
+            android:checked="false"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:textOff=""
+            android:textOn="" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/player_timeleft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="right"
+                android:text="@string/player_timeleft"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.2">
+
+
+            <SeekBar
+                android:id="@+id/player_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:progressDrawable="@drawable/progress_seekbar"
+                android:progressTint="#E40659"
+                android:thumb="@drawable/ic_ellipse_251"
+                android:thumbTint="#E40659" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/player_timeright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="left"
+                android:layout_marginEnd="8dp"
+                android:text="@string/player_timeleft"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+         >
+
+    <ToggleButton
+        android:layout_below="@+id/today_uearn"
+        android:id="@+id/player_play"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/player_play_button"
+        android:textOff=""
+        android:textOn=""
+        android:checked="false" />
+    </LinearLayout>-->
+</LinearLayout>

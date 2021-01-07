@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dailog_bottom_elements"
+        android:paddingLeft="@dimen/long_margin_between_elements"
+        android:paddingRight="@dimen/long_margin_between_elements"
+        android:paddingTop="@dimen/dialog_padding_vertical"
+        android:text="@string/app_name"
+        android:textColor="@color/smb_grey_54"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/long_margin_between_elements"
+        android:paddingLeft="@dimen/long_margin_between_elements"
+        android:paddingRight="@dimen/long_margin_between_elements"
+        android:text="@string/app_name"
+        android:textSize="16sp"/>
+
+    <smarter.uearn.money.views.SubTitleTextView
+        android:id="@+id/btn_yes"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/dialog_padding_horizontal"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/block_padding"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="@string/ok"
+        android:textColor="@color/uearn_red_color" />
+
+</LinearLayout>

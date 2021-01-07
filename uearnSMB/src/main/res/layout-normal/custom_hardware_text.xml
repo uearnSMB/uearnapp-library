@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/close_icon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/ic_language_cross"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"/>
+
+
+    <TextView
+        android:id="@+id/hardware_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:textSize="12sp"
+        android:layout_gravity="center_vertical"
+        android:text="hardware"/>
+
+</LinearLayout>

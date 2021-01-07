@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dailog_bottom_elements"
+        android:paddingLeft="@dimen/long_margin_between_elements"
+        android:paddingRight="@dimen/long_margin_between_elements"
+        android:paddingTop="@dimen/long_margin_between_elements"
+        android:text="@string/dialog_change_password"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/tvDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/long_margin_between_elements"
+        android:paddingLeft="@dimen/long_margin_between_elements"
+        android:paddingRight="@dimen/long_margin_between_elements"
+        android:text="@string/dialog_change_password"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_no"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:padding="@dimen/dialog_padding_horizontal"
+            android:text="CANCEL"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/rect_signout_cancel"
+            android:textColor="@color/signout_cancel"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/btn_yes"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:background="@drawable/rect_signout_confirm"
+            android:padding="@dimen/dialog_padding_horizontal"
+            android:text="@string/confirm"
+            android:textColor="@color/uearn_red_color"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+</LinearLayout>

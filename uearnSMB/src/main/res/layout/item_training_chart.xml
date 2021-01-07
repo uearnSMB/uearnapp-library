@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".training.activity.ChartHelpActivity">
+
+<LinearLayout
+    android:id="@+id/layoutchartback"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/header"
+    android:gravity="center"
+    android:paddingLeft="30dp"
+    android:paddingRight="20dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:background="@drawable/ic_messageback">
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_txtchartbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="Is your internet connection "
+        android:fontFamily="@font/poppins_regular"
+       >
+
+    </android.support.v7.widget.AppCompatTextView>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/layoutchartback"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:gravity="right"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/ll_btnQuesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#707070"
+                android:lineSpacingExtra="2sp"
+                android:layout_gravity="center"
+                android:text="Please choose your answer">
+
+            </android.support.v7.widget.AppCompatTextView>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="visible">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_chartbutton_back"
+            android:text="Yes"
+            android:fontFamily="@font/poppins_bold"
+            ></android.support.v7.widget.AppCompatButton>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_chartbutton_back"
+            android:text="No"
+            android:fontFamily="@font/poppins_bold"
+            ></android.support.v7.widget.AppCompatButton>
+        </LinearLayout>
+        </LinearLayout>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnAns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_quesans_back"
+            android:text="No"
+            android:visibility="gone"
+            android:fontFamily="@font/poppins_bold"
+            ></android.support.v7.widget.AppCompatButton>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

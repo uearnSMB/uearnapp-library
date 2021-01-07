@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.UearnReferralProgram">
+
+
+    <ScrollView
+        android:id="@+id/oyo_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/referralContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/referralProgram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:visibility="visible"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="This is a Work from Home Opportunity \n Flexible Working Hours \nRefer &amp; help people to Work for a Software BPO/Call center \n Firm and Earn from Home \n\n Candidate Must have"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/feedbackText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:background="@null"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="NON_VOICE EMAIL PROCESS "
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/referralProgramw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:visibility="visible"
+                android:gravity="left"
+                android:padding="5dp"
+                android:text="-Computer \n-WIFI \n-Excellent English Written &amp; Spoken \n-Graduation \n-Min Age 18yrs &amp; Max Age- No bar \n-Exp: Preferred but not Mandatory"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:background="@null"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="VOICE CALLING PROCESS"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:visibility="visible"
+                android:gravity="left"
+                android:padding="5dp"
+                android:text="-Android Phone Version 5.1 &amp; Above\n-WIFI\n-Excellent Hindi &amp; English\n-Excellent Hindi (for another process)\n-Edu: 10th/ Diploma/ 12th/ Graduate\n-Min Age 18yrs &amp; Max Age- No bar\n"
+                android:textSize="15sp" />
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:background="@null"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="Part-time of min 4hrs\nFull-time of 6hrs - 8hrs -10hrs Available"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:visibility="visible"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="\nChance to Earn Additional Amount Quarterly"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

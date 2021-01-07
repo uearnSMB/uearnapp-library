@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="http://schemas.android.com/apk/res/android">
+
+    <!-- Toast successful messages -->
+
+    <!-- TextView Error messages -->
+
+    <!-- Toast error messages -->
+
+
+    <string name="app_name">UEARN</string>
+
+    <!-- Register Activity Constants -->
+
+
+    <!-- <string name="eula">
+        \u221a	Data and SMS charges may apply.\n\n
+        \u221a	Your personal information, SMS, Emails, location data, contacts, phone logs, voice records are stored securely in SmarterSMB cloud.\n\n
+        	For Detail Terms of use :\n\n <a href="http://www.smarter-biz.com/terms">http://www.smarter-biz.com/terms</a>\n\n
+    		Privacy policy :\n\n <a href="http://www.smarter-biz.com/privacy"> http://www.smarter-biz.com/privacy</a> \n\n
+			Security Policy :\n\n <a href="http://www.smarter-biz.com/security">http://www.smarter-biz.com/security</a>\n\n
+    </string> -->
+    <!--<string name="line2">You may also access SMARTER BIZ service from a browser at <a href="http://www.smarter-biz.com">http://www.smarter-biz.com</a></string>-->
+
+    <!-- Latitude, longitude format -->
+
+    <!-- Menu title -->
+
+
+    <!-- Labels -->
+
+    <!-- Messages -->
+
+    <!-- Strings for loginscreen.xml -->
+
+    <string name="password_reset_text">Reset password</string>
+
+    <!-- Strings for listItemDetails -->
+
+    <string name="player_timeleft">00:00</string>
+
+    <!-- Strings for Compose Job Card -->
+    <string name="compose_email_phoneno">Enter Phone No</string>
+
+    <!-- Strings for sendEmail  and sendSMS -->
+    <!--  <string name="admob_id">a152248b6ad87c3</string> -->
+
+
+    <string name="drop_down_list_header_default_text">Click to Sync</string>
+    <string name="drop_down_list_header_pull_text">Drop Down to refresh&#8230;</string>
+    <string name="drop_down_list_header_release_text">Release to refresh&#8230;</string>
+    <string name="drop_down_list_header_loading_text">Loading&#8230;</string>
+    <string name="drop_down_list_footer_default_text">More</string>
+    <string name="drop_down_list_footer_loading_text">Loading&#8230;</string>
+    <string name="drop_down_list_footer_no_more_text">No More</string>
+    <string name="image_content">Image</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Message Settings</string>
+
+
+    <string name="monday">M</string>
+
+    <string name="tuesday">T</string>
+
+    <string name="wednesday">W</string>
+
+    <!-- calendar -->
+
+    <string name="thursday">T</string>
+    <string name="friday">F</string>
+    <string name="saturday">S</string>
+    <string name="sunday">S</string>
+    <string name="item_is_selected">%1$s selected</string>
+    <string name="hour_picker_description">Hours circular slider</string>
+    <string name="minute_picker_description">Minutes circular slider</string>
+
+    <!--Added for date picker-->
+
+    <string name="radial_numbers_typeface" translatable="false">sans-serif</string>
+    <string name="select_hours">Select hours</string>
+    <string name="select_minutes">Select minutes</string>
+    <string name="day_picker_description">Month grid of days</string>
+    <string name="year_picker_description">Year list</string>
+    <string name="select_day">Select month and day</string>
+    <string name="select_year">Select year</string>
+    <string name="sans_serif" translatable="false">sans-serif</string>
+    <string name="day_of_week_label_typeface" translatable="false">sans-serif</string>
+    <string name="deleted_key"><xliff:g example="4" id="key">%1$s</xliff:g> deleted</string>
+    <string name="time_placeholder" translatable="false">--</string>
+    <string name="facebook_appid">1439774209370285</string>
+    <string name="facebook_clientToken">bab632c322adb271f204ce5d943f6fc1</string>
+    <string name="facebook_app">Uearn</string>
+
+    <string name="test_username">Smarter BIZ</string>
+    <!--<string name="facebook_clientToken">bbdbe557e9ae79d361af744595877eb6</string> -->
+    <string name="test_email">support@smarter-biz.com</string>
+    <string name="test_number">+91 888 0724 777</string>
+
+
+    <string name="password_mismatch">Passwords do not match</string>
+    <string name="invalid_email">Please provide a valid email</string>
+    <string name="invalid_password">Please provide a valid password</string>
+
+    <!--common strings-->
+    <string name="invalid_name">Please provide a name</string>
+    <string name="invalid_phone">Please provide a valid phone</string>
+    <string name="invalid_alphanumeric">Please do not include special characters</string>
+    <string name="email_already_exists">Email has already been taken</string>
+    <string name="number_already_exists">Registration with this phone number already exists</string>
+    <string name="login_denied">Login is denied</string>
+    <string name="leads">First Call </string>
+    <string name="followups_tracking">Smarter Analytics </string>
+    <string name="missed">MISSED</string>
+
+    <!--Main bottom menu-->
+
+    <!--Help screen activity-->
+
+
+    <string name="followup">FOLLOW UPs</string>
+    <string name="firstcall">FIRST CALL</string>
+
+    <string name="incoming">INCOMING</string>
+    <string name="outgoing">OUT GOING</string>
+    <string name="dialog_change_password">Change password</string>
+    <string name="dialog_edittext_hint_old_password">Old password</string>
+    <string name="dialog_edittext_hint_new_password">New password</string>
+
+    <!--Custom dialog for change password-->
+    <string name="dialog_edittext_hint_retype_new_password">Retype new password</string>
+    <string name="text_update">UPDATE</string>
+    <string name="text_cancel">CANCEL</string>
+    <string name="settings_options_preferences">Track:</string>
+
+    <string name="settings_options_team">Team</string>
+    <string name="settings_options_dashboard">Dashboard</string>
+
+    <!--settings options screen-->
+
+    <string name="settings_preferences_active">Customize</string>
+
+    <string name="settings_preferences_manage_private_contacts">Manage personal contacts</string>
+    <string name="settings_preferences_manage_junk_contacts">Manage Junk numbers</string>
+
+    <!--settings preferences screen-->
+    <string name="manage_empty_list">Personal contacts are empty!</string>
+
+    <string name="settings_preferences_call_recording">Call recording</string>
+    <string name="settings_preferences_after_call">After call show</string>
+    <string name="settings_preferences_tracking_sms">Track incoming SMS</string>
+    <string name="settings_preferences_send_auto_response">Send auto response SMS for missed calls</string>
+    <string name="settings_preferences_gps_tracking">GPS tracking</string>
+
+    <string name="team_members">My Team Members</string>
+    <string name="save">Save</string>
+    <string name="sign_in_password">Password</string>
+
+    <!--Settings team screen-->
+    <string name="sign_in_forgot">Forgot password?</string>
+
+    <!--Settings sms and email templates screen-->
+    <string name="or_text">OR</string>
+
+    <!--Settings emails and calendars-->
+
+    <!--More screen-->
+
+    <!--Landing screen-->
+
+    <!--Sign in screen-->
+    <string name="sign_up_fullname"></string>
+    <string name="sign_up_using">Sign up using</string>
+    <string name="sign_up_coutry_initial">+91 (India)</string>
+
+    <!--Sign up screen-->
+
+    <string name="camera">Camera</string>
+    <string name="album">Album</string>
+    <string name="ok">OK</string>
+
+    <string name="confirm">CONFIRM</string>
+    <string name="lead">Leads</string>
+
+    <string name="calls">Call Tracking</string>
+    <string name="auto_follow_up">Enable Smarter Analytics</string>
+
+    <string name="sales_title">Sales stages</string>
+    <string name="sms_email_templates">Message templates</string>
+
+    <!--profile screen-->
+
+
+    <string name="business_card_and_brochure">Business card and brochure</string>
+    <string name="no_of_callbacks_to_rnr">Number of call backs to RNR</string>
+    <string name="rnr_callback_remindes">RNR call back reminders(hrs)</string>
+    <string name="timer_beforecall">Timer Before Call</string>
+    <string name="timer_aftercall">Timer After Call</string>
+    <string name="admin_locked">Please contact your administrator for updating the settings</string>
+    <string name="private_contacts_empty">Your personal contacts list is empty </string>
+    <string name="private_contacts_zero">You have 0 contacts personal contacts </string>
+
+    <!--Help screens-->
+    <string name="dummy_name">Dilip Kumar S</string>
+
+    <!--private contacts-->
+    <string name="notes">Notes</string>
+    <string name="follow_up_next">Next follow up</string>
+
+    <!--After call screen strings-->
+    <string name="after_call_tomorrow">Tomorrow</string>
+    <string name="dummy_time">10:30 PM</string>
+
+    <string name="customer_view_designation">Designation</string>
+    <string name="customer_view_phone">Phone number</string>
+    <string name="customer_view_email">Email address</string>
+
+    <!--Customer view screen-->
+    <string name="customer_view_company">Company name</string>
+    <string name="customer_view_source">Source of lead</string>
+    <string name="customer_view_address">Address</string>
+    <string name="audio_recorder">Audio Recorder</string>
+    <string name="media_start_recording">Start recording</string>
+    <string name="media_play_audio">Play</string>
+
+    <!--Media recorder dialog text for audio recording-->
+    <string name="media_stop_audio">Stop</string>
+    <string name="invite_and_earn">Invite &amp; Earn</string>
+    <string name="not_logged_in_data">Sign into Smarter BIZ and capture your leads. Mark this call as</string>
+    <string name="summary"><u>SUMMARY</u></string>
+    <string name="google_android_map_api_key">AIzaSyDyKJl9XGradASbu5KKWRIaNKX0SJEArnQ</string>
+
+    <string name="connection_check_msg">Please wait. Checking connection status...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="connection_good_msg">Your internet connection is good</string>
+
+    <string name="connection_average_msg">Your internet connection is average</string>
+
+    <string name="connection_weak_msg">You are on a weak internet connection, switch to faster network</string>
+
+    <string name="connection_poor_msg">Poor connection. Connect to reliable internet to start</string>
+
+    <string name="no_connection_msg">You have no internet connection</string>
+
+    <string name="click_start_over">Click <b>START OVER</b> button and read aloud text below</string>
+
+    <string name="booking_slots">Book your work slots now</string>
+
+    <string name="txt_done">Done</string>
+
+    <string name="title_message">Notification</string>
+
+    <string name="btn_yes">Yes</string>
+
+    <string name="btn_no">CANCEL</string>
+
+    <string name="tech_tab">Tech</string>
+
+    <string name="pm_tab">PM</string>
+
+    <string name="group_tab">Group</string>
+
+    <string name="open_link_msg"> <font color='#ed5470'>*</font> Open link on Laptop/Desktop </string>
+
+    <string-array name="spinner_duration">
+        <item>15 min</item>
+        <item>30 min</item>
+        <item>60 min</item>
+    </string-array>
+
+    <string-array name="spinner_array">
+        <item>0 min before</item>
+        <item>5 min before</item>
+        <item>10 min before</item>
+        <item>15 min before</item>
+        <item>30 min before</item>
+        <item>60 min before</item>
+    </string-array>
+
+
+    <string-array name="completion_status">
+        <item>0 %</item>
+        <item>25 %</item>
+        <item>50 %</item>
+        <item>75 %</item>
+        <item>100 %</item>
+    </string-array>
+
+
+    <string-array name="rnr_reminders">
+        <item>1 hr</item>
+        <item>2 hr</item>
+        <item>3 hr</item>
+        <item>4 hr</item>
+        <item>6 hr</item>
+        <item>24 hr</item>
+    </string-array>
+
+    <string-array name="rnr_callbacks">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="timer">
+        <item>1 secs</item>
+        <item>2 secs</item>
+        <item>3 secs</item>
+        <item>4 secs</item>
+        <item>5 secs</item>
+        <item>6 secs</item>
+        <item>7 secs</item>
+        <item>8 secs</item>
+        <item>9 secs</item>
+        <item>10 secs</item>
+        <item>11 secs</item>
+        <item>12 secs</item>
+        <item>13 secs</item>
+        <item>14 secs</item>
+        <item>15 secs</item>
+        <item>16 secs</item>
+        <item>17 secs</item>
+        <item>18 secs</item>
+        <item>19 secs</item>
+        <item>20 secs</item>
+        <item>21 secs</item>
+        <item>22 secs</item>
+        <item>23 secs</item>
+        <item>24 secs</item>
+        <item>25 secs</item>
+        <item>26 secs</item>
+        <item>27 secs</item>
+        <item>28 secs</item>
+        <item>29 secs</item>
+        <item>30 secs</item>
+    </string-array>
+
+
+    <!--s1.equalsIgnoreCase("LEAD SHEET INCOMPLETE") && !s1.equalsIgnoreCase("COMPANY NOT LISTED") && !s1.equalsIgnoreCase("DESIGNATION NOT OK") && !s1.equalsIgnoreCase("SURROGATE NOT OK")))-->
+
+    <string-array name="invalid_spinner_array">
+        <item>Choose an option</item>
+        <item>INVALID</item>
+        <item>SYSTEM ERROR</item>
+        <item>LANGUAGE BARRIER</item>
+        <item>THIRD PARTY</item>
+        <item>WRONG PARTY</item>
+
+    </string-array>
+    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+
+    <string-array name="interested_spinner_array">
+        <item>Choose an option</item>
+        <item>PAN AVAILABLE</item>
+        <item>PAN PENDING</item>
+    </string-array>
+    <string-array name="interested_spinner_editarray">
+        <item>PAN AVAILABLE</item>
+    </string-array>
+    <string-array name="notinterested_spinner_array">
+        <item>Choose an option</item>
+        <!-- <item>NO PAN</item>
+         <item>SBI CARD HOLDER</item>
+         <item>NOT ELIGIBLE</item>
+         <item>DO NOT WANT</item>
+         <item>IN PROGRESS</item>-->
+        <!-- <item>FEATURE/PRODUCT</item>
+         <item>DO NOT CALL</item>
+         <item>DO NOT WANT</item>
+         <item>ADD NOTES</item>-->
+        <item>DO NOT CALL</item>
+        <item>DO NOT WANT</item>
+        <item>TOO MANY CARD</item>
+        <item>PRODUCT FEATURE</item>
+        <item>BRAND NAME</item>
+        <item>SERVICE ISSUES</item>
+        <item>ANTI TO CREDIT CARD</item>
+        <item>RESISTANT TO GIVE DETAILS</item>
+    </string-array>
+    <string-array name="disposition_spinner_array">
+        <item>Choose an option</item>
+        <item>Already Booked</item>
+        <item>Booking Lost</item>
+        <item>New Booking</item>
+        <item>Not Interested</item>
+        <item>Call Back Later</item>
+        <item>Language Barrier</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="already_Booked_spinner_array">
+        <item>Choose an option</item>
+        <item>Already Booked From OYO</item>
+        <item>Already Booked From Non OYO</item>
+    </string-array>
+    <string-array name="booking_Lost_spinner_array">
+        <item>Choose an option</item>
+        <item>Very Low Budget</item>
+        <item>Hotel Sold Out</item>
+        <item>Restriction Issue</item>
+        <item>OYO Not Available</item>
+        <item>Add Comment</item>
+    </string-array>
+
+    <string-array name="new_Booking_spinner_array">
+        <item>Choose an option</item>
+        <item>Booked Confirmed</item>
+        <item>Booked Saved</item>
+        <item>Add Comment</item>
+    </string-array>
+
+    <string-array name="not_Interested_spinner_array">
+        <item>Choose an option</item>
+        <item>Browsing on App</item>
+        <item>Reason not Specified</item>
+        <item>Want to book from OYO App</item>
+        <item>Want to book from Non OYO</item>
+        <item>Add Comment</item>
+    </string-array>
+    <string-array name="call_Back_Later_spinner_array">
+        <item>Choose an option</item>
+        <item>Add Comment</item>
+    </string-array>
+    <string-array name="language_Barrier_spinner_array">
+        <item>Choose an option</item>
+        <item>Add Comment</item>
+    </string-array>
+    <string-array name="others_spinner_array">
+        <item>Choose an option</item>
+        <item>Add Comment</item>
+    </string-array>
+    <string-array name="room_night_spinner_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+    <string-array name="counseling_location_spinner_array">
+        <item>Choose an option</item>
+        <item>Bangalore</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+        <item>Pune</item>
+        <item>Mumbai</item>
+        <item>Delhi</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="feedback_spinner_array">
+        <item>Choose an option</item>
+        <item>Report an error</item>
+        <item>Give a suggestion</item>
+        <item>Anything else</item>
+    </string-array>
+
+    <string-array name="no_of_lunch_dinner_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="camera_and_location_rationale">Allow app to access camera and storage.</string>
+    <string name="title_activity_feed_back">FeedBackActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <string name="link_update_goal"> <font color='#ed5470'>*</font> Click here to update goal </string>
+    <string name="link_view_passbook"> <font color='#ed5470'>*</font> Click here to view Passbook </string>
+    <string name="home_popup_message">Feedback on the Interview is awaited, upon clearance this process will be initiated.</string>
+</resources>

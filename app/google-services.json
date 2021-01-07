@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "320336915610",
+    "firebase_url": "https://sapient-axle-91112.firebaseio.com",
+    "project_id": "sapient-axle-91112",
+    "storage_bucket": "sapient-axle-91112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320336915610:android:732e14ca58c8eb15",
+        "android_client_info": {
+          "package_name": "smarter.uearn.money"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320336915610-0r7p9c389sa90fr0nflmqggf9ha2od5j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "smarter.uearn.money",
+            "certificate_hash": "4A64E81765112431FA92688DA8744AB1FD102893"
+          }
+        },
+        {
+          "client_id": "320336915610-arcb0todj0jleti9nkdorq56rik0kkj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "smarter.uearn.money",
+            "certificate_hash": "619F720DB47A2AE787253A8F9653F80D44120C65"
+          }
+        },
+        {
+          "client_id": "320336915610-vgmhcabq5e76uh4voh347hdquvb62mk7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "smarter.uearn.money",
+            "certificate_hash": "EF0300CDA5539E1CB1875EADE650CD4A3665076B"
+          }
+        },
+        {
+          "client_id": "320336915610-boqg4ba02m6dbrrm6od3lafekrn5s0ik.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "smarter.uearn.money",
+            "certificate_hash": "AE5301612282DC108F5844851022C57969D16769"
+          }
+        },
+        {
+          "client_id": "320336915610-dnaimb75d2iavq3r60slg15adgoit0v8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "smarter.uearn.money",
+            "certificate_hash": "8246D59BE70BEC3EA5EB5E53946A3D8880566ABF"
+          }
+        },
+        {
+          "client_id": "320336915610-gih49vk24naqv3qhupph83u4isu9lutj.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "320336915610-60f9tt45g25gbr81lpiugo5adj1kfebv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4KmP4ezbScNvYwTts2kTFgwbd-vDbSV4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320336915610-ae822f9e82v56qjb89up4t2vlu2vhft8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ios.smarterbiz"
+              }
+            },
+            {
+              "client_id": "320336915610-gih49vk24naqv3qhupph83u4isu9lutj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

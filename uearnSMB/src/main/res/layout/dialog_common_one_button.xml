@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dailog_bottom_elements"
+        android:paddingLeft="@dimen/long_margin_between_elements"
+        android:paddingRight="@dimen/long_margin_between_elements"
+        android:paddingTop="@dimen/long_margin_between_elements"
+        android:text="@string/dialog_change_password"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/tvDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/long_margin_between_elements"
+        android:paddingLeft="@dimen/long_margin_between_elements"
+        android:paddingRight="@dimen/long_margin_between_elements"
+        android:text="@string/dialog_change_password"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:background="@color/white"
+            android:padding="@dimen/dialog_padding_horizontal"
+            android:text="OK"
+            android:textColor="@color/uearn_red_color"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<resources>
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!-- API 14 theme customizations can go here. -->
+        <item name="android:textAppearanceLargePopupMenu">@style/ActionBar.Solid.Example</item>
+    </style>
+
+    <style name="ActionBar.Solid.Example" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_gravity="right"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="10dp">
+
+    <Button
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="@dimen/done_label_size"
+        android:textColor="#39B54A"
+        android:id="@id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dip"
+        android:text="CANCEL"
+
+        android:background="@color/date_picker_view_animator"/>
+
+    <Button
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="@dimen/done_label_size"
+        android:textColor="#39B54A"
+        android:id="@id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dip"
+        android:text="OK"
+        android:background="@color/date_picker_view_animator"/>
+
+
+</LinearLayout>

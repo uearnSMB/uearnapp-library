@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <LinearLayout
+        android:id="@+id/nav_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:background="@color/app_color"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dp">
+
+            <!--<de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/profileicon"
+                android:tint="@color/white" />-->
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_edit_profile_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:tint="@color/darkGrey"
+                android:src="@drawable/ic_mode_edit_black_24dp"
+                android:layout_alignRight="@+id/iv_profile_pic" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile_pic"
+                android:layout_above="@+id/tvNavName"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/profile"
+                android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/tvNavName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvNavEmail"
+            android:layout_marginTop="16dp"
+            android:text="@string/test_username"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/tvDesignation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingTop="@dimen/nav_header_space"
+            android:text="@string/test_email"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <smarter.uearn.money.views.SubTitleTextView
+            android:id="@+id/tvNavPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="@dimen/nav_header_space"
+            android:text="@string/test_number"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvNavEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:paddingTop="@dimen/nav_header_space"
+            android:text="@string/test_email"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:text="5.6V0"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

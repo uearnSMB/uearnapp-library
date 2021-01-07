@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/itemContainer"
+    android:background="@android:color/background_light"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp">
+
+    <ImageView
+        android:padding="5dp"
+        android:id="@+id/attachment_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:padding="5dp"
+        android:layout_marginTop="3dp"
+        android:id="@+id/attachment_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AttachmentName"/>
+
+
+</LinearLayout>

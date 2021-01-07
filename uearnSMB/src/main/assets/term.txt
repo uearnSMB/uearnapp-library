@@ -1,0 +1,176 @@
+
+            SMARTER BIZ APPLICATION 
+            
+
+SERVICE USE AGREEMENT
+
+IT IS IMPORTANT FOR YOU TO CAREFULLY READ THE FOLLOWING SMARTER BIZ APPLICATION SERVICE USE AGREEMENT
+ ("AGREEMENT") BEFORE YOU START USING THE SOFTWARE AND APPLICATION SERVICE.
+
+THIS AGREEMENT GOVERNS YOUR USE OF THE SOFTWARE AND APPLICATION SERVICE INCLUDING ANY FREE TRIAL USE VERSIONS THEREOF. YOU AGREE TO THE TERMS OF THIS AGREEMENT BY (I) CLICKING ON THE "I AGREE" BUTTON OR (II) INSTALLING THE SOFTWARE OR PART THEREOF IN YOUR PHONE, COMPUTER, OTHER HANDHELD DEVICES, OR PC, WHICHEVER COMES EARLIER. SUCH ACTION TANTAMOUNTS TO YOUR SIGNATURE TO THIS AGREEMENT AS A LEGALLY BOUND PARTY AND IS ENFORCEABLE LIKE ANY OTHER WRITTEN AND NEGOTIATED AGREEMENT SIGNED BY YOU. IF YOU DO NOT AGREE TO ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT, CANCEL THE INSTALLATION OF THE SOFTWARE AND DO NOT INSTALL / USE THE SOFTWARE AND APPLICATION SERVICE AT ALL. 
+
+TERMS AND CONDITIONS
+
+1.0	DEFINITIONS
+
+1.1	Application Service means the service as defined in Section 2 hereto.
+
+1.2	Confidential Information means and includes the Software, its details and other documentation, Personal Information, Application Service, proprietary and/or confidential information of any form which the Licensor desires to be kept confidential, whether as a whole or any part thereof, along with any information that a reasonable person would deem confidential.
+
+1.3	Defect means a defect, fault, failure, malfunction or nonconformity in Software that prevents the Software from operating in accordance with the features described in Licensor webpage.
+
+1.4	End User means Your customers who are authorized to access and use the Application Service under Your License, through an internet browser provided by You through sms/email.
+
+1.5	Intellectual Property Rights means copyright, moral rights, trademark, trade dress, patent, trade secret, and any other intellectual and proprietary rights (whether registered or unregistered, and any application for the foregoing), and all other equivalent or similar rights which may subsist anywhere in the world.
+
+1.6	License means the right to access and avail the Application Service during the term of this Agreement, as more specifically described in Sec 2.2 herebelow.
+
+1.7	Licensor means Smarter Biz Technologies Pvt Ltd., a company incorporated under the laws of India.
+
+1.8	Personal Information means any personally identifiable data provided or uploaded by Users/End Users using the Application Service during the normal course of use of the Application Service. Personal Information is more fully defined in the Privacy Policy.
+
+1.9	Privacy Policy means the policy of the Licensor regarding the handling or Personal Information and certain other confidential information as more fully described in http://www.smarter-biz.com/privacy
+
+1.10	Service Form means the prescribed online or hardcopy forms which are to be duly filled and submitted by You to Licensor prior to availing Trial Use or paid use of Application Service.
+
+1.11	Software means the SmarterSMB software in machine readable object code (compiled executable) format and shall deem to include any modifications thereto, bug fixes, Upgrades and updates (when provided) and any copies made therefrom. Software shall include the downloadable application for handheld devices as well as the base software application available in the cloud based Application Service.
+
+1.12	Support Services means the basic helpdesk services provided by Licensor to support the use of Application Service, which is more specifically described in <<xxxxxxx>>. 
+
+1.13	Trial Use means the permission to use of the Application Service for a limited period free of charge on submission and acceptance of relevant Service Form.
+
+1.14	Upgrade(s) means any new Software upgrade resulting in a version change which may include bug fixes or additional/changed features that may be made available/accessible to You.
+
+1.15	User means individuals identifiable by a mobile phone number who are authorized to access and use the Application Service under Your License and may include You, Your employees, consultants, contractors, agents.
+
+1.16	Voice Recording means the telephone conversation recording functionality that may be included in of the Software which is supported in certain types of mobile phones. 
+
+1.17	You/Your means the organization or individual executing Service Form(s) for Trial Use or paid use of Application Service.  
+
+2.0	APPICATION SERVICES AND GRANT OF LICENSE
+
+2.1	During the term of this Agreement and as long You pay the specified amounts per User, Licensor will (i) make the UEARN Software and its database available in a cloud based platform at a data centre which may be securely accessed by the Users via UEARN downloadable application and End Users via an internet browser (ii) permit the Users to store and retrieve permissible data in the Software database available at the data centre; (iii) permit the End Users to view/listen/watch permissible data in the Software database available at the data centre; and (iv) to permit the authorized Users to avail Support Services ("Application Services"). The computer equipment within the data centre on which the Software will be provided shall be secured, operated and maintained consistent with the general industry practice applicable to the operation and security of such hosting services. The terms and conditions of the data centre operator shall apply to the use and access of the Software therein. The current data centre details as well as the relevant terms are available at www.aws.amazon.com/terms/
+
+2.2	Subject to the terms of this Agreement and during its term, Licensor hereby grants You and You accept, a limited, personal, non-exclusive, non-transferable, license to; avail the Application Service through, a specified internet browser or UEARN downloadable application, configure the Software, enter and manage data, generate reports to the extent permitted in the Software. This License does not grant any right to use or access the source code of the Software.
+
+2.3	Licensor shall use commercially reasonable efforts to make available the Application Service at the data centre for twenty-four (24) hours a day, seven (7) days a week (24x7), but excluding unavailability due to any scheduled/unscheduled maintenance, interruption to third party networks, problems with internet browser/downloadable application, Your's or Users' acts or omissions/ breach of this Agreement or any other unavoidable situations.  In all cases of unavailability of the Application Service at the data centre, Licensor will work diligently to restore availability.
+
+2.4	In case of Trial Use it shall commence when the relevant Trial Use Service Form submitted by You is approved by the Licensor and shall terminate on (i) the Trial Use expiration date as specified by Licensor or (ii) the commencement date of Service Form for paid Application Service, whichever comes earlier. NOTWITHSTANDING ANYTHING CONTAINED HEREIN, ACCESS TO THE APPLICATION SERVICE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND DURING THE TRIAL USE. YOUR DATA ENTERED IN THE DATABASE AND ANY SPECIFIC CONFIGURATIONS YOU OR YOUR USERS MAKE DURING THE TRIAL USE WILL BE PERMANENTLY REMOVED UNLESS YOU PURCHASE A PAID LICENSE. IN CERTAIN CASES, POST THE EXPIRY OF THE TRIAL PERIOD, LICENSOR MAY PERMIT YOU TO CONTINUE THE ACCESS AND USE OF THE SOFTWARE, BUT WITH LIMITED FEATURE AND FUNCTIONALITY. THIS WILL ALSO BE FOR A FURTHER PERIOD WHICH COULD BE TERMINATED BY LICENSOR AT ANY POINT OF TIME.
+
+3.0	PRIVILEGES AND RESTRICTIONS
+
+3.1	Licensor shall be providing only the Application Services. Any hardware components (including smartphones, computers, laptops, handheld devices etc), connectivity, any software applications (other than the Software) required for accessing and using the Application Services shall be arranged and maintained by You, Users and/or End Users as the case may be.
+
+3.2	You shall be solely responsible for Your, User's and End User's use and access of Voice Recording. You shall use such feature in compliance with all applicable laws in all jurisdictions governing use of the Voice Rcording service by You and Your Users, including but not limited to telephone recording and wiretapping laws. You shall be solely responsible if Your Users remove the memory (SD Card or similar storage) and extract the call recoding before it could have been sent to the cloud by the system at the end of a conversation.   PRIOR TO EACH CONVERSATION YOU SHALL INFORM YOUR CLIENT/END USER REGARDING THE VOICE RECORDING AND SHALL PROVIDE AN OPTION FOR YOUR CLIENT/END USER TO INSTRUCT YOU TO DELETE SUCH RECORDED CONVERSATION.
+
+3.3	You shall be responsible for all the acts and omissions of Your personnel as well as those of Users/End Users. You are in control of the activities that occur in Your account and shall ensure User's and End User's compliance with this Agreement. You shall, and shall cause your Users and End User's to, comply with all local, state, federal or foreign law, treaty, regulation or convention applicable to You in connection with the use of the Application Service, including without limitation, the applicable privacy, publicity, data protection, electronic communications and anti-spamming laws. You are responsible for the collection, legality, protection and use of Personal Information. Licensor shall not be responsible for any loss or disclosure of Personal Information (or any damages related thereto) resulting from You or Your Users' and End User's failure to adequately secure their user login id and passwords.
+
+3.4	You shall not and shall not permit another party to (a) copy, modify, adapt, enhance, customise, edit, display, distribute, transmit, broadcast, publish, create derivative works, make available and communicate Software or its documentation in any manner other than as specifically allowed by this Agreement (b) reverse engineer, disassemble, decompile or otherwise attempt to derive the source code from the Software (c) use or do or attempt to do anything in relation to the Software not expressly allowed by this Agreement (d) ) log into an account on the Application Service that You are not authorized to access (e) provide processing services, commercial timesharing, rental,  sharing arrangements or permit access of the Software to third parties (f) sell, lease, license,  sublicense, assign or otherwise transfer the Software and the documentation and/or the rights granted herein (g) attempt to probe, scan or test the vulnerability of any system or to breach the security or authentication measures without proper authorization; (h) render any part of the Application Service unusable (i) work around any technical limitations in the Software (j) use the Software in any way against the law (k) cause or knowingly allow any violation of Licensor' patents, copyrights, trademarks, trade secrets or other proprietary rights related to the Software and/or (l) access data at the data centre not intended for You. Any such unauthorized use of the Software shall result in immediate and automatic termination of this Agreement along with the License granted hereunder and may result in criminal and/or civil prosecution against You.  
+
+3.5	You understand that Application Service is intended to support your normal business activities and You shall not use the Application Service for the purpose of making emergency calls or providing emergency services. You shall be responsible for the content of all communications via the Application Service, and shall comply with all applicable laws and regulations in Your as well as User's/ End User's use of the Application Service. You shall not use the Application Service to communicate any message or material that (i) is libelous, harmful to minors, obscene or constitutes pornography; (ii) infringes the intellectual property rights of a third party or is otherwise unlawful; or (iii) would otherwise give rise to civil liability, or that constitutes or encourages conduct that could constitute a criminal offense under any applicable law or regulation. 
+
+3.6	Except for the rights specifically granted under Section 2, no other right in the Software and Application Service is granted to You. All other rights are reserved by Licensor. The License could be region specific and Licensor reserves the right to limit the possibility of activation outside the region in which the Software was acquired from the Licensor.
+
+3.7	Proof of License is the email sent to You by the Licensor post submission of Service Forms and receipt of payment. You shall not provide the login id and password to third parties or allow third parties access to the login id and password which is deemed to be confidential and you shall exercise reasonable care in protecting them in confidence. 
+
+3.8	Licensor may decide on the version of the Software to be used and may update the data centre accordingly. In case such updation requires changes for Your infrastructure/hardware You shall effect such changes.
+
+4.0	HARDWARE AND THIRD PARTY APPLICATIONS
+
+4.1	The use of any third party software or freeware provided along with the Software shall be subject to the licensing terms and conditions imposed by such third party licensor. Licensor reserves the right to change or terminate use of any such third party software including any freeware database. 
+
+4.2	You also acknowledge and agree that if You acquire third party applications for use with Application Service, Licensor may allow the providers of such applications to access Personal Information in order to allow such applications to connect and work with the Application Service. Licensor shall not be responsible or liable for any disclosure, modification or deletion of Personal Information resulting from any such access by third party application providers.
+
+4.3	If You have purchased any third party products or services including handheld devices and/or consumables such purchase and provision shall be completely independent of this Agreement. Any claims, request, warranty or other support shall be directly between the respective manufacturer and You.
+
+5.0	SECURITY AND CONTROL
+
+5.1	Licensor shall have the right to make inquiries and verify Your as well as User's/End User's compliance with the provisions of this Agreement. You agree to co-operate and provide Licensor with such information and access to systems/devices for such verification as requested by Licensor.  
+
+5.2	If it is found at any point of time, that the number of Users are more than the number of User Licenses purchased, then You shall immediately purchase additional licenses. Further You shall reimburse Licensor all reasonable expenses related to such audit in addition to further licensing fees and any other damages.
+
+5.3	The Application Service is not available to persons whose registration has been suspended or terminated by Licensor or the same person who has used the first free Trail Use using one credentials and trying to use it again with different credentials for another Trial Use.  
+
+6.0	FEES AND PAYMENT
+
+6.1	The charges per User along with the applicable currency for License is specified in the Licensor website. Charges related to telecommunication, internet usage, roaming charges, data transfer, voice recording are not included in this. Except as otherwise provided in the website, all fees are based on User License purchased and not on actual usage. FEES ONCE PAID ARE NON-REFUNDABLE. Licensor may modify the fees on thirty (30) days' email notice. In the event you upgrade or downgrade Your License, the fees applicable to Your new version of the Application Service will take effect immediately and be prorated for the rest of the month.
+
+6.2	In the event User fee is not paid by You in accordance with the Agreement, Licensor reserves the right to suspend the Application Services and License under this Agreement without notice. You shall pay the reactivation charges, for resuming the services and License. In such case your data may be deleted from the data centre after a specific period.
+
+6.3	All amounts payable shall be exclusive of all taxes, duties, levies, cess or other statutory charges, costs and fees ("Taxes") which may apply to the transaction and/or the delivery of the services under this Agreement. These Taxes shall be borne by You. In the event of any withheld taxes, You shall bear and pay such amounts to the statutory authority within the prescribed time and shall provide Licensor with a certificate to such effect. 
+
+7.0	WARRANTY AND DISCLAIMERS
+
+7.1	You agree that Your purchase of the Application Service is neither contingent upon the delivery of any future functionality or features nor dependent upon any oral or written public comments made by Licensor with respect to future functionality or features of the Software.
+
+7.2	Licensor warrants that: (i) Licensor has full right and authority to grant the license under this Agreement (ii) Licensor has not knowingly infringed any Intellectual Property Rights held by any other party while developing the Software. As the sole and exclusive remedy to the above limited warranty You have the right to receive the following services during the term: (a) Fixes for any Defects reported during such period (b) Support Services for clarifications (c) Upgrades released during such period. All support shall be in English language.
+
+7.3	All such warranty shall not apply in case of the following: (i) Your hardware's deficiencies and related infringement for which Licensor expressly disclaims any warranty responsibility; (ii) Defects resulting from misuse; abuse; accident; neglect; improper installation, operation or maintenance; theft; vandalism; acts of God; acts of terrorism; power failures or surges; casualty; alteration, non-permitted modification, or repairs by any party other than Licensor; or any other third parties' or Your actions; or causes beyond Licensor' reasonable control; (iii) any Defect not made known by You to Licensor as soon as practical after such Defect first appears; and (iv) incompatibility caused by hardware and/or software components installed on User's hardware.
+
+7.4	You and the person accepting these terms hereby warrant and represent that (i) You have the full right and authority and are legally competent to enter in to this Agreement (ii) the person accepting these terms and Agreement has been duly authorized by You for accepting this Agreement and issuing Service Forms on Your behalf (iii) in using the Software and in using any report or information derived as a result of using this Application Service, You will comply with all applicable international, national, state, regional and local laws and regulations, including, without limitation, privacy, copyright, export control and obscenity law and (iv) You have attained the legal age limit in your jurisdiction to enter in to this Agreement.
+
+7.5	You understand that the Software may produce inaccurate results because of a failure or fault within the Software or failure by You to properly use and or configure the Software. You assume full and sole responsibility for any use of the Software and bears the entire risk for failures or faults of the Software. Since the Software is inherently complex and may not be completely free of errors, You are advised to verify its performance. You are solely responsible for selection of the software to achieve their intended result or for particular application. The Software is built with an objective to make it error free and tested under wide range of business scenarios. However, since most business scenarios are complex, the scenario of usage needs to be tested and approved by You before using the system for business purposes and Licensor shall not be responsible for any undesirable behavior of the Software resulted under any circumstances. You are advised to back-up the data, with frequency and reliability suitable for You. Licensor endevours to release bug fixes and Upgrades regularly and You are advised to regularly download and apply them. 
+
+7.6	THE SOFTWARE AND APPLICATION SERVICE IS PROVIDED "AS IS" AND THE LICNESOR MAKES NO REPRESENTATION AND GIVES NO WARRANTY AS TO ITS USE OR PERFORMANCE. EXCEPT FOR ANY WARRANTY, CONDITION, REPRESENTATION OR TERM THE EXTENT TO WHICH CANNOT BE EXCLUDED OR LIMITED BY APPLICABLE LAW THE LICENSOR MAKES NO WARRANTY, CONDITION, REPRESENTATION, OR TERM (EXPRESSED OR IMPLIED, WHETHER BY STATUTE, COMMON LAW, CUSTOM, USAGE OR OTHERWISE) AS TO ANY MATTER INCLUDING, WITHOUT LIMITATION, NONINFRINGEMENT OF THIRD PARTY RIGHTS, MERCHANTABILITY, SATISFACTORY QUALITY, INTEGRATION, OR APPLICABILITY FOR A PARTICULAR PURPOSE. YOU ASSUME ALL FAULTS, AND THE ENTIRE RISK AS TO PERFORMANCE AND RESPONSIBILITY FOR SELECTING THE SOFTWARE AND APPLICATION SERVICE TO ACHIEVE YOUR INTENDED RESULTS, AND FOR THE INSTALLATION OF, USE OF, AND RESULTS OBTAINED FROM THE SOFTWARE AND APPLICATION SERVICE. WITHOUT LIMITING THE FOREGOING PROVISIONS, THE LICENSOR MAKES NO REPRESENTATION AND GIVES NO WARRANTY THAT THE SOFTWARE AND APPLICATION SERVICE WILL BE ERROR-FREE OR FREE FROM INTERRUPTIONS OR OTHER FAILURES OR THAT THE SOFTWARE AND APPLICATION SERVICE WILL MEET ANY OR ALL YOUR REQUIREMENTS WHETHER OR NOT DISCLOSED TO THE LICENSOR .
+
+7.7	You acknowledge that certain software, database and hardware used in the data centre may be governed by certain export control laws and regulations including export regulations of the US Department of Commerce and other US government agencies. You and Users hereby agree to comply with all the applicable export laws and not to permit the Software to be accessed and/or used by a person/entity who is unauthorized or from a country which is restricted, under the applicable export laws.
+
+8.0	INTELLECTUAL PROPERTY RIGHTS
+
+8.1	You retain all right, title and interest in and to all Your Personal Information. Licensor may not access the Your Personal Information except to respond to service or technical problems, or at Your request.
+
+8.2	You agree and acknowledge that this Agreement is a license to use the Software and Application Services and nothing in this Agreement shall be construed to transfer or convey to You/User any proprietary rights in the Software or any component or modification/customisation thereof and nothing in this Agreement shall be construed to transfer, convey, restrict, impair or deprive Licensor of any of its ownership or proprietary interest or rights in Software and Application Services or any of its other proprietary technology. All rights associated with Software, Application Services and its documentation are reserved.
+
+8.3	Licensor and/or its licensors shall own all Intellectual Property Rights, title and interest in the Software, Application Services, API's, documentation, any modifications or customization thereto whether done by Licensor or otherwise including those applications created using the API's (if any). 
+
+9.0	LIMITATION OF LIABILITY
+
+9.1	To the maximum extent permitted by applicable law, in no event shall the Licensor be liable for any special, incidental, punitive, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits or confidential or other information, for business interruption, for loss of privacy, for corruption, damage and loss of data or programs, for failure to meet any duty including any statutory duty, duty of good faith or duty of reasonable care, for negligence, for economic loss, and for any other pecuniary or other loss whatsoever) arising out of or in any way related to the use of or inability to use the software, the provision of or failure to provide support or other services, information, software, and related content through the Software or otherwise arising out of the use of the Software, or otherwise under or in connection with any provision of this Agreement, or arising out of any breach of contract or any tort (including negligence, misrepresentation, any strict liability obligation or duty), or any breach of statutory duty, or any breach of warranty of the Licensor, even if the Licensor has been advised of the possibility of such damages. 
+
+9.2	You agree that in the event the Licensor is found liable, the liability of the Licensor shall not exceed the fees paid for the Application Services by You. 
+
+9.3	Nothing in this Agreement excludes or limits any claim for death and personal injury. Further in the event any disclaimer, exclusion or limitation in this Agreement cannot be excluded or limited according to applicable law then only such disclaimer, exclusion or limitation shall not apply to You and You continue to be bound by all the remaining disclaimers, exclusions and limitations.
+
+9.4	You agree that the allocation of risk contained in this section has been taken into account and is reflected in the fee for Software and Application Service. 
+
+10.0	TERMINATION AND CONSEQUENCE THEREOF
+
+10.1	This License and Agreement is effective as mentioned first above and shall remain in force for the period specified in the respective Service Form/Your account, unless terminated earlier as provided herein. 
+
+10.2	You may cancel Your License and terminate this Agreement at any time by providing notice to Licensor.
+
+10.3	Either Licensor or You may terminate this Agreement: (i) upon written notice to the other party, if such other Party shall be in material breach of this Agreement and such material breach is not remedied within a period of thirty (30) days after receipt of prior written notice stating that a default has occurred and has not been remedied; (ii) upon written notice to the other party if the other party is in material breach of any of its obligations under the Agreement and such material breach is not capable of being remedied; or (iii) upon written notice to the other party, if the other party has been adjudicated bankrupt, insolvent or liquidated by a court of competent jurisdiction.
+
+10.4	In the event You or Users materially breach the provisions of this Agreement especially Section 3, Licensor will endeavor to provide You with the opportunity to remove or disable access to the offending material or content, provided, however, that Licensor reserves the right to immediately remove, in its sole discretion, any content which is unlawful or offensive without prior notice to You. In addition to any other rights and remedies under the Agreement and in law, Licensor reserves the right to immediately suspend access to the Application Service if such breach, in Licensor's opinion, is an imminent threat to the Application Service, other customer accounts, or constitutes abusive or threatening behavior.
+
+10.5	Upon the termination of this Agreement under any reason and without prejudice to a party's rights and remedies available under law and contract: (i) Your License shall terminate and You shall forthwith cease to use or access, either directly or indirectly, the Software, Application Service and documentation; (ii) You shall pay Licensor all outstanding amounts payable (if any) (iii) You shall immediately, destroy all copies of the Software and documentation in Your possession or control; and (iv) Licensor shall have a reasonable opportunity to ascertain compliance of this provision. Termination of this Agreement by either party shall not act as a waiver of any breach of this Agreement and shall not release a party's obligations hereunder at law or in equity.
+
+10.6	Upon termination Licensor may, at its discretion, remove and destroy all data of Yours in the data centre or permit You to download it in within certain time period. 
+
+11.0	OTHER PROVISIONS
+
+11.1	Collection of Information: Certain information from You, Users and End Users may be collected by the system during the registration process or while accessing and using the Application Service which may also include Personal Information and Online Information, which shall be governed by the Privacy Policy.
+
+11.2	Confidentiality Obligation: You shall keep confidential all Confidential Information received from Licensor and/or its partners in relation to this Agreement and shall not disclose such Confidential Information to any third parties without the prior written permission of the Licensor or use them other than for the purposes specifically permitted under this Agreement. You agree that Confidential Information may only be disclosed to Your employees, consultants and advisors that are subject to a duty of confidentiality, even then, only to the extent that such employees, consultants and advisors have a specific need to know of the Confidential Information.  The obligation to maintain confidentiality shall survive the term of this Agreement.
+
+11.3	Exclusions: This obligation for confidentiality shall not apply to information (i) which is in the public domain at the time of disclosure; or which later becomes part of the public domain through no breach of this Agreement; or (ii) You can demonstrate to the satisfaction of the Licensor that You were in its possession, without any restrictions, prior to disclosure by the Licensor or (iii) is acquired by You from a third party without any restrictions, who has a legal right to disclose such Confidential Information; or (iv) You are obliged to disclose under law or by the order of a competent Court, Government or any other statutory authority provided reasonable opportunity is given to the Licensor to defend such disclosure.
+
+11.4	Publicity: Subject to the understanding that all IPR in relation to Your name and logo lies with You and no right shall accrue to Licensor in such IPR, You hereby agree that Licensor may publicly refer to You as a customer of Licensor, in any advertising, publicity and promotional materials (including website) and may use Your name and logo in relation thereto. 
+
+11.5	Governing Law and Arbitration: This Agreement shall be governed by and construed in all respects in accordance with the laws of India and shall be subject to exclusive jurisdiction of the Courts in Bangalore, India. Any dispute and/or difference arising out of or pertaining to this Agreement, shall first be resolved by the parties through negotiations, failing which, the same shall be subject to arbitration under rules of Arbitration & Conciliation Act 1996. The place of arbitration shall be Bangalore and shall be done by a single arbitrator in English language.
+
+Except as specifically provided herein, no third parties shall acquire any rights under this Agreement and the provisions of the Contracts (Rights of Third Parties) Act 1999 are excluded. This Agreement shall not be governed by the United Nations Convention on Contracts for the International Sale of Goods, the application of which is expressly excluded. Nothing in this Agreement shall prevent a party from seeking or obtaining equitable relief from a court of competent jurisdiction, whether before, during or after arbitration proceedings. 
+
+No action, regardless of form, arising out of the transactions under this Agreement, may be brought by either party hereto more than one (1) year after the cause of action has occurred, or was discovered to have occurred, except that an action for infringement of intellectual property rights may be brought within the maximum applicable statutory period.
+
+11.6	General: If any term, condition, section or provision of this Agreement becomes invalid or be so judged, the remaining terms, conditions, sections and provisions shall be deemed severable and shall remain in force. The failure to exercise, or delay in exercising any right, power or remedy vested in this Agreement shall not constitute a waiver by that party of that or any other right, power or remedy. This Agreement constitutes the entire agreement between the parties, and supersedes any prior understandings relating to the subject matter hereof, and may be amended or supplemented only in a written form signed by the Parties. A party shall not be liable for any event that is beyond the reasonable control of that party, including acts of god, terrorism, explosions, floods, mechanical breakdowns, strikes, labor unrest, breakdown in essential utilities, etc. Nothing in this Agreement shall constitute or be deemed to constitute a partnership, joint venture or agency between the parties. In this Agreement, paragraph titles are used for identification, convenience and ease of reference. You shall not assign this Agreement by operation of law or otherwise, in whole or in part, without Licensor' prior written consent, which consent shall not be unreasonably withheld. 
+
+11.7	Licensor Contact Information
+
+Should You have any questions concerning this Agreement, or if You desire to contact the Licensor for any reason, You may please contact at:
+
+Smarter Biz Technologies Private Limited.,
+
+support@smarter-biz.com
+
+

@@ -1,0 +1,74 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/block_padding"
+            android:orientation="horizontal">
+
+            <smarter.uearn.money.views.RegularTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Supervisor" />
+
+            <smarter.uearn.money.views.RegularTextView
+                android:id="@+id/tvSupervisor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="supervisor@gmail.com" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/block_padding"
+            android:orientation="horizontal">
+
+            <smarter.uearn.money.views.RegularTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Your Details" />
+
+            <smarter.uearn.money.views.RegularTextView
+                android:id="@+id/tvMail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="me@gmail.com" />
+        </LinearLayout>
+
+        <smarter.uearn.money.views.RegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/block_padding"
+            android:text="@string/team_members" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/block_padding"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/short_margin_between_elements">
+
+            <smarter.uearn.money.views.RegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="team1@gmail.com\nteam2@gmail.com\nteam3@gmail.com" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp">
+
+    <LinearLayout
+        android:id="@+id/ll_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/message_chat"
+        android:elevation="5dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_message_name"
+            android:text="John Doe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/text_message_body"
+                android:text="hi man, how are you?"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="240dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:layout_gravity="bottom"
+                app:layout_constraintTop_toBottomOf="@+id/text_message_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/image_message_body"
+                android:text="hi man, how are you?"
+                android:src="@drawable/app_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="240dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/text_message_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp" />
+
+            <smarter.uearn.money.views.ChatAudioPlayer
+                android:visibility="gone"
+                android:id="@+id/player"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                ></smarter.uearn.money.views.ChatAudioPlayer>
+
+            <TextView
+                android:id="@+id/text_message_time"
+                android:text="11:40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toRightOf="@+id/text_message_body"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="@+id/text_message_body" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/ll_call_chat"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:visibility="gone"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/image_call_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/callicon"/>
+
+</LinearLayout>
+
+
+
+
+
+</LinearLayout>

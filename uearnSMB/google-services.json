@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "571169778077",
+    "firebase_url": "https://smarter-biz-a26e6.firebaseio.com",
+    "project_id": "smarter-biz-a26e6",
+    "storage_bucket": "smarter-biz-a26e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571169778077:android:732e14ca58c8eb15",
+        "android_client_info": {
+          "package_name": "smarter.uearn.money"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571169778077-rtum6i9q82oh8gr3kdn19k1derhognqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcnoJDb4jLqG5mlVH2Oc66MIoJozbxJEU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

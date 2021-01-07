@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="smarter.uearn.money.activities.LandingActivity"
+    tools:ignore="MissingDefaultResource">
+
+
+
+
+    <ViewFlipper
+        android:visibility="gone"
+        android:id="@+id/vfLanding"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/buttons_layout"
+        android:background="@color/white"></ViewFlipper>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttons_layout"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp">
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="590dp"
+                android:layout_height="590dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/earn_home_image" />
+
+
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:textColor="#000000"
+                android:layout_marginEnd="21dp"
+                android:visibility="gone"
+                android:text="Sign in"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                />
+
+
+            <TextView
+                android:id="@+id/logo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:paddingTop="10dp"
+                android:text="Earn from Home"
+                android:textColor="#dd374c"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/logo_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Get into a community of"
+                android:textColor="#040109"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/logo_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo_title2"
+                android:layout_centerHorizontal="true"
+                android:text="customer experience professionals"
+                android:textColor="#040109"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/logo_content2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo_content"
+                android:layout_centerHorizontal="true"
+                android:text="working from home"
+                android:textColor="#040109"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@+id/buttons_layout"
+        android:paddingTop="@dimen/block_padding">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ivDot1"
+                android:layout_width="11dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="11dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/block_line_spacing_margin"
+                android:layout_marginRight="@dimen/block_line_spacing_margin"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ellipse_1" />
+
+            <ImageView
+                android:id="@+id/ivDot2"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:layout_marginEnd="@dimen/block_line_spacing_margin"
+                android:layout_marginRight="@dimen/block_line_spacing_margin"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ellipse_108" />
+
+            <ImageView
+                android:id="@+id/ivDot3"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ellipse_108" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <smarter.uearn.money.views.GeneralButton
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/get_started"
+            android:layout_marginLeft="38dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="38dp" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingTop="5dp"
+            android:text="Already registered?"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/signInBtn"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:paddingTop="5dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textColor="#dd374c"
+            android:text="Sign in"
+            />
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

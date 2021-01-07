@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:visible="true"
+        android:id="@+id/chartItem"
+        android:title="Sync"
+        app:showAsAction="always"
+        android:icon="@drawable/chart_img"
+        />
+
+    <item
+        android:visible="true"
+        android:id="@+id/notification"
+        android:title="Sync"
+        app:showAsAction="always"
+        android:icon="@drawable/notification_1"
+        />
+
+    <item
+        android:visible="true"
+        android:id="@+id/syncItem"
+        android:title="Sync"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_cached"
+        />
+
+    <!--<item-->
+        <!--android:id="@+id/action_cart"-->
+        <!--android:icon="@drawable/active_time"-->
+        <!--android:title="Cart"-->
+        <!--app:actionLayout="@layout/custom_action_item_layout"-->
+        <!--app:showAsAction="always"/>-->
+
+    <!--<item-->
+        <!--android:visible="true"-->
+        <!--android:icon="@drawable/active_time"-->
+        <!--android:id="@+id/dashboard"-->
+        <!--android:title="2:30h"-->
+        <!--app:showAsAction="always"-->
+        <!--/>-->
+
+    <!--<item-->
+        <!--android:visible="true"-->
+        <!--android:id="@+id/dashboard"-->
+        <!--android:title="Sync"-->
+        <!--app:showAsAction="always"-->
+        <!--android:icon="@drawable/active_time"-->
+        <!--/>-->
+
+    <!--<item-->
+        <!--android:id="@+id/activeTime"-->
+        <!--android:actionLayout="@layout/badge_layout"-->
+        <!--android:title="Sync"-->
+        <!--android:icon="@drawable/active_time"-->
+        <!--app:showAsAction="always" />-->
+
+
+    <!--<item-->
+        <!--android:id="@+id/badge"-->
+        <!--android:actionLayout="@layout/feed_update_count"-->
+        <!--android:icon="@drawable/active_time"-->
+        <!--android:title=""-->
+        <!--app:showAsAction="always">-->
+    <!--</item>-->
+
+
+</menu>

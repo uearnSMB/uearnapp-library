@@ -1,0 +1,158 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!--     <dimen name="activity_horizontal_margin">16dp</dimen>
+        <dimen name="activity_vertical_margin">16dp</dimen> -->
+
+    <!-- Size of alarm alert outer ring. -->
+
+    <!-- Default target placement radius for GlowPadView. Should be 1/2 of outerring diameter. -->
+
+    <!-- Default glow radius for GlowPadView -->
+
+    <!-- Default distance beyond which GlowPadView snaps to the matching target -->
+
+    <!-- Default distance from each snap target that GlowPadView considers a "hit" -->
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    -->
+
+
+    <dimen name="drop_down_list_header_release_min_distance">20dp</dimen>
+    <dimen name="drop_down_list_header_progress_bar_height">36dp</dimen>
+    <dimen name="drop_down_list_footer_progress_bar_height">36dp</dimen>
+    <dimen name="drop_down_list_footer_button_margin_left">8dp</dimen>
+    <dimen name="drop_down_list_footer_button_height">48dp</dimen>
+
+    <!--Added for DateTimePicker-->
+
+    <dimen name="done_label_size">14sp</dimen>
+    <dimen name="date_picker_component_width">270dip</dimen>
+    <dimen name="selected_calendar_layout_height">140dip</dimen>
+    <dimen name="date_picker_view_animator_height">210dip</dimen>
+    <dimen name="month_list_item_header_height">50dip</dimen>
+    <dimen name="month_day_label_text_size">10sp</dimen>
+    <dimen name="day_number_select_circle_radius">16dip</dimen>
+    <dimen name="month_select_circle_radius">45dip</dimen>
+    <dimen name="selected_date_year_size">30dip</dimen>
+    <dimen name="selected_date_day_size">75dip</dimen>
+    <dimen name="selected_date_month_size">30dip</dimen>
+    <dimen name="month_label_size">16sp</dimen>
+    <dimen name="day_number_size">16sp</dimen>
+    <dimen name="year_label_height">64dip</dimen>
+    <dimen name="year_label_text_size">22dip</dimen>
+
+    <dimen name="time_label_size">60sp</dimen>
+    <dimen name="extra_time_label_margin">-30dp</dimen>
+    <dimen name="ampm_label_size">16sp</dimen>
+    <dimen name="ampm_left_padding">6dip</dimen>
+    <dimen name="separator_padding">4dip</dimen>
+    <dimen name="header_height">96dip</dimen>
+    <dimen name="picker_dimen">270dip</dimen>
+
+    <item name="circle_radius_multiplier" format="float" type="string">0.82</item>
+    <item name="circle_radius_multiplier_24HourMode" format="float" type="string">0.85</item>
+    <item name="selection_radius_multiplier" format="float" type="string">0.16</item>
+    <item name="ampm_circle_radius_multiplier" format="float" type="string">0.19</item>
+    <item name="numbers_radius_multiplier_normal" format="float" type="string">0.81</item>
+    <item name="numbers_radius_multiplier_inner" format="float" type="string">0.60</item>
+    <item name="numbers_radius_multiplier_outer" format="float" type="string">0.83</item>
+    <item name="text_size_multiplier_normal" format="float" type="string">0.17</item>
+    <item name="text_size_multiplier_inner" format="float" type="string">0.14</item>
+    <item name="text_size_multiplier_outer" format="float" type="string">0.11</item>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="short_margin_between_elements">16dp</dimen>
+    <dimen name="long_margin_between_elements">24dp</dimen>
+    <dimen name="dailog_bottom_elements">20dp</dimen>
+    <dimen name="block_padding">8dp</dimen>
+    <dimen name="nav_header_space">5dp</dimen>
+    <dimen name="block_line_spacing_margin">12dp</dimen>
+
+    <!--font related dimens guidelines-->
+    <!--<dimen name="font_heading">24sp</dimen>
+    <dimen name="font_title">20sp</dimen>
+    <dimen name="font_sub_heading">16sp</dimen>
+    <dimen name="font_body">14sp</dimen>
+    <dimen name="button">14sp</dimen>-->
+
+    <dimen name="primary_text">10sp</dimen>
+    <dimen name="secondary_text">8sp</dimen>
+
+    <dimen name="font_title">14sp</dimen>
+    <dimen name="font_sub_heading">9sp</dimen>
+    <dimen name="font_body">8sp</dimen>
+    <dimen name="font_edit_text">8sp</dimen>
+    <dimen name="font_button">12sp</dimen>
+    <dimen name="font_help_text">12sp</dimen>
+    <dimen name="settings_heading">14sp</dimen>
+
+    <!--Custom dimensions for custom dialogs-->
+    <dimen name="dialog_padding_horizontal">8dp</dimen>
+    <dimen name="dialog_padding_vertical">16dp</dimen>
+    <dimen name="edittext_padding">16dp</dimen>
+
+    <dimen name="two_level_button_space">4dp</dimen>
+
+    <dimen name="calltracking_margin">30dp</dimen>
+
+    <dimen name="spacing">8dp</dimen>
+
+	<dimen name="mtrl_textinput_box_stroke_width_default">.5dp</dimen>
+    <dimen name="mtrl_textinput_box_stroke_width_focused">.5dp</dimen>
+
+
+    <!--  Text Sizes -->
+    <dimen name="text_8">8sp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_22">22sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_26">26sp</dimen>
+    <dimen name="text_28">28sp</dimen>
+    <dimen name="text_30">30sp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="margin_8dip">8dip</dimen>
+    <dimen name="margin_16dip">16dip</dimen>
+
+
+    <!--Calendar dimens-->
+    <dimen name="calendar_padding">8dp</dimen>
+    <dimen name="calendar_month_margin_bottom">8dp</dimen>
+    <dimen name="calendar_week_margin_bottom">5dp</dimen>
+    <dimen name="calendar_day_of_the_month_background_size">15dp</dimen>
+    <dimen name="calendar_circle_size">4dp</dimen>
+    <dimen name="calendar_ring_size">18dp</dimen>
+    <dimen name="calendar_month_font">16sp</dimen>
+    <dimen name="calendar_day_of_week_font">16sp</dimen>
+    <dimen name="calendar_day_of_the_month_font">16sp</dimen>
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+
+
+   <!-- <dimen name="simpletooltip_max_width">150dp</dimen>-->
+    <dimen name="simpletooltip_max_width">330dp</dimen>
+    <dimen name="simpletooltip_overlay_offset">10dp</dimen>
+    <dimen name="simpletooltip_margin">10dp</dimen>
+    <dimen name="simpletooltip_padding">10dp</dimen>
+    <dimen name="simpletooltip_arrow_width">30dp</dimen>
+    <dimen name="simpletooltip_arrow_height">15dp</dimen>
+    <dimen name="simpletooltip_animation_padding">4dp</dimen>
+
+</resources>

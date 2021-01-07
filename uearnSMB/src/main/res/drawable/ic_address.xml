@@ -1,0 +1,14 @@
+<vector android:autoMirrored="true" android:height="100dp"
+    android:viewportHeight="512" android:viewportWidth="512"
+    android:width="100dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#7030A0" android:pathData="m287.71,304 l23.32,32.064a8.159,8.159 0,0 1,0.97 -0.064h19.2l-23.272,-32z"/>
+    <path android:fillColor="#7030A0" android:pathData="m371.199,336 l-23.272,-32h-20.217l23.272,32z"/>
+    <path android:fillColor="#7030A0" android:pathData="m390.982,336h20.217l-23.273,-32h-20.216z"/>
+    <path android:fillColor="#7030A0" android:pathData="m265.344,291.562c1.338,-2.006 6.236,-3.55 6.448,-3.556l24.584,-0.006c0.122,-0.183 0.245,-0.364 0.383,-0.539l38.262,-48.461a153.946,153.946 0,0 0,32.979 -95,112 112,0 0,0 -224,0 153.946,153.946 0,0 0,32.979 95l66.908,84.751zM176,144a80,80 0,1 1,80 80,80.091 80.091,0 0,1 -80,-80z"/>
+    <path android:fillColor="#7030A0" android:pathData="m320,144a64,64 0,1 0,-64 64,64.072 64.072,0 0,0 64,-64zM216,144a40.045,40.045 0,0 1,40 -40,8 8,0 0,1 0,16 24,24 0,0 0,0 48,8 8,0 0,1 0,16 40.045,40.045 0,0 1,-40 -40z"/>
+    <path android:fillColor="#7030A0" android:pathData="m400.29,376 l-17.454,-24h-20.217l17.454,24z"/>
+    <path android:fillColor="#7030A0" android:pathData="m440.29,376 l-17.455,-24h-20.216l17.454,24z"/>
+    <path android:fillColor="#7030A0" android:pathData="m360.29,376 l-17.454,-24h-20.217l17.454,24z"/>
+    <path android:fillColor="#7030A0" android:pathData="m376,424h40v24h-40z"/>
+    <path android:fillColor="#7030A0" android:pathData="m488,480h-40v-88h-104v88h-16v-93.4l-55.714,-76.608 -21.232,31.848 -0.032,0.047 -35.022,52.535v85.578h-56v-34.165a16,16 0,0 0,8 -13.835v-48a16,16 0,0 0,-32 0v14.807a7.98,7.98 0,0 1,-0.086 1.111,39.883 39.883,0 0,1 3.721,42.217 16.143,16.143 0,0 0,4.365 3.679v34.186h-32v-33.376a24,24 0,1 0,-16 0v33.376h-16a8,8 0,0 0,0 16h408a8,8 0,0 0,0 -16zM360,416a8,8 0,0 1,8 -8h56a8,8 0,0 1,8 8v40a8,8 0,0 1,-8 8h-56a8,8 0,0 1,-8 -8zM240,408a32,32 0,0 1,64 0v72h-16v-72a16,16 0,0 0,-32 0v72h-16z"/>
+</vector>

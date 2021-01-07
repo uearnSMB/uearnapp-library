@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView3"
+        android:ems="10"
+        android:inputType="textNoSuggestions" />
+    
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextUsername"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextUsername"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editTextServerAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextPassword"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextPassword"
+        android:ems="10"
+        android:inputType="textNoSuggestions" />
+        
+    <EditText
+        android:id="@+id/EditTextServerPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextServerAddress"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextServerAddress"
+        android:ems="10"
+        android:inputType="text|numberDecimal" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextUsername"
+        android:layout_alignBottom="@+id/editTextUsername"
+        android:layout_alignParentLeft="true"
+        android:text="Username" />
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextPassword"
+        android:layout_alignBottom="@+id/editTextPassword"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="Passsword" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextServerAddress"
+        android:layout_alignBottom="@+id/editTextServerAddress"
+        android:layout_alignLeft="@+id/TextView2"
+        android:text="Server Address" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/EditTextServerPort"
+        android:layout_alignBottom="@+id/EditTextServerPort"
+        android:layout_alignLeft="@+id/textView3"
+        android:text="Server Port" />
+
+    <Button
+        android:id="@+id/buttonRegisterUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:text="Register User" 
+        android:onClick="registerUser_clicked"/>
+
+</RelativeLayout>

@@ -1,0 +1,363 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:drawablePadding="@dimen/font_title"
+            android:gravity="center_vertical"
+            android:text="@string/settings_options_preferences"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_title"
+            android:textStyle="bold" />
+
+
+        <RelativeLayout
+            android:id="@+id/privateContactsLayout"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/privateContactsRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/privateContactsRadioButton"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All except personal contacts"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+
+            android:text="@string/settings_preferences_active"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_title"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:id="@+id/appointmentContactsLayout"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/appointmentContacts_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_toRightOf="@id/appointmentContacts_checkbox"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Appointment contacts"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/teamContactsLayout"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/team_Contacts_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_toRightOf="@id/team_Contacts_checkbox"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Team members"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/cloudTelephonyLayout"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/cloundTelephonyRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/cloundTelephonyRadioButton"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cloud telephony"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/captureIncomingSms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/captureIncomingSms"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SMS"/>
+
+            </RelativeLayout>
+
+
+            <!--<CheckBox
+                android:id="@+id/appointment_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/block_line_spacing_margin"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/active_appointments" />
+
+            <CheckBox
+                android:id="@+id/team_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/block_line_spacing_margin"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/active_team" />
+
+            <CheckBox
+                android:id="@+id/cloud_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/block_line_spacing_margin"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/active_cloud" />
+
+            <CheckBox
+                android:id="@+id/sms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/block_line_spacing_margin"
+                android:buttonTint="@color/colorAccent"
+                android:text="SMS" />
+
+            <CheckBox
+                android:id="@+id/private_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/block_line_spacing_margin"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/active_all" />-->
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/box_border"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:padding="@dimen/block_padding"
+            android:layout_gravity="left"
+            android:text="@string/settings_preferences_manage_private_contacts"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/empty_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:text="@string/manage_empty_list"
+            android:textSize="@dimen/font_body" />
+
+        <Button
+            android:id="@+id/contacts_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:background="@color/colorAccent"
+            android:padding="@dimen/block_padding"
+            android:text="You have 0 personal contacts"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_sub_heading"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/box_border"
+            />
+
+        <Switch
+            android:id="@+id/callRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:text="@string/settings_preferences_call_recording" />
+
+        <Switch
+            android:visibility="gone"
+            android:id="@+id/switchTrackSMS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:text="@string/settings_preferences_tracking_sms" />
+
+        <Switch
+            android:visibility="gone"
+            android:id="@+id/switchAutoResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:text="@string/settings_preferences_send_auto_response" />
+
+        <Switch
+            android:id="@+id/gps_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:text="@string/settings_preferences_gps_tracking" />
+
+        <Switch
+            android:visibility="gone"
+            android:id="@+id/switchAfterCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginTop="@dimen/short_margin_between_elements"
+            android:text="@string/settings_preferences_after_call" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:id="@+id/cardViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="250dp"
+                android:layout_margin="5dp">
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp">
+
+                    <ImageView
+                        android:id="@+id/aftercallPopupImage"
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/popup_checked"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@android:drawable/checkbox_on_background"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="250dp"
+                android:layout_margin="5dp">
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp">
+
+                    <ImageView
+                        android:id="@+id/afterCallNotificationImage"
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/notification_checked"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@android:drawable/checkbox_on_background"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

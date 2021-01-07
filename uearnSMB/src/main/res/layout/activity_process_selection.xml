@@ -1,0 +1,264 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar1"
+            layout="@layout/onboarding_header_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttons_layout"
+        android:layout_below="@+id/header"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="@dimen/block_padding"
+        tools:context="smarter.uearn.money.fragments.SignInFragment">
+
+        <LinearLayout
+            android:id="@+id/llRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/processSelectionTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/processSelectionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:lineSpacingExtra="1sp"
+                    android:padding="5dp"
+                    android:text="Select the skills which you would like to serve."
+                    android:textColor="#707070"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <LinearLayout
+                    android:id="@+id/device_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:visibility="visible"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/voiceCheckbox"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="?android:attr/listChoiceIndicatorMultiple"
+                            android:button="@null"
+                            android:theme="@style/CheckBox" />
+
+                        <TextView
+                            android:id="@+id/voiceTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Voice" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/vertical_dashline_devider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/emailCheckbox"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="?android:attr/listChoiceIndicatorMultiple"
+                            android:button="@null"
+                            android:theme="@style/CheckBox" />
+
+                        <TextView
+                            android:id="@+id/emailTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Email" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/vertical_dashline_devider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/chatCheckbox"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="?android:attr/listChoiceIndicatorMultiple"
+                            android:button="@null"
+                            android:theme="@style/CheckBox" />
+
+                        <TextView
+                            android:id="@+id/chatTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Chat" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/device_check2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:weightSum="5">
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/processSelectionTextLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/processSelectionText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:lineSpacingExtra="1sp"
+                    android:padding="5dp"
+                    android:text="You will have to undergo a test for the selected skills."
+                    android:textColor="#707070"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center">
+
+        <smarter.uearn.money.views.GeneralButton
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/get_started" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingTop="15dp"
+            android:text="Skip to Home"
+            android:textColor="@color/app_color_red"
+            android:textSize="16sp" />
+    </LinearLayout>
+</RelativeLayout>

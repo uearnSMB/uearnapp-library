@@ -1,0 +1,290 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar1"
+            layout="@layout/onboarding_header_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="@dimen/block_padding"
+        android:layout_above="@+id/buttons_layout"
+        android:layout_below="@+id/header"
+        tools:context="smarter.uearn.money.fragments.SignInFragment">
+
+    <LinearLayout
+        android:id="@+id/llRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/short_margin_between_elements"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:srcCompat="@drawable/ic_welcome" />
+
+            <RelativeLayout
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/welcomeText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/app_color_purple"
+                    android:textSize="38sp"
+                    android:fontFamily="@font/poppins_light"
+                    android:layout_gravity="center"
+                    android:text="Thank You" />
+
+                <TextView
+                    android:id="@+id/completedtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@null"
+                    android:lineSpacingExtra="1sp"
+                    android:padding="5dp"
+                    android:textColor="#0c0c0c"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="You have successfully completed your voice test"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/welcomeText1Layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/callfromtv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/ic_voice_test_bg"
+                android:lineSpacingExtra="1sp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:text="You'll receive a call from our interview panel within 48 hrs."
+                android:textColor="#0c0c0c"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/welcomeText1Layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/welcomeText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:background="@null"
+                android:lineSpacingExtra="1sp"
+                android:padding="5dp"
+                android:text="Select the suitable time slot to call you back"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_bold"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/checkboxLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_view"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            tools:ignore="WebViewLayout">
+
+                <LinearLayout
+                    android:id="@+id/checkbox_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="8dp"
+                    android:gravity="center">
+
+                    <!--<ListView
+                        android:id="@+id/llChb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@android:color/transparent"
+                        android:layout_gravity="center"
+                        android:dividerHeight="2dp">
+                    </ListView>-->
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:id="@+id/rdGroup">
+                            <android.support.v7.widget.CardView
+                                android:id="@+id/deviceCardView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:orientation="horizontal"
+                                card_view:cardCornerRadius="2sp"
+                                card_view:cardElevation="2sp"
+                                card_view:contentPadding="3dp"
+                                android:visibility="visible">
+                            <RadioButton
+                                android:id="@+id/rdb_morning"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="Morning (09:00 AM - 12:00 PM)"
+                                android:textColor="#707070"
+                                android:textSize="@dimen/text_14"
+                                android:buttonTint="@color/checkbox_gray"
+                                style="@android:style/Widget.CompoundButton.CheckBox"
+                                android:fontFamily="@font/poppins_medium"
+                                android:onClick="onRadioButtonClicked"/>
+                            </android.support.v7.widget.CardView>
+                            <android.support.v7.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:orientation="horizontal"
+                                card_view:cardCornerRadius="2sp"
+                                card_view:cardElevation="2sp"
+                                card_view:contentPadding="3dp"
+                                android:visibility="visible">
+                            <RadioButton
+                                android:id="@+id/rdb_afternoon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="Afternoon (12:00 PM - 03:00 PM)"
+                                android:textSize="@dimen/text_14"
+                                android:textColor="#707070"
+                                style="@android:style/Widget.CompoundButton.CheckBox"
+                                android:fontFamily="@font/poppins_medium"
+                                android:buttonTint="@color/checkbox_gray"
+                                android:onClick="onRadioButtonClicked"/>
+                            </android.support.v7.widget.CardView>
+                            <android.support.v7.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:orientation="horizontal"
+                                card_view:cardCornerRadius="2sp"
+                                card_view:cardElevation="2sp"
+                                card_view:contentPadding="3dp"
+                                android:visibility="visible">
+                            <RadioButton
+                                android:id="@+id/rdb_evening"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="Evening (03:00 PM - 06:00 PM)"
+                                android:textSize="@dimen/text_14"
+                                android:textColor="#707070"
+                                style="@android:style/Widget.CompoundButton.CheckBox"
+                                android:fontFamily="@font/poppins_medium"
+                                android:buttonTint="@color/checkbox_gray"
+                                android:onClick="onRadioButtonClicked"/>
+                            </android.support.v7.widget.CardView>
+                        </RadioGroup>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <smarter.uearn.money.views.GeneralButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/get_started" />
+    </LinearLayout>
+</RelativeLayout>

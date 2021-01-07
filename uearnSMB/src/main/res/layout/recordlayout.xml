@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/player"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/player_play"
+        android:orientation="vertical">
+
+        <SeekBar
+            android:id="@+id/player_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp"
+            android:thumb="@drawable/scrubber" />
+            <TextView
+                android:id="@+id/player_timeleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/player_timeleft"
+                android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/player_play"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/newplayer_button"
+        android:padding="5dp"
+        android:textOff=""
+        android:textOn=""
+        android:checked="false" />
+
+
+</RelativeLayout>

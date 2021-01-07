@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/attach_icon"
+        android:icon="@drawable/attachment_icon"
+        android:title="Attach"
+        app:showAsAction="always"/>
+
+
+    <item
+        android:id="@+id/action_example"
+        android:icon="@drawable/ic_action_new_email"
+        android:title="@string/action_example"
+        app:actionViewClass="android.widget.ImageButton"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_one"
+        android:title="Save"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_two"
+        android:title="Assign"
+        app:showAsAction="always"/>
+</menu>
